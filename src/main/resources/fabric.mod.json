@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "opt-carpet-addition",
+  "version": "${version}",
+
+  "name": "Example Mod",
+  "description": "An extention mod of fabric-carpet.",
+  "authors": [
+    "OptiJava"
+  ],
+  "contact": {
+    "homepage": "https://github.com/OptiJava/Opt-Carpet-Addition",
+    "sources": "https://github.com/OptiJava/Opt-Carpet-Addition"
+  },
+
+  "license": "CC0-1.0",
+  "icon": "assets/modid/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "io.github.optijava.opt-carpet-addition.OptCarpetAdditionMod"
+    ]
+  },
+  "mixins": [
+    "opt-carpet-addition.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.7.4",
+    "fabric": "*",
+    "minecraft": "1.16.x"
+  },
+  "suggests": {
+    "another-mod": "carpet"
+  }
+}

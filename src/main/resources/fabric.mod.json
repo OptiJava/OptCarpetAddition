@@ -19,7 +19,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "io.github.optijava.opt-carpet-addition.OptCarpetAdditionMod"
+      "io.github.optijava.opt_carpet_addition.OptCarpetAddition"
     ]
   },
   "mixins": [
@@ -28,7 +28,6 @@
 
   "depends": {
     "fabricloader": ">=0.7.4",
-    "fabric": "*",
     "minecraft": "1.16.x",
     "carpet": ">=1.4.40+v210608"
   },

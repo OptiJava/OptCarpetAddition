@@ -21,12 +21,12 @@ public class PlayerTpCommand {
     private static final String COMMAND_PREFIX = "player";
 
     public static void registerCommands(CommandDispatcher<ServerCommandSource> dispatcher) {
-        LiteralArgumentBuilder<ServerCommandSource> literalargumentbuilder = literal(COMMAND_PREFIX)
+        LiteralArgumentBuilder<ServerCommandSource> argumentBuilder = literal(COMMAND_PREFIX)
                 .requires((player) -> SettingsManager.canUseCommand(player, CarpetSettings.commandPlayer))
                 .then(argument(COMMAND_PREFIX, StringArgumentType.word())
                         .then(literal("tp").executes(PlayerTpCommand::teleport))
                         .then(literal("tphere").executes(PlayerTpCommand::teleportHere)));
-        dispatcher.register(literalargumentbuilder);
+        dispatcher.register(argumentBuilder);
     }
 
     private static int teleport(CommandContext<ServerCommandSource> context) {

@@ -4,10 +4,8 @@
   "package": "io.github.optijava.opt_carpet_addition.mixins",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-
   ],
   "client": [
-
   ],
   "injectors": {
     "defaultRequire": 1

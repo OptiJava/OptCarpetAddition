@@ -9,6 +9,7 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import io.github.optijava.opt_carpet_addition.OptCarpetAddition;
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.command.ServerCommandSource;
@@ -43,6 +44,8 @@ public class PlayerTpCommand {
 
         try {
             final String commandSourcePlayerName = context.getSource().getPlayer().getGameProfile().getName();
+
+            OptCarpetAddition.LOGGER.info(commandSourcePlayerName + " submit command: /player " + StringArgumentType.getString(context, COMMAND_PREFIX) + " tp");
 
             if (server.getPlayerManager().getPlayer(StringArgumentType.getString(context, COMMAND_PREFIX)) instanceof EntityPlayerMPFake) {
                 if (OptCarpetSettings.commandTpToFakePlayer.equals("true")) {
@@ -93,6 +96,8 @@ public class PlayerTpCommand {
         try {
             final String commandSourcePlayerName = context.getSource().getPlayer().getGameProfile().getName();
 
+            OptCarpetAddition.LOGGER.info(commandSourcePlayerName + " submit command: /player " + StringArgumentType.getString(context, COMMAND_PREFIX) + " tphere");
+
             if (server.getPlayerManager().getPlayer(StringArgumentType.getString(context, COMMAND_PREFIX)) instanceof EntityPlayerMPFake) {
                 if (OptCarpetSettings.commandTpHereFakePlayer.equals("true")) {
                     server.getCommandManager().execute(server.getCommandSource(), "tp " + StringArgumentType.getString(context, COMMAND_PREFIX) + " " + commandSourcePlayerName);
@@ -122,7 +127,7 @@ public class PlayerTpCommand {
 
         } catch (CommandSyntaxException e) {
             Messenger.m(context.getSource(), "r Unknown error occurred when execute command : com.mojang.brigadier.exceptions.CommandSyntaxException");
-            e.printStackTrace();
+            OptCarpetAddition.LOGGER.error("Unknown error occurred when execute command.", e);
         }
         return 1;
     }

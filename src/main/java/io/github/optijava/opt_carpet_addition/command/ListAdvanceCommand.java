@@ -13,7 +13,7 @@ import static net.minecraft.server.command.CommandManager.literal;
 
 public class ListAdvanceCommand {
     private ListAdvanceCommand() {
-        
+
     }
 
     public static void registerCommand(CommandDispatcher<ServerCommandSource> dispatcher) {
@@ -33,6 +33,7 @@ public class ListAdvanceCommand {
             context.getSource().sendFeedback(new LiteralText(sb.toString()), false);
         } catch (Exception e) {
             context.getSource().sendError(new LiteralText("Unexpected exception occurred when command list advance executed."));
+            OptCarpetAddition.LOGGER.error("Unexpected exception occurred when command list advance executed.", e);
             return 0;
         }
         return 1;

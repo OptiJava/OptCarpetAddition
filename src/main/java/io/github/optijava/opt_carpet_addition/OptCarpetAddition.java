@@ -18,9 +18,11 @@ import java.util.Objects;
 public class OptCarpetAddition implements CarpetExtension, ModInitializer {
     public static final Logger LOGGER = CarpetSettings.LOG;
 
+    public static final OptCarpetAddition additionInstance = new OptCarpetAddition();
+
     @Override
     public void onInitialize() {
-        CarpetServer.manageExtension(new OptCarpetAddition());
+        CarpetServer.manageExtension(additionInstance);
     }
 
     @Override

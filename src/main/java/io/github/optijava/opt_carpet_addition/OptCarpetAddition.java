@@ -5,6 +5,7 @@ import carpet.CarpetServer;
 import carpet.CarpetSettings;
 import carpet.patches.EntityPlayerMPFake;
 import com.mojang.brigadier.CommandDispatcher;
+import io.github.optijava.opt_carpet_addition.command.ListAdvanceCommand;
 import io.github.optijava.opt_carpet_addition.command.PlayerTpCommand;
 import net.fabricmc.api.ModInitializer;
 import net.minecraft.server.command.ServerCommandSource;
@@ -39,6 +40,7 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
     @Override
     public void registerCommands(CommandDispatcher<ServerCommandSource> dispatcher) {
         PlayerTpCommand.registerCommands(dispatcher);
+        ListAdvanceCommand.registerCommand(dispatcher);
     }
 
     @Override

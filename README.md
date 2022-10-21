@@ -7,6 +7,7 @@
 ### commandTpToFakePlayer
 
 是否允许玩家通过/player xxx tp 指令传送到假人
+
 - 有些服务器需要玩家之间互相tp的功能，如果使用tpa模组，就没法tp到假人（因为假人不会同意tpa），所以加入了这个功能
 
 - default value: `false`
@@ -16,6 +17,7 @@
 ### commandTpHereFakePlayer
 
 是否允许玩家通过/player xxx tphere 指令把假人传送到自己
+
 - 有些服务器需要玩家之间互相tp的功能，如果使用tpa模组，就没法tphere假人（因为假人不会同意tpa），所以加入了这个功能
 
 - default value: `false`
@@ -41,7 +43,13 @@
 ## Command
 
 ### player xxx tp
+
 - tp到一个人，可以使用`commandTpToFakePlayer``allowTpToRealPlayer`规则管理此指令
 
 ### player xxx tphere
+
 - 把一个人tp到自己，可以使用`commandTpHereFakePlayer``allowTpHereRealPlayer`规则管理此指令
+
+### list -advance
+
+- 显示每一个玩家的详细信息，包括uuid，游戏模式等

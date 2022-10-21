@@ -1,4 +1,4 @@
-package io.github.optijava.opt_carpet_addition.command;
+package io.github.optijava.opt_carpet_addition.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;

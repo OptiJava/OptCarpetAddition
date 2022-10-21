@@ -1,4 +1,4 @@
-package io.github.optijava.opt_carpet_addition.command;
+package io.github.optijava.opt_carpet_addition.commands;
 
 import carpet.CarpetSettings;
 import carpet.patches.EntityPlayerMPFake;
@@ -18,6 +18,10 @@ import static net.minecraft.server.command.CommandManager.argument;
 import static net.minecraft.server.command.CommandManager.literal;
 
 public class PlayerTpCommand {
+
+    private PlayerTpCommand() {
+
+    }
 
     private static final String COMMAND_PREFIX = "player";
 

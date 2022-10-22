@@ -49,4 +49,5 @@ public class OptCarpetSettings {
             category = RuleCategory.BUGFIX
     )
     public static boolean fixXpLevelBug = false;
+    
 }

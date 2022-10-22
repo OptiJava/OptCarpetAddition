@@ -7,7 +7,9 @@ import carpet.patches.EntityPlayerMPFake;
 import com.mojang.brigadier.CommandDispatcher;
 import io.github.optijava.opt_carpet_addition.commands.ListAdvanceCommand;
 import io.github.optijava.opt_carpet_addition.commands.PlayerTpCommand;
+import io.github.optijava.opt_carpet_addition.events.FixExperienceBug;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.entity.event.v1.ServerEntityWorldChangeEvents;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.world.GameMode;
@@ -23,6 +25,8 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
     @Override
     public void onInitialize() {
         CarpetServer.manageExtension(additionInstance);
+        
+        ServerEntityWorldChangeEvents.AFTER_PLAYER_CHANGE_WORLD.register(new FixExperienceBug());
     }
 
     @Override

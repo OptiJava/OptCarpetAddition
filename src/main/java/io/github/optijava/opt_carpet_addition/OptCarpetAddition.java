@@ -33,10 +33,24 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
     public void onGameStarted() {
         CarpetServer.settingsManager.parseSettingsClass(OptCarpetSettings.class);
         CarpetServer.settingsManager.addRuleObserver(((serverCommandSource, rule, s) -> {
-            if (Objects.equals(rule.name, "forceFakePlayerGameMode")) {
+            if (Objects.equals(rule.name, "forceFakePlayerGameMode") && !Objects.equals(OptCarpetSettings.forceFakePlayerGameMode, "false")) {
+                GameMode gameMode = GameMode.SURVIVAL;
+
+                switch (OptCarpetSettings.forceFakePlayerGameMode) {
+                    case "survival" -> {
+                        gameMode = GameMode.SURVIVAL;
+                    }
+                    case "creative" -> {
+                        gameMode = GameMode.CREATIVE;
+                    }
+                    case "adventure" -> {
+                        gameMode = GameMode.ADVENTURE;
+                    }
+                }
+
                 for (ServerPlayerEntity player : serverCommandSource.getServer().getPlayerManager().getPlayerList()) {
                     if (player instanceof EntityPlayerMPFake) {
-                        player.changeGameMode(GameMode.valueOf(OptCarpetSettings.forceFakePlayerGameMode));
+                        player.changeGameMode(gameMode);
                     }
                 }
             }
@@ -52,7 +66,21 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
     @Override
     public void onPlayerLoggedIn(ServerPlayerEntity player) {
         if (player instanceof EntityPlayerMPFake && !(Objects.equals(OptCarpetSettings.forceFakePlayerGameMode, "false"))) {
-            player.changeGameMode(GameMode.valueOf(OptCarpetSettings.forceFakePlayerGameMode));
+            GameMode gameMode = GameMode.SURVIVAL;
+
+            switch (OptCarpetSettings.forceFakePlayerGameMode) {
+                case "survival" -> {
+                    gameMode = GameMode.SURVIVAL;
+                }
+                case "creative" -> {
+                    gameMode = GameMode.CREATIVE;
+                }
+                case "adventure" -> {
+                    gameMode = GameMode.ADVENTURE;
+                }
+            }
+
+            player.changeGameMode(gameMode);
         }
     }
 }

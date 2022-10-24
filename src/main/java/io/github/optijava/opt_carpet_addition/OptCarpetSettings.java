@@ -39,7 +39,7 @@ public class OptCarpetSettings {
     @Rule(
             desc = "Force fake player gamemode",
             category = RuleCategory.FEATURE,
-            options = {"survival", "creative", "adventure", "spectator", "false"}
+            options = {"survival", "creative", "adventure", "false"}
     )
     public static String forceFakePlayerGameMode = "false";
 
@@ -49,5 +49,5 @@ public class OptCarpetSettings {
             category = RuleCategory.BUGFIX
     )
     public static boolean fixXpLevelBug = false;
-    
+
 }

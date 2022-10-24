@@ -25,7 +25,7 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
     @Override
     public void onInitialize() {
         CarpetServer.manageExtension(additionInstance);
-        
+
         ServerEntityWorldChangeEvents.AFTER_PLAYER_CHANGE_WORLD.register(new FixExperienceBug());
     }
 
@@ -33,10 +33,27 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
     public void onGameStarted() {
         CarpetServer.settingsManager.parseSettingsClass(OptCarpetSettings.class);
         CarpetServer.settingsManager.addRuleObserver(((serverCommandSource, rule, s) -> {
-            if (Objects.equals(rule.name, "forceFakePlayerGameMode")) {
+            if (Objects.equals(rule.name, "forceFakePlayerGameMode") && !Objects.equals(OptCarpetSettings.forceFakePlayerGameMode, "false")) {
+                GameMode gameMode = GameMode.SURVIVAL;
+
+                switch (OptCarpetSettings.forceFakePlayerGameMode) {
+                    case "survival": {
+                        gameMode = GameMode.SURVIVAL;
+                        break;
+                    }
+                    case "creative": {
+                        gameMode = GameMode.CREATIVE;
+                        break;
+                    }
+                    case "adventure": {
+                        gameMode = GameMode.ADVENTURE;
+                        break;
+                    }
+                }
+
                 for (ServerPlayerEntity player : serverCommandSource.getMinecraftServer().getPlayerManager().getPlayerList()) {
                     if (player instanceof EntityPlayerMPFake) {
-                        player.setGameMode(GameMode.valueOf(OptCarpetSettings.forceFakePlayerGameMode));
+                        player.setGameMode(gameMode);
                     }
                 }
             }
@@ -52,7 +69,24 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
     @Override
     public void onPlayerLoggedIn(ServerPlayerEntity player) {
         if (player instanceof EntityPlayerMPFake && !(Objects.equals(OptCarpetSettings.forceFakePlayerGameMode, "false"))) {
-            player.setGameMode(GameMode.valueOf(OptCarpetSettings.forceFakePlayerGameMode));
+            GameMode gameMode = GameMode.SURVIVAL;
+
+            switch (OptCarpetSettings.forceFakePlayerGameMode) {
+                case "survival": {
+                    gameMode = GameMode.SURVIVAL;
+                    break;
+                }
+                case "creative": {
+                    gameMode = GameMode.CREATIVE;
+                    break;
+                }
+                case "adventure": {
+                    gameMode = GameMode.ADVENTURE;
+                    break;
+                }
+            }
+
+            player.setGameMode(gameMode);
         }
     }
 }

@@ -25,7 +25,7 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
     @Override
     public void onInitialize() {
         CarpetServer.manageExtension(additionInstance);
-        
+
         ServerEntityWorldChangeEvents.AFTER_PLAYER_CHANGE_WORLD.register(new FixExperienceBug());
     }
 
@@ -34,9 +34,9 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
         CarpetServer.settingsManager.parseSettingsClass(OptCarpetSettings.class);
         CarpetServer.settingsManager.addRuleObserver(((serverCommandSource, rule, s) -> {
             if (Objects.equals(rule.name, "forceFakePlayerGameMode")) {
-                for (ServerPlayerEntity player : serverCommandSource.getMinecraftServer().getPlayerManager().getPlayerList()) {
+                for (ServerPlayerEntity player : serverCommandSource.getServer().getPlayerManager().getPlayerList()) {
                     if (player instanceof EntityPlayerMPFake) {
-                        player.setGameMode(GameMode.valueOf(OptCarpetSettings.forceFakePlayerGameMode));
+                        player.changeGameMode(GameMode.valueOf(OptCarpetSettings.forceFakePlayerGameMode));
                     }
                 }
             }
@@ -52,7 +52,7 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
     @Override
     public void onPlayerLoggedIn(ServerPlayerEntity player) {
         if (player instanceof EntityPlayerMPFake && !(Objects.equals(OptCarpetSettings.forceFakePlayerGameMode, "false"))) {
-            player.setGameMode(GameMode.valueOf(OptCarpetSettings.forceFakePlayerGameMode));
+            player.changeGameMode(GameMode.valueOf(OptCarpetSettings.forceFakePlayerGameMode));
         }
     }
 }

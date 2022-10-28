@@ -5,6 +5,7 @@ import carpet.settings.RuleCategory;
 import net.fabricmc.loader.api.FabricLoader;
 
 import java.io.File;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import static carpet.settings.RuleCategory.COMMAND;
 
 public class OptCarpetSettings {
     private static final String False = "false";
-    public static String configDir = FabricLoader.getInstance().getConfigDir().toString() + File.separator + "opt-carpet-addition";
+    public static Path configDirectory = Path.of(FabricLoader.getInstance().getConfigDir().toString() + File.separator + "opt-carpet-addition");
 
     // Tp command rules =======================================================================
 
@@ -76,5 +77,17 @@ public class OptCarpetSettings {
             category = RuleCategory.FEATURE
     )
     public static boolean enableTpPrefixWhitelist = false;
+
+    @Rule(
+            desc = "Enable tp here prefix blacklist",
+            category = RuleCategory.FEATURE
+    )
+    public static boolean enableTpHerePrefixBlacklist = false;
+
+    @Rule(
+            desc = "Enable tp here prefix whitelist",
+            category = RuleCategory.FEATURE
+    )
+    public static boolean enableTpHerePrefixWhitelist = false;
 
 }

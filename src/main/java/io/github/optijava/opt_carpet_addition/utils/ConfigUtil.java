@@ -6,12 +6,11 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Path;
 
 public class ConfigUtil {
     public static String load(String fileName) {
         try {
-            return Files.readString(Path.of(OptCarpetSettings.configDir + fileName), StandardCharsets.UTF_8);
+            return Files.readString(OptCarpetSettings.configDirectory.resolve(fileName), StandardCharsets.UTF_8);
         } catch (IOException e) {
             e.printStackTrace();
             return "Failed";
@@ -20,7 +19,7 @@ public class ConfigUtil {
 
     public static boolean create(String fileName) {
         try {
-            Files.createFile(Path.of(OptCarpetSettings.configDir + fileName));
+            Files.createFile(OptCarpetSettings.configDirectory.resolve(fileName));
             return true;
         } catch (IOException e) {
             e.printStackTrace();
@@ -28,14 +27,17 @@ public class ConfigUtil {
         }
     }
 
-    public static void init() {
-        File file = Path.of(OptCarpetSettings.configDir).toFile();
+    public static boolean init() {
+        File file = OptCarpetSettings.configDirectory.toFile();
         if (!file.exists()) {
-            file.mkdirs();
+            if (!file.mkdirs()) {
+                return false;
+            }
         }
+        return true;
     }
 
     public static boolean exists(String fileName) {
-        return Files.exists(Path.of(OptCarpetSettings.configDir + fileName));
+        return Files.exists(OptCarpetSettings.configDirectory.resolve(fileName));
     }
 }

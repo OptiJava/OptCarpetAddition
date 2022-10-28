@@ -1,17 +1,13 @@
 package io.github.optijava.opt_carpet_addition;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Properties;
+import com.google.gson.Gson;
+import io.github.optijava.opt_carpet_addition.utils.config_bean.TpLimitConfigBean;
 
 public class Main {
-    public static void main(String[] args) throws IOException {
-        Properties prop = new Properties();
-        prop.load(new FileInputStream("D:\\Program\\Project\\resources\\app\\Git\\Projects\\OptCarpetAddition\\src\\test\\resources\\test.properties"));
-        // System.out.println(prop.getProperty("TpWhitelist"));
 
-        for (String s : prop.getProperty("TpWhitelist").split(";")) {
-            System.out.println(s);
-        }
+    public static void main(String[] args) {
+        TpLimitConfigBean bean = new TpLimitConfigBean();
+        bean.TpBlacklist.add("bot");
+        System.out.println(new Gson().toJson(bean));
     }
 }

@@ -9,7 +9,7 @@ import io.github.optijava.opt_carpet_addition.commands.ListAdvanceCommand;
 import io.github.optijava.opt_carpet_addition.commands.PlayerTpCommand;
 import io.github.optijava.opt_carpet_addition.events.FixExperienceBug;
 import io.github.optijava.opt_carpet_addition.utils.ConfigUtil;
-import io.github.optijava.opt_carpet_addition.utils.TpWhitelistBlacklist;
+import io.github.optijava.opt_carpet_addition.utils.TpLimit;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.entity.event.v1.ServerEntityWorldChangeEvents;
 import net.minecraft.server.command.ServerCommandSource;
@@ -34,21 +34,18 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
 
     @Override
     public void onGameStarted() {
+        // add setting class to carpet extension manager
         CarpetServer.settingsManager.parseSettingsClass(OptCarpetSettings.class);
+
+        // add rule observer
         CarpetServer.settingsManager.addRuleObserver(((serverCommandSource, rule, s) -> {
             if (Objects.equals(rule.name, "forceFakePlayerGameMode") && !Objects.equals(OptCarpetSettings.forceFakePlayerGameMode, "false")) {
                 GameMode gameMode = GameMode.SURVIVAL;
 
-                switch (OptCarpetSettings.forceFakePlayerGameMode) {
-                    case "survival" -> {
-                        gameMode = GameMode.SURVIVAL;
-                    }
-                    case "creative" -> {
-                        gameMode = GameMode.CREATIVE;
-                    }
-                    case "adventure" -> {
-                        gameMode = GameMode.ADVENTURE;
-                    }
+                if (OptCarpetSettings.forceFakePlayerGameMode.equals("creative")) {
+                    gameMode = GameMode.CREATIVE;
+                } else if (OptCarpetSettings.forceFakePlayerGameMode.equals("adventure")) {
+                    gameMode = GameMode.ADVENTURE;
                 }
 
                 for (ServerPlayerEntity player : serverCommandSource.getServer().getPlayerManager().getPlayerList()) {
@@ -57,16 +54,14 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
                     }
                 }
             }
-
-            if (Objects.equals(rule.name, "enableTpPrefixBlacklist") || Objects.equals(rule.name, "enableTpPrefixWhitelist") || Objects.equals(rule.name, "enableTpHerePrefixWhitelist") || Objects.equals(rule.name, "enableTpHerePrefixBlacklist")) {
-                TpWhitelistBlacklist.loadConfigFile();
-            }
         }));
 
-        // Config
+        // config
         if (!ConfigUtil.init()) {
             OptCarpetAddition.LOGGER.error("[OptCarpetAddition] Failed to create config folder:" + OptCarpetSettings.configDirectory.toString() + File.separator + "opt-carpet-addition");
+            return;
         }
+        TpLimit.loadConfigFile();
     }
 
     @Override
@@ -80,16 +75,10 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
         if (player instanceof EntityPlayerMPFake && !(Objects.equals(OptCarpetSettings.forceFakePlayerGameMode, "false"))) {
             GameMode gameMode = GameMode.SURVIVAL;
 
-            switch (OptCarpetSettings.forceFakePlayerGameMode) {
-                case "survival" -> {
-                    gameMode = GameMode.SURVIVAL;
-                }
-                case "creative" -> {
-                    gameMode = GameMode.CREATIVE;
-                }
-                case "adventure" -> {
-                    gameMode = GameMode.ADVENTURE;
-                }
+            if (OptCarpetSettings.forceFakePlayerGameMode.equals("creative")) {
+                gameMode = GameMode.CREATIVE;
+            } else if (OptCarpetSettings.forceFakePlayerGameMode.equals("adventure")) {
+                gameMode = GameMode.ADVENTURE;
             }
 
             player.changeGameMode(gameMode);

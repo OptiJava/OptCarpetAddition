@@ -30,14 +30,22 @@ public class ConfigUtil {
     public static boolean init() {
         File file = OptCarpetSettings.configDirectory.toFile();
         if (!file.exists()) {
-            if (!file.mkdirs()) {
-                return false;
-            }
+            return file.mkdirs();
         }
         return true;
     }
 
     public static boolean exists(String fileName) {
         return Files.exists(OptCarpetSettings.configDirectory.resolve(fileName));
+    }
+
+    public static boolean write(String fileName, String content) {
+        try {
+            Files.write(OptCarpetSettings.configDirectory.resolve(fileName), content.getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
     }
 }

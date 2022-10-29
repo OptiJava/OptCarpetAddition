@@ -4,9 +4,11 @@ import carpet.CarpetExtension;
 import carpet.CarpetServer;
 import carpet.CarpetSettings;
 import carpet.patches.EntityPlayerMPFake;
+import carpet.utils.Messenger;
 import com.mojang.brigadier.CommandDispatcher;
 import io.github.optijava.opt_carpet_addition.commands.ListAdvanceCommand;
 import io.github.optijava.opt_carpet_addition.commands.PlayerTpCommand;
+import io.github.optijava.opt_carpet_addition.commands.TpLimitCommand;
 import io.github.optijava.opt_carpet_addition.events.FixExperienceBug;
 import io.github.optijava.opt_carpet_addition.utils.ConfigUtil;
 import io.github.optijava.opt_carpet_addition.utils.TpLimit;
@@ -54,6 +56,26 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
                     }
                 }
             }
+
+            if (rule.name.equals("enableTpPrefixBlacklist") && OptCarpetSettings.enableTpPrefixBlacklist && OptCarpetSettings.enableTpPrefixWhitelist) {
+                OptCarpetSettings.enableTpPrefixBlacklist = false;
+                Messenger.m(serverCommandSource, "r You can't enable TpPrefixBlacklist because you have enabled TpPrefixWhitelist");
+            }
+
+            if (rule.name.equals("enableTpPrefixWhitelist") && OptCarpetSettings.enableTpPrefixWhitelist && OptCarpetSettings.enableTpPrefixBlacklist) {
+                OptCarpetSettings.enableTpPrefixWhitelist = false;
+                Messenger.m(serverCommandSource, "r You can't enable TpPrefixWhitelist because you have enabled TpPrefixBlacklist");
+            }
+
+            if (rule.name.equals("enableTpherePrefixWhitelist") && OptCarpetSettings.enableTpHerePrefixWhitelist && OptCarpetSettings.enableTpHerePrefixBlacklist) {
+                OptCarpetSettings.enableTpHerePrefixWhitelist = false;
+                Messenger.m(serverCommandSource, "r You can't enable TpherePrefixWhitelist because you have enabled TpherePrefixBlacklist");
+            }
+
+            if (rule.name.equals("enableTpherePrefixBlacklist") && OptCarpetSettings.enableTpHerePrefixBlacklist && OptCarpetSettings.enableTpHerePrefixWhitelist) {
+                OptCarpetSettings.enableTpHerePrefixBlacklist = false;
+                Messenger.m(serverCommandSource, "r You can't enable TpherePrefixBlacklist because you have enabled TpherePrefixWhitelist");
+            }
         }));
 
         // config
@@ -68,6 +90,7 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
     public void registerCommands(CommandDispatcher<ServerCommandSource> dispatcher) {
         PlayerTpCommand.registerCommands(dispatcher);
         ListAdvanceCommand.registerCommand(dispatcher);
+        TpLimitCommand.registerCommand(dispatcher);
     }
 
     @Override

@@ -37,6 +37,7 @@ public class PlayerTpCommand {
 
         if (context.getSource().equals(server.getCommandSource())) {
             Messenger.m(context.getSource(), "r Console can't tp to player.");
+            OptCarpetAddition.LOGGER.warn("[OptCarpetAddition] Console can't tp to player");
             return 0;
         }
         if (StringArgumentType.getString(context, COMMAND_PREFIX).equals("") || StringArgumentType.getString(context, COMMAND_PREFIX) == null) {
@@ -50,35 +51,40 @@ public class PlayerTpCommand {
             OptCarpetAddition.LOGGER.info("[OptCarpetAddition] " + commandSourcePlayerName + " submit command: /player " + StringArgumentType.getString(context, COMMAND_PREFIX) + " tp");
 
             if (server.getPlayerManager().getPlayer(StringArgumentType.getString(context, COMMAND_PREFIX)) instanceof EntityPlayerMPFake) {
+
                 if (OptCarpetSettings.commandTpToFakePlayer.equals("true")) {
-                    server.getCommandManager().execute(server.getCommandSource(), "tp " + commandSourcePlayerName + " " + StringArgumentType.getString(context, "player"));
+                    executeTp(commandSourcePlayerName, context, server);
                 } else if (OptCarpetSettings.commandTpToFakePlayer.equals("ops")) {
                     if ((server.getPlayerManager().isOperator(context.getSource().getPlayer().getGameProfile()))) {
-                        server.getCommandManager().execute(server.getCommandSource(), "tp " + commandSourcePlayerName + " " + StringArgumentType.getString(context, "player"));
+                        executeTp(commandSourcePlayerName, context, server);
                     } else {
                         Messenger.m(context.getSource(), "r You have no permission to teleport to fake player.You aren't op.");
                     }
                 } else if (OptCarpetSettings.commandTpToFakePlayer.equals("false")) {
                     Messenger.m(context.getSource(), "r Anybody can't teleport to fake player.");
                 }
+
             } else {
+
                 if (OptCarpetSettings.allowTpToRealPlayer.equals("true")) {
-                    server.getCommandManager().execute(server.getCommandSource(), "tp " + commandSourcePlayerName + " " + StringArgumentType.getString(context, "player"));
+                    executeTp(commandSourcePlayerName, context, server);
                 } else if (OptCarpetSettings.allowTpToRealPlayer.equals("ops")) {
                     if ((server.getPlayerManager().isOperator(context.getSource().getPlayer().getGameProfile()))) {
-                        server.getCommandManager().execute(server.getCommandSource(), "tp " + commandSourcePlayerName + " " + StringArgumentType.getString(context, "player"));
+                        executeTp(commandSourcePlayerName, context, server);
                     } else {
                         Messenger.m(context.getSource(), "r You have no permission to teleport to real player.You aren't op.");
                     }
-                } else if (OptCarpetSettings.commandTpToFakePlayer.equals("false")) {
+                } else if (OptCarpetSettings.allowTpToRealPlayer.equals("false")) {
                     Messenger.m(context.getSource(), "r Anybody can't teleport to real player.");
                 }
+
             }
 
 
         } catch (CommandSyntaxException e) {
             Messenger.m(context.getSource(), "r Maybe player name is not correct.");
             OptCarpetAddition.LOGGER.error("[OptCarpetAddition] Unknown error occurred when execute command.", e);
+            return 0;
         }
         return 1;
     }
@@ -88,6 +94,7 @@ public class PlayerTpCommand {
 
         if (context.getSource().equals(server.getCommandSource())) {
             Messenger.m(context.getSource(), "r Console can't tp here player.");
+            OptCarpetAddition.LOGGER.warn("[OptCarpetAddition] Console can't tp here player");
             return 0;
         }
         if (StringArgumentType.getString(context, COMMAND_PREFIX).equals("") || StringArgumentType.getString(context, "player") == null) {
@@ -101,18 +108,21 @@ public class PlayerTpCommand {
             OptCarpetAddition.LOGGER.info("[OptCarpetAddition] " + commandSourcePlayerName + " submit command: /player " + StringArgumentType.getString(context, COMMAND_PREFIX) + " tphere");
 
             if (server.getPlayerManager().getPlayer(StringArgumentType.getString(context, COMMAND_PREFIX)) instanceof EntityPlayerMPFake) {
+
                 if (OptCarpetSettings.commandTpHereFakePlayer.equals("true")) {
-                    server.getCommandManager().execute(server.getCommandSource(), "tp " + StringArgumentType.getString(context, COMMAND_PREFIX) + " " + commandSourcePlayerName);
+                    executeTpHere(commandSourcePlayerName, context, server);
                 } else if (OptCarpetSettings.commandTpHereFakePlayer.equals("ops")) {
                     if ((server.getPlayerManager().isOperator(context.getSource().getPlayer().getGameProfile()))) {
-                        server.getCommandManager().execute(server.getCommandSource(), "tp " + StringArgumentType.getString(context, COMMAND_PREFIX) + " " + commandSourcePlayerName);
+                        executeTpHere(commandSourcePlayerName, context, server);
                     } else {
                         Messenger.m(context.getSource(), "r You have no permission to teleport here fake player.You aren't op.");
                     }
                 } else if (OptCarpetSettings.commandTpHereFakePlayer.equals("false")) {
                     Messenger.m(context.getSource(), "r Anybody can't teleport here fake player.");
                 }
+
             } else {
+
                 if (OptCarpetSettings.allowTpHereRealPlayer.equals("true")) {
                     server.getCommandManager().execute(server.getCommandSource(), "tp " + StringArgumentType.getString(context, COMMAND_PREFIX) + " " + commandSourcePlayerName);
                 } else if (OptCarpetSettings.allowTpHereRealPlayer.equals("ops")) {
@@ -121,16 +131,41 @@ public class PlayerTpCommand {
                     } else {
                         Messenger.m(context.getSource(), "r You have no permission to teleport here real player.You aren't op.");
                     }
-                } else if (OptCarpetSettings.commandTpHereFakePlayer.equals("false")) {
+                } else if (OptCarpetSettings.allowTpHereRealPlayer.equals("false")) {
                     Messenger.m(context.getSource(), "r Anybody can't teleport here real player.");
                 }
-            }
 
+            }
 
         } catch (CommandSyntaxException e) {
             Messenger.m(context.getSource(), "r Unknown error occurred when execute command : com.mojang.brigadier.exceptions.CommandSyntaxException");
             OptCarpetAddition.LOGGER.error("[OptCarpetAddition] Unknown error occurred when execute command.", e);
+            return 0;
         }
         return 1;
+    }
+
+    public static void executeTp(String commandSourcePlayerName, CommandContext<ServerCommandSource> context, MinecraftServer server) {
+        if (OptCarpetSettings.enableTpPrefixWhitelist && OptCarpetSettings.bean.TpWhitelist.contains(StringArgumentType.getString(context, "player"))) {
+            server.getCommandManager().execute(server.getCommandSource(), "tp " + commandSourcePlayerName + " " + StringArgumentType.getString(context, "player"));
+        } else if (OptCarpetSettings.enableTpPrefixBlacklist && !OptCarpetSettings.bean.TpBlacklist.contains(StringArgumentType.getString(context, "player"))) {
+            server.getCommandManager().execute(server.getCommandSource(), "tp " + commandSourcePlayerName + " " + StringArgumentType.getString(context, "player"));
+        } else if (!OptCarpetSettings.enableTpPrefixBlacklist && !OptCarpetSettings.enableTpPrefixWhitelist) {
+            server.getCommandManager().execute(server.getCommandSource(), "tp " + commandSourcePlayerName + " " + StringArgumentType.getString(context, "player"));
+        } else {
+            Messenger.m(context.getSource(), "r You can't tp to this player because of tp limit.");
+        }
+    }
+
+    public static void executeTpHere(String commandSourcePlayerName, CommandContext<ServerCommandSource> context, MinecraftServer server) {
+        if (OptCarpetSettings.enableTpHerePrefixWhitelist && OptCarpetSettings.bean.TphereWhitelist.contains(StringArgumentType.getString(context, "player"))) {
+            server.getCommandManager().execute(server.getCommandSource(), "tp " + StringArgumentType.getString(context, "player") + " " + commandSourcePlayerName);
+        } else if (OptCarpetSettings.enableTpHerePrefixBlacklist && !OptCarpetSettings.bean.TphereBlacklist.contains(StringArgumentType.getString(context, "player"))) {
+            server.getCommandManager().execute(server.getCommandSource(), "tp " + StringArgumentType.getString(context, "player") + " " + commandSourcePlayerName);
+        } else if (!OptCarpetSettings.enableTpHerePrefixBlacklist && !OptCarpetSettings.enableTpHerePrefixWhitelist) {
+            server.getCommandManager().execute(server.getCommandSource(), "tp " + StringArgumentType.getString(context, "player") + " " + commandSourcePlayerName);
+        } else {
+            Messenger.m(context.getSource(), "r You can't tp here this player because of tp limit.");
+        }
     }
 }

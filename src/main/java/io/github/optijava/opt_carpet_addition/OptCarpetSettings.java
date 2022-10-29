@@ -59,6 +59,7 @@ public class OptCarpetSettings {
     public static boolean fixXpLevelBug = false;
 
     // Tp whitelist/blacklist  ====================================================================
+
     public static TpLimitConfigBean bean;
 
     @Rule(

@@ -1,6 +1,7 @@
 package io.github.optijava.opt_carpet_addition.utils;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import io.github.optijava.opt_carpet_addition.OptCarpetAddition;
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import io.github.optijava.opt_carpet_addition.utils.config_bean.TpLimitConfigBean;
@@ -26,8 +27,15 @@ public class TpLimit {
                 return;
             }
         }
-
-        OptCarpetSettings.bean = gson.fromJson(ConfigUtil.load("TpLimit.json"), TpLimitConfigBean.class);
+        try {
+            OptCarpetSettings.bean = gson.fromJson(ConfigUtil.load("TpLimit.json"), TpLimitConfigBean.class);
+        } catch (JsonSyntaxException e) {
+            new RuntimeException("Exception when parsed json config file.", e).printStackTrace();
+        } finally {
+            if (OptCarpetSettings.bean == null) {
+                OptCarpetSettings.bean = new TpLimitConfigBean();
+            }
+        }
     }
 
     public static void add(String prefix, String whichList) {

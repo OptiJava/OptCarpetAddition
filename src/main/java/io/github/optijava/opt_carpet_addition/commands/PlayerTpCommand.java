@@ -1,8 +1,6 @@
 package io.github.optijava.opt_carpet_addition.commands;
 
-import carpet.CarpetSettings;
 import carpet.patches.EntityPlayerMPFake;
-import carpet.settings.SettingsManager;
 import carpet.utils.Messenger;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
@@ -27,10 +25,10 @@ public class PlayerTpCommand {
 
     public static void registerCommands(CommandDispatcher<ServerCommandSource> dispatcher) {
         LiteralArgumentBuilder<ServerCommandSource> argumentBuilder = literal(COMMAND_PREFIX)
-                .requires((player) -> SettingsManager.canUseCommand(player, CarpetSettings.commandPlayer))
                 .then(argument(COMMAND_PREFIX, StringArgumentType.word())
                         .then(literal("tp").executes(PlayerTpCommand::teleport))
-                        .then(literal("tphere").executes(PlayerTpCommand::teleportHere)));
+                        .then(literal("tphere").executes(PlayerTpCommand::teleportHere))
+                );
         dispatcher.register(argumentBuilder);
     }
 

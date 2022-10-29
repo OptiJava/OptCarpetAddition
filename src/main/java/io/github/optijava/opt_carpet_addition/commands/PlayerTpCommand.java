@@ -67,10 +67,10 @@ public class PlayerTpCommand {
             } else {
 
                 if (OptCarpetSettings.allowTpToRealPlayer.equals("true")) {
-                    executeTp(commandSourcePlayerName, context, server);
+                    server.getCommandManager().execute(server.getCommandSource(), "tp " + commandSourcePlayerName + " " + StringArgumentType.getString(context, "player"));
                 } else if (OptCarpetSettings.allowTpToRealPlayer.equals("ops")) {
                     if ((server.getPlayerManager().isOperator(context.getSource().getPlayer().getGameProfile()))) {
-                        executeTp(commandSourcePlayerName, context, server);
+                        server.getCommandManager().execute(server.getCommandSource(), "tp " + commandSourcePlayerName + " " + StringArgumentType.getString(context, "player"));
                     } else {
                         Messenger.m(context.getSource(), "r You have no permission to teleport to real player.You aren't op.");
                     }
@@ -145,7 +145,7 @@ public class PlayerTpCommand {
         return 1;
     }
 
-    public static void executeTp(String commandSourcePlayerName, CommandContext<ServerCommandSource> context, MinecraftServer server) {
+    private static void executeTp(String commandSourcePlayerName, CommandContext<ServerCommandSource> context, MinecraftServer server) {
         if (OptCarpetSettings.enableTpPrefixWhitelist && checkTpWhitelist(StringArgumentType.getString(context, "player"))) {
             server.getCommandManager().execute(server.getCommandSource(), "tp " + commandSourcePlayerName + " " + StringArgumentType.getString(context, "player"));
         } else if (OptCarpetSettings.enableTpPrefixBlacklist && checkTpBlacklist(StringArgumentType.getString(context, "player"))) {
@@ -157,7 +157,7 @@ public class PlayerTpCommand {
         }
     }
 
-    public static void executeTpHere(String commandSourcePlayerName, CommandContext<ServerCommandSource> context, MinecraftServer server) {
+    private static void executeTpHere(String commandSourcePlayerName, CommandContext<ServerCommandSource> context, MinecraftServer server) {
         if (OptCarpetSettings.enableTpHerePrefixWhitelist && checkTpHereWhitelist(StringArgumentType.getString(context, "player"))) {
             server.getCommandManager().execute(server.getCommandSource(), "tp " + StringArgumentType.getString(context, "player") + " " + commandSourcePlayerName);
         } else if (OptCarpetSettings.enableTpHerePrefixBlacklist && checkTpHereBlacklist(StringArgumentType.getString(context, "player"))) {
@@ -169,7 +169,7 @@ public class PlayerTpCommand {
         }
     }
 
-    public static boolean checkTpBlacklist(String name) {
+    private static boolean checkTpBlacklist(String name) {
         for (String s : OptCarpetSettings.bean.TpBlacklist) {
             if (name.startsWith(s)) {
                 return false;
@@ -178,7 +178,7 @@ public class PlayerTpCommand {
         return true;
     }
 
-    public static boolean checkTpWhitelist(String name) {
+    private static boolean checkTpWhitelist(String name) {
         for (String s : OptCarpetSettings.bean.TpWhitelist) {
             if (name.startsWith(s)) {
                 return true;
@@ -187,7 +187,7 @@ public class PlayerTpCommand {
         return false;
     }
 
-    public static boolean checkTpHereBlacklist(String name) {
+    private static boolean checkTpHereBlacklist(String name) {
         for (String s : OptCarpetSettings.bean.TphereBlacklist) {
             if (name.startsWith(s)) {
                 return false;
@@ -196,7 +196,7 @@ public class PlayerTpCommand {
         return true;
     }
 
-    public static boolean checkTpHereWhitelist(String name) {
+    private static boolean checkTpHereWhitelist(String name) {
         for (String s : OptCarpetSettings.bean.TphereWhitelist) {
             if (name.startsWith(s)) {
                 return true;

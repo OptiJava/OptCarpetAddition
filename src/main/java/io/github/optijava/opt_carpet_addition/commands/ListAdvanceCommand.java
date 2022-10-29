@@ -19,7 +19,7 @@ public class ListAdvanceCommand {
         dispatcher.register(argumentBuilder);
     }
 
-    public static int listAdvance(CommandContext<ServerCommandSource> context) {
+    private static int listAdvance(CommandContext<ServerCommandSource> context) {
         try {
             MinecraftServer minecraftServer = context.getSource().getServer();
             StringBuilder sb = new StringBuilder();

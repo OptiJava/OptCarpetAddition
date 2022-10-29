@@ -146,9 +146,9 @@ public class PlayerTpCommand {
     }
 
     public static void executeTp(String commandSourcePlayerName, CommandContext<ServerCommandSource> context, MinecraftServer server) {
-        if (OptCarpetSettings.enableTpPrefixWhitelist && OptCarpetSettings.bean.TpWhitelist.contains(StringArgumentType.getString(context, "player"))) {
+        if (OptCarpetSettings.enableTpPrefixWhitelist && checkTpWhitelist(StringArgumentType.getString(context, "player"))) {
             server.getCommandManager().execute(server.getCommandSource(), "tp " + commandSourcePlayerName + " " + StringArgumentType.getString(context, "player"));
-        } else if (OptCarpetSettings.enableTpPrefixBlacklist && !OptCarpetSettings.bean.TpBlacklist.contains(StringArgumentType.getString(context, "player"))) {
+        } else if (OptCarpetSettings.enableTpPrefixBlacklist && checkTpBlacklist(StringArgumentType.getString(context, "player"))) {
             server.getCommandManager().execute(server.getCommandSource(), "tp " + commandSourcePlayerName + " " + StringArgumentType.getString(context, "player"));
         } else if (!OptCarpetSettings.enableTpPrefixBlacklist && !OptCarpetSettings.enableTpPrefixWhitelist) {
             server.getCommandManager().execute(server.getCommandSource(), "tp " + commandSourcePlayerName + " " + StringArgumentType.getString(context, "player"));
@@ -158,14 +158,50 @@ public class PlayerTpCommand {
     }
 
     public static void executeTpHere(String commandSourcePlayerName, CommandContext<ServerCommandSource> context, MinecraftServer server) {
-        if (OptCarpetSettings.enableTpHerePrefixWhitelist && OptCarpetSettings.bean.TphereWhitelist.contains(StringArgumentType.getString(context, "player"))) {
+        if (OptCarpetSettings.enableTpHerePrefixWhitelist && checkTpHereWhitelist(StringArgumentType.getString(context, "player"))) {
             server.getCommandManager().execute(server.getCommandSource(), "tp " + StringArgumentType.getString(context, "player") + " " + commandSourcePlayerName);
-        } else if (OptCarpetSettings.enableTpHerePrefixBlacklist && !OptCarpetSettings.bean.TphereBlacklist.contains(StringArgumentType.getString(context, "player"))) {
+        } else if (OptCarpetSettings.enableTpHerePrefixBlacklist && checkTpHereBlacklist(StringArgumentType.getString(context, "player"))) {
             server.getCommandManager().execute(server.getCommandSource(), "tp " + StringArgumentType.getString(context, "player") + " " + commandSourcePlayerName);
         } else if (!OptCarpetSettings.enableTpHerePrefixBlacklist && !OptCarpetSettings.enableTpHerePrefixWhitelist) {
             server.getCommandManager().execute(server.getCommandSource(), "tp " + StringArgumentType.getString(context, "player") + " " + commandSourcePlayerName);
         } else {
             Messenger.m(context.getSource(), "r You can't tp here this player because of tp limit.");
         }
+    }
+
+    public static boolean checkTpBlacklist(String name) {
+        for (String s : OptCarpetSettings.bean.TpBlacklist) {
+            if (name.startsWith(s)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean checkTpWhitelist(String name) {
+        for (String s : OptCarpetSettings.bean.TpWhitelist) {
+            if (name.startsWith(s)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean checkTpHereBlacklist(String name) {
+        for (String s : OptCarpetSettings.bean.TphereBlacklist) {
+            if (name.startsWith(s)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean checkTpHereWhitelist(String name) {
+        for (String s : OptCarpetSettings.bean.TphereWhitelist) {
+            if (name.startsWith(s)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

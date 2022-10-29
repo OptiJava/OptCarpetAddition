@@ -7,7 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
         TpLimitConfigBean bean = new TpLimitConfigBean();
-        bean.TpBlacklist.add("bot");
+        bean.TpBlacklist.add("");
         System.out.println(new Gson().toJson(bean));
     }
 }

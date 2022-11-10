@@ -85,6 +85,11 @@ public class OptCarpetSettings {
             category = RuleCategory.FEATURE
     )
     public static boolean enableTpHerePrefixWhitelist = false;
-    
+
+    @Rule(
+            desc = "Disable Chicken Lays Eggs",
+            category = RuleCategory.FEATURE
+    )
+    public static boolean disabledLayEggs = false;
 
 }

@@ -4,6 +4,7 @@
   "package": "io.github.optijava.opt_carpet_addition.mixins",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
+    "io.github.optijava.opt_carpet_addition.mixins.disabledLayEggs.ChickenEntity_Mixin"
   ],
   "client": [
   ],

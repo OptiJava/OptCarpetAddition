@@ -21,7 +21,7 @@ public class ListAdvanceCommand {
 
     private static int listAdvance(CommandContext<ServerCommandSource> context) {
         try {
-            MinecraftServer minecraftServer = context.getSource().getServer();
+            MinecraftServer minecraftServer = context.getSource().getMinecraftServer();
             StringBuilder sb = new StringBuilder();
             for (ServerPlayerEntity s : minecraftServer.getPlayerManager().getPlayerList()) {
                 sb.append(s.getGameProfile().getName()).append("    ").append(s.interactionManager.getGameMode().getName()).append("    ").append(s.pingMilliseconds).append("ms    ").append(s.getGameProfile().getId().toString()).append("\n");

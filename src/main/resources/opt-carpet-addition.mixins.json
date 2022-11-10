@@ -2,7 +2,7 @@
   "required": true,
   "minVersion": "0.8",
   "package": "io.github.optijava.opt_carpet_addition.mixins",
-  "compatibilityLevel": "JAVA_16",
+  "compatibilityLevel": "JAVA_8",
   "mixins": [
     "io.github.optijava.opt_carpet_addition.mixins.disabledLayEggs.ChickenEntity_Mixin"
   ],

@@ -33,7 +33,7 @@ public class PlayerTpCommand {
     }
 
     private static int teleport(CommandContext<ServerCommandSource> context) {
-        final MinecraftServer server = context.getSource().getServer();
+        final MinecraftServer server = context.getSource().getMinecraftServer();
 
         if (context.getSource().equals(server.getCommandSource())) {
             Messenger.m(context.getSource(), "r Console can't tp to player.");
@@ -90,7 +90,7 @@ public class PlayerTpCommand {
     }
 
     private static int teleportHere(CommandContext<ServerCommandSource> context) {
-        final MinecraftServer server = context.getSource().getServer();
+        final MinecraftServer server = context.getSource().getMinecraftServer();
 
         if (context.getSource().equals(server.getCommandSource())) {
             Messenger.m(context.getSource(), "r Console can't tp here player.");

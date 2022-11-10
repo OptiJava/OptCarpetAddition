@@ -12,9 +12,6 @@ import net.minecraft.text.LiteralText;
 import static net.minecraft.server.command.CommandManager.literal;
 
 public class ListAdvanceCommand {
-    private ListAdvanceCommand() {
-
-    }
 
     public static void registerCommand(CommandDispatcher<ServerCommandSource> dispatcher) {
         LiteralArgumentBuilder<ServerCommandSource> argumentBuilder = literal("list")
@@ -22,9 +19,9 @@ public class ListAdvanceCommand {
         dispatcher.register(argumentBuilder);
     }
 
-    public static int listAdvance(CommandContext<ServerCommandSource> context) {
+    private static int listAdvance(CommandContext<ServerCommandSource> context) {
         try {
-            MinecraftServer minecraftServer = context.getSource().getMinecraftServer();
+            MinecraftServer minecraftServer = context.getSource().getServer();
             StringBuilder sb = new StringBuilder();
             for (ServerPlayerEntity s : minecraftServer.getPlayerManager().getPlayerList()) {
                 sb.append(s.getGameProfile().getName()).append("    ").append(s.interactionManager.getGameMode().getName()).append("    ").append(s.pingMilliseconds).append("ms    ").append(s.getGameProfile().getId().toString()).append("\n");

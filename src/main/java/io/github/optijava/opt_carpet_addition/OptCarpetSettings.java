@@ -87,9 +87,15 @@ public class OptCarpetSettings {
     public static boolean enableTpHerePrefixWhitelist = false;
 
     @Rule(
-            desc = "Disable Chicken Lays Eggs",
+            desc = "Disable chicken lays eggs",
             category = RuleCategory.FEATURE
     )
     public static boolean disabledLayEggs = false;
+
+    @Rule(
+            desc = "Show details like:'who summon this fake player?' when fake player join",
+            category = RuleCategory.FEATURE
+    )
+    public static boolean showDetailWhenFakePlayerJoin = false;
 
 }

@@ -85,7 +85,6 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
                     break;
                 }
             }
-
             player.setGameMode(gameMode);
         }
     }

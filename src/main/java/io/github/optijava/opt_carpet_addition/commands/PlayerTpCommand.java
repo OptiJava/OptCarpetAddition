@@ -147,10 +147,13 @@ public class PlayerTpCommand {
 
     private static void executeTp(String commandSourcePlayerName, CommandContext<ServerCommandSource> context, MinecraftServer server) {
         if (OptCarpetSettings.enableTpPrefixWhitelist && checkTpWhitelist(StringArgumentType.getString(context, "player"))) {
+            server.getCommandManager().execute(context.getSource().getServer().getCommandSource(), "Teleport " + commandSourcePlayerName + " to " + StringArgumentType.getString(context, "player"));
             server.getCommandManager().execute(server.getCommandSource(), "tp " + commandSourcePlayerName + " " + StringArgumentType.getString(context, "player"));
         } else if (OptCarpetSettings.enableTpPrefixBlacklist && checkTpBlacklist(StringArgumentType.getString(context, "player"))) {
+            server.getCommandManager().execute(context.getSource().getServer().getCommandSource(), "Teleport " + commandSourcePlayerName + " to " + StringArgumentType.getString(context, "player"));
             server.getCommandManager().execute(server.getCommandSource(), "tp " + commandSourcePlayerName + " " + StringArgumentType.getString(context, "player"));
         } else if (!OptCarpetSettings.enableTpPrefixBlacklist && !OptCarpetSettings.enableTpPrefixWhitelist) {
+            server.getCommandManager().execute(context.getSource().getServer().getCommandSource(), "Teleport " + commandSourcePlayerName + " to " + StringArgumentType.getString(context, "player"));
             server.getCommandManager().execute(server.getCommandSource(), "tp " + commandSourcePlayerName + " " + StringArgumentType.getString(context, "player"));
         } else {
             Messenger.m(context.getSource(), "r You can't tp to this player because of tp limit.");
@@ -159,10 +162,13 @@ public class PlayerTpCommand {
 
     private static void executeTpHere(String commandSourcePlayerName, CommandContext<ServerCommandSource> context, MinecraftServer server) {
         if (OptCarpetSettings.enableTpHerePrefixWhitelist && checkTpHereWhitelist(StringArgumentType.getString(context, "player"))) {
+            server.getCommandManager().execute(context.getSource().getServer().getCommandSource(), "Teleport " + StringArgumentType.getString(context, "player") + " to " + commandSourcePlayerName);
             server.getCommandManager().execute(server.getCommandSource(), "tp " + StringArgumentType.getString(context, "player") + " " + commandSourcePlayerName);
         } else if (OptCarpetSettings.enableTpHerePrefixBlacklist && checkTpHereBlacklist(StringArgumentType.getString(context, "player"))) {
+            server.getCommandManager().execute(context.getSource().getServer().getCommandSource(), "Teleport " + StringArgumentType.getString(context, "player") + " to " + commandSourcePlayerName);
             server.getCommandManager().execute(server.getCommandSource(), "tp " + StringArgumentType.getString(context, "player") + " " + commandSourcePlayerName);
         } else if (!OptCarpetSettings.enableTpHerePrefixBlacklist && !OptCarpetSettings.enableTpHerePrefixWhitelist) {
+            server.getCommandManager().execute(context.getSource().getServer().getCommandSource(), "Teleport " + StringArgumentType.getString(context, "player") + " to " + commandSourcePlayerName);
             server.getCommandManager().execute(server.getCommandSource(), "tp " + StringArgumentType.getString(context, "player") + " " + commandSourcePlayerName);
         } else {
             Messenger.m(context.getSource(), "r You can't tp here this player because of tp limit.");

@@ -5,11 +5,12 @@ import net.minecraft.entity.passive.ChickenEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ChickenEntity.class)
 public class ChickenEntity_Mixin {
-    @Inject(at = @At("HEAD"), method = "tickMovement")
-    public void injectTickMovement() {
+    @Inject(at = @At("HEAD"), method = "tickMovement()V")
+    public void injectTickMovement(CallbackInfo callbackInfo) {
         if (OptCarpetSettings.disabledLayEggs) {
             ((ChickenEntity) (Object) this).eggLayTime = 50;
         }

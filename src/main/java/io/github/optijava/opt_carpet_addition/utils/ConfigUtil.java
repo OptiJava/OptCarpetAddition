@@ -10,7 +10,6 @@ import java.util.Arrays;
 public class ConfigUtil {
     public static String load(String fileName) {
         try {
-
             return Arrays.toString(Files.readAllBytes(OptCarpetSettings.configDirectory.resolve(fileName)));
         } catch (IOException e) {
             e.printStackTrace();

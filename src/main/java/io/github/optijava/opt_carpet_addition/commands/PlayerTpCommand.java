@@ -1,5 +1,6 @@
 package io.github.optijava.opt_carpet_addition.commands;
 
+import carpet.CarpetSettings;
 import carpet.patches.EntityPlayerMPFake;
 import carpet.utils.Messenger;
 import com.mojang.brigadier.CommandDispatcher;
@@ -7,7 +8,6 @@ import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
-import io.github.optijava.opt_carpet_addition.OptCarpetAddition;
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.command.ServerCommandSource;
@@ -37,7 +37,7 @@ public class PlayerTpCommand {
 
         if (context.getSource().equals(server.getCommandSource())) {
             Messenger.m(context.getSource(), "r Console can't tp to player.");
-            OptCarpetAddition.LOGGER.warn("[OptCarpetAddition] Console can't tp to player");
+            CarpetSettings.LOG.warn("[OptCarpetAddition] Console can't tp to player");
             return 0;
         }
         if (StringArgumentType.getString(context, COMMAND_PREFIX).equals("") || StringArgumentType.getString(context, COMMAND_PREFIX) == null) {
@@ -48,7 +48,7 @@ public class PlayerTpCommand {
         try {
             final String commandSourcePlayerName = context.getSource().getPlayer().getGameProfile().getName();
 
-            OptCarpetAddition.LOGGER.info("[OptCarpetAddition] " + commandSourcePlayerName + " submit command: /player " + StringArgumentType.getString(context, COMMAND_PREFIX) + " tp");
+            CarpetSettings.LOG.info("[OptCarpetAddition] " + commandSourcePlayerName + " submit command: /player " + StringArgumentType.getString(context, COMMAND_PREFIX) + " tp");
 
             if (server.getPlayerManager().getPlayer(StringArgumentType.getString(context, COMMAND_PREFIX)) instanceof EntityPlayerMPFake) {
 
@@ -83,7 +83,7 @@ public class PlayerTpCommand {
 
         } catch (CommandSyntaxException e) {
             Messenger.m(context.getSource(), "r Maybe player name is not correct.");
-            OptCarpetAddition.LOGGER.error("[OptCarpetAddition] Unknown error occurred when execute command.", e);
+            CarpetSettings.LOG.error("[OptCarpetAddition] Unknown error occurred when execute command.", e);
             return 0;
         }
         return 1;
@@ -94,7 +94,7 @@ public class PlayerTpCommand {
 
         if (context.getSource().equals(server.getCommandSource())) {
             Messenger.m(context.getSource(), "r Console can't tp here player.");
-            OptCarpetAddition.LOGGER.warn("[OptCarpetAddition] Console can't tp here player");
+            CarpetSettings.LOG.warn("[OptCarpetAddition] Console can't tp here player");
             return 0;
         }
         if (StringArgumentType.getString(context, COMMAND_PREFIX).equals("") || StringArgumentType.getString(context, "player") == null) {
@@ -105,7 +105,7 @@ public class PlayerTpCommand {
         try {
             final String commandSourcePlayerName = context.getSource().getPlayer().getGameProfile().getName();
 
-            OptCarpetAddition.LOGGER.info("[OptCarpetAddition] " + commandSourcePlayerName + " submit command: /player " + StringArgumentType.getString(context, COMMAND_PREFIX) + " tphere");
+            CarpetSettings.LOG.info("[OptCarpetAddition] " + commandSourcePlayerName + " submit command: /player " + StringArgumentType.getString(context, COMMAND_PREFIX) + " tphere");
 
             if (server.getPlayerManager().getPlayer(StringArgumentType.getString(context, COMMAND_PREFIX)) instanceof EntityPlayerMPFake) {
 
@@ -139,7 +139,7 @@ public class PlayerTpCommand {
 
         } catch (CommandSyntaxException e) {
             Messenger.m(context.getSource(), "r Unknown error occurred when execute command : com.mojang.brigadier.exceptions.CommandSyntaxException");
-            OptCarpetAddition.LOGGER.error("[OptCarpetAddition] Unknown error occurred when execute command.", e);
+            CarpetSettings.LOG.error("[OptCarpetAddition] Unknown error occurred when execute command.", e);
             return 0;
         }
         return 1;
@@ -170,7 +170,7 @@ public class PlayerTpCommand {
     }
 
     private static boolean checkTpBlacklist(String name) {
-        for (String s : OptCarpetSettings.bean.TpBlacklist) {
+        for (String s : OptCarpetSettings.bean.tpBlacklist) {
             if (name.startsWith(s)) {
                 return false;
             }
@@ -179,7 +179,7 @@ public class PlayerTpCommand {
     }
 
     private static boolean checkTpWhitelist(String name) {
-        for (String s : OptCarpetSettings.bean.TpWhitelist) {
+        for (String s : OptCarpetSettings.bean.tpWhitelist) {
             if (name.startsWith(s)) {
                 return true;
             }
@@ -188,7 +188,7 @@ public class PlayerTpCommand {
     }
 
     private static boolean checkTpHereBlacklist(String name) {
-        for (String s : OptCarpetSettings.bean.TphereBlacklist) {
+        for (String s : OptCarpetSettings.bean.tphereBlacklist) {
             if (name.startsWith(s)) {
                 return false;
             }
@@ -197,7 +197,7 @@ public class PlayerTpCommand {
     }
 
     private static boolean checkTpHereWhitelist(String name) {
-        for (String s : OptCarpetSettings.bean.TphereWhitelist) {
+        for (String s : OptCarpetSettings.bean.tphereWhitelist) {
             if (name.startsWith(s)) {
                 return true;
             }

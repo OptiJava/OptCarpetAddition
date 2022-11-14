@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TpLimitConfigBean {
-    public List<String> TpWhitelist = new ArrayList<>();
-    public List<String> TpBlacklist = new ArrayList<>();
-    public List<String> TphereWhitelist = new ArrayList<>();
-    public List<String> TphereBlacklist = new ArrayList<>();
+    public List<String> tpWhitelist = new ArrayList<>();
+    public List<String> tpBlacklist = new ArrayList<>();
+    public List<String> tphereWhitelist = new ArrayList<>();
+    public List<String> tphereBlacklist = new ArrayList<>();
 }

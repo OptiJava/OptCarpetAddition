@@ -1,8 +1,8 @@
 package io.github.optijava.opt_carpet_addition.utils;
 
+import carpet.CarpetSettings;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
-import io.github.optijava.opt_carpet_addition.OptCarpetAddition;
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import io.github.optijava.opt_carpet_addition.utils.config_bean.TpLimitConfigBean;
 
@@ -13,16 +13,16 @@ public class TpLimit {
     public static void loadConfigFile() {
         if (!ConfigUtil.exists("TpLimit.json")) {
             if (!ConfigUtil.create("TpLimit.json")) {
-                OptCarpetAddition.LOGGER.error("[OptCarpetAddition] Failed to create config file: TpLimit.json");
+                CarpetSettings.LOG.error("[OptCarpetAddition] Failed to create config file: TpLimit.json");
                 return;
             }
             if (!ConfigUtil.write("TpLimit.json", "{\n" +
-                                                  "                      \"TpWhitelist\": [],\n" +
-                                                  "                      \"TpBlacklist\": [],\n" +
-                                                  "                      \"TphereWhitelist\": [],\n" +
-                                                  "                      \"TphereBlacklist\": []\n" +
-                                                  "                    }")) {
-                OptCarpetAddition.LOGGER.error("[OptCarpetAddition] Failed to init config file: TpLimit.json");
+                    "                      \"TpWhitelist\": [],\n" +
+                    "                      \"TpBlacklist\": [],\n" +
+                    "                      \"TphereWhitelist\": [],\n" +
+                    "                      \"TphereBlacklist\": []\n" +
+                    "                    }")) {
+                CarpetSettings.LOG.error("[OptCarpetAddition] Failed to init config file: TpLimit.json");
                 return;
             }
         }
@@ -40,16 +40,16 @@ public class TpLimit {
     public static void add(String prefix, String whichList) {
         switch (whichList) {
             case "TpBlacklist":
-                OptCarpetSettings.bean.TpBlacklist.add(prefix);
+                OptCarpetSettings.bean.tpBlacklist.add(prefix);
                 break;
             case "TpWhitelist":
-                OptCarpetSettings.bean.TpWhitelist.add(prefix);
+                OptCarpetSettings.bean.tpWhitelist.add(prefix);
                 break;
             case "TphereWhitelist":
-                OptCarpetSettings.bean.TphereWhitelist.add(prefix);
+                OptCarpetSettings.bean.tphereWhitelist.add(prefix);
                 break;
             case "TphereBlacklist":
-                OptCarpetSettings.bean.TphereBlacklist.add(prefix);
+                OptCarpetSettings.bean.tphereBlacklist.add(prefix);
                 break;
             default:
                 throw new IllegalArgumentException("Invalid list name.");
@@ -59,16 +59,16 @@ public class TpLimit {
     public static void remove(String prefix, String whichList) {
         switch (whichList) {
             case "TpBlacklist":
-                OptCarpetSettings.bean.TpBlacklist.remove(prefix);
+                OptCarpetSettings.bean.tpBlacklist.remove(prefix);
                 break;
             case "TpWhitelist":
-                OptCarpetSettings.bean.TpWhitelist.remove(prefix);
+                OptCarpetSettings.bean.tpWhitelist.remove(prefix);
                 break;
             case "TphereWhitelist":
-                OptCarpetSettings.bean.TphereWhitelist.remove(prefix);
+                OptCarpetSettings.bean.tphereWhitelist.remove(prefix);
                 break;
             case "TphereBlacklist":
-                OptCarpetSettings.bean.TphereBlacklist.remove(prefix);
+                OptCarpetSettings.bean.tphereBlacklist.remove(prefix);
                 break;
             default:
                 throw new IllegalArgumentException("Invalid list name.");

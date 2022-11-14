@@ -26,11 +26,11 @@ public class ListAdvanceCommand {
             for (ServerPlayerEntity s : minecraftServer.getPlayerManager().getPlayerList()) {
                 sb.append(s.getGameProfile().getName()).append("    ").append(s.interactionManager.getGameMode().getName()).append("    ").append(s.pingMilliseconds).append("ms    ").append(s.getGameProfile().getId().toString()).append("\n");
             }
-            OptCarpetAddition.LOGGER.info(sb.toString());
+            CarpetSettings.LOG.info(sb.toString());
             context.getSource().sendFeedback(new LiteralText(sb.toString()), false);
         } catch (Exception e) {
             context.getSource().sendError(new LiteralText("Unexpected exception occurred when command list advance executed."));
-            OptCarpetAddition.LOGGER.error("Unexpected exception occurred when command list advance executed.", e);
+            CarpetSettings.LOG.error("Unexpected exception occurred when command list advance executed.", e);
             return 0;
         }
         return 1;

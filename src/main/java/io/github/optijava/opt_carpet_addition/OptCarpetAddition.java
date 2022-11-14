@@ -17,19 +17,15 @@ import net.fabricmc.fabric.api.entity.event.v1.ServerEntityWorldChangeEvents;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.world.GameMode;
-import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.util.Objects;
 
 public class OptCarpetAddition implements CarpetExtension, ModInitializer {
-    public static final Logger LOGGER = CarpetSettings.LOG;
-
-    public static final OptCarpetAddition additionInstance = new OptCarpetAddition();
 
     @Override
     public void onInitialize() {
-        CarpetServer.manageExtension(additionInstance);
+        CarpetServer.manageExtension(new OptCarpetAddition());
 
         ServerEntityWorldChangeEvents.AFTER_PLAYER_CHANGE_WORLD.register(new FixExperienceBug());
     }
@@ -80,7 +76,7 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
 
         // config
         if (!ConfigUtil.init()) {
-            OptCarpetAddition.LOGGER.error("[OptCarpetAddition] Failed to create config folder:" + OptCarpetSettings.configDirectory.toString() + File.separator + "opt-carpet-addition");
+            CarpetSettings.LOG.error("[OptCarpetAddition] Failed to create config folder:" + OptCarpetSettings.configDirectory.toString() + File.separator + "opt-carpet-addition");
             return;
         }
         TpLimit.loadConfigFile();

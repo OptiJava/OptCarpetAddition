@@ -1,11 +1,11 @@
 package io.github.optijava.opt_carpet_addition.commands;
 
+import carpet.CarpetSettings;
 import carpet.utils.Messenger;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
-import io.github.optijava.opt_carpet_addition.OptCarpetAddition;
 import io.github.optijava.opt_carpet_addition.utils.TpLimit;
 import net.minecraft.server.command.ServerCommandSource;
 

@@ -1,9 +1,9 @@
 package io.github.optijava.opt_carpet_addition.commands;
 
+import carpet.CarpetSettings;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
-import io.github.optijava.opt_carpet_addition.OptCarpetAddition;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;

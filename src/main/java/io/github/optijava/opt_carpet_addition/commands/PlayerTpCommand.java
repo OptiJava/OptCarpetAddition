@@ -1,5 +1,6 @@
 package io.github.optijava.opt_carpet_addition.commands;
 
+import carpet.CarpetSettings;
 import carpet.patches.EntityPlayerMPFake;
 import carpet.utils.Messenger;
 import com.mojang.brigadier.CommandDispatcher;

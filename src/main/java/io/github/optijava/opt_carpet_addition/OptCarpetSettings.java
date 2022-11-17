@@ -98,4 +98,10 @@ public class OptCarpetSettings {
     )
     public static boolean disabledEnderManPickupGoal = false;
 
+    @Rule(
+            desc = "Disable Enderman place block goal",
+            category = RuleCategory.FEATURE
+    )
+    public static boolean disabledEnderManPlaceBlockGoal = false;
+
 }

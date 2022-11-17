@@ -22,6 +22,12 @@ public class EnderManEntity_Mixin {
     @Shadow
     EndermanEntity enderman;
 
+    /**
+     * Mixin EndermanEntity.PickUpBlockGoal.tick()V
+     *
+     * @author OptiJava
+     * @reason rule: disabledEnderManPickupGoal
+     */
     @Overwrite
     public void tick() {
         if (!OptCarpetSettings.disabledEnderManPickupGoal) {

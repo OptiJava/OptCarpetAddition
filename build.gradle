@@ -44,6 +44,10 @@ tasks.withType(JavaCompile).configureEach {
     it.options.release = 16
 }
 
+loom {
+    accessWidenerPath.set(file("src/main/resources/opt-carpet-addition.accesswidener"))
+}
+
 java {
     // Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
     // if it is present.

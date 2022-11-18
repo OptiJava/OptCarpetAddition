@@ -22,11 +22,12 @@
   "mixins": [
     "opt-carpet-addition.mixins.json"
   ],
+  "accessWidener": "opt-carpet-addition.accesswidener",
   "depends": {
     "fabricloader": ">=0.7.4",
     "minecraft": "1.17.x",
-    "fabric": "*",
-    "carpet": "*"
+    "fabric": ">=0.39.2",
+    "carpet": ">=1.4.45+v210811"
   },
   "suggests": {
     "another-mod": "Carpet-TIS-Addition"

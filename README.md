@@ -62,7 +62,7 @@
 - Acceptable value: `survival` `creative` `adventure`
 - Categories: `Feature`
 
-### enableTpPrefixBlacklist（未来计划）
+### enableTpPrefixBlacklist
 
 _**感谢 @[_Water_Bucket_](https://github.com/Water-Buckets) 提供的灵感**_
 
@@ -79,7 +79,7 @@ _比如你要tp到的假人叫做anti_mob，而黑名单中有一个anti，那�
 - Acceptable value: `true` `false`
 - Categories: `Feature`
 
-### enableTpPrefixWhitelist（未来计划）
+### enableTpPrefixWhitelist
 
 开启假人Tp前缀白名单功能
 \
@@ -94,7 +94,7 @@ _比如你要tp到的假人叫做anti_mob，而白名单中没有anti，那你�
 - Acceptable value: `true` `false`
 - Categories: `Feature`
 
-### enableTpHerePrefixBlacklist（未来计划）
+### enableTpHerePrefixBlacklist
 
 开启假人Tphere前缀黑名单功能
 \
@@ -109,7 +109,31 @@ _比如你要tphere的假人叫做anti_mob，而黑名单中有一个anti，那�
 - Acceptable value: `true` `false`
 - Categories: `Feature`
 
-### enableTpHerePrefixWhitelist（未来计划）
+### disabledEnderManPickupGoal
+
+禁止小黑搬起方块~~在末地施工小黑老搬方块好烦qwq~~
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Feature`
+
+### disabledEnderManPlaceBlockGoal
+
+禁止小黑放下方块
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Feature`
+
+### disabledLayEggs
+
+禁止鸡下蛋
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Feature`
+
+### enableTpHerePrefixWhitelist
 
 开启假人Tphere前缀白名单功能
 \
@@ -138,7 +162,7 @@ _比如你要tphere的假人叫做anti_mob，而白名单中有一个anti，那�
 
 - 显示每一个玩家的详细信息，包括uuid，游戏模式等
 
-### tpmanager（未来计划）
+### tpmanager
 
 - tpmanager tp whitelist add xxx 将前缀xxx添加到tp白名单
 - tpmanager tp blacklist add xxx 将前缀xxx添加到tp黑名单

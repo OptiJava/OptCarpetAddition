@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "opt-carpet-addition",
-  "version": "${version}",
+  "version": "1.2",
   "name": "Opt-Carpet-Addition",
   "description": "An extension mod of fabric-carpet.",
   "authors": [

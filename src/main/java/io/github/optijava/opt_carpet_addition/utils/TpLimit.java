@@ -6,9 +6,11 @@ import com.google.gson.JsonSyntaxException;
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import io.github.optijava.opt_carpet_addition.utils.config_bean.TpLimitConfigBean;
 
+import java.util.Objects;
+
 public class TpLimit {
 
-    final static Gson gson = new Gson();
+    private static final Gson gson = new Gson();
 
     public static void loadConfigFile() {
         if (!ConfigUtil.exists("TpLimit.json")) {
@@ -28,7 +30,13 @@ public class TpLimit {
             }
         }
         try {
-            OptCarpetSettings.bean = gson.fromJson(ConfigUtil.load("TpLimit.json"), TpLimitConfigBean.class);
+            String content = ConfigUtil.load("TpLimit.json");
+            Objects.requireNonNull(content);
+            if (content.equals("Failed")) {
+                CarpetSettings.LOG.error("[OptCarpetAddition] Failed to read config file TpLimit.json!");
+                return;
+            }
+            OptCarpetSettings.bean = gson.fromJson(content, TpLimitConfigBean.class);
         } catch (JsonSyntaxException e) {
             new RuntimeException("Exception when parsed json config file.", e).printStackTrace();
         } finally {

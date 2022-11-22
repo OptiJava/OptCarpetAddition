@@ -7,8 +7,6 @@ import net.fabricmc.loader.api.FabricLoader;
 
 import java.nio.file.Path;
 
-import static carpet.settings.RuleCategory.COMMAND;
-
 public class OptCarpetSettings {
     private static final String FALSE = "false";
     public static Path configDirectory = FabricLoader.getInstance().getConfigDir().resolve("opt-carpet-addition");
@@ -17,28 +15,28 @@ public class OptCarpetSettings {
 
     @Rule(
             desc = "Enables [/player xxx tp] to teleport to fake player",
-            category = COMMAND,
+            category = RuleCategory.COMMAND,
             options = {"true", "false", "ops"}
     )
     public static String commandTpToFakePlayer = FALSE;
 
     @Rule(
             desc = "Enables [/player xxx tp] to teleport to real player",
-            category = COMMAND,
+            category = RuleCategory.COMMAND,
             options = {"true", "false", "ops"}
     )
     public static String allowTpToRealPlayer = FALSE;
 
     @Rule(
             desc = "Enables [/player xxx tp] to teleport to fake player",
-            category = COMMAND,
+            category = RuleCategory.COMMAND,
             options = {"true", "false", "ops"}
     )
     public static String commandTpHereFakePlayer = FALSE;
 
     @Rule(
             desc = "Enables [/player xxx tp] to teleport to real player",
-            category = COMMAND,
+            category = RuleCategory.COMMAND,
             options = {"true", "false", "ops"}
     )
     public static String allowTpHereRealPlayer = FALSE;
@@ -103,5 +101,4 @@ public class OptCarpetSettings {
             category = RuleCategory.FEATURE
     )
     public static boolean disabledEnderManPlaceBlockGoal = false;
-
 }

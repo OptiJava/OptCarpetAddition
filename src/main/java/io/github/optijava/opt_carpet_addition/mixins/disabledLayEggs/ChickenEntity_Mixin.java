@@ -9,7 +9,17 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ChickenEntity.class)
 public class ChickenEntity_Mixin {
-    @Inject(at = @At("HEAD"), method = "tickMovement()V")
+
+    /**
+     * Mixin ChickenEntity.tickMovement()V
+     *
+     * @author OptiJava
+     * @reason rule: disabledLayEggs
+     */
+    @Inject(
+            at = @At("HEAD"),
+            method = "tickMovement()V"
+    )
     public void injectTickMovement(CallbackInfo callbackInfo) {
         if (OptCarpetSettings.disabledLayEggs) {
             ((ChickenEntity) (Object) this).eggLayTime = 50;

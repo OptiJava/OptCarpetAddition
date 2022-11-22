@@ -19,7 +19,6 @@ import java.util.Random;
 
 @Mixin(EndermanEntity.PlaceBlockGoal.class)
 public class EndermanEntity_Mixin {
-
     private boolean canPlaceOn(World world, BlockPos posAbove, BlockState carriedState, BlockState stateAbove, BlockState state, BlockPos pos) {
         return stateAbove.isAir() && !state.isAir() && !state.isOf(Blocks.BEDROCK) && state.isFullCube(world, pos) && carriedState.canPlaceAt(world, posAbove) && world.getOtherEntities(this.enderman, Box.from(Vec3d.of(posAbove))).isEmpty();
     }

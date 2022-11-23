@@ -10,14 +10,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(NetherPortalBlock.class)
 public class NetherPortalBlock_Mixin {
     /**
-     * Mixin NetherPortalBlock.randomTick(Lnet/minecraft/block/BlockState;Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/BlockPos;Ljava.util.Random;)V
+     * Mixin NetherPortalBlock.randomTick(Lnet/minecraft/block/BlockState;Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/BlockPos;Ljava/util/Random;)V
      *
      * @author OptiJava
      * @reason rule: disabledNetherPortalSpawn
      */
     @Inject(
             at = @At("HEAD"),
-            method = "randomTick(Lnet/minecraft/block/BlockState;Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/BlockPos;Ljava.util.Random;)V",
+            method = "randomTick(Lnet/minecraft/block/BlockState;Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/BlockPos;Ljava/util/Random;)V",
             cancellable = true
     )
     public void injectRandomTick(CallbackInfo ci) {

@@ -101,4 +101,10 @@ public class OptCarpetSettings {
             category = RuleCategory.FEATURE
     )
     public static boolean disabledEnderManPlaceBlockGoal = false;
+
+    @Rule(
+            desc = "Disable zombified piglin spawn in nether portal",
+            category = {RuleCategory.OPTIMIZATION, RuleCategory.FEATURE}
+    )
+    public static boolean disabledNetherPortalSpawn = false;
 }

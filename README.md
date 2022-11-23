@@ -109,6 +109,21 @@ _比如你要tphere的假人叫做anti_mob，而黑名单中有一个anti，那�
 - Acceptable value: `true` `false`
 - Categories: `Feature`
 
+### enableTpHerePrefixWhitelist
+
+开启假人Tphere前缀白名单功能
+\
+开启这个功能后，如果你要tphere的假人名字前缀不在白名单中，会阻止你tphere并显示：You can't tp to this player because of tp
+limit.
+\
+_比如你要tphere的假人叫做anti_mob，而白名单中有一个anti，那你就能tp到这个假人_
+\
+假人白名单可以使用/tpmanager指令编辑（这个指令具体的用法看后面）
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Feature`
+
 ### disabledEnderManPickupGoal
 
 禁止小黑搬起方块~~在末地施工小黑老搬方块好烦qwq~~
@@ -133,16 +148,9 @@ _比如你要tphere的假人叫做anti_mob，而黑名单中有一个anti，那�
 - Acceptable value: `true` `false`
 - Categories: `Feature`
 
-### enableTpHerePrefixWhitelist
+### disabledNetherPortalSpawn
 
-开启假人Tphere前缀白名单功能
-\
-开启这个功能后，如果你要tphere的假人名字前缀不在白名单中，会阻止你tphere并显示：You can't tp to this player because of tp
-limit.
-\
-_比如你要tphere的假人叫做anti_mob，而白名单中有一个anti，那你就能tp到这个假人_
-\
-假人白名单可以使用/tpmanager指令编辑（这个指令具体的用法看后面）
+禁止猪人生成在地狱门方块上
 
 - Default value: `false`
 - Acceptable value: `true` `false`

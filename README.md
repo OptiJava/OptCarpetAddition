@@ -1,6 +1,8 @@
 # Opt Carpet Addition Mod
 
-这是一个CapetMod的扩展模组，目标是添加一些没有太大改变原版游戏机制但优化玩家体验/~~降低腐竹血压~~的一些功能。
+Language: [English](https://github.com/OptiJava/OptCarpetAddition/blob/master/README-en.md) | 中文
+
+这是一个CarpetMod的扩展模组，目标是添加一些没有太大改变原版游戏机制但优化玩家体验/~~降低腐竹血压~~的一些功能。
 
 **本模组需要前置：`Carpet` `fabric-api`**
 

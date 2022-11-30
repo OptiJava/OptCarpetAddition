@@ -72,10 +72,6 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
                 OptCarpetSettings.enableTpHerePrefixBlacklist = false;
                 Messenger.m(serverCommandSource, "r You can't enable TpherePrefixBlacklist because you have enabled TpherePrefixWhitelist");
             }
-
-            if (rule.name.equals("enableFlightCheck")) {
-                CarpetServer.minecraft_server.setFlightEnabled(OptCarpetSettings.enableFlightCheck);
-            }
         }));
 
         // config

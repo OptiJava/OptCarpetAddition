@@ -109,11 +109,4 @@ public class OptCarpetSettings {
             category = {RuleCategory.OPTIMIZATION, RuleCategory.FEATURE}
     )
     public static boolean disabledNetherPortalSpawn = false;
-
-
-    @Rule(
-            desc = "Disabled flight check in server",
-            category = {RuleCategory.CREATIVE}
-    )
-    public static boolean enableFlightCheck = false;
 }

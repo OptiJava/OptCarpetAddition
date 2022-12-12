@@ -133,6 +133,20 @@ Zombified piglin will not spawn in nether portal
 - Acceptable value: `true` `false`
 - Categories: `Feature`
 
+### disabledEntityTick
+
+**_Warning! This rule may cause all falling_block entity infinite rebound!_**
+
+This rule will ignore all entity tick,but players are normal.
+
+When there are a lot of entity in your server,you can use this rule temporarily relieve the stuck.
+
+_This rule is experimental._
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Experimental`
+
 ## Command
 
 ### player xxx tp

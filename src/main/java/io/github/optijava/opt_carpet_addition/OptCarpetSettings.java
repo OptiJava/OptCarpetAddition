@@ -107,4 +107,10 @@ public class OptCarpetSettings {
             category = {RuleCategory.OPTIMIZATION, RuleCategory.FEATURE}
     )
     public static boolean disabledNetherPortalSpawn = false;
+
+    @Rule(
+            desc = "Disable entity tick(contains all entity and BlockEntity)",
+            category = {RuleCategory.EXPERIMENTAL}
+    )
+    public static boolean disabledEntityTick = false;
 }

@@ -7,7 +7,8 @@
     "disabledLayEggs.ChickenEntity_Mixin",
     "disabledEnderManPickupGoal.EnderManEntity_Mixin",
     "disabledEnderManPlaceBlockGoal.EndermanEntity_Mixin",
-    "disabledNetherPortalSpawn.NetherPortalBlock_Mixin"
+    "disabledNetherPortalSpawn.NetherPortalBlock_Mixin",
+    "disabledEntityTick.ServerWorld_Mixin"
   ],
   "client": [
   ],

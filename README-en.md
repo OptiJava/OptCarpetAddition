@@ -125,9 +125,23 @@ Chicken will not lay eggs
 - Acceptable value: `true` `false`
 - Categories: `Feature`
 
+### disabledEntityTick
+
+**_Warning! This rule may cause all falling_block entity infinite rebound!_**
+
+This rule will ignore all entity tick,but players are normal.
+
+When there are a lot of entity in your server,you can use this rule temporarily relieve the stuck.
+
+_This rule is experimental._
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Experimental`
+
 ### disabledNetherPortalSpawn
 
-Zombified piglin will not spawn in nether portal
+Zombified piglin will not spawn in nether portal.
 
 - Default value: `false`
 - Acceptable value: `true` `false`

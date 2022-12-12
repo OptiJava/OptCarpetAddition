@@ -4,13 +4,19 @@ import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.util.Arrays;
+import java.util.List;
 
 public class ConfigUtil {
     public static String load(String fileName) {
         try {
-            return Arrays.toString(Files.readAllBytes(OptCarpetSettings.configDirectory.resolve(fileName)));
+            StringBuilder sb = new StringBuilder();
+            List<String> list = Files.readAllLines(OptCarpetSettings.configDirectory.resolve(fileName), StandardCharsets.UTF_8);
+            for (String s : list) {
+                sb.append(s).append("\n");
+            }
+            return sb.toString();
         } catch (IOException e) {
             e.printStackTrace();
             return "Failed";

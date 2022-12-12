@@ -158,6 +158,18 @@ _比如你要tphere的假人叫做anti_mob，而白名单中有一个anti，那�
 - Acceptable value: `true` `false`
 - Categories: `Feature`
 
+### disabledEntityTick
+
+**_注意！此规则可能会导致世界上所有的下落的方块实体无限回弹！！_**
+/
+此规则会跳过世界上一切实体的运算，不过理论上来说玩家是正常的，开启此规则后，所有的生物全都会卡住，就算他们在空中也不会掉下来
+/
+此规则的目的是在服务器因为实体问题严重卡顿时，可以暂时缓解问题，但这不是最好的方案
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Experimental`
+
 ## Command
 
 ### player xxx tp

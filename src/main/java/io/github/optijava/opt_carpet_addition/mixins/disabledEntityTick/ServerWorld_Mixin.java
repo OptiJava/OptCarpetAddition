@@ -9,7 +9,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ServerWorld.class)
 public class ServerWorld_Mixin {
-
     /**
      * Mixin ServerWorld.tick(Ljava/util/function/BooleanSupplier;)V
      *
@@ -22,5 +21,4 @@ public class ServerWorld_Mixin {
             ci.cancel();
         }
     }
-
 }

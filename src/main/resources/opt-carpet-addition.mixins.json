@@ -8,7 +8,8 @@
     "disabledEnderManPickupGoal.EnderManEntity_Mixin",
     "disabledEnderManPlaceBlockGoal.EndermanEntity_Mixin",
     "disabledNetherPortalSpawn.NetherPortalBlock_Mixin",
-    "disabledEntityTick.ServerWorld_Mixin"
+    "disabledEntityTick.ServerWorld_Mixin",
+    "disabledUpdateSuppressionErrorStackTrace.ThreadExecutor_Mixin"
   ],
   "client": [
   ],

@@ -113,4 +113,10 @@ public class OptCarpetSettings {
             category = {RuleCategory.EXPERIMENTAL}
     )
     public static boolean disabledEntityTick = false;
+
+    @Rule(
+            desc = "Disable error stack trace when update suppression(It makes server managers more comfortable)",
+            category = {RuleCategory.EXPERIMENTAL, RuleCategory.BUGFIX}
+    )
+    public static boolean disabledUpdateSuppressionErrorStackTrace = false;
 }

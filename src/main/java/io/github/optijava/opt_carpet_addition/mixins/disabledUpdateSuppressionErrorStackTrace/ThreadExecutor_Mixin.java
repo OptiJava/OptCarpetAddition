@@ -1,7 +1,7 @@
 package io.github.optijava.opt_carpet_addition.mixins.disabledUpdateSuppressionErrorStackTrace;
 
-import carpet.CarpetSettings;
 import carpet.helpers.ThrowableSuppression;
+import io.github.optijava.opt_carpet_addition.OptCarpetAddition;
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import net.minecraft.util.thread.ThreadExecutor;
 import org.spongepowered.asm.mixin.Mixin;
@@ -23,7 +23,7 @@ public class ThreadExecutor_Mixin {
             try {
                 task.run();
             } catch (ThrowableSuppression t) {
-                CarpetSettings.LOG.info("[OptCarpetAddition] Update Suppression.");
+                OptCarpetAddition.LOGGER.info("Update Suppression.");
             }
         } else {
             task.run();

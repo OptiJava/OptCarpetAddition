@@ -2,7 +2,6 @@ package io.github.optijava.opt_carpet_addition;
 
 import carpet.CarpetExtension;
 import carpet.CarpetServer;
-import carpet.CarpetSettings;
 import carpet.patches.EntityPlayerMPFake;
 import carpet.utils.Messenger;
 import com.mojang.brigadier.CommandDispatcher;
@@ -17,14 +16,19 @@ import net.fabricmc.fabric.api.entity.event.v1.ServerEntityWorldChangeEvents;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.world.GameMode;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.util.Objects;
 
 public class OptCarpetAddition implements CarpetExtension, ModInitializer {
 
+    public static final Logger LOGGER = LogManager.getLogger("OptCarpetAddition");
+
     @Override
     public void onInitialize() {
+        LOGGER.info("OptCarpetAddition is loading...");
         CarpetServer.manageExtension(new OptCarpetAddition());
 
         ServerEntityWorldChangeEvents.AFTER_PLAYER_CHANGE_WORLD.register(new FixExperienceBug());
@@ -76,7 +80,7 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
 
         // config
         if (!ConfigUtil.init()) {
-            CarpetSettings.LOG.error("[OptCarpetAddition] Failed to create config folder:" + OptCarpetSettings.configDirectory.toString() + File.separator + "opt-carpet-addition");
+            OptCarpetAddition.LOGGER.error("Failed to create config folder:" + OptCarpetSettings.configDirectory.toString() + File.separator + "opt-carpet-addition");
             return;
         }
         TpLimit.loadConfigFile();

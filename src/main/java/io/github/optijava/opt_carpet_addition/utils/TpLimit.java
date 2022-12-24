@@ -1,8 +1,8 @@
 package io.github.optijava.opt_carpet_addition.utils;
 
-import carpet.CarpetSettings;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
+import io.github.optijava.opt_carpet_addition.OptCarpetAddition;
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import io.github.optijava.opt_carpet_addition.utils.config_bean.TpLimitConfigBean;
 
@@ -13,7 +13,7 @@ public class TpLimit {
     public static void loadConfigFile() {
         if (!ConfigUtil.exists("TpLimit.json")) {
             if (!ConfigUtil.create("TpLimit.json")) {
-                CarpetSettings.LOG.error("[OptCarpetAddition] Failed to create config file: TpLimit.json");
+                OptCarpetAddition.LOGGER.error("Failed to create config file: TpLimit.json");
                 return;
             }
             if (!ConfigUtil.write("TpLimit.json", "{\n" +
@@ -22,7 +22,7 @@ public class TpLimit {
                     "                      \"TphereWhitelist\": [],\n" +
                     "                      \"TphereBlacklist\": []\n" +
                     "                    }")) {
-                CarpetSettings.LOG.error("[OptCarpetAddition] Failed to init config file: TpLimit.json");
+                OptCarpetAddition.LOGGER.error("Failed to init config file: TpLimit.json");
                 return;
             }
         }

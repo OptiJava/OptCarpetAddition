@@ -1,10 +1,10 @@
 package io.github.optijava.opt_carpet_addition.commands;
 
-import carpet.CarpetSettings;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
+import io.github.optijava.opt_carpet_addition.OptCarpetAddition;
 import io.github.optijava.opt_carpet_addition.utils.TpLimit;
 import net.minecraft.server.command.ServerCommandSource;
 
@@ -76,56 +76,56 @@ public class TpLimitCommand {
 
     public static int addTpWhitelist(CommandContext<ServerCommandSource> context) {
         TpLimit.add(StringArgumentType.getString(context, "prefix"), "TpWhitelist");
-        CarpetSettings.LOG.info("[OptCarpetAddition] Add TpWhitelist prefix : " + StringArgumentType.getString(context, "prefix"));
+        OptCarpetAddition.LOGGER.info("Add TpWhitelist prefix : " + StringArgumentType.getString(context, "prefix"));
         TpLimit.flush();
         return 1;
     }
 
     public static int addTpBlacklist(CommandContext<ServerCommandSource> context) {
         TpLimit.add(StringArgumentType.getString(context, "prefix"), "TpBlacklist");
-        CarpetSettings.LOG.info("[OptCarpetAddition] Add TpBlacklist prefix : " + StringArgumentType.getString(context, "prefix"));
+        OptCarpetAddition.LOGGER.info("Add TpBlacklist prefix : " + StringArgumentType.getString(context, "prefix"));
         TpLimit.flush();
         return 1;
     }
 
     public static int addTphereWhitelist(CommandContext<ServerCommandSource> context) {
         TpLimit.add(StringArgumentType.getString(context, "prefix"), "TphereWhitelist");
-        CarpetSettings.LOG.info("[OptCarpetAddition] Add TphereWhitelist prefix : " + StringArgumentType.getString(context, "prefix"));
+        OptCarpetAddition.LOGGER.info("Add TphereWhitelist prefix : " + StringArgumentType.getString(context, "prefix"));
         TpLimit.flush();
         return 1;
     }
 
     public static int addTphereBlacklist(CommandContext<ServerCommandSource> context) {
         TpLimit.add(StringArgumentType.getString(context, "prefix"), "TphereBlacklist");
-        CarpetSettings.LOG.info("[OptCarpetAddition] Add TphereBlacklist prefix : " + StringArgumentType.getString(context, "prefix"));
+        OptCarpetAddition.LOGGER.info("Add TphereBlacklist prefix : " + StringArgumentType.getString(context, "prefix"));
         TpLimit.flush();
         return 1;
     }
 
     public static int removeTpWhitelist(CommandContext<ServerCommandSource> context) {
         TpLimit.remove(StringArgumentType.getString(context, "prefix"), "TpWhitelist");
-        CarpetSettings.LOG.info("[OptCarpetAddition] Remove TpWhitelist prefix : " + StringArgumentType.getString(context, "prefix"));
+        OptCarpetAddition.LOGGER.info("Remove TpWhitelist prefix : " + StringArgumentType.getString(context, "prefix"));
         TpLimit.flush();
         return 1;
     }
 
     public static int removeTpBlacklist(CommandContext<ServerCommandSource> context) {
         TpLimit.remove(StringArgumentType.getString(context, "prefix"), "TpBlacklist");
-        CarpetSettings.LOG.info("[OptCarpetAddition] Remove TpBlacklist prefix : " + StringArgumentType.getString(context, "prefix"));
+        OptCarpetAddition.LOGGER.info("Remove TpBlacklist prefix : " + StringArgumentType.getString(context, "prefix"));
         TpLimit.flush();
         return 1;
     }
 
     public static int removeTphereWhitelist(CommandContext<ServerCommandSource> context) {
         TpLimit.remove(StringArgumentType.getString(context, "prefix"), "TphereWhitelist");
-        CarpetSettings.LOG.info("[OptCarpetAddition] Remove TphereWhitelist prefix : " + StringArgumentType.getString(context, "prefix"));
+        OptCarpetAddition.LOGGER.info("Remove TphereWhitelist prefix : " + StringArgumentType.getString(context, "prefix"));
         TpLimit.flush();
         return 1;
     }
 
     public static int removeTphereBlacklist(CommandContext<ServerCommandSource> context) {
         TpLimit.remove(StringArgumentType.getString(context, "prefix"), "TphereBlacklist");
-        CarpetSettings.LOG.info("[OptCarpetAddition] Remove TphereBlacklist prefix : " + StringArgumentType.getString(context, "prefix"));
+        OptCarpetAddition.LOGGER.info("Remove TphereBlacklist prefix : " + StringArgumentType.getString(context, "prefix"));
         TpLimit.flush();
         return 1;
     }

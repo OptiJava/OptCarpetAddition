@@ -115,6 +115,12 @@ public class OptCarpetSettings {
     public static boolean disabledEntityTick = false;
 
     @Rule(
+            desc = "Disable error stack when update suppression.",
+            category = {RuleCategory.BUGFIX}
+    )
+    public static boolean disabledUpdateSuppressionErrorStackTrace = false;
+
+    @Rule(
             desc = "Unescape chat message. \\u4e2d -> 中",
             category = {RuleCategory.FEATURE, RuleCategory.CLIENT}
     )

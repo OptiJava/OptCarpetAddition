@@ -1,3 +1,4 @@
 accessWidener v1 named
 accessible class net/minecraft/entity/mob/EndermanEntity$PickUpBlockGoal
 accessible class net/minecraft/entity/mob/EndermanEntity$PlaceBlockGoal
+accessible field net/minecraft/network/packet/c2s/play/ChatMessageC2SPacket chatMessage Ljava/lang/String;

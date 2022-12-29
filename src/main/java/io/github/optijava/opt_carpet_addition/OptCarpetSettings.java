@@ -115,4 +115,10 @@ public class OptCarpetSettings {
             category = {RuleCategory.EXPERIMENTAL}
     )
     public static boolean disabledEntityTick = false;
+
+    @Rule(
+            desc = "Unescape chat message. \\u4e2d -> 中",
+            category = {RuleCategory.FEATURE, RuleCategory.CLIENT}
+    )
+    public static boolean unescapeChatMessage = false;
 }

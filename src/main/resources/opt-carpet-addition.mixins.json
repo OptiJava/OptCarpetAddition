@@ -11,6 +11,8 @@
     "disabledEntityTick.ServerWorld_Mixin"
   ],
   "client": [
+    "unescapeChatMessage.ChatMessageC2SPacket_Mixin",
+    "unescapeChatMessage.Screen_Mixin"
   ],
   "injectors": {
     "defaultRequire": 1

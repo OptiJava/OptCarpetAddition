@@ -170,6 +170,38 @@ _比如你要tphere的假人叫做anti_mob，而白名单中有一个anti，那�
 - Acceptable value: `true` `false`
 - Categories: `Experimental`
 
+### disabledUpdateSuppressionErrorStackTrace  `仅v1.3-alpha.1以上版本`
+
+**_此功能仅限1.17版本_**
+
+**_此功能必须搭配carpet规则updateSuppressionCrashFix使用，否则无效_**
+
+此规则可以让所有非致命的因为更新抑制导致的异常不刷屏，只输出一条日志：Update Suppression.
+\
+必须搭配carpet规则updateSuppressionCrashFix规则使用，否则无效
+\
+1.16版本无此规则，因为1.16的carpet没有updateSuppressionCrashFix规则
+\
+致命异常会正常输出并打印异常栈（致命异常指在不开启updateSuppressionCrashFix情况下会导致服务器崩溃的异常）
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `BugFix`
+
+### unescapeChatMessage  `仅v1.3-alpha.1以上版本`
+
+**此规则仅客户端有效，服务端无效**
+
+此规则会把客户端发出的所有应当转义的文字转义
+
+例如在聊天栏输入：`你好，\u4e2d\u6587`
+\
+实际发送的消息是：`你好，中文`
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Feature` `CLIENT`
+
 ## Command
 
 ### player xxx tp

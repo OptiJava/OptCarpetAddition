@@ -147,6 +147,38 @@ _This rule is experimental._
 - Acceptable value: `true` `false`
 - Categories: `Experimental`
 
+### disabledUpdateSuppressionErrorStackTrace  `Just In v1.3-alpha.1 or above`
+
+**_This rule is just in 1.17_**
+
+**_This function must be used together with the carpet rule updateSuppressionCrashFix, otherwise it is invalid_**
+
+This rule allows all non-fatal exceptions caused by update suppression not to be refreshed, and only one log is output:
+Update Suppression
+\
+1.16 hasn't this rule，because carpet-1.16 has not updateSuppressionCrashFix rule.
+\
+Fatal Exception will be printed normally（Fatal Exceptions mean the exception that will cause the server to crash when
+updateSuppressionCrashFix is not enabled）
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `BugFix`
+
+### unescapeChatMessage  `Just In v1.3-alpha.1 or above`
+
+**This rule is valid only on the client side, and invalid on the server side**
+
+This rule will escape all text sent by the client that should be escaped.
+
+For example,type `你好，\u4e2d\u6587` in chat
+\
+And you will see `你好，中文` in chat.
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Feature` `CLIENT`
+
 ## Command
 
 ### player xxx tp

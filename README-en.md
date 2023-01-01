@@ -147,6 +147,52 @@ Zombified piglin will not spawn in nether portal.
 - Acceptable value: `true` `false`
 - Categories: `Feature`
 
+### disabledEntityTick
+
+**_Warning! This rule may cause all falling_block entity infinite rebound!_**
+
+This rule will ignore all entity tick,but players are normal.
+
+When there are a lot of entity in your server,you can use this rule temporarily relieve the stuck.
+
+_This rule is experimental._
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Experimental`
+
+### disabledUpdateSuppressionErrorStackTrace  `仅v1.3-alpha.1以上版本`
+
+**_This rule is just in 1.17_**
+
+**_This function must be used together with the carpet rule updateSuppressionCrashFix, otherwise it is invalid_**
+
+This rule allows all non-fatal exceptions caused by update suppression not to be refreshed, and only one log is output:
+Update Suppression
+\
+1.16 hasn't this rule，because carpet-1.16 has not updateSuppressionCrashFix rule.
+\
+Fatal Exception will be printed normally（Fatal Exceptions mean the exception that will cause the server to crash when
+updateSuppressionCrashFix is not enabled）
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `BugFix`
+
+### unescapeChatMessage  `仅v1.3-alpha.1以上版本`
+
+**This rule is valid only on the client side, and invalid on the server side**
+
+This rule will escape all text sent by the client that should be escaped.
+
+For example,type `你好，\u4e2d\u6587` in chat
+\
+And you will see `你好，中文` in chat.
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Feature` `CLIENT`
+
 ## Command
 
 ### player xxx tp

@@ -16,6 +16,7 @@ public class Screen_Mixin {
      * @author OptiJava
      * @reason rule: unescapeChatMessage
      */
+    @SuppressWarnings("use StringEscapeUtils")
     @ModifyArg(method = "sendMessage(Ljava/lang/String;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/screen/Screen;sendMessage(Ljava/lang/String;Z)V"), index = 0)
     public String injectSendMessage(String message) {
         if (OptCarpetSettings.unescapeChatMessage) {

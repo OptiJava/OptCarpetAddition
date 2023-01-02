@@ -4,11 +4,12 @@
   "package": "io.github.optijava.opt_carpet_addition.mixins",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
-    "disabledLayEggs.ChickenEntity_Mixin",
+    "async.optimizePlayerConnect.ServerLoginNetworkHandler_Mixin",
     "disabledEnderManPickupGoal.EnderManEntity_Mixin",
     "disabledEnderManPlaceBlockGoal.EndermanEntity_Mixin",
-    "disabledNetherPortalSpawn.NetherPortalBlock_Mixin",
     "disabledEntityTick.ServerWorld_Mixin",
+    "disabledLayEggs.ChickenEntity_Mixin",
+    "disabledNetherPortalSpawn.NetherPortalBlock_Mixin",
     "disabledUpdateSuppressionErrorStackTrace.ThreadExecutor_Mixin"
   ],
   "client": [

@@ -125,4 +125,10 @@ public class OptCarpetSettings {
             category = {RuleCategory.FEATURE, RuleCategory.CLIENT}
     )
     public static boolean unescapeChatMessage = false;
+
+    @Rule(
+            desc = "Handle player connect in a new thread to reduce the lag.",
+            category = {RuleCategory.OPTIMIZATION, RuleCategory.EXPERIMENTAL}
+    )
+    public static boolean optimizePlayerConnect = false;
 }

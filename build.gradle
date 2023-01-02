@@ -3,11 +3,11 @@ plugins {
     id 'maven-publish'
 }
 
-sourceCompatibility = JavaVersion.VERSION_16
-targetCompatibility = JavaVersion.VERSION_16
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
 
 archivesBaseName = project.archives_base_name
-version = 'v' + project.mod_version + '-1.17-' + new Date().format('yyMMdd')
+version = 'v' + project.mod_version + '-1.18-' + new Date().format('yyMMddHHmmss')
 group = project.maven_group
 
 repositories {
@@ -39,13 +39,13 @@ processResources {
     }
 }
 
-tasks.withType(JavaCompile).configureEach {
-    // Minecraft 1.17 (21w19a) upwards uses Java 16.
-    it.options.release = 16
-}
-
 loom {
     accessWidenerPath.set(file("src/main/resources/opt-carpet-addition.accesswidener"))
+}
+
+tasks.withType(JavaCompile).configureEach {
+    // Minecraft 1.18 (1.18-pre2) upwards uses Java 17.
+    it.options.release = 17
 }
 
 java {
@@ -68,6 +68,7 @@ publishing {
             from components.java
         }
     }
+
     // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
     repositories {
         // Add repositories to publish to here.

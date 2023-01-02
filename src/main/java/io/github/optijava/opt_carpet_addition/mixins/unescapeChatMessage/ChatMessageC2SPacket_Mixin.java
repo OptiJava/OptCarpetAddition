@@ -17,7 +17,8 @@ public class ChatMessageC2SPacket_Mixin {
      * @author OptiJava
      * @reason rule: unescapeChatMessage
      */
-    @Inject(method = "<init>", at = @At("TAIL"))
+    @Inject(method = "<init>*", at = @At("TAIL"))
+    @SuppressWarnings("use StringEscapeUtils")
     public void injectInit(CallbackInfo ci) {
         if (OptCarpetSettings.unescapeChatMessage) {
             try {

@@ -6,6 +6,6 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public class Threading {
-    public static final ExecutorService THREAD_POOL = new ThreadPoolExecutor(1, 3, 60L, TimeUnit.SECONDS, new SynchronousQueue<>());
+    public static final ExecutorService THREAD_POOL = new ThreadPoolExecutor(0, 2, 60L, TimeUnit.SECONDS, new SynchronousQueue<>());
 
 }

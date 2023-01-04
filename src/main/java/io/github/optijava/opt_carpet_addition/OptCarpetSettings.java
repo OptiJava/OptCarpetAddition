@@ -131,4 +131,10 @@ public class OptCarpetSettings {
             category = {RuleCategory.OPTIMIZATION, RuleCategory.EXPERIMENTAL}
     )
     public static boolean optimizePlayerConnect = false;
+
+    @Rule(
+            desc = "Handle player teleport in a new thread to reduce the lag.",
+            category = {RuleCategory.OPTIMIZATION, RuleCategory.EXPERIMENTAL}
+    )
+    public static boolean optimizeTeleport = false;
 }

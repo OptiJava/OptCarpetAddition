@@ -163,7 +163,7 @@ _This rule is experimental._
 
 ### disabledUpdateSuppressionErrorStackTrace  `仅v1.3-alpha.1以上版本`
 
-**_This rule is just in 1.17_**
+**_This rule is just in 1.17 and 1.18_**
 
 **_This function must be used together with the carpet rule updateSuppressionCrashFix, otherwise it is invalid_**
 
@@ -192,6 +192,26 @@ And you will see `你好，中文` in chat.
 - Default value: `false`
 - Acceptable value: `true` `false`
 - Categories: `Feature` `CLIENT`
+
+### optimizePlayerConnect   `仅1.3-alpha.2及以上版本`
+
+**_This rule is just in 1.17 and 1.18_**
+
+Optimize player login.
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Optimization` `Experimential`
+
+### optimizeTeleport      `仅1.3-alpha.2及以上版本`
+
+**_This rule is just in 1.17 and 1.18_**
+
+Optimize player teleport.
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Optimization` `Experimential`
 
 ## Command
 

@@ -5,6 +5,8 @@
   "compatibilityLevel": "JAVA_16",
   "mixins": [
     "async.optimizePlayerConnect.ServerLoginNetworkHandler_Mixin",
+    "async.optimizeTeleport.ServerPlayerEntity_Mixin",
+    "async.optimizeTeleport.ServerPlayNetworkHandler_Mixin",
     "disabledEnderManPickupGoal.EnderManEntity_Mixin",
     "disabledEnderManPlaceBlockGoal.EndermanEntity_Mixin",
     "disabledEntityTick.ServerWorld_Mixin",

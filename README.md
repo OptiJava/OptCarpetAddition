@@ -170,7 +170,7 @@ _比如你要tphere的假人叫做anti_mob，而白名单中有一个anti，那�
 - Acceptable value: `true` `false`
 - Categories: `Experimental`
 
-### disabledUpdateSuppressionErrorStackTrace  `仅v1.3-alpha.1以上版本`
+### disabledUpdateSuppressionErrorStackTrace  `仅v1.3-alpha.1及以上版本`
 
 **_此功能仅限1.17版本_**
 
@@ -188,7 +188,7 @@ _比如你要tphere的假人叫做anti_mob，而白名单中有一个anti，那�
 - Acceptable value: `true` `false`
 - Categories: `BugFix`
 
-### unescapeChatMessage  `仅v1.3-alpha.1以上版本`
+### unescapeChatMessage  `仅v1.3-alpha.1及以上版本`
 
 **此规则仅客户端有效，服务端无效**
 
@@ -201,6 +201,26 @@ _比如你要tphere的假人叫做anti_mob，而白名单中有一个anti，那�
 - Default value: `false`
 - Acceptable value: `true` `false`
 - Categories: `Feature` `CLIENT`
+
+### optimizePlayerConnect   `仅1.3-alpha.2及以上版本`
+
+**_仅1.17及1.18有此功能_**
+
+优化玩家进服逻辑
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Optimization` `Experimential`
+
+### optimizeTeleport      `仅1.3-alpha.2及以上版本`
+
+**_仅1.17及1.18有此功能_**
+
+优化玩家传送逻辑
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Optimization` `Experimential`
 
 ## Command
 

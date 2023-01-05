@@ -38,20 +38,19 @@ public abstract class ServerPlayNetworkHandler_Mixin {
     )
     public void injectRequestTeleport(double x, double y, double z, float yaw, float pitch, Set<PlayerPositionLookS2CPacket.Flag> flags, boolean shouldDismount, CallbackInfo ci) {
         if (OptCarpetSettings.optimizeTeleport) {
-            Threading.THREAD_POOL.submit(() -> {
-                double d = flags.contains((Object) PlayerPositionLookS2CPacket.Flag.X) ? this.player.getX() : 0.0;
-                double e = flags.contains((Object) PlayerPositionLookS2CPacket.Flag.Y) ? this.player.getY() : 0.0;
-                double f = flags.contains((Object) PlayerPositionLookS2CPacket.Flag.Z) ? this.player.getZ() : 0.0;
-                float g = flags.contains((Object) PlayerPositionLookS2CPacket.Flag.Y_ROT) ? this.player.getYaw() : 0.0f;
-                float h = flags.contains((Object) PlayerPositionLookS2CPacket.Flag.X_ROT) ? this.player.getPitch() : 0.0f;
-                this.requestedTeleportPos = new Vec3d(x, y, z);
-                if (++this.requestedTeleportId == Integer.MAX_VALUE) {
-                    this.requestedTeleportId = 0;
-                }
-                this.teleportRequestTick = this.ticks;
-                this.player.updatePositionAndAngles(x, y, z, yaw, pitch);
-                this.player.networkHandler.sendPacket(new PlayerPositionLookS2CPacket(x - d, y - e, z - f, yaw - g, pitch - h, flags, this.requestedTeleportId, shouldDismount));
-            });
+            double d = flags.contains((Object) PlayerPositionLookS2CPacket.Flag.X) ? this.player.getX() : 0.0;
+            double e = flags.contains((Object) PlayerPositionLookS2CPacket.Flag.Y) ? this.player.getY() : 0.0;
+            double f = flags.contains((Object) PlayerPositionLookS2CPacket.Flag.Z) ? this.player.getZ() : 0.0;
+            float g = flags.contains((Object) PlayerPositionLookS2CPacket.Flag.Y_ROT) ? this.player.getYaw() : 0.0f;
+            float h = flags.contains((Object) PlayerPositionLookS2CPacket.Flag.X_ROT) ? this.player.getPitch() : 0.0f;
+            this.requestedTeleportPos = new Vec3d(x, y, z);
+            if (++this.requestedTeleportId == Integer.MAX_VALUE) {
+                this.requestedTeleportId = 0;
+            }
+            this.teleportRequestTick = this.ticks;
+            this.player.updatePositionAndAngles(x, y, z, yaw, pitch);
+
+            Threading.THREAD_POOL.submit(() -> this.player.networkHandler.sendPacket(new PlayerPositionLookS2CPacket(x - d, y - e, z - f, yaw - g, pitch - h, flags, this.requestedTeleportId, shouldDismount)));
             ci.cancel();
         }
     }

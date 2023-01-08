@@ -31,7 +31,7 @@ public abstract class ServerLoginNetworkHandler_Mixin {
             Threading.THREAD_POOL.submit(() -> {
                 OptCarpetAddition.LOGGER.info("[OptCarpetAddition] PlayerConnectThread started." + "Player name: " + player.getGameProfile().getName());
                 ((ServerLoginNetworkHandler) (Object) this).server.getPlayerManager().onPlayerConnect(((ServerLoginNetworkHandler) (Object) this).connection, player);
-                OptCarpetAddition.LOGGER.info("[OptCarpetAddition] " + player.getGameProfile().getName() + "joined successfully.");
+                OptCarpetAddition.LOGGER.info("[OptCarpetAddition] " + player.getGameProfile().getName() + " joined successfully.");
             });
             ci.cancel();
         }

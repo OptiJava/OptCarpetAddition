@@ -1,5 +1,6 @@
 package io.github.optijava.opt_carpet_addition.mixins.async.optimizeTeleport;
 
+import io.github.optijava.opt_carpet_addition.OptCarpetAddition;
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import io.github.optijava.opt_carpet_addition.utils.threading.Threading;
 import net.minecraft.entity.Entity;
@@ -27,6 +28,8 @@ public abstract class ServerPlayerEntity_Mixin {
     )
     public void injectTeleport(ServerWorld targetWorld, double x, double y, double z, float yaw, float pitch, CallbackInfo ci) {
         if (OptCarpetSettings.optimizeTeleport) {
+            OptCarpetAddition.LOGGER.info("[OptCarpetAddition] Submit teleport task.");
+
             Threading.THREAD_POOL.submit(() -> {
                 ServerPlayerEntity thisInstance = ((ServerPlayerEntity) (Object) this);
 

@@ -1,5 +1,6 @@
 package io.github.optijava.opt_carpet_addition.mixins.async.optimizeTeleport;
 
+import io.github.optijava.opt_carpet_addition.OptCarpetAddition;
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import io.github.optijava.opt_carpet_addition.utils.threading.Threading;
 import net.minecraft.network.packet.s2c.play.PlayerPositionLookS2CPacket;
@@ -50,6 +51,7 @@ public abstract class ServerPlayNetworkHandler_Mixin {
             this.teleportRequestTick = this.ticks;
             this.player.updatePositionAndAngles(x, y, z, yaw, pitch);
 
+            OptCarpetAddition.LOGGER.info("[OptCarpetAddition] Submit teleport task.");
             Threading.THREAD_POOL.submit(() -> this.player.networkHandler.sendPacket(new PlayerPositionLookS2CPacket(x - d, y - e, z - f, yaw - g, pitch - h, flags, this.requestedTeleportId, shouldDismount)));
             ci.cancel();
         }

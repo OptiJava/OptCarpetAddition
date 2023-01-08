@@ -23,7 +23,7 @@ public class ThreadExecutor_Mixin {
             try {
                 task.run();
             } catch (ThrowableSuppression t) {
-                OptCarpetAddition.LOGGER.info("Update Suppression.");
+                OptCarpetAddition.LOGGER.info("[OptCarpetAddition] Update Suppression.");
             }
         } else {
             task.run();

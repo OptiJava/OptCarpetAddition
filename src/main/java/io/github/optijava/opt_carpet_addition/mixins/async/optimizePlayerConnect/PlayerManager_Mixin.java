@@ -17,7 +17,8 @@ public class PlayerManager_Mixin {
             method = "onPlayerConnect",
             at = @At(value = "INVOKE", target = "Ljava/util/List;add(Ljava/lang/Object;)Z")
     )
-    public boolean redirectAdd(List instance, Object entity) {
+    @SuppressWarnings("unchecked")
+    public boolean redirectAdd(@SuppressWarnings("all") List instance, Object entity) {
         if (OptCarpetSettings.optimizePlayerConnect) {
             synchronized (Threading.LOCK) {
                 instance.add(entity);

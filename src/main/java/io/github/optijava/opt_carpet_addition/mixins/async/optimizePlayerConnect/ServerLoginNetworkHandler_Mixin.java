@@ -29,7 +29,8 @@ public abstract class ServerLoginNetworkHandler_Mixin {
     public void injectAddToServer(ServerPlayerEntity player, CallbackInfo ci) {
         if (OptCarpetSettings.optimizePlayerConnect) {
             Threading.THREAD_POOL.submit(() -> {
-                OptCarpetAddition.LOGGER.info("[OptCarpetAddition] PlayerConnectThread started." + "Player name: " + player.getGameProfile().getName());
+                OptCarpetAddition.LOGGER.info("[OptCarpetAddition] PlayerConnectThread started. Thread name: " + Thread.currentThread().getName());
+                OptCarpetAddition.LOGGER.info("[OptCarpetAddition] " + player.getGameProfile().getName() + " is trying to join the server...");
                 ((ServerLoginNetworkHandler) (Object) this).server.getPlayerManager().onPlayerConnect(((ServerLoginNetworkHandler) (Object) this).connection, player);
                 OptCarpetAddition.LOGGER.info("[OptCarpetAddition] " + player.getGameProfile().getName() + " joined successfully.");
             });

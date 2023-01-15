@@ -16,7 +16,7 @@ public class EntityTrackerEntry_Mixin {
             method = "tick",
             at = @At(value = "INVOKE", target = "Ljava/util/Iterator;next()Ljava/lang/Object;")
     )
-    public Object redirectNext(Iterator instance) {
+    public Object redirectNext(@SuppressWarnings("all") Iterator instance) {
         if (OptCarpetSettings.optimizePlayerConnect) {
             synchronized (Threading.LOCK) {
                 return instance.next();

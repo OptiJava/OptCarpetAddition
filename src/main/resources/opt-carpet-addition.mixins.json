@@ -8,6 +8,7 @@
     "async.optimizePlayerConnect.EntityTrackerEntry_Mixin",
     "async.optimizePlayerConnect.PlayerManager_Mixin",
     "async.optimizePlayerConnect.ServerLoginNetworkHandler_Mixin",
+    "async.optimizePlayerConnect.ServerWorld_Mixin",
     "async.optimizeTeleport.ServerPlayerEntity_Mixin",
     "async.optimizeTeleport.ServerPlayNetworkHandler_Mixin",
     "disabledEnderManPickupGoal.EnderManEntity_Mixin",

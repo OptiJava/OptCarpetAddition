@@ -31,8 +31,12 @@ public abstract class ServerLoginNetworkHandler_Mixin {
             Threading.THREAD_POOL.submit(() -> {
                 OptCarpetAddition.LOGGER.info("[OptCarpetAddition] PlayerConnectThread started. Thread name: " + Thread.currentThread().getName());
                 OptCarpetAddition.LOGGER.info("[OptCarpetAddition] " + player.getGameProfile().getName() + " is trying to join the server...");
-                ((ServerLoginNetworkHandler) (Object) this).server.getPlayerManager().onPlayerConnect(((ServerLoginNetworkHandler) (Object) this).connection, player);
-                OptCarpetAddition.LOGGER.info("[OptCarpetAddition] " + player.getGameProfile().getName() + " joined successfully.");
+                try {
+                    ((ServerLoginNetworkHandler) (Object) this).server.getPlayerManager().onPlayerConnect(((ServerLoginNetworkHandler) (Object) this).connection, player);
+                    OptCarpetAddition.LOGGER.info("[OptCarpetAddition] " + player.getGameProfile().getName() + " joined successfully.");
+                } catch (Throwable t) {
+                    OptCarpetAddition.LOGGER.error("[OptCarpetAddition] Unexpected exception when player %s joined the game.".formatted(player.getGameProfile().getName()), t);
+                }
             });
             ci.cancel();
         }

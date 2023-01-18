@@ -2,6 +2,7 @@ package io.github.optijava.opt_carpet_addition;
 
 import carpet.settings.Rule;
 import carpet.settings.RuleCategory;
+import io.github.optijava.opt_carpet_addition.utils.config_bean.CommandLoggerConfigBean;
 import io.github.optijava.opt_carpet_addition.utils.config_bean.TpLimitConfigBean;
 import net.fabricmc.loader.api.FabricLoader;
 
@@ -58,7 +59,9 @@ public class OptCarpetSettings {
 
     // Tp whitelist/blacklist  ====================================================================
 
-    public static TpLimitConfigBean bean;
+    public static TpLimitConfigBean tpLimitConfigBean;
+
+    public static CommandLoggerConfigBean commandLoggerConfigBean;
 
     @Rule(
             desc = "Enable tp prefix blacklist",
@@ -137,4 +140,10 @@ public class OptCarpetSettings {
             category = {RuleCategory.OPTIMIZATION, RuleCategory.EXPERIMENTAL}
     )
     public static boolean optimizeTeleport = false;
+
+    @Rule(
+            desc = "Print info log when players submit command",
+            category = {RuleCategory.COMMAND, RuleCategory.FEATURE}
+    )
+    public static boolean commandLogger = false;
 }

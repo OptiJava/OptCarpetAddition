@@ -185,7 +185,7 @@ public class PlayerTpCommand {
     }
 
     private static boolean checkTpBlacklist(String name) {
-        for (String s : OptCarpetSettings.bean.tpBlacklist) {
+        for (String s : OptCarpetSettings.tpLimitConfigBean.TpBlacklist) {
             if (name.startsWith(s)) {
                 return false;
             }
@@ -194,7 +194,7 @@ public class PlayerTpCommand {
     }
 
     private static boolean checkTpWhitelist(String name) {
-        for (String s : OptCarpetSettings.bean.tpWhitelist) {
+        for (String s : OptCarpetSettings.tpLimitConfigBean.TpWhitelist) {
             if (name.startsWith(s)) {
                 return true;
             }
@@ -203,7 +203,7 @@ public class PlayerTpCommand {
     }
 
     private static boolean checkTpHereBlacklist(String name) {
-        for (String s : OptCarpetSettings.bean.tphereBlacklist) {
+        for (String s : OptCarpetSettings.tpLimitConfigBean.TphereBlacklist) {
             if (name.startsWith(s)) {
                 return false;
             }
@@ -212,7 +212,7 @@ public class PlayerTpCommand {
     }
 
     private static boolean checkTpHereWhitelist(String name) {
-        for (String s : OptCarpetSettings.bean.tphereWhitelist) {
+        for (String s : OptCarpetSettings.tpLimitConfigBean.TphereWhitelist) {
             if (name.startsWith(s)) {
                 return true;
             }

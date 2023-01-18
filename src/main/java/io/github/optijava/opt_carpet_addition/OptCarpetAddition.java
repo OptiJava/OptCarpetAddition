@@ -5,10 +5,12 @@ import carpet.CarpetServer;
 import carpet.patches.EntityPlayerMPFake;
 import carpet.utils.Messenger;
 import com.mojang.brigadier.CommandDispatcher;
+import io.github.optijava.opt_carpet_addition.commands.CommandLoggerCommand;
 import io.github.optijava.opt_carpet_addition.commands.ListAdvanceCommand;
 import io.github.optijava.opt_carpet_addition.commands.PlayerTpCommand;
 import io.github.optijava.opt_carpet_addition.commands.TpLimitCommand;
 import io.github.optijava.opt_carpet_addition.events.FixExperienceBug;
+import io.github.optijava.opt_carpet_addition.utils.CommandLogger;
 import io.github.optijava.opt_carpet_addition.utils.ConfigUtil;
 import io.github.optijava.opt_carpet_addition.utils.TpLimit;
 import net.fabricmc.api.ModInitializer;
@@ -80,10 +82,12 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
 
         // config
         if (!ConfigUtil.init()) {
-            OptCarpetAddition.LOGGER.error(" Failed to create config folder:" + OptCarpetSettings.configDirectory.toString() + File.separator + "opt-carpet-addition");
+            OptCarpetAddition.LOGGER.error("Failed to create config folder:" + OptCarpetSettings.configDirectory.toString() + File.separator + "opt-carpet-addition");
             return;
         }
+
         TpLimit.loadConfigFile();
+        CommandLogger.loadConfigFile();
     }
 
     @Override
@@ -91,6 +95,7 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
         PlayerTpCommand.registerCommands(dispatcher);
         ListAdvanceCommand.registerCommand(dispatcher);
         TpLimitCommand.registerCommand(dispatcher);
+        CommandLoggerCommand.registerCommand(dispatcher);
     }
 
     @Override

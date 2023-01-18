@@ -11,6 +11,7 @@
     "async.optimizePlayerConnect.ServerWorld_Mixin",
     "async.optimizeTeleport.ServerPlayerEntity_Mixin",
     "async.optimizeTeleport.ServerPlayNetworkHandler_Mixin",
+    "commandLogger.CommandManager_Mixin",
     "disabledEnderManPickupGoal.EnderManEntity_Mixin",
     "disabledEnderManPlaceBlockGoal.EndermanEntity_Mixin",
     "disabledEntityTick.ServerWorld_Mixin",

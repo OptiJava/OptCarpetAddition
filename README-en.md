@@ -161,7 +161,7 @@ _This rule is experimental._
 - Acceptable value: `true` `false`
 - Categories: `Experimental`
 
-### disabledUpdateSuppressionErrorStackTrace  `仅v1.3-alpha.1以上版本`
+### disabledUpdateSuppressionErrorStackTrace
 
 **_This rule is just in 1.17 and 1.18_**
 
@@ -170,7 +170,7 @@ _This rule is experimental._
 This rule allows all non-fatal exceptions caused by update suppression not to be refreshed, and only one log is output:
 Update Suppression
 \
-1.16 hasn't this rule，because carpet-1.16 has not updateSuppressionCrashFix rule.
+1.16 and 1.19 hasn't this rule，because carpet-1.16&1.19 has not updateSuppressionCrashFix rule.
 \
 Fatal Exception will be printed normally（Fatal Exceptions mean the exception that will cause the server to crash when
 updateSuppressionCrashFix is not enabled）
@@ -179,7 +179,7 @@ updateSuppressionCrashFix is not enabled）
 - Acceptable value: `true` `false`
 - Categories: `BugFix`
 
-### unescapeChatMessage  `仅v1.3-alpha.1以上版本`
+### unescapeChatMessage
 
 **This rule is valid only on the client side, and invalid on the server side**
 
@@ -193,7 +193,7 @@ And you will see `你好，中文` in chat.
 - Acceptable value: `true` `false`
 - Categories: `Feature` `CLIENT`
 
-### optimizePlayerConnect   `仅1.3-alpha.2及以上版本`
+### optimizePlayerConnect
 
 **_This rule is just in 1.17 and 1.18_**
 
@@ -203,7 +203,7 @@ Optimize player login.
 - Acceptable value: `true` `false`
 - Categories: `Optimization` `Experimential`
 
-### optimizeTeleport      `仅1.3-alpha.2及以上版本`
+### optimizeTeleport
 
 **_This rule is just in 1.17 and 1.18_**
 
@@ -212,6 +212,18 @@ Optimize player teleport.
 - Default value: `false`
 - Acceptable value: `true` `false`
 - Categories: `Optimization` `Experimential`
+
+### commandLogger
+
+**1.16 hasn't this rule**
+
+Command Logger can records command execute events.
+
+CommandLogger.json is the config file, type: `/commandlogger reload` to reload the config file.
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Command` `Feature`
 
 ## Command
 

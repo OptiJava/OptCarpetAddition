@@ -170,9 +170,9 @@ _比如你要tphere的假人叫做anti_mob，而白名单中有一个anti，那�
 - Acceptable value: `true` `false`
 - Categories: `Experimental`
 
-### disabledUpdateSuppressionErrorStackTrace  `仅v1.3-alpha.1及以上版本`
+### disabledUpdateSuppressionErrorStackTrace
 
-**_此功能仅限1.17版本_**
+**_此功能仅限1.17和1.18版本_**
 
 **_此功能必须搭配carpet规则updateSuppressionCrashFix使用，否则无效_**
 
@@ -180,7 +180,7 @@ _比如你要tphere的假人叫做anti_mob，而白名单中有一个anti，那�
 \
 必须搭配carpet规则updateSuppressionCrashFix规则使用，否则无效
 \
-1.16版本无此规则，因为1.16的carpet没有updateSuppressionCrashFix规则
+1.16和1.19版本无此规则，因为1.16和1.19的carpet没有updateSuppressionCrashFix规则
 \
 致命异常会正常输出并打印异常栈（致命异常指在不开启updateSuppressionCrashFix情况下会导致服务器崩溃的异常）
 
@@ -202,7 +202,7 @@ _比如你要tphere的假人叫做anti_mob，而白名单中有一个anti，那�
 - Acceptable value: `true` `false`
 - Categories: `Feature` `CLIENT`
 
-### optimizePlayerConnect   `仅1.3-alpha.2及以上版本`
+### optimizePlayerConnect
 
 **_仅1.17及1.18有此功能_**
 
@@ -212,7 +212,7 @@ _比如你要tphere的假人叫做anti_mob，而白名单中有一个anti，那�
 - Acceptable value: `true` `false`
 - Categories: `Optimization` `Experimential`
 
-### optimizeTeleport      `仅1.3-alpha.2及以上版本`
+### optimizeTeleport
 
 **_仅1.17及1.18有此功能_**
 
@@ -221,6 +221,18 @@ _比如你要tphere的假人叫做anti_mob，而白名单中有一个anti，那�
 - Default value: `false`
 - Acceptable value: `true` `false`
 - Categories: `Optimization` `Experimential`
+
+### commandLogger
+
+**1.16无此功能，因为1.16分支已经停止维护**
+
+这个规则可以记录每一个玩家执行的每一个指令
+
+CommandLogger.json配置文件可以配置白名单、黑名单等，修改配置文件后应执行/commandlogger reload指令热重载
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Command` `Feature`
 
 ## Command
 

@@ -20,13 +20,14 @@ public class CommandLogger {
                 return;
             }
 
-            if (!ConfigUtil.write(FILE_NAME, "{\n" +
-                    "  \"logAllCommand\": false,\n" +
-                    "  \"LogCommandWhitelist\": [],\n" +
-                    "  \"LogCommandBlacklist\": [],\n" +
-                    "  \"LogCommandPrefixWhitelist\": [],\n" +
-                    "  \"LogCommandPrefixBlacklist\": []\n" +
-                    "}")) {
+            if (!ConfigUtil.write(FILE_NAME, """
+                    {
+                      "logAllCommand": false,
+                      "LogCommandWhitelist": [],
+                      "LogCommandBlacklist": [],
+                      "LogCommandPrefixWhitelist": [],
+                      "LogCommandPrefixBlacklist": []
+                    }""")) {
                 OptCarpetAddition.LOGGER.error("Failed to init config file: " + FILE_NAME);
                 return;
             }

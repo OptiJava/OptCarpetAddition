@@ -9,6 +9,7 @@
     "async.optimizePlayerConnect.PlayerManager_Mixin",
     "async.optimizePlayerConnect.ServerLoginNetworkHandler_Mixin",
     "async.optimizePlayerConnect.ServerWorld_Mixin",
+    "async.optimizePlayerConnect.World_Mixin",
     "async.optimizeTeleport.ServerPlayerEntity_Mixin",
     "async.optimizeTeleport.ServerPlayNetworkHandler_Mixin",
     "commandLogger.CommandManager_Mixin",

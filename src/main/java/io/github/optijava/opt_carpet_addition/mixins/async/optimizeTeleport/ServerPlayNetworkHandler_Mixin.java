@@ -39,11 +39,11 @@ public abstract class ServerPlayNetworkHandler_Mixin {
     )
     public void injectRequestTeleport(double x, double y, double z, float yaw, float pitch, Set<PlayerPositionLookS2CPacket.Flag> flags, boolean shouldDismount, CallbackInfo ci) {
         if (OptCarpetSettings.optimizeTeleport) {
-            double d = flags.contains((Object) PlayerPositionLookS2CPacket.Flag.X) ? this.player.getX() : 0.0;
-            double e = flags.contains((Object) PlayerPositionLookS2CPacket.Flag.Y) ? this.player.getY() : 0.0;
-            double f = flags.contains((Object) PlayerPositionLookS2CPacket.Flag.Z) ? this.player.getZ() : 0.0;
-            float g = flags.contains((Object) PlayerPositionLookS2CPacket.Flag.Y_ROT) ? this.player.getYaw() : 0.0f;
-            float h = flags.contains((Object) PlayerPositionLookS2CPacket.Flag.X_ROT) ? this.player.getPitch() : 0.0f;
+            double d = flags.contains(PlayerPositionLookS2CPacket.Flag.X) ? this.player.getX() : 0.0;
+            double e = flags.contains(PlayerPositionLookS2CPacket.Flag.Y) ? this.player.getY() : 0.0;
+            double f = flags.contains(PlayerPositionLookS2CPacket.Flag.Z) ? this.player.getZ() : 0.0;
+            float g = flags.contains(PlayerPositionLookS2CPacket.Flag.Y_ROT) ? this.player.getYaw() : 0.0f;
+            float h = flags.contains(PlayerPositionLookS2CPacket.Flag.X_ROT) ? this.player.getPitch() : 0.0f;
             this.requestedTeleportPos = new Vec3d(x, y, z);
             if (++this.requestedTeleportId == Integer.MAX_VALUE) {
                 this.requestedTeleportId = 0;

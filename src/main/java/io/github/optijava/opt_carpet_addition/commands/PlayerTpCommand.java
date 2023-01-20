@@ -60,30 +60,31 @@ public class PlayerTpCommand {
 
             if (server.getPlayerManager().getPlayer(target) instanceof EntityPlayerMPFake) {
 
-                if (OptCarpetSettings.commandTpToFakePlayer.equals("true")) {
-                    executeTp(commandSourcePlayerName, context, server);
-                } else if (OptCarpetSettings.commandTpToFakePlayer.equals("ops")) {
-                    if ((server.getPlayerManager().isOperator(context.getSource().getPlayer().getGameProfile()))) {
-                        executeTp(commandSourcePlayerName, context, server);
-                    } else {
-                        Messenger.m(context.getSource(), "r You have no permission to teleport to fake player.You aren't op.");
+                switch (OptCarpetSettings.commandTpToFakePlayer) {
+                    case "true" -> executeTp(commandSourcePlayerName, context, server);
+                    case "ops" -> {
+                        if ((server.getPlayerManager().isOperator(context.getSource().getPlayer().getGameProfile()))) {
+                            executeTp(commandSourcePlayerName, context, server);
+                        } else {
+                            Messenger.m(context.getSource(), "r You have no permission to teleport to fake player.You aren't op.");
+                        }
                     }
-                } else if (OptCarpetSettings.commandTpToFakePlayer.equals("false")) {
-                    Messenger.m(context.getSource(), "r Anybody can't teleport to fake player.");
+                    case "false" -> Messenger.m(context.getSource(), "r Anybody can't teleport to fake player.");
                 }
 
             } else {
 
-                if (OptCarpetSettings.allowTpToRealPlayer.equals("true")) {
-                    server.getCommandManager().execute(server.getCommandSource(), "tp " + commandSourcePlayerName + " " + target);
-                } else if (OptCarpetSettings.allowTpToRealPlayer.equals("ops")) {
-                    if ((server.getPlayerManager().isOperator(context.getSource().getPlayer().getGameProfile()))) {
-                        server.getCommandManager().execute(server.getCommandSource(), "tp " + commandSourcePlayerName + " " + target);
-                    } else {
-                        Messenger.m(context.getSource(), "r You have no permission to teleport to real player.You aren't op.");
+                switch (OptCarpetSettings.allowTpToRealPlayer) {
+                    case "true" ->
+                            server.getCommandManager().execute(server.getCommandSource(), "tp " + commandSourcePlayerName + " " + target);
+                    case "ops" -> {
+                        if ((server.getPlayerManager().isOperator(context.getSource().getPlayer().getGameProfile()))) {
+                            server.getCommandManager().execute(server.getCommandSource(), "tp " + commandSourcePlayerName + " " + target);
+                        } else {
+                            Messenger.m(context.getSource(), "r You have no permission to teleport to real player.You aren't op.");
+                        }
                     }
-                } else if (OptCarpetSettings.allowTpToRealPlayer.equals("false")) {
-                    Messenger.m(context.getSource(), "r Anybody can't teleport to real player.");
+                    case "false" -> Messenger.m(context.getSource(), "r Anybody can't teleport to real player.");
                 }
 
             }
@@ -124,30 +125,31 @@ public class PlayerTpCommand {
 
             if (server.getPlayerManager().getPlayer(target) instanceof EntityPlayerMPFake) {
 
-                if (OptCarpetSettings.commandTpHereFakePlayer.equals("true")) {
-                    executeTpHere(commandSourcePlayerName, context, server);
-                } else if (OptCarpetSettings.commandTpHereFakePlayer.equals("ops")) {
-                    if ((server.getPlayerManager().isOperator(context.getSource().getPlayer().getGameProfile()))) {
-                        executeTpHere(commandSourcePlayerName, context, server);
-                    } else {
-                        Messenger.m(context.getSource(), "r You have no permission to teleport here fake player.You aren't op.");
+                switch (OptCarpetSettings.commandTpHereFakePlayer) {
+                    case "true" -> executeTpHere(commandSourcePlayerName, context, server);
+                    case "ops" -> {
+                        if ((server.getPlayerManager().isOperator(context.getSource().getPlayer().getGameProfile()))) {
+                            executeTpHere(commandSourcePlayerName, context, server);
+                        } else {
+                            Messenger.m(context.getSource(), "r You have no permission to teleport here fake player.You aren't op.");
+                        }
                     }
-                } else if (OptCarpetSettings.commandTpHereFakePlayer.equals("false")) {
-                    Messenger.m(context.getSource(), "r Anybody can't teleport here fake player.");
+                    case "false" -> Messenger.m(context.getSource(), "r Anybody can't teleport here fake player.");
                 }
 
             } else {
 
-                if (OptCarpetSettings.allowTpHereRealPlayer.equals("true")) {
-                    server.getCommandManager().execute(server.getCommandSource(), "tp " + target + " " + commandSourcePlayerName);
-                } else if (OptCarpetSettings.allowTpHereRealPlayer.equals("ops")) {
-                    if ((server.getPlayerManager().isOperator(context.getSource().getPlayer().getGameProfile()))) {
-                        server.getCommandManager().execute(server.getCommandSource(), "tp " + target + " " + commandSourcePlayerName);
-                    } else {
-                        Messenger.m(context.getSource(), "r You have no permission to teleport here real player.You aren't op.");
+                switch (OptCarpetSettings.allowTpHereRealPlayer) {
+                    case "true" ->
+                            server.getCommandManager().execute(server.getCommandSource(), "tp " + target + " " + commandSourcePlayerName);
+                    case "ops" -> {
+                        if ((server.getPlayerManager().isOperator(context.getSource().getPlayer().getGameProfile()))) {
+                            server.getCommandManager().execute(server.getCommandSource(), "tp " + target + " " + commandSourcePlayerName);
+                        } else {
+                            Messenger.m(context.getSource(), "r You have no permission to teleport here real player.You aren't op.");
+                        }
                     }
-                } else if (OptCarpetSettings.allowTpHereRealPlayer.equals("false")) {
-                    Messenger.m(context.getSource(), "r Anybody can't teleport here real player.");
+                    case "false" -> Messenger.m(context.getSource(), "r Anybody can't teleport here real player.");
                 }
 
             }

@@ -85,7 +85,7 @@ modrinth {
     }
     gameVersions = ["1.17", "1.17.1"] // Must be an array, even with only one version
     versionNumber = project.mod_version
-    versionName = "v" + project
+    versionName = "v" + project.mod_version + " For Minecraft 1.17"
 
     // Upload
     uploadFile = remapJar

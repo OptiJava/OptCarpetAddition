@@ -5,10 +5,7 @@ import carpet.CarpetServer;
 import carpet.patches.EntityPlayerMPFake;
 import carpet.utils.Messenger;
 import com.mojang.brigadier.CommandDispatcher;
-import io.github.optijava.opt_carpet_addition.commands.CommandLoggerCommand;
-import io.github.optijava.opt_carpet_addition.commands.ListAdvanceCommand;
-import io.github.optijava.opt_carpet_addition.commands.PlayerTpCommand;
-import io.github.optijava.opt_carpet_addition.commands.TpLimitCommand;
+import io.github.optijava.opt_carpet_addition.commands.*;
 import io.github.optijava.opt_carpet_addition.events.FixExperienceBug;
 import io.github.optijava.opt_carpet_addition.utils.CommandLogger;
 import io.github.optijava.opt_carpet_addition.utils.ConfigUtil;
@@ -96,6 +93,7 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
         ListAdvanceCommand.registerCommand(dispatcher);
         TpLimitCommand.registerCommand(dispatcher);
         CommandLoggerCommand.registerCommand(dispatcher);
+        CrashCommand.registerCommand(dispatcher);
     }
 
     @Override

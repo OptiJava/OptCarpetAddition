@@ -1,4 +1,4 @@
-package io.github.optijava.opt_carpet_addition.mixins.unescapeChatMessage;
+package io.github.optijava.opt_carpet_addition.mixins.rule.unescapeChatMessage;
 
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import net.minecraft.network.packet.c2s.play.ChatMessageC2SPacket;

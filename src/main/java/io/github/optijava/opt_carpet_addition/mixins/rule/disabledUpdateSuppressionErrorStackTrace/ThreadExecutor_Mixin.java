@@ -1,4 +1,4 @@
-package io.github.optijava.opt_carpet_addition.mixins.disabledUpdateSuppressionErrorStackTrace;
+package io.github.optijava.opt_carpet_addition.mixins.rule.disabledUpdateSuppressionErrorStackTrace;
 
 import carpet.helpers.ThrowableSuppression;
 import io.github.optijava.opt_carpet_addition.OptCarpetAddition;

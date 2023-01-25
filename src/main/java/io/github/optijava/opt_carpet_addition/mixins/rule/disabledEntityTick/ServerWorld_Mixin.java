@@ -1,4 +1,4 @@
-package io.github.optijava.opt_carpet_addition.mixins.disabledEntityTick;
+package io.github.optijava.opt_carpet_addition.mixins.rule.disabledEntityTick;
 
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import net.minecraft.server.world.ServerWorld;

@@ -1,4 +1,4 @@
-package io.github.optijava.opt_carpet_addition.mixins.commandLogger;
+package io.github.optijava.opt_carpet_addition.mixins.rule.commandLogger;
 
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import net.minecraft.server.command.CommandManager;

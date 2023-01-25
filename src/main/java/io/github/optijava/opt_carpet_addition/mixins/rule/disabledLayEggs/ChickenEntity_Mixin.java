@@ -1,4 +1,4 @@
-package io.github.optijava.opt_carpet_addition.mixins.disabledLayEggs;
+package io.github.optijava.opt_carpet_addition.mixins.rule.disabledLayEggs;
 
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import net.minecraft.entity.passive.ChickenEntity;

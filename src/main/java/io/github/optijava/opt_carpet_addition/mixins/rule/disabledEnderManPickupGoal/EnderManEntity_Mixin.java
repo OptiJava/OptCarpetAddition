@@ -1,4 +1,4 @@
-package io.github.optijava.opt_carpet_addition.mixins.disabledEnderManPickupGoal;
+package io.github.optijava.opt_carpet_addition.mixins.rule.disabledEnderManPickupGoal;
 
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import net.minecraft.entity.mob.EndermanEntity;

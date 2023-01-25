@@ -1,4 +1,4 @@
-package io.github.optijava.opt_carpet_addition.mixins.async;
+package io.github.optijava.opt_carpet_addition.mixins.rule.async;
 
 import io.github.optijava.opt_carpet_addition.OptCarpetAddition;
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;

@@ -1,4 +1,4 @@
-package io.github.optijava.opt_carpet_addition.mixins.async.optimizePlayerConnect;
+package io.github.optijava.opt_carpet_addition.mixins.rule.async.optimizePlayerConnect;
 
 import com.google.common.collect.Lists;
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;

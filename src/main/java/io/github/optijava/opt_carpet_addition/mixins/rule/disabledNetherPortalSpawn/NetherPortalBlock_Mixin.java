@@ -1,4 +1,4 @@
-package io.github.optijava.opt_carpet_addition.mixins.disabledNetherPortalSpawn;
+package io.github.optijava.opt_carpet_addition.mixins.rule.disabledNetherPortalSpawn;
 
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import net.minecraft.block.NetherPortalBlock;

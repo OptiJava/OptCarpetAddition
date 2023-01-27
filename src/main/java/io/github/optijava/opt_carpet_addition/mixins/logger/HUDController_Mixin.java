@@ -14,7 +14,8 @@ import java.util.List;
 public class HUDController_Mixin {
     @Inject(
             method = "update_hud",
-            at = @At("HEAD")
+            at = @At("HEAD"),
+            remap = false
     )
     private static void injectUpdateHUD(MinecraftServer server, List<ServerPlayerEntity> force, CallbackInfo ci) {
 

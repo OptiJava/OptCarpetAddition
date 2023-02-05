@@ -20,7 +20,9 @@
     "rule.disabledEntityTick.ServerWorld_Mixin",
     "rule.disabledLayEggs.ChickenEntity_Mixin",
     "rule.disabledNetherPortalSpawn.NetherPortalBlock_Mixin",
-    "rule.disabledUpdateSuppressionErrorStackTrace.ThreadExecutor_Mixin"
+    "rule.disabledUpdateSuppressionErrorStackTrace.ThreadExecutor_Mixin",
+    "rule.dropperCrashFix.DispenserBlock_Mixin",
+    "rule.dropperCrashFix.DropperBlock_Mixin"
   ],
   "client": [
     "rule.unescapeChatMessage.ChatMessageC2SPacket_Mixin",

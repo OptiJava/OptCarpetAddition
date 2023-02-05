@@ -146,4 +146,11 @@ public class OptCarpetSettings {
             category = {RuleCategory.COMMAND, RuleCategory.FEATURE}
     )
     public static boolean commandLogger = false;
+
+    @Rule(
+            desc = "Dropper crash fix",
+            category = RuleCategory.BUGFIX
+    )
+    public static boolean dropperCrashFix = false;
 }
+

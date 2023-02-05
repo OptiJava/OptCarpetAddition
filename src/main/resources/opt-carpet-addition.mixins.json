@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_16",
   "mixins": [
     "logger.HUDController_Mixin",
+    "logger.updateSuppression.World_Mixin",
     "rule.async.MinecraftServer_Mixin",
     "rule.async.optimizePlayerConnect.EntityTrackerEntry_Mixin",
     "rule.async.optimizePlayerConnect.PlayerManager_Mixin",

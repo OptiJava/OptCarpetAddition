@@ -25,15 +25,17 @@ jobs:
       - name: checkout repository
         uses: actions/checkout@v3.3.0
       - name: validate gradle wrapper
+        if: ${{ !startsWith(github.event.head_commit.message, '[ci skip]') }}
         uses: gradle/wrapper-validation-action@v1
       - name: setup jdk ${{ matrix.java }}
+        if: ${{ !startsWith(github.event.head_commit.message, '[ci skip]') }}
         uses: actions/setup-java@v2
         with:
           java-version: ${{ matrix.java }}
           distribution: 'adopt'
           java-package: jdk
       - name: make gradle wrapper executable
-        if: ${{ runner.os != 'Windows' }}
+        if: ${{ runner.os != 'Windows' && !startsWith(github.event.head_commit.message, '[ci skip]') }}
         run: chmod +x ./gradlew
       - name: clean
         if: ${{ !startsWith(github.event.head_commit.message, '[ci skip]') }}
@@ -48,7 +50,24 @@ jobs:
           name: Artifacts
           path: build/libs/
       - name: upload to modrinth
-        if: ${{ runner.os == 'Linux' && matrix.java == '17' && startsWith(github.event.head_commit.message, 'update mod version to ') }}
+        if: ${{ runner.os == 'Linux' && matrix.java == '17' && (startsWith(github.event.head_commit.message, 'update mod version to ') || startsWith(github.event.head_commit.message, '[release skip] update mod version to ')) }}
         run: ./gradlew modrinth
         env:
           MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+      - name: parse mod version
+        id: get_mod_version
+        if: ${{ runner.os == 'Linux' && matrix.java == '17' && (startsWith(github.event.head_commit.message, 'update mod version to ') || startsWith(github.event.head_commit.message, '[modrinth skip] update mod version to ')) }}
+        run: |
+          mod_version=${GITHUB_EVENT_HEAD_COMMIT_MESSAGE:22}
+          echo "mod_version=$mod_version" >> $GITHUB_OUTPUT
+      - name: create github release
+        if: ${{ runner.os == 'Linux' && matrix.java == '17' && (startsWith(github.event.head_commit.message, 'update mod version to ') || startsWith(github.event.head_commit.message, '[modrinth skip] update mod version to ')) }}
+        uses: softprops/action-gh-release@v0.1.15
+        with:
+          files: build/libs/*.jar
+          body_path: release.md
+          name: "v${{ steps.get_mod_version.outputs.mod_version }} For Minecraft 1.17"
+          tag_name: "v${{ steps.get_mod_version.outputs.mod_version }}"
+          target_commitish: ${{ github.sha }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          generate_release_notes: true

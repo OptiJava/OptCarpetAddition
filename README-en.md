@@ -225,6 +225,18 @@ CommandLogger.json is the config file, type: `/commandlogger reload` to reload t
 - Acceptable value: `true` `false`
 - Categories: `Command` `Feature`
 
+### dropperCrashFix
+
+**1.16 hasn't this rule**
+
+Fix bug: dropper may cause server crash
+
+Please watch [kygo_life's bilibili video](https://www.bilibili.com/video/BV1HM411z7jz/?spm_id_from=333.999.0.0)
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `BugFix`
+
 ## Command
 
 ### player xxx tp
@@ -246,3 +258,17 @@ CommandLogger.json is the config file, type: `/commandlogger reload` to reload t
 - 'tpmanager tphere whitelist add xxx' add prefix xxx to tphere whitelist
 - 'tpmanager tphere blacklist add xxx' add prefix xxx to tphere blacklist
 - 'tpmanager tp/tphere blacklist/whitelist remove' remove a prefix
+
+### crash
+
+- crash!
+
+## Logger
+
+### disk
+
+- A HUD logger，show disk usage in real time
+
+### updateSuppression
+
+- Log every update suppression

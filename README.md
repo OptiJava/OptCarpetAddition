@@ -234,6 +234,18 @@ CommandLogger.json配置文件可以配置白名单、黑名单等，修改配�
 - Acceptable value: `true` `false`
 - Categories: `Command` `Feature`
 
+### dropperCrashFix
+
+**1.16无此功能，因为1.16分支已经停止维护**
+
+修复了方块实体替换导致投掷器激活时崩服的bug
+
+详情请看[kygo_life的视频](https://www.bilibili.com/video/BV1HM411z7jz/?spm_id_from=333.999.0.0)
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `BugFix`
+
 ## Command
 
 ### player xxx tp
@@ -255,3 +267,18 @@ CommandLogger.json配置文件可以配置白名单、黑名单等，修改配�
 - tpmanager tphere whitelist add xxx 将前缀xxx添加到tphere白名单
 - tpmanager tphere blacklist add xxx 将前缀xxx添加到tphere黑名单
 - remove就是移除后缀，以此类推  ~~我都说这么细了，应该都能理解吧awa~~
+
+### crash
+
+- 顾名思义  ~~别问我有什么用，我猜在切完光照更新抑制刷怪塔之后这个命令应该有点用~~
+- 打完/crash之后需要再打/crash confirm才会崩服
+
+## Logger
+
+### disk
+
+- 是HUD Logger，实时查看硬盘使用情况
+
+### updateSuppression
+
+- 记录每一次更新抑制

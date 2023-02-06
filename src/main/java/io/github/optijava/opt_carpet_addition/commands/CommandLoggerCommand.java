@@ -1,5 +1,6 @@
 package io.github.optijava.opt_carpet_addition.commands;
 
+import carpet.utils.Messenger;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
@@ -20,6 +21,7 @@ public class CommandLoggerCommand {
 
     public static int reload(CommandContext<ServerCommandSource> context) {
         CommandLogger.reload();
+        Messenger.m(context.getSource(), "Command Logger Reloaded.");
         return 1;
     }
 }

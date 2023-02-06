@@ -58,6 +58,7 @@ jobs:
         with:
           artifacts: "build/libs/*.jar"
           bodyFile: "release.md"
+          commit: "1.17-fabric"
           generateReleaseNotes: true
           name: "v${github.event.head_commit.message:22}"
           tag: "v${github.event.head_commit.message:22}"

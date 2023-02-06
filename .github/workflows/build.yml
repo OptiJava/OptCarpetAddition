@@ -59,6 +59,6 @@ jobs:
           artifacts: "build/libs/*.jar"
           bodyFile: "release.md"
           generateReleaseNotes: true
-          name: 'v''${github.event.head_commit.message:22}
+          name: 'v'${github.event.head_commit.message:22}
           tag: 'v'${github.event.head_commit.message:22}
           token: ${{ secrets.TOKEN }}

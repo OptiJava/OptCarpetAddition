@@ -100,9 +100,6 @@ modrinth {
 
     // ChangeLogs
     changelog = "Got full change logs in [GitHub](https://github.com/OptiJava/OptCarpetAddition/releases)."
-
-    System.properties.put("MOD_VERSION", 'v' + project.mod_version)
-    System.properties.put("RELEASE_NAME", versionName)
 }
 
 // configure the maven publication

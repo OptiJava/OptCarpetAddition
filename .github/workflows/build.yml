@@ -57,7 +57,7 @@ jobs:
         uses: tvdias/github-tagger@v0.0.2
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
-          tag: "v${github.event.head_commit.message:22}"
+          tag: "v${{ github.event.head_commit.message:22 }}"
       - name: create github release
         if: ${{ runner.os == 'Linux' && matrix.java == '17' && startsWith(github.event.head_commit.message, 'update mod version to ') }}
         uses: ncipollo/release-action@v1.12.0
@@ -66,6 +66,6 @@ jobs:
           bodyFile: "release.md"
           commit: ${{ github.sha }}
           generateReleaseNotes: true
-          name: "v${github.event.head_commit.message:22}"
-          tag: "v${github.event.head_commit.message:22}"
+          name: "v${{ github.event.head_commit.message:22 }}"
+          tag: "v${{ github.event.head_commit.message:22 }}"
           token: ${{ secrets.GITHUB_TOKEN }}

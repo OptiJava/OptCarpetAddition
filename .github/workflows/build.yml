@@ -58,7 +58,9 @@ jobs:
         id: get_mod_version
         if: ${{ runner.os == 'Linux' && matrix.java == '17' && (startsWith(github.event.head_commit.message, 'update mod version to ') || startsWith(github.event.head_commit.message, '[modrinth skip] update mod version to ')) }}
         run: |
-          mod_version=${GITHUB_EVENT_HEAD_COMMIT_MESSAGE:22}
+          mod_version=${GITHUB_EVENT_HEAD-COMMIT_MESSAGE:22}
+          echo "${GITHUB_EVENT_HEAD-COMMIT_MESSAGE}"
+          echo "$mod_version"
           echo "mod_version=$mod_version" >> $GITHUB_OUTPUT
       - name: create github release
         if: ${{ runner.os == 'Linux' && matrix.java == '17' && (startsWith(github.event.head_commit.message, 'update mod version to ') || startsWith(github.event.head_commit.message, '[modrinth skip] update mod version to ')) }}

@@ -54,14 +54,3 @@ jobs:
         run: ./gradlew modrinth
         env:
           MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
-      - name: create github release
-        if: ${{ runner.os == 'Linux' && matrix.java == '17' && startsWith(github.event.head_commit.message, 'update mod version to ') }}
-        uses: softprops/action-gh-release@v0.1.15
-        with:
-          files: build/libs/*.jar
-          body_path: release.md
-          name: "v${{ vars.mod_version }} For Minecraft 1.17"
-          tag_name: "v${{ vars.mod_version }}"
-          target_commitish: ${{ github.sha }}
-          token: ${{ secrets.GITHUB_TOKEN }}
-          generate_release_notes: true

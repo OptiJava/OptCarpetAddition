@@ -152,5 +152,11 @@ public class OptCarpetSettings {
             category = RuleCategory.BUGFIX
     )
     public static boolean dropperCrashFix = false;
+
+    @Rule(
+            desc = "Always spawn offline fake player to reduce lagging",
+            category = RuleCategory.OPTIMIZATION
+    )
+    public static boolean optimizeFakePlayerSpawn = false;
 }
 

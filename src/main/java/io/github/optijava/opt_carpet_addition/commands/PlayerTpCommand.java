@@ -56,8 +56,6 @@ public class PlayerTpCommand {
         try {
             final String commandSourcePlayerName = context.getSource().getPlayer().getGameProfile().getName();
 
-            OptCarpetAddition.LOGGER.info(commandSourcePlayerName + " submit command: player " + StringArgumentType.getString(context, COMMAND_PREFIX) + " tp");
-
             if (server.getPlayerManager().getPlayer(target) instanceof EntityPlayerMPFake) {
 
                 switch (OptCarpetSettings.commandTpToFakePlayer) {
@@ -120,8 +118,6 @@ public class PlayerTpCommand {
 
         try {
             final String commandSourcePlayerName = context.getSource().getPlayer().getGameProfile().getName();
-
-            OptCarpetAddition.LOGGER.info(commandSourcePlayerName + " submit command: player " + target + " tphere");
 
             if (server.getPlayerManager().getPlayer(target) instanceof EntityPlayerMPFake) {
 

@@ -50,7 +50,7 @@ jobs:
           name: Artifacts
           path: build/libs/
       - name: upload to modrinth
-        if: ${{ runner.os == 'Linux' && matrix.java == '17' && startsWith(github.event.head_commit.message, 'update mod version to ') }}
+        if: ${{ runner.os == 'Linux' && matrix.java == '17' && startsWith(github.event.head_commit.message, 'update mod version to ') && !startsWith(github.action_ref, 'v') }}
         run: ./gradlew modrinth
         env:
           MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}

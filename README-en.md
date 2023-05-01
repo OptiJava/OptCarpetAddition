@@ -237,6 +237,18 @@ Please watch [kygo_life's bilibili video](https://www.bilibili.com/video/BV1HM41
 - Acceptable value: `true` `false`
 - Categories: `BugFix`
 
+### optimizeFakePlayerSpawn
+
+**1.16 hasn't this rule**
+
+Fix bug: lagging when spawn bot because mojang server is too slow :(
+
+This rule force any bot use offline uuid.
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Optimization`
+
 ## Command
 
 ### player xxx tp

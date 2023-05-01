@@ -246,6 +246,16 @@ CommandLogger.json配置文件可以配置白名单、黑名单等，修改配�
 - Acceptable value: `true` `false`
 - Categories: `BugFix`
 
+### optimizeFakePlayerSpawn
+
+**1.16无此功能，因为1.16分支已经停止维护**
+
+如果你的服务器连接mojang服务器的时间长，spawn假人的时候就会卡顿一会，此规则强制所有假人使用离线uuid，解决这一问题（但是也许引发新的问题
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Optimization`
+
 ## Command
 
 ### player xxx tp

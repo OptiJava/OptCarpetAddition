@@ -14,7 +14,7 @@ jobs:
     strategy:
       matrix:
         # Use these Java versions
-        java: [ 17 ]
+        java: [ 16, 17, 20 ]
         # and run on both Linux and Windows
         os: [
           ubuntu-latest,

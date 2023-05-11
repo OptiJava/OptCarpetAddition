@@ -24,7 +24,7 @@ public class ListAdvanceCommand {
             MinecraftServer minecraftServer = context.getSource().getServer();
             StringBuilder sb = new StringBuilder();
             for (ServerPlayerEntity s : minecraftServer.getPlayerManager().getPlayerList()) {
-                sb.append(s.getGameProfile().getName()).append("    ").append(s.interactionManager.getGameMode().getName()).append("    ").append(s.pingMilliseconds).append("ms    ").append(s.getGameProfile().getId().toString()).append("\n");
+                sb.append(s.getGameProfile().getName()).append("    ").append(s.interactionManager.getGameMode().getName()).append("    ").append(s.pingMilliseconds).append("ms    ").append(s.getIp()).append("    ").append(s.getGameProfile().getId().toString()).append("\n");
             }
             OptCarpetAddition.LOGGER.info(sb.toString());
             context.getSource().sendFeedback(new LiteralText(sb.toString()), false);

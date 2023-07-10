@@ -14,6 +14,8 @@
     "rule.async.optimizePlayerConnect.World_Mixin",
     "rule.async.optimizeTeleport.ServerPlayerEntity_Mixin",
     "rule.async.optimizeTeleport.ServerPlayNetworkHandler_Mixin",
+    "rule.cceSuppressionCrashFix.MinecraftServer_Mixin",
+    "rule.cceSuppressionCrashFix.ShulkerBoxBlock_Mixin",
     "rule.commandLogger.CommandManager_Mixin",
     "rule.disabledEnderManPickupGoal.EnderManEntity_Mixin",
     "rule.disabledEnderManPlaceBlockGoal.EndermanEntity_Mixin",

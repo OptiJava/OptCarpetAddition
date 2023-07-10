@@ -158,5 +158,11 @@ public class OptCarpetSettings {
             category = RuleCategory.OPTIMIZATION
     )
     public static boolean optimizeFakePlayerSpawn = false;
+
+    @Rule(
+            desc = "Fix CCE Suppression crashes",
+            category = {RuleCategory.BUGFIX, RuleCategory.EXPERIMENTAL}
+    )
+    public static boolean cceSuppressionCrashFix = false;
 }
 

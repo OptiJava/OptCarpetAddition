@@ -37,9 +37,6 @@ jobs:
       - name: make gradle wrapper executable
         if: ${{ runner.os != 'Windows' && !startsWith(github.event.head_commit.message, '[ci skip]') }}
         run: chmod +x ./gradlew
-      - name: clean
-        if: ${{ !startsWith(github.event.head_commit.message, '[ci skip]') }}
-        run: ./gradlew clean
       - name: build
         if: ${{ !startsWith(github.event.head_commit.message, '[ci skip]') }}
         run: ./gradlew build

@@ -249,6 +249,16 @@ This rule force any bot use offline uuid.
 - Acceptable value: `true` `false`
 - Categories: `Optimization`
 
+### cceSuppressionCrashFix
+
+Prevent CCE Suppression Crashes，watch [Void0's bilibili video](https://www.bilibili.com/video/BV1Hu4y1o71G/) for more infomation.
+
+**Experimential rule**
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `BugFix` `Experimential`
+
 ## Command
 
 ### player xxx tp
@@ -284,3 +294,7 @@ This rule force any bot use offline uuid.
 ### updateSuppression
 
 - Log every update suppression
+
+### cceSuppressionCrash
+
+- CCE suppressed crashes logger，is simular to carpet rule `updateSuppressedCrash`

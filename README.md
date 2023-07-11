@@ -256,6 +256,16 @@ CommandLogger.json配置文件可以配置白名单、黑名单等，修改配�
 - Acceptable value: `true` `false`
 - Categories: `Optimization`
 
+### cceSuppressionCrashFix
+
+防止cce更新抑制器导致服务器崩溃，详情请看[Void0的视频](https://www.bilibili.com/video/BV1Hu4y1o71G/)
+
+**实验性规则**
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `BugFix` `Experimential`
+
 ## Command
 
 ### player xxx tp
@@ -292,3 +302,6 @@ CommandLogger.json配置文件可以配置白名单、黑名单等，修改配�
 ### updateSuppression
 
 - 记录每一次更新抑制
+
+### cceSuppressionCrash
+- CCE更新抑制器崩溃记录，类似于carpet的`updateSuppressedCrash`

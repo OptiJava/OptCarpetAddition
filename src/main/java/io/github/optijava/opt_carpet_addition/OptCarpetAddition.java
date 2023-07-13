@@ -13,6 +13,9 @@ import io.github.optijava.opt_carpet_addition.utils.ConfigUtil;
 import io.github.optijava.opt_carpet_addition.utils.TpLimit;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.entity.event.v1.ServerEntityWorldChangeEvents;
+//#if MC >= 11900
+//$$ import net.minecraft.command.CommandRegistryAccess;
+//#endif
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.world.GameMode;
@@ -40,8 +43,16 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
         CarpetServer.settingsManager.parseSettingsClass(OptCarpetSettings.class);
 
         // add rule observer
+        //#if MC >= 11900
+        //$$ CarpetServer.settingsManager.registerRuleObserver(((serverCommandSource, rule, s) -> {
+        //#else
         CarpetServer.settingsManager.addRuleObserver(((serverCommandSource, rule, s) -> {
+        //#endif
+            //#if MC >= 11900
+            //$$ if (Objects.equals(rule.name(), "forceFakePlayerGameMode") && !Objects.equals(OptCarpetSettings.forceFakePlayerGameMode, "false")) {
+            //#else
             if (Objects.equals(rule.name, "forceFakePlayerGameMode") && !Objects.equals(OptCarpetSettings.forceFakePlayerGameMode, "false")) {
+            //#endif
                 GameMode gameMode = GameMode.SURVIVAL;
 
                 if (OptCarpetSettings.forceFakePlayerGameMode.equals("creative")) {
@@ -57,22 +68,35 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
                 }
             }
 
+            //#if MC >= 11900
+            //$$ if (rule.name().equals("enableTpPrefixBlacklist") && OptCarpetSettings.enableTpPrefixBlacklist && OptCarpetSettings.enableTpPrefixWhitelist) {
+            //#else
             if (rule.name.equals("enableTpPrefixBlacklist") && OptCarpetSettings.enableTpPrefixBlacklist && OptCarpetSettings.enableTpPrefixWhitelist) {
+            //#endif
                 OptCarpetSettings.enableTpPrefixBlacklist = false;
                 Messenger.m(serverCommandSource, "r You can't enable TpPrefixBlacklist because you have enabled TpPrefixWhitelist");
             }
-
+            //#if MC >= 11900
+            //$$ if (rule.name().equals("enableTpPrefixWhitelist") && OptCarpetSettings.enableTpPrefixWhitelist && OptCarpetSettings.enableTpPrefixBlacklist) {
+            //#else
             if (rule.name.equals("enableTpPrefixWhitelist") && OptCarpetSettings.enableTpPrefixWhitelist && OptCarpetSettings.enableTpPrefixBlacklist) {
+            //#endif
                 OptCarpetSettings.enableTpPrefixWhitelist = false;
                 Messenger.m(serverCommandSource, "r You can't enable TpPrefixWhitelist because you have enabled TpPrefixBlacklist");
             }
-
+            //#if MC >= 11900
+            //$$ if (rule.name().equals("enableTpherePrefixWhitelist") && OptCarpetSettings.enableTpHerePrefixWhitelist && OptCarpetSettings.enableTpHerePrefixBlacklist) {
+            //#else
             if (rule.name.equals("enableTpherePrefixWhitelist") && OptCarpetSettings.enableTpHerePrefixWhitelist && OptCarpetSettings.enableTpHerePrefixBlacklist) {
+            //#endif
                 OptCarpetSettings.enableTpHerePrefixWhitelist = false;
                 Messenger.m(serverCommandSource, "r You can't enable TpherePrefixWhitelist because you have enabled TpherePrefixBlacklist");
             }
-
+            //#if MC >= 11900
+            //$$ if (rule.name().equals("enableTpherePrefixBlacklist") && OptCarpetSettings.enableTpHerePrefixBlacklist && OptCarpetSettings.enableTpHerePrefixWhitelist) {
+            //#else
             if (rule.name.equals("enableTpherePrefixBlacklist") && OptCarpetSettings.enableTpHerePrefixBlacklist && OptCarpetSettings.enableTpHerePrefixWhitelist) {
+            //#endif
                 OptCarpetSettings.enableTpHerePrefixBlacklist = false;
                 Messenger.m(serverCommandSource, "r You can't enable TpherePrefixBlacklist because you have enabled TpherePrefixWhitelist");
             }
@@ -89,7 +113,11 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
     }
 
     @Override
+    //#if MC >= 11900
+    //$$public void registerCommands(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess commandBuildContext) {
+    //#else
     public void registerCommands(CommandDispatcher<ServerCommandSource> dispatcher) {
+    //#endif
         PlayerTpCommand.registerCommands(dispatcher);
         ListAdvanceCommand.registerCommand(dispatcher);
         TpLimitCommand.registerCommand(dispatcher);

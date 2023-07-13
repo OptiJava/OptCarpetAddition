@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_16",
   "mixins": [
     "logger.HUDController_Mixin",
+    //#if MC < 11900
     "logger.updateSuppression.World_Mixin",
     "rule.async.MinecraftServer_Mixin",
     "rule.async.optimizePlayerConnect.EntityTrackerEntry_Mixin",
@@ -14,6 +15,7 @@
     "rule.async.optimizePlayerConnect.World_Mixin",
     "rule.async.optimizeTeleport.ServerPlayerEntity_Mixin",
     "rule.async.optimizeTeleport.ServerPlayNetworkHandler_Mixin",
+    //#endif
     "rule.cceSuppressionCrashFix.MinecraftServer_Mixin",
     "rule.cceSuppressionCrashFix.ShulkerBoxBlock_Mixin",
     "rule.commandLogger.CommandManager_Mixin",
@@ -22,15 +24,19 @@
     "rule.disabledEntityTick.ServerWorld_Mixin",
     "rule.disabledLayEggs.ChickenEntity_Mixin",
     "rule.disabledNetherPortalSpawn.NetherPortalBlock_Mixin",
+    //#if MC < 11900
     "rule.disabledUpdateSuppressionErrorStackTrace.ThreadExecutor_Mixin",
     "rule.dropperCrashFix.DispenserBlock_Mixin",
     "rule.dropperCrashFix.DropperBlock_Mixin",
+    //#endif
     "rule.optimizeFakePlayerSpawn.EntityPlayerMPFake_Mixin",
     "rule.optimizeFakePlayerSpawn.PlayerCommand_Mixin"
   ],
   "client": [
     "rule.unescapeChatMessage.ChatMessageC2SPacket_Mixin",
+    //#if MC < 11900
     "rule.unescapeChatMessage.Screen_Mixin"
+    //#endif
   ],
   "injectors": {
     "defaultRequire": 1

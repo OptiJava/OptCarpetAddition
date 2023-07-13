@@ -1,5 +1,5 @@
 package io.github.optijava.opt_carpet_addition.mixins.rule.disabledUpdateSuppressionErrorStackTrace;
-
+//#if MC < 11900
 import carpet.helpers.ThrowableSuppression;
 import io.github.optijava.opt_carpet_addition.OptCarpetAddition;
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
@@ -30,4 +30,4 @@ public class ThreadExecutor_Mixin {
         }
     }
 }
-
+//#endif

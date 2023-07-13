@@ -1,15 +1,23 @@
 package io.github.optijava.opt_carpet_addition;
 
+//#if MC >= 11900
+//$$ import carpet.api.settings.RuleCategory;
+//#endif
 import carpet.settings.Rule;
+//#if MC < 11900
 import carpet.settings.RuleCategory;
+//#endif
 import io.github.optijava.opt_carpet_addition.utils.config_bean.CommandLoggerConfigBean;
 import io.github.optijava.opt_carpet_addition.utils.config_bean.TpLimitConfigBean;
 import net.fabricmc.loader.api.FabricLoader;
 
 import java.nio.file.Path;
 
+//#if MC >= 11900
+//$$ @SuppressWarnings("all")
+//#endif
 public class OptCarpetSettings {
-    private static final String FALSE = "false";
+    public static final String FALSE = "false";
     public static Path configDirectory = FabricLoader.getInstance().getConfigDir().resolve("opt-carpet-addition");
 
     // Tp command rules =======================================================================
@@ -117,11 +125,14 @@ public class OptCarpetSettings {
     )
     public static boolean disabledEntityTick = false;
 
+    //#if MC < 11900
+    //$$
     @Rule(
             desc = "Disable error stack when update suppression.",
             category = {RuleCategory.BUGFIX}
     )
     public static boolean disabledUpdateSuppressionErrorStackTrace = false;
+    //#endif
 
     @Rule(
             desc = "Unescape chat message. \\u4e2d -> 中",
@@ -129,11 +140,13 @@ public class OptCarpetSettings {
     )
     public static boolean unescapeChatMessage = false;
 
+    //#if MC < 11900
     @Rule(
             desc = "Handle player connect in a new thread to reduce the lag.",
             category = {RuleCategory.OPTIMIZATION, RuleCategory.EXPERIMENTAL}
     )
     public static boolean optimizePlayerConnect = false;
+    //#endif
 
     @Rule(
             desc = "Handle player teleport in a new thread to reduce the lag.",
@@ -147,11 +160,13 @@ public class OptCarpetSettings {
     )
     public static boolean commandLogger = false;
 
+    //#if MC < 11900
     @Rule(
             desc = "Dropper crash fix",
             category = RuleCategory.BUGFIX
     )
     public static boolean dropperCrashFix = false;
+    //#endif
 
     @Rule(
             desc = "Always spawn offline fake player to reduce lagging",
@@ -165,4 +180,3 @@ public class OptCarpetSettings {
     )
     public static boolean cceSuppressionCrashFix = false;
 }
-

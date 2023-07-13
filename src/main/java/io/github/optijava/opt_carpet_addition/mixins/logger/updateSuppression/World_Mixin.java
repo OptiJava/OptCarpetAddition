@@ -1,5 +1,5 @@
 package io.github.optijava.opt_carpet_addition.mixins.logger.updateSuppression;
-
+//#if MC < 11900
 import io.github.optijava.opt_carpet_addition.logger.updateSuppression.UpdateSuppressionLogger;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -25,3 +25,4 @@ public class World_Mixin {
         }
     }
 }
+//#endif

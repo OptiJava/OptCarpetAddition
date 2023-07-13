@@ -1,5 +1,5 @@
 package io.github.optijava.opt_carpet_addition.logger.updateSuppression;
-
+//#if MC < 11900
 import io.github.optijava.opt_carpet_addition.logger.AbstractLogger;
 import io.github.optijava.opt_carpet_addition.logger.LoggerRegister;
 import net.minecraft.text.LiteralText;
@@ -30,3 +30,4 @@ public class UpdateSuppressionLogger extends AbstractLogger {
         });
     }
 }
+//#endif

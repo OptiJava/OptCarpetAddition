@@ -1,5 +1,5 @@
 package io.github.optijava.opt_carpet_addition.mixins.rule.unescapeChatMessage;
-
+//#if MC < 11900
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import net.minecraft.client.gui.screen.Screen;
 import org.apache.commons.lang3.StringEscapeUtils;
@@ -29,3 +29,4 @@ public class Screen_Mixin {
         }
     }
 }
+//#endif

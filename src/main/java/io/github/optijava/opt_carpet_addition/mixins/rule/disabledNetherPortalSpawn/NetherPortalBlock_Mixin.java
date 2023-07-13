@@ -16,7 +16,11 @@ public class NetherPortalBlock_Mixin {
      * @reason rule: disabledNetherPortalSpawn
      */
     @Inject(
+            //#if MC >= 11900
+            //$$ method = "randomTick",
+            //#else
             method = "randomTick(Lnet/minecraft/block/BlockState;Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/BlockPos;Ljava/util/Random;)V",
+            //#endif
             at = @At("HEAD"),
             cancellable = true
     )

@@ -1,5 +1,5 @@
 package io.github.optijava.opt_carpet_addition.mixins.rule.dropperCrashFix;
-
+//#if MC < 11900
 import io.github.optijava.opt_carpet_addition.OptCarpetAddition;
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import net.minecraft.block.DropperBlock;
@@ -26,3 +26,4 @@ public class DropperBlock_Mixin {
         }
     }
 }
+//#endif

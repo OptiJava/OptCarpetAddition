@@ -32,3 +32,14 @@ bin/
 # fabric
 
 run/
+
+# preprocessor
+
+versions/1.17.1/.gradle
+versions/1.17.1/build
+versions/1.18.2/.gradle
+versions/1.18.2/build
+versions/1.19.3/.gradle
+versions/1.19.3/build
+versions/1.20.1/.gradle
+versions/1.20.1/build

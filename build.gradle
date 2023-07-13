@@ -1,119 +1,18 @@
 plugins {
-    id 'fabric-loom' version '1.2.7'
+    id 'fabric-loom' version '1.3.8' apply false
     id 'maven-publish'
-    id "com.modrinth.minotaur" version "2.+"
+    id "com.modrinth.minotaur" version "2.+" apply false
+    id 'com.replaymod.preprocess' version '20c7ec554a'
 }
 
-sourceCompatibility = JavaVersion.VERSION_16
-targetCompatibility = JavaVersion.VERSION_16
 
-archivesBaseName = project.archives_base_name
-version = 'v' + project.mod_version + '-1.17-' + new Date().format('yyMMddHHmmss')
-group = project.maven_group
+preprocess {
+	def mc117 = createNode('1.17.1' , 1_17_01, 'yarn')
+	def mc118 = createNode('1.18.2' , 1_18_02, 'yarn')
+	def mc1193 = createNode('1.19.3' , 1_19_03, 'yarn')
+	def mc1201 = createNode('1.20.1' , 1_20_01, 'yarn')
 
-repositories {
-    // Add repositories to retrieve artifacts from in here.
-    // You should only use this when depending on other mods because
-    // Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
-    // See https://docs.gradle.org/current/userguide/declaring_repositories.html
-    // for more information about repositories.
-    maven {
-        name = "CurseMaven"
-        url = "https://www.cursemaven.com"
-    }
-
-    maven {
-        name = "Modrinth"
-        url = "https://api.modrinth.com/maven"
-    }
-}
-
-dependencies {
-    // To change the versions see the gradle.properties file
-    minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-
-    modImplementation("curse.maven:carpet-349239:${project.carpet_core_version}")
-}
-
-processResources {
-    inputs.property "version", mod_version
-
-    filesMatching("fabric.mod.json") {
-        expand "version": mod_version
-    }
-}
-
-tasks.withType(JavaCompile).configureEach {
-    // Minecraft 1.17 (21w19a) upwards uses Java 16.
-    it.options.release = 16
-}
-
-loom {
-    accessWidenerPath.set(file("src/main/resources/opt-carpet-addition.accesswidener"))
-}
-
-java {
-    // Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
-    // if it is present.
-    // If you remove this line, sources will not be generated.
-    withSourcesJar()
-}
-
-jar {
-    from("LICENSE") {
-        rename { "${it}_${archivesBaseName}" }
-    }
-}
-
-modrinth {
-    // Token
-    token = System.getenv("MODRINTH_TOKEN")
-
-    // Project ID
-    projectId = "opt-carpet-addition"
-
-    // Version
-    if (project.mod_version.contains("alpha")) {
-        versionType = "alpha"
-    } else if (project.mod_version.contains("beta")) {
-        versionType = "beta"
-    } else {
-        versionType = "release"
-    }
-    gameVersions = ["1.17", "1.17.1"] // Must be an array, even with only one version
-    versionNumber = project.mod_version
-    versionName = "v" + project.mod_version + " For Minecraft 1.17"
-
-    // Upload
-    uploadFile = remapJar
-
-    // Loader
-    loaders = ["fabric"] // Must also be an array - no need to specify this if you're using Loom or ForgeGradle
-
-    // Dependencies
-    dependencies {
-        required.project "fabric-api"
-    }
-
-    // ChangeLogs
-    changelog = "Got full change logs in [GitHub](https://github.com/OptiJava/OptCarpetAddition/releases)."
-}
-
-// configure the maven publication
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java
-        }
-    }
-    // See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
-    repositories {
-        // Add repositories to publish to here.
-        // Notice: This block does NOT have the same function as the block in the top level.
-        // The repositories here will be used for publishing your artifact, not for
-        // retrieving dependencies.
-    }
+	mc117 .link(mc118, null)
+	mc118 .link(mc1193, null)
+	mc1193.link(mc1201, null)
 }

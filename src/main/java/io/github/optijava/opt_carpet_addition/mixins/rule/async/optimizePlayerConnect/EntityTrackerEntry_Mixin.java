@@ -1,5 +1,5 @@
 package io.github.optijava.opt_carpet_addition.mixins.rule.async.optimizePlayerConnect;
-
+//#if MC < 11900
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import io.github.optijava.opt_carpet_addition.utils.threading.Threading;
 import net.minecraft.server.network.EntityTrackerEntry;
@@ -26,3 +26,4 @@ public class EntityTrackerEntry_Mixin {
         }
     }
 }
+//#endif

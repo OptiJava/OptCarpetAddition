@@ -1,5 +1,5 @@
 package io.github.optijava.opt_carpet_addition.mixins.rule.async.optimizePlayerConnect;
-
+//#if MC < 11900
 import io.github.optijava.opt_carpet_addition.OptCarpetAddition;
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import net.minecraft.entity.Entity;
@@ -33,3 +33,4 @@ public class World_Mixin {
         }
     }
 }
+//#endif

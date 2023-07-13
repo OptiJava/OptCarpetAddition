@@ -1,5 +1,5 @@
 package io.github.optijava.opt_carpet_addition.mixins.rule.async.optimizeTeleport;
-
+//#if MC < 11900
 import io.github.optijava.opt_carpet_addition.OptCarpetAddition;
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import io.github.optijava.opt_carpet_addition.utils.threading.Threading;
@@ -40,7 +40,15 @@ public abstract class ServerPlayerEntity_Mixin {
                 } else {
                     ServerWorld serverWorld = thisInstance.getServerWorld();
                     WorldProperties worldProperties = targetWorld.getLevelProperties();
+//#endif
+                    //#if MC >= 11900
+                    //$$
+                    //#elseif MC >=11800
+                    //$$ thisInstance.networkHandler.sendPacket(new PlayerRespawnS2CPacket(targetWorld.method_40134(), targetWorld.getRegistryKey(), BiomeAccess.hashSeed(targetWorld.getSeed()), thisInstance.interactionManager.getGameMode(), thisInstance.interactionManager.getPreviousGameMode(), targetWorld.isDebugWorld(), targetWorld.isFlat(), true));
+                    //#else
                     thisInstance.networkHandler.sendPacket(new PlayerRespawnS2CPacket(targetWorld.getDimension(), targetWorld.getRegistryKey(), BiomeAccess.hashSeed(targetWorld.getSeed()), thisInstance.interactionManager.getGameMode(), thisInstance.interactionManager.getPreviousGameMode(), targetWorld.isDebugWorld(), targetWorld.isFlat(), true));
+                    //#endif
+//#if MC < 11900
                     thisInstance.networkHandler.sendPacket(new DifficultyS2CPacket(worldProperties.getDifficulty(), worldProperties.isDifficultyLocked()));
                     thisInstance.server.getPlayerManager().sendCommandTree(thisInstance);
                     serverWorld.removePlayer(thisInstance, Entity.RemovalReason.CHANGED_DIMENSION);
@@ -58,3 +66,4 @@ public abstract class ServerPlayerEntity_Mixin {
         }
     }
 }
+//#endif

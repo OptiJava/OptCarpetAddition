@@ -1,5 +1,5 @@
 package io.github.optijava.opt_carpet_addition.mixins.rule.async;
-
+//#if MC < 11900
 import io.github.optijava.opt_carpet_addition.OptCarpetAddition;
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import io.github.optijava.opt_carpet_addition.utils.threading.Threading;
@@ -46,3 +46,4 @@ public class MinecraftServer_Mixin {
         }
     }
 }
+//#endif

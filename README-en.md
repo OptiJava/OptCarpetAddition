@@ -5,6 +5,8 @@ Language: English | [中文](https://github.com/OptiJava/OptCarpetAddition/blob/
 This is an extension module of CarpetMod. The goal is to add some functions that do not greatly change the original game
 mechanism but optimize the player experience/~~reduce the blood pressure of server owner~~.
 
+Build with [Preprocessor](https://github.com/ReplayMod/preprocessor)
+
 **Dependencies:`Carpet` `fabric-api`**
 
 ## Rules

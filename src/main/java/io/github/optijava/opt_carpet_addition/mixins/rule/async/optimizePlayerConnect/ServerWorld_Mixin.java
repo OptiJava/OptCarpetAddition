@@ -1,5 +1,5 @@
 package io.github.optijava.opt_carpet_addition.mixins.rule.async.optimizePlayerConnect;
-
+//#if MC < 11900
 import com.google.common.collect.Lists;
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import io.github.optijava.opt_carpet_addition.utils.threading.Threading;
@@ -57,3 +57,4 @@ public class ServerWorld_Mixin {
 
     }
 }
+//#endif

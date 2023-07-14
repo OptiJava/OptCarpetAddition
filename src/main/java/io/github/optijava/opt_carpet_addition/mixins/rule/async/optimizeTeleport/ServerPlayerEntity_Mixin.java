@@ -38,17 +38,17 @@ public abstract class ServerPlayerEntity_Mixin {
                 if (targetWorld == thisInstance.world) {
                     thisInstance.networkHandler.requestTeleport(x, y, z, yaw, pitch);
                 } else {
+                    //#if MC >= 11800
+                    //$$ ServerWorld serverWorld = thisInstance.getWorld();
+                    //#elseif MC < 11800
                     ServerWorld serverWorld = thisInstance.getServerWorld();
+                    //#endif
                     WorldProperties worldProperties = targetWorld.getLevelProperties();
-//#endif
-                    //#if MC >= 11900
-                    //$$
-                    //#elseif MC >=11800
+                    //#if MC >= 11800
                     //$$ thisInstance.networkHandler.sendPacket(new PlayerRespawnS2CPacket(targetWorld.method_40134(), targetWorld.getRegistryKey(), BiomeAccess.hashSeed(targetWorld.getSeed()), thisInstance.interactionManager.getGameMode(), thisInstance.interactionManager.getPreviousGameMode(), targetWorld.isDebugWorld(), targetWorld.isFlat(), true));
                     //#else
                     thisInstance.networkHandler.sendPacket(new PlayerRespawnS2CPacket(targetWorld.getDimension(), targetWorld.getRegistryKey(), BiomeAccess.hashSeed(targetWorld.getSeed()), thisInstance.interactionManager.getGameMode(), thisInstance.interactionManager.getPreviousGameMode(), targetWorld.isDebugWorld(), targetWorld.isFlat(), true));
                     //#endif
-//#if MC < 11900
                     thisInstance.networkHandler.sendPacket(new DifficultyS2CPacket(worldProperties.getDifficulty(), worldProperties.isDifficultyLocked()));
                     thisInstance.server.getPlayerManager().sendCommandTree(thisInstance);
                     serverWorld.removePlayer(thisInstance, Entity.RemovalReason.CHANGED_DIMENSION);

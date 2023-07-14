@@ -1,5 +1,8 @@
 package io.github.optijava.opt_carpet_addition.mixins.rule.commandLogger;
 
+//#if MC >= 11900
+//$$ import com.mojang.brigadier.ParseResults;
+//#endif
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
@@ -21,7 +24,15 @@ public class CommandManager_Mixin {
             method = "execute",
             at = @At("HEAD")
     )
+    //#if MC >= 11900
+    //$$ public void injectExecute(ParseResults<ServerCommandSource> parseResults, String command, CallbackInfoReturnable<Integer> cir) {
+    //#else
     public void injectExecute(ServerCommandSource commandSource, String command, CallbackInfoReturnable<Integer> cir) {
+    //#endif
+        //#if MC >= 11900
+        //$$ ServerCommandSource commandSource = parseResults.getContext().getSource();
+        //#endif
+
         if (!OptCarpetSettings.commandLoggerConfigBean.logAllCommand && OptCarpetSettings.commandLogger) {
             if (OptCarpetSettings.commandLoggerConfigBean.LogCommandWhitelist.contains(command)) {
                 CommandManager_Mixin.LOGGER.info("[OCA Command Logger] %s submit command: %s".formatted(commandSource.getName(), command));

@@ -15,6 +15,12 @@
     "rule.async.optimizePlayerConnect.World_Mixin",
     "rule.async.optimizeTeleport.ServerPlayerEntity_Mixin",
     "rule.async.optimizeTeleport.ServerPlayNetworkHandler_Mixin",
+    "rule.disabledUpdateSuppressionErrorStackTrace.ThreadExecutor_Mixin",
+    "rule.dropperCrashFix.DispenserBlock_Mixin",
+    "rule.dropperCrashFix.DropperBlock_Mixin",
+    //#if MC >= 11800
+    //$$ "rule.disabledUpdateSuppressionErrorStackTrace.NetworkThreadUtils_Mixin",
+    //#endif
     //#endif
     "rule.cceSuppressionCrashFix.MinecraftServer_Mixin",
     "rule.cceSuppressionCrashFix.ShulkerBoxBlock_Mixin",
@@ -24,11 +30,6 @@
     "rule.disabledEntityTick.ServerWorld_Mixin",
     "rule.disabledLayEggs.ChickenEntity_Mixin",
     "rule.disabledNetherPortalSpawn.NetherPortalBlock_Mixin",
-    //#if MC < 11900
-    "rule.disabledUpdateSuppressionErrorStackTrace.ThreadExecutor_Mixin",
-    "rule.dropperCrashFix.DispenserBlock_Mixin",
-    "rule.dropperCrashFix.DropperBlock_Mixin",
-    //#endif
     "rule.optimizeFakePlayerSpawn.EntityPlayerMPFake_Mixin",
     "rule.optimizeFakePlayerSpawn.PlayerCommand_Mixin"
   ],

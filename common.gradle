@@ -83,9 +83,10 @@ tasks.withType(JavaCompile).configureEach {
 loom {
     accessWidenerPath.set(file("src/main/resources/opt-carpet-addition.accesswidener"))
 
-    runConfigs.configureEach {
+    runConfigs.all {
 		// to make sure it generates all "Minecraft Client (:subproject_name)" applications
 		ideConfigGenerated = true
+        vmArgs '-Dmixin.debug.export=true'
 		runDir '../../run'
 	}
 }

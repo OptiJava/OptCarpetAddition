@@ -23,7 +23,11 @@ public class ThreadExecutor_Mixin {
             method = "executeTask",
             at = @At(
                     value = "INVOKE",
+                    //#if MC >= 11800
+                    //$$ target = "Lorg/slf4j/Logger;error(Lorg/slf4j/Marker;Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V",
+                    //#else
                     target = "Lorg/apache/logging/log4j/Logger;fatal(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V",
+                    //#endif
                     remap = false
             ),
             cancellable = true,

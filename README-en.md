@@ -217,8 +217,6 @@ Optimize player teleport.
 
 ### commandLogger
 
-**1.16 hasn't this rule**
-
 Command Logger can records command execute events.
 
 CommandLogger.json is the config file, type: `/commandlogger reload` to reload the config file.
@@ -229,8 +227,6 @@ CommandLogger.json is the config file, type: `/commandlogger reload` to reload t
 
 ### dropperCrashFix
 
-**1.16 hasn't this rule**
-
 Fix bug: dropper may cause server crash
 
 Please watch [kygo_life's bilibili video](https://www.bilibili.com/video/BV1HM411z7jz/?spm_id_from=333.999.0.0)
@@ -240,8 +236,6 @@ Please watch [kygo_life's bilibili video](https://www.bilibili.com/video/BV1HM41
 - Categories: `BugFix`
 
 ### optimizeFakePlayerSpawn
-
-**1.16 hasn't this rule**
 
 Fix bug: lagging when spawn bot because mojang server is too slow :(
 
@@ -286,6 +280,7 @@ Prevent CCE Suppression Crashes，watch [Void0's bilibili video](https://www.bil
 ### crash
 
 - crash!
+- `/crash confirm` to confirm crash
 
 ## Logger
 
@@ -294,6 +289,8 @@ Prevent CCE Suppression Crashes，watch [Void0's bilibili video](https://www.bil
 - A HUD logger，show disk usage in real time
 
 ### updateSuppression
+
+**_This logger is just in 1.17 and 1.18_**
 
 - Log every update suppression
 

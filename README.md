@@ -190,7 +190,7 @@ _比如你要tphere的假人叫做anti_mob，而白名单中有一个anti，那�
 - Acceptable value: `true` `false`
 - Categories: `BugFix`
 
-### unescapeChatMessage  `仅v1.3-alpha.1及以上版本`
+### unescapeChatMessage  
 
 **此规则仅客户端有效，服务端无效**
 
@@ -226,8 +226,6 @@ _比如你要tphere的假人叫做anti_mob，而白名单中有一个anti，那�
 
 ### commandLogger
 
-**1.16无此功能，因为1.16分支已经停止维护**
-
 这个规则可以记录每一个玩家执行的每一个指令
 
 CommandLogger.json配置文件可以配置白名单、黑名单等，修改配置文件后应执行/commandlogger reload指令热重载
@@ -238,8 +236,6 @@ CommandLogger.json配置文件可以配置白名单、黑名单等，修改配�
 
 ### dropperCrashFix
 
-**1.16无此功能，因为1.16分支已经停止维护**
-
 修复了方块实体替换导致投掷器激活时崩服的bug
 
 详情请看[kygo_life的视频](https://www.bilibili.com/video/BV1HM411z7jz/?spm_id_from=333.999.0.0)
@@ -249,8 +245,6 @@ CommandLogger.json配置文件可以配置白名单、黑名单等，修改配�
 - Categories: `BugFix`
 
 ### optimizeFakePlayerSpawn
-
-**1.16无此功能，因为1.16分支已经停止维护**
 
 如果你的服务器连接mojang服务器的时间长，spawn假人的时候就会卡顿一会，此规则强制所有假人使用离线uuid，解决这一问题（但是也许引发新的问题
 
@@ -302,6 +296,8 @@ CommandLogger.json配置文件可以配置白名单、黑名单等，修改配�
 - 是HUD Logger，实时查看硬盘使用情况
 
 ### updateSuppression
+
+**仅1.17和1.18**
 
 - 记录每一次更新抑制
 

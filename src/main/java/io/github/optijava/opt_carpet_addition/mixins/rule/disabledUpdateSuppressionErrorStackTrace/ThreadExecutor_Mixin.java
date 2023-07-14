@@ -6,7 +6,9 @@ import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import net.minecraft.util.thread.ThreadExecutor;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 @Mixin(ThreadExecutor.class)
 public class ThreadExecutor_Mixin {
@@ -17,16 +19,20 @@ public class ThreadExecutor_Mixin {
      * @author OptiJava
      * @reason rule: disabledUpdateSuppressionErrorStackTrace
      */
-    @Redirect(method = "executeTask(Ljava/lang/Runnable;)V", at = @At(value = "INVOKE", target = "Ljava/lang/Runnable;run()V"))
-    public void redirectRun(Runnable task) {
-        if (OptCarpetSettings.disabledUpdateSuppressionErrorStackTrace) {
-            try {
-                task.run();
-            } catch (ThrowableSuppression t) {
-                OptCarpetAddition.LOGGER.info("[OptCarpetAddition] Update Suppression.");
-            }
-        } else {
-            task.run();
+    @Inject(
+            method = "executeTask",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lorg/apache/logging/log4j/Logger;fatal(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V",
+                    remap = false
+            ),
+            cancellable = true,
+            locals = LocalCapture.CAPTURE_FAILHARD
+    )
+    public void injectExecuteTask(Runnable task, CallbackInfo ci, Exception exception) {
+        if (OptCarpetSettings.disabledUpdateSuppressionErrorStackTrace && (exception instanceof ThrowableSuppression || exception.getCause() instanceof ThrowableSuppression)) {
+            OptCarpetAddition.LOGGER.info("[OptCarpetAddition] Update Suppression.");
+            ci.cancel();
         }
     }
 }

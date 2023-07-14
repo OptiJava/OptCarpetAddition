@@ -15,7 +15,11 @@ public class ServerWorld_Mixin {
      * @author OptiJava
      * @reason rule: disabledEntityTick
      */
-    @Inject(method = "tick(Ljava/util/function/BooleanSupplier;)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/server/world/ServerWorld;resetIdleTimeout()V"), cancellable = true)
+    @Inject(
+            method = "tick(Ljava/util/function/BooleanSupplier;)V",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/server/world/ServerWorld;resetIdleTimeout()V"),
+            cancellable = true
+    )
     public void injectTick(CallbackInfo ci) {
         if (OptCarpetSettings.disabledEntityTick) {
             ci.cancel();

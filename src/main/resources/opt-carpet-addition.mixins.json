@@ -2,9 +2,12 @@
   "required": true,
   "minVersion": "0.8",
   "package": "io.github.optijava.opt_carpet_addition.mixins",
+  //#if MC >= 11800
+  //$$ "compatibilityLevel": "JAVA_17",
+  //#else
   "compatibilityLevel": "JAVA_16",
+  //#endif
   "mixins": [
-    "logger.HUDController_Mixin",
     //#if MC < 11900
     "logger.updateSuppression.World_Mixin",
     "rule.async.MinecraftServer_Mixin",
@@ -22,6 +25,7 @@
     //$$ "rule.disabledUpdateSuppressionErrorStackTrace.NetworkThreadUtils_Mixin",
     //#endif
     //#endif
+    "logger.HUDController_Mixin",
     "rule.cceSuppressionCrashFix.MinecraftServer_Mixin",
     "rule.cceSuppressionCrashFix.ShulkerBoxBlock_Mixin",
     "rule.commandLogger.CommandManager_Mixin",
@@ -31,7 +35,8 @@
     "rule.disabledLayEggs.ChickenEntity_Mixin",
     "rule.disabledNetherPortalSpawn.NetherPortalBlock_Mixin",
     "rule.optimizeFakePlayerSpawn.EntityPlayerMPFake_Mixin",
-    "rule.optimizeFakePlayerSpawn.PlayerCommand_Mixin"
+    "rule.optimizeFakePlayerSpawn.PlayerCommand_Mixin",
+    "rule.removeAllCurseOfBindingArmorWhenPlayerDeadInWall.ServerPlayerEntity_Mixin"
   ],
   "client": [
     "rule.unescapeChatMessage.ChatMessageC2SPacket_Mixin",

@@ -179,4 +179,10 @@ public class OptCarpetSettings {
             category = {RuleCategory.BUGFIX, RuleCategory.EXPERIMENTAL}
     )
     public static boolean cceSuppressionCrashFix = false;
+
+    @Rule(
+            desc = "Remove every armour which has `curse of binding` enchantment when player dead in wall (keepInventory must be true).",
+            category = RuleCategory.FEATURE
+    )
+    public  static boolean removeAllCurseOfBindingArmorWhenPlayerDeadInWall = false;
 }

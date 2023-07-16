@@ -23,13 +23,13 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: checkout repository
-        uses: actions/checkout@v3.3.0
+        uses: actions/checkout@v3.5.3
       - name: validate gradle wrapper
         if: ${{ !startsWith(github.event.head_commit.message, '[ci skip]') }}
-        uses: gradle/wrapper-validation-action@v1
+        uses: gradle/wrapper-validation-action@v1.0.6
       - name: setup jdk ${{ matrix.java }}
         if: ${{ !startsWith(github.event.head_commit.message, '[ci skip]') }}
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v3.4.1
         with:
           java-version: ${{ matrix.java }}
           distribution: 'adopt'

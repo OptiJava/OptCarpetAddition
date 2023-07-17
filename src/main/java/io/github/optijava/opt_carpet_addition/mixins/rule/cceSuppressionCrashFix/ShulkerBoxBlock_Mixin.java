@@ -27,7 +27,7 @@ public class ShulkerBoxBlock_Mixin {
             try {
                 var1 = ScreenHandler.calculateComparatorOutput((Inventory)((Object)world.getBlockEntity(pos)));
             } catch (ClassCastException e) {
-                throw new ThrowableCCESuppression(e.getMessage(), pos);
+                throw new ThrowableCCESuppression(e.getMessage(), pos, e);
             }
             cir.setReturnValue(var1);
         } else {

@@ -27,7 +27,7 @@ public class World_Mixin {
     public void injectTickWorlds(@SuppressWarnings("all") Consumer tickConsumer, Entity entity, CallbackInfo ci, Throwable throwable) {
         if (OptCarpetSettings.optimizePlayerConnect && (throwable instanceof ConcurrentModificationException)) {
             OptCarpetAddition.LOGGER.fatal("[OptCarpetAddition] Unexpected exception when ticking entity: %s (class %s) in BlockPos %s (in chunk %s %s %s)".formatted(entity.toString(), entity.getClass().toString(), entity.getBlockPos().toString(), entity.getBlockX() / 16, entity.getBlockY() / 16, entity.getBlockZ() / 16), throwable);
-            OptCarpetAddition.LOGGER.fatal("[OptCarpetAddition] If you see this message, you may need to restart the server. This exception may caused by OptCarpetAddition, if you think so, please send the reports to GitHub Issues.");
+            OptCarpetAddition.LOGGER.fatal("[OptCarpetAddition] If you see this message, you may need to restart the server. This exception may cause by OptCarpetAddition, if you think so, please send the reports to GitHub Issues.");
             OptCarpetAddition.LOGGER.fatal("[OptCarpetAddition] I'm sorry to hear that.");
             ci.cancel();
         }

@@ -19,7 +19,6 @@ public class CommandLoggerCommand {
     }
 
     public static int reload(CommandContext<ServerCommandSource> context) {
-        CommandLogger.reload();
-        return 1;
+        return CommandLogger.reload();
     }
 }

@@ -40,7 +40,7 @@ public class MinecraftServer_Mixin {
     public void injectTickWorlds(BooleanSupplier shouldKeepTicking, CallbackInfo ci, @SuppressWarnings("all") Iterator var2, ServerWorld serverWorld, Throwable throwable) {
         if (OptCarpetSettings.optimizePlayerConnect && (throwable instanceof ConcurrentModificationException)) {
             OptCarpetAddition.LOGGER.fatal("[OptCarpetAddition] Unexpected exception when ticking world: " + serverWorld.toString(), throwable);
-            OptCarpetAddition.LOGGER.fatal("[OptCarpetAddition] If you see this message, you may need to restart the server. This exception may caused by OptCarpetAddition, if you think so, please send the reports to GitHub Issues.");
+            OptCarpetAddition.LOGGER.fatal("[OptCarpetAddition] If you see this message, you may need to restart the server. This exception may cause by OptCarpetAddition, if you think so, please send the reports to GitHub Issues.");
             OptCarpetAddition.LOGGER.fatal("[OptCarpetAddition] I'm sorry to hear that.");
             ci.cancel();
         }

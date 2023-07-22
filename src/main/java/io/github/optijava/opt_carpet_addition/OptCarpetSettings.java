@@ -192,6 +192,7 @@ public class OptCarpetSettings {
             desc = "Modify item disappeared time, default value -1 (unit: tick)",
             category = RuleCategory.FEATURE,
             options = {"-1", "6000"},
+            strict = false,
             validate = CustomItemDiscardTimeValidator.class
     )
     public static int customItemDiscardTime = -1;

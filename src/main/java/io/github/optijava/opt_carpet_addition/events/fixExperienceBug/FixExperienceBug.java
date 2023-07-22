@@ -1,4 +1,4 @@
-package io.github.optijava.opt_carpet_addition.events;
+package io.github.optijava.opt_carpet_addition.events.fixExperienceBug;
 
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import net.fabricmc.fabric.api.entity.event.v1.ServerEntityWorldChangeEvents;

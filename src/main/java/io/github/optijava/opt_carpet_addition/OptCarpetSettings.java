@@ -2,13 +2,15 @@ package io.github.optijava.opt_carpet_addition;
 
 //#if MC >= 11900
 //$$ import carpet.api.settings.RuleCategory;
-//#endif
-import carpet.settings.Rule;
-//#if MC < 11900
+//#else
 import carpet.settings.RuleCategory;
 //#endif
+import carpet.settings.Rule;
+
 import io.github.optijava.opt_carpet_addition.utils.config_bean.CommandLoggerConfigBean;
 import io.github.optijava.opt_carpet_addition.utils.config_bean.TpLimitConfigBean;
+import io.github.optijava.opt_carpet_addition.utils.validator.CustomItemDiscardTimeValidator;
+
 import net.fabricmc.loader.api.FabricLoader;
 
 import java.nio.file.Path;
@@ -184,5 +186,13 @@ public class OptCarpetSettings {
             desc = "Remove every armour which has `curse of binding` enchantment when player dead in wall (keepInventory must be true).",
             category = RuleCategory.FEATURE
     )
-    public  static boolean removeAllCurseOfBindingArmorWhenPlayerDeadInWall = false;
+    public static boolean removeAllCurseOfBindingArmorWhenPlayerDeadInWall = false;
+
+    @Rule(
+            desc = "Modify item disappeared time, default value -1 (unit: tick)",
+            category = RuleCategory.FEATURE,
+            options = {"-1", "6000"},
+            validate = CustomItemDiscardTimeValidator.class
+    )
+    public static int customItemDiscardTime = -1;
 }

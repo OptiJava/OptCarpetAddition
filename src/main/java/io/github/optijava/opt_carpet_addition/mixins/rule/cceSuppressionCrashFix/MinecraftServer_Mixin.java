@@ -1,8 +1,9 @@
 package io.github.optijava.opt_carpet_addition.mixins.rule.cceSuppressionCrashFix;
 
+import io.github.optijava.opt_carpet_addition.OptCarpetAddition;
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import io.github.optijava.opt_carpet_addition.logger.cceSuppressionCrashLogger.CCESuppressionCrashLogger;
-import io.github.optijava.opt_carpet_addition.logger.cceSuppressionCrashLogger.ThrowableCCESuppression;
+import io.github.optijava.opt_carpet_addition.utils.exceptions.ThrowableCCESuppression;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.world.ServerWorld;
 import org.spongepowered.asm.mixin.Mixin;
@@ -34,7 +35,9 @@ public class MinecraftServer_Mixin {
                 } else {
                     CCESuppressionCrashLogger.INSTANCE.logUpdateSuppression(((ThrowableCCESuppression) throwable.getCause()).pos);
                 }
-            } catch (Exception ignored){}
+            } catch (Exception e){
+                OptCarpetAddition.LOGGER.error("Exception when handle CCE in MinecraftServer.tickWorlds(...)", e);
+            }
 
             ci.cancel();
         }

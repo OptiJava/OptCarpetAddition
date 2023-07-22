@@ -6,7 +6,7 @@ import carpet.patches.EntityPlayerMPFake;
 import carpet.utils.Messenger;
 import com.mojang.brigadier.CommandDispatcher;
 import io.github.optijava.opt_carpet_addition.commands.*;
-import io.github.optijava.opt_carpet_addition.events.FixExperienceBug;
+import io.github.optijava.opt_carpet_addition.events.fixExperienceBug.FixExperienceBug;
 import io.github.optijava.opt_carpet_addition.logger.LoggerRegister;
 import io.github.optijava.opt_carpet_addition.utils.CommandLogger;
 import io.github.optijava.opt_carpet_addition.utils.ConfigUtil;

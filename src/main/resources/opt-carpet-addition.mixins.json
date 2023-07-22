@@ -36,7 +36,8 @@
     "rule.disabledNetherPortalSpawn.NetherPortalBlock_Mixin",
     "rule.optimizeFakePlayerSpawn.EntityPlayerMPFake_Mixin",
     "rule.optimizeFakePlayerSpawn.PlayerCommand_Mixin",
-    "rule.removeAllCurseOfBindingArmorWhenPlayerDeadInWall.ServerPlayerEntity_Mixin"
+    "rule.removeAllCurseOfBindingArmorWhenPlayerDeadInWall.ServerPlayerEntity_Mixin",
+    "rule.customItemDiscardTime.ItemEntity_Mixin"
   ],
   "client": [
     "rule.unescapeChatMessage.ChatMessageC2SPacket_Mixin",

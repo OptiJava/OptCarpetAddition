@@ -1,7 +1,7 @@
 package io.github.optijava.opt_carpet_addition.mixins.rule.cceSuppressionCrashFix;
 
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
-import io.github.optijava.opt_carpet_addition.logger.cceSuppressionCrashLogger.ThrowableCCESuppression;
+import io.github.optijava.opt_carpet_addition.utils.exceptions.ThrowableCCESuppression;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.ShulkerBoxBlock;
 import net.minecraft.inventory.Inventory;
@@ -23,7 +23,7 @@ public class ShulkerBoxBlock_Mixin {
     )
     public void injectGetComparatorOutput(BlockState state, World world, BlockPos pos, CallbackInfoReturnable<Integer> cir) {
         if (OptCarpetSettings.cceSuppressionCrashFix) {
-            int var1 = 0;
+            int var1;
             try {
                 var1 = ScreenHandler.calculateComparatorOutput((Inventory)((Object)world.getBlockEntity(pos)));
             } catch (ClassCastException e) {

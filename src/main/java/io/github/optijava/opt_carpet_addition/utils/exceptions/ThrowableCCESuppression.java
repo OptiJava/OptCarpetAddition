@@ -1,4 +1,4 @@
-package io.github.optijava.opt_carpet_addition.logger.cceSuppressionCrashLogger;
+package io.github.optijava.opt_carpet_addition.utils.exceptions;
 
 import net.minecraft.util.math.BlockPos;
 

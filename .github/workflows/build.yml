@@ -37,6 +37,7 @@ jobs:
         if: ${{ !startsWith(github.event.head_commit.message, '[ci skip]') }}
         run: ./gradlew build
       - name: collect artifacts to out folder
+        if: ${{ !startsWith(github.event.head_commit.message, '[ci skip]') }}
         run: |
           mkdir out
           mv ./versions/1.17.1/build/libs/* ./out

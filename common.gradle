@@ -2,7 +2,6 @@
 apply plugin: 'fabric-loom'
 apply plugin: 'maven-publish'
 apply plugin: 'com.replaymod.preprocess'
-apply plugin: 'com.modrinth.minotaur'
 
 
 archivesBaseName = project.archives_base_name     // in central gradle.properties
@@ -108,39 +107,4 @@ jar {
     from("LICENSE") {
         rename { "${it}_${archivesBaseName}" }
     }
-}
-
-// Publish to modrinth
-modrinth {
-    // Token
-    token = System.getenv("MODRINTH_TOKEN")
-
-    // Project ID
-    projectId = "opt-carpet-addition"
-
-    // Version
-    if (project.mod_version.contains("alpha")) {
-        versionType = "alpha"
-    } else if (project.mod_version.contains("beta")) {
-        versionType = "beta"
-    } else {
-        versionType = "release"
-    }
-    gameVersions = ["1.17", "1.17.1"] // Must be an array, even with only one version
-    versionNumber = project.mod_version
-    versionName = "v" + project.mod_version + " For Minecraft 1.17"
-
-    // Upload
-    uploadFile = remapJar
-
-    // Loader
-    loaders = ["fabric"] // Must also be an array - no need to specify this if you're using Loom or ForgeGradle
-
-    // Dependencies
-    dependencies {
-        required.project "fabric-api"
-    }
-
-    // ChangeLogs
-    changelog = "Got full change logs in [GitHub](https://github.com/OptiJava/OptCarpetAddition/releases)."
 }

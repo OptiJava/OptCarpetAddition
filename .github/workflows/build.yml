@@ -9,9 +9,7 @@ jobs:
   build:
     strategy:
       matrix:
-        # Use these Java versions
         java: [ 17, 19 ]
-        # and run on both Linux and Windows
         os: [
           ubuntu-latest,
           windows-latest
@@ -33,9 +31,11 @@ jobs:
       - name: make gradle wrapper executable
         if: ${{ runner.os != 'Windows' && !startsWith(github.event.head_commit.message, '[ci skip]') }}
         run: chmod +x ./gradlew
+
       - name: build
         if: ${{ !startsWith(github.event.head_commit.message, '[ci skip]') }}
         run: ./gradlew build
+
       - name: collect artifacts to out folder
         if: ${{ !startsWith(github.event.head_commit.message, '[ci skip]') }}
         run: |

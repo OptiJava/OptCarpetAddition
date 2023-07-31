@@ -19,25 +19,21 @@ jobs:
       - name: checkout repository
         uses: actions/checkout@v3.5.3
       - name: validate gradle wrapper
-        if: ${{ !startsWith(github.event.head_commit.message, '[ci skip]') }}
         uses: gradle/wrapper-validation-action@v1.0.6
       - name: setup jdk ${{ matrix.java }}
-        if: ${{ !startsWith(github.event.head_commit.message, '[ci skip]') }}
         uses: actions/setup-java@v3.4.1
         with:
           java-version: ${{ matrix.java }}
           distribution: 'adopt'
           java-package: jdk
       - name: make gradle wrapper executable
-        if: ${{ runner.os != 'Windows' && !startsWith(github.event.head_commit.message, '[ci skip]') }}
+        if: ${{ runner.os != 'Windows' }}
         run: chmod +x ./gradlew
 
       - name: build
-        if: ${{ !startsWith(github.event.head_commit.message, '[ci skip]') }}
         run: ./gradlew build
 
       - name: collect artifacts to out folder
-        if: ${{ !startsWith(github.event.head_commit.message, '[ci skip]') }}
         run: |
           mkdir out
           mv ./versions/1.17.1/build/libs/* ./out
@@ -45,7 +41,7 @@ jobs:
           mv ./versions/1.19.3/build/libs/* ./out
           mv ./versions/1.20.1/build/libs/* ./out
       - name: capture build artifacts
-        if: ${{ runner.os == 'Linux' && matrix.java == '17' && !startsWith(github.event.head_commit.message, '[ci skip]') }}
+        if: ${{ runner.os == 'Linux' && matrix.java == '17' }}
         uses: actions/upload-artifact@v3.1.2
         with:
           name: Artifacts

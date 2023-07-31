@@ -262,6 +262,14 @@ CommandLogger.json配置文件可以配置白名单、黑名单等，修改配�
 - Acceptable value: `true` `false`
 - Categories: `BugFix` `Experimential`
 
+### customItemDiscardTime
+
+自定义物品消失时间
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Feature`
+
 ## Command
 
 ### player xxx tp

@@ -255,6 +255,14 @@ Prevent CCE Suppression Crashes，watch [Void0's bilibili video](https://www.bil
 - Acceptable value: `true` `false`
 - Categories: `BugFix` `Experimential`
 
+### customItemDiscardTime
+
+Custom item discard time. :)
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Feature`
+
 ## Command
 
 ### player xxx tp

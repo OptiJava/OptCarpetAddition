@@ -1,0 +1,188 @@
+name: publish
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Mod version (without character v)'
+        required: true
+        type: string
+      release_type:
+        description: 'alpha, beta or release'
+        required: true
+        type: string
+      debug:
+        description: 'show details for debug'
+        required: true
+        default: true
+        type: boolean
+
+jobs:
+  publish:
+    if: ${{ github.event.ref_type == 'branch' && github.ref == 'refs/heads/master' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v3.5.3
+      - name: build
+        uses: ./.github/workflows/build.yml
+      - name: download build artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: artifacts
+          path: artifacts
+
+      - name: sort artifacts by game version
+        run: |
+          mkdir processed_artifacts
+          mkdir processed_artifacts/17
+          mkdir processed_artifacts/18
+          mkdir processed_artifacts/19
+          mkdir processed_artifacts/20
+          cp artifacts/*1.17*.jar processed_artifacts/17
+          cp artifacts/*1.18*.jar processed_artifacts/18
+          cp artifacts/*1.19*.jar processed_artifacts/19
+          cp artifacts/*1.20*.jar processed_artifacts/20
+
+      - name: show details for debug
+        if: ${{ inputs.debug == true }}
+        run: |
+          apt install tree -y
+          echo @@@@@###########################################@@@@@
+          echo @@@@@###########################################@@@@@
+          echo #### Mod version: ${{ inputs.version }}
+          echo #### Release type: ${{ inputs.release_type }}
+          echo #### Modrinth project id: SB7oe4aB
+          echo #### Curseforge project id: 891699
+          echo #### Downloaded artifacts: 
+          ls artifacts
+          echo #### Processed artifacts:
+          tree processed_artifacts
+          echo @@@@@###########################################@@@@@
+          echo @@@@@###########################################@@@@@
+        continue-on-error: true
+
+      - name: Publish GitHub Release
+        uses: release-drafter/release-drafter@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          name-template: 'v${{ inputs.version }} For Minecraft 1.17, 1.18, 1.19.3 and 1.20.1'
+          tag-template: 'v${{ inputs.version }}'
+          template: |
+            ## Change Log
+            
+            $CHANGES
+          prerelease: ${{ contains('alpha', inputs.release_type) || contains('beta', inputs.release_type) }}
+        continue-on-error: true
+      - name: Publish Minecraft Mods 1.17
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          modrinth-id: SB7oe4aB
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+
+          curseforge-id: 891699
+          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
+
+          files: processed_artifacts/17/*.jar
+
+          name: v${{ inputs.version }} For Minecraft 1.17
+          version: v${{ inputs.version }}
+          version-type: ${{ inputs.release_type }}
+
+          loaders: fabric
+          game-versions: '1.17'
+          game-version-filter: any
+          dependencies: |-
+            carpet(required)
+            fabric-api(required)
+            
+          modrinth-changelog: 'Got full change logs in [GitHub](https://github.com/OptiJava/OptCarpetAddition/releases).'
+          curseforge-changelog: 'Got full change logs in [GitHub](https://github.com/OptiJava/OptCarpetAddition/releases).'
+            
+          retry-attempts: 3
+          retry-delay: 10000
+
+      - name: Publish Minecraft Mods 1.18
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          modrinth-id: SB7oe4aB
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+
+          curseforge-id: 891699
+          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
+
+          files: processed_artifacts/18/*.jar
+
+          name: v${{ inputs.version }} For Minecraft 1.18
+          version: v${{ inputs.version }}
+          version-type: ${{ inputs.release_type }}
+
+          loaders: fabric
+          game-versions: '1.18'
+          game-version-filter: any
+          dependencies: |-
+            carpet(required)
+            fabric-api(required)
+
+          modrinth-changelog: 'Got full change logs in [GitHub](https://github.com/OptiJava/OptCarpetAddition/releases).'
+          curseforge-changelog: 'Got full change logs in [GitHub](https://github.com/OptiJava/OptCarpetAddition/releases).'
+
+          retry-attempts: 3
+          retry-delay: 10000
+      - name: Publish Minecraft Mods 1.19.3
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          modrinth-id: SB7oe4aB
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+
+          curseforge-id: 891699
+          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
+
+          files: processed_artifacts/19/*.jar
+
+          name: v${{ inputs.version }} For Minecraft 1.19.3
+          version: v${{ inputs.version }}
+          version-type: ${{ inputs.release_type }}
+
+          loaders: fabric
+          game-versions: '1.19.3'
+          game-version-filter: any
+          dependencies: |-
+            carpet(required)
+            fabric-api(required)
+
+          modrinth-changelog: 'Got full change logs in [GitHub](https://github.com/OptiJava/OptCarpetAddition/releases).'
+          curseforge-changelog: 'Got full change logs in [GitHub](https://github.com/OptiJava/OptCarpetAddition/releases).'
+
+          retry-attempts: 3
+          retry-delay: 10000
+      - name: Publish Minecraft Mods 1.20.1
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          modrinth-id: SB7oe4aB
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+
+          curseforge-id: 891699
+          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
+
+          files: processed_artifacts/20/*.jar
+
+          name: v${{ inputs.version }} For Minecraft 1.20.1
+          version: v${{ inputs.version }}
+          version-type: ${{ inputs.release_type }}
+
+          loaders: fabric
+          game-versions: '1.20.1'
+          game-version-filter: any
+          dependencies: |-
+            carpet(required)
+            fabric-api(required)
+
+          modrinth-changelog: 'Got full change logs in [GitHub](https://github.com/OptiJava/OptCarpetAddition/releases).'
+          curseforge-changelog: 'Got full change logs in [GitHub](https://github.com/OptiJava/OptCarpetAddition/releases).'
+
+          retry-attempts: 3
+          retry-delay: 10000

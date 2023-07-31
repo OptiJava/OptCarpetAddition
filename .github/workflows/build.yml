@@ -2,7 +2,8 @@ name: build
 
 on: [
   pull_request,
-  push
+  push,
+  workflow_call
 ]
 
 jobs:
@@ -44,5 +45,5 @@ jobs:
         if: ${{ runner.os == 'Linux' && matrix.java == '17' }}
         uses: actions/upload-artifact@v3.1.2
         with:
-          name: Artifacts
+          name: artifacts
           path: out/

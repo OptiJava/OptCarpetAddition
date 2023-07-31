@@ -44,5 +44,5 @@ jobs:
         if: ${{ runner.os == 'Linux' && matrix.java == '17' }}
         uses: actions/upload-artifact@v3.1.2
         with:
-          name: Artifacts
+          name: artifacts
           path: out/

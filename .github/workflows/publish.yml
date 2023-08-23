@@ -18,15 +18,17 @@ on:
         type: boolean
 
 jobs:
+  build:
+    uses: ./.github/workflows/build.yml
   publish:
+    needs:
+      - build
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
       - name: checkout repository
         uses: actions/checkout@v3.5.3
-      - name: build
-        uses: ./.github/workflows/build.yml
       - name: download build artifacts
         uses: actions/download-artifact@v3
         with:

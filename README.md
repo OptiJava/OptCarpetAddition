@@ -301,7 +301,7 @@ CommandLogger.json配置文件可以配置白名单、黑名单等，修改配�
 
 ### disk
 
-- 是HUD Logger，实时查看硬盘使用情况
+- 实时查看硬盘使用情况（HUD Logger，按Tab在玩家列表可查看）
 
 ### updateSuppression
 

@@ -37,6 +37,9 @@
     "rule.optimizeFakePlayerSpawn.EntityPlayerMPFake_Mixin",
     "rule.optimizeFakePlayerSpawn.PlayerCommand_Mixin",
     "rule.removeAllCurseOfBindingArmorWhenPlayerDeadInWall.ServerPlayerEntity_Mixin",
+    //#if MC >= 12000
+    //$$ "rule.noteBlockSuppressionReintroduced.RedstoneWireBlock_Mixin",
+    //#endif
     "rule.customItemDiscardTime.ItemEntity_Mixin"
   ],
   "client": [

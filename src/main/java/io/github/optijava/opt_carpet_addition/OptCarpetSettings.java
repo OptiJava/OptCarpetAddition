@@ -196,4 +196,12 @@ public class OptCarpetSettings {
             validate = CustomItemDiscardTimeValidator.class
     )
     public static int customItemDiscardTime = -1;
+
+    //#if MC >= 12000
+    //$$ @Rule(
+    //$$         desc = "Reintroduce note block suppression(in version >= 1.20)",
+    //$$         category = RuleCategory.FEATURE
+    //$$ )
+    //$$ public static boolean noteBlockSuppressionReintroduced = false;
+    //#endif
 }

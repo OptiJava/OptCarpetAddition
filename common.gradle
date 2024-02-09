@@ -53,9 +53,6 @@ dependencies {
     // mods
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
     modImplementation("curse.maven:carpet-349239:${project.carpet_core_version}")
-
-    // MixinExtras
-    include(implementation(annotationProcessor("io.github.llamalad7:mixinextras-fabric:0.2.2")))
 }
 
 

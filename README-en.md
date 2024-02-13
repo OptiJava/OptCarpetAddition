@@ -2,12 +2,24 @@
 
 Language: English | [中文](https://github.com/OptiJava/OptCarpetAddition/blob/master/README.md)
 
-This is an extension module of CarpetMod. The goal is to add some functions that do not greatly change the original game
-mechanism but optimize the player experience/~~reduce the blood pressure of server owner~~.
+> This is an extension module of `Carpet`. The goal is to add some functions that do not greatly change the original game
+mechanism but optimize the player experience~~reduce the blood pressure of server owner~~.
 
 Build with [Preprocessor](https://github.com/ReplayMod/preprocessor)
 
 **Dependencies:`Carpet` `fabric-api`**
+
+## Support Status
+
+Most other MC versions that are the same as the supported major versions but have different minor versions can be directly installed and work properly, but **the stability cannot be guaranteed. _Please use them with caution_**
+
+| Minecraft Version | Support Status                      |
+|-------------------|-------------------------------------|
+| 1.20.1            | Supporting, developing actively     |
+| 1.19.3            | Supporting, developing actively     |
+| 1.18.2            | Supporting, developing actively     |
+| 1.17.1            | Supporting, developing actively     |
+| 1.16.5            | Not supporting, development stopped |
 
 ## Rules
 

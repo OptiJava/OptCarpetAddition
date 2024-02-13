@@ -24,7 +24,7 @@
   ],
   "accessWidener": "opt-carpet-addition.accesswidener",
   "depends": {
-    "fabricloader": "*",
+    "fabricloader": "${loader_requirement_version}",
     "minecraft": "${minecraft_requirement_version}",
     "fabric": "*",
     "carpet": "${carpet_requirement_version}"

@@ -2,15 +2,27 @@
 
 Language: [English](https://github.com/OptiJava/OptCarpetAddition/blob/master/README-en.md) | 中文
 
-这是一个CarpetMod的扩展模组，目标是添加一些没有太大改变原版游戏机制但优化玩家体验/~~降低腐竹血压~~的一些功能。
+> 这是一个`Carpet`的扩展模组，目标是添加一些没有太大改变原版游戏机制但优化玩家体验~~降低腐竹血压~~的一些功能。
 
-使用[Preprocessor](https://github.com/ReplayMod/preprocessor)构建~~可供大家学习~~，目前支持`1.17.1` `1.18.2` `1.19.3` `1.20.1`四个版本，其他的大部分大版本相同小版本不同的版本也可直接安装使用
+使用[Preprocessor](https://github.com/ReplayMod/preprocessor)构建~~可供大家学习~~
 
-**本模组需要前置：`Carpet` `fabric-api`**
+**本模组需要前置模组：`Carpet` `fabric-api`**
 
 **使用前一定仔细阅读README.md！！！！**
 
-## Rules
+## 各版本支持状态
+
+其他与受支持的版本大版本相同小版本不同的MC版本，大多数可以直接安装正常工作，但是**不能保证稳定性，请谨慎使用**
+
+| Minecraft 版本 | 支持状态      |
+|--------------|-----------|
+| 1.20.1       | 支持，积极开发   |
+| 1.19.3       | 支持，积极开发   |
+| 1.18.2       | 支持，积极开发   |
+| 1.17.1       | 支持，积极开发   |
+| 1.16.5       | 不支持，停止维护  |
+
+## 规则
 
 ### commandTpToFakePlayer
 
@@ -270,7 +282,7 @@ CommandLogger.json配置文件可以配置白名单、黑名单等，修改配�
 - Acceptable value: `true` `false`
 - Categories: `Feature`
 
-## Command
+## 指令
 
 ### player xxx tp
 
@@ -297,7 +309,7 @@ CommandLogger.json配置文件可以配置白名单、黑名单等，修改配�
 - 顾名思义  ~~别问我有什么用，我猜在切完光照更新抑制刷怪塔之后这个命令应该有点用~~
 - 打完/crash之后需要再打/crash confirm才会崩服
 
-## Logger
+## 记录器
 
 ### disk
 

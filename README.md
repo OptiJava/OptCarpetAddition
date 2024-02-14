@@ -8,8 +8,6 @@ Language: [English](https://github.com/OptiJava/OptCarpetAddition/blob/master/RE
 
 **本模组需要前置模组：`Carpet` `fabric-api`**
 
-**使用前一定仔细阅读README.md！！！！**
-
 ## 各版本支持状态
 
 其他与受支持的版本大版本相同小版本不同的MC版本，大多数可以直接安装正常工作，但是**不能保证稳定性，请谨慎使用**

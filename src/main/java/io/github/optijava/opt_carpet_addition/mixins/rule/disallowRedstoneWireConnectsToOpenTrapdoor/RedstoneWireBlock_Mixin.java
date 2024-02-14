@@ -1,4 +1,4 @@
-package io.github.optijava.opt_carpet_addition.mixins.rule.noteBlockSuppressionReintroduced;
+package io.github.optijava.opt_carpet_addition.mixins.rule.disallowRedstoneWireConnectsToOpenTrapdoor;
 
 //#if MC >= 12000
 //$$ import net.minecraft.block.*;

@@ -199,9 +199,9 @@ public class OptCarpetSettings {
 
     //#if MC >= 12000
     //$$ @Rule(
-    //$$         desc = "Reintroduce note block suppression(in version >= 1.20)",
+    //$$         desc = "Disallow redstone wire connects to open trapdoor(in version >= 1.20)",
     //$$         category = RuleCategory.FEATURE
     //$$ )
-    //$$ public static boolean noteBlockSuppressionReintroduced = false;
+    //$$ public static boolean disallowRedstoneWireConnectsToOpenTrapdoor = false;
     //#endif
 }

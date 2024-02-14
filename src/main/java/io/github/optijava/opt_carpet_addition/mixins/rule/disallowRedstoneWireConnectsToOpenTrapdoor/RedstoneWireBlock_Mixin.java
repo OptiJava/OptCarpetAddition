@@ -15,7 +15,7 @@ package io.github.optijava.opt_carpet_addition.mixins.rule.disallowRedstoneWireC
 //$$             at = @At(value = "INVOKE", target = "Lnet/minecraft/block/BlockState;getBlock()Lnet/minecraft/block/Block;")
 //$$     )
 //$$     private Block redirectGetBlock(BlockState instance) {
-//$$         if (OptCarpetSettings.noteBlockSuppressionReintroduced) {
+//$$         if (OptCarpetSettings.disallowRedstoneWireConnectsToOpenTrapdoor) {
 //$$             return (RedstoneWireBlock) (Object) this;
 //$$         } else {
 //$$             return instance.getBlock();

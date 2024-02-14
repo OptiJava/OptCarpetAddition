@@ -3,7 +3,7 @@
 Language: English | [中文](https://github.com/OptiJava/OptCarpetAddition/blob/master/README.md)
 
 > This is an extension module of `Carpet`. The goal is to add some functions that do not greatly change the original game
-mechanism but optimize the player experience~~reduce the blood pressure of server owner~~.
+mechanism but optimize the player experience.
 
 Build with [Preprocessor](https://github.com/ReplayMod/preprocessor)
 

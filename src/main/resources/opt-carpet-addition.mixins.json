@@ -40,6 +40,10 @@
     //#if MC >= 12000
     //$$ "rule.noteBlockSuppressionReintroduced.RedstoneWireBlock_Mixin",
     //#endif
+    //#if MC >= 11900
+    //$$ "logger.blockUpdate.SimpleNeighborUpdater_Mixin",
+    //$$ "logger.blockUpdate.ChainRestrictedNeighborUpdater_Mixin",
+    //#endif
     "rule.customItemDiscardTime.ItemEntity_Mixin"
   ],
   "client": [

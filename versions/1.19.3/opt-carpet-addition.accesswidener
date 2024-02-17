@@ -6,3 +6,4 @@ accessible field net/minecraft/network/packet/c2s/play/ChatMessageC2SPacket chat
 accessible field net/minecraft/server/network/ServerLoginNetworkHandler server Lnet/minecraft/server/MinecraftServer;
 accessible method net/minecraft/entity/Entity unsetRemoved ()V
 accessible method net/minecraft/server/network/ServerPlayerEntity worldChanged (Lnet/minecraft/server/world/ServerWorld;)V
+accessible class net/minecraft/world/block/ChainRestrictedNeighborUpdater$Entry

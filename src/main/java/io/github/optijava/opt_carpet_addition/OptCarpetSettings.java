@@ -128,7 +128,6 @@ public class OptCarpetSettings {
     public static boolean disabledEntityTick = false;
 
     //#if MC < 11900
-    //$$
     @Rule(
             desc = "Disable error stack when update suppression.",
             category = {RuleCategory.BUGFIX}

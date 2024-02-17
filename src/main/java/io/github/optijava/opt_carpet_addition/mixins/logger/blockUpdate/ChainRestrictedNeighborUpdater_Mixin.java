@@ -7,10 +7,10 @@ package io.github.optijava.opt_carpet_addition.mixins.logger.blockUpdate;
 //$$ import org.spongepowered.asm.mixin.injection.At;
 //$$ import org.spongepowered.asm.mixin.injection.Inject;
 //$$ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
+//$$
 //$$ @Mixin(ChainRestrictedNeighborUpdater.class)
 //$$ public class ChainRestrictedNeighborUpdater_Mixin {
-
+//$$
 //$$     @Inject(
 //$$             method = "enqueue",
 //$$             at = @At("HEAD")

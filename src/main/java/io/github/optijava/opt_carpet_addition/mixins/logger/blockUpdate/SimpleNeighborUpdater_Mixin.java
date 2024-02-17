@@ -9,10 +9,10 @@ package io.github.optijava.opt_carpet_addition.mixins.logger.blockUpdate;
 //$$ import org.spongepowered.asm.mixin.injection.At;
 //$$ import org.spongepowered.asm.mixin.injection.Inject;
 //$$ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
+//$$
 //$$ @Mixin(SimpleNeighborUpdater.class)
 //$$ public class SimpleNeighborUpdater_Mixin {
-
+//$$
 //$$     @Inject(
 //$$             method = "updateNeighbor(Lnet/minecraft/block/BlockState;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/Block;Lnet/minecraft/util/math/BlockPos;Z)V",
 //$$             at = @At("HEAD")

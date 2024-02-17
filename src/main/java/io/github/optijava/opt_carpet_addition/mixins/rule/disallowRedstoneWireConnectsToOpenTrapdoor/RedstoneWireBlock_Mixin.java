@@ -5,9 +5,9 @@ package io.github.optijava.opt_carpet_addition.mixins.rule.disallowRedstoneWireC
 //$$ import org.spongepowered.asm.mixin.Mixin;
 //$$ import org.spongepowered.asm.mixin.injection.At;
 //$$ import org.spongepowered.asm.mixin.injection.Redirect;
-
+//$$
 //$$ import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
-
+//$$
 //$$ @Mixin(RedstoneWireBlock.class)
 //$$ public class RedstoneWireBlock_Mixin {
 //$$     @Redirect(

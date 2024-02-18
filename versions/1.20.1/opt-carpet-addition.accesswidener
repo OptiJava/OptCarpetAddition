@@ -7,3 +7,9 @@ accessible field net/minecraft/server/network/ServerLoginNetworkHandler server L
 accessible method net/minecraft/entity/Entity unsetRemoved ()V
 accessible method net/minecraft/server/network/ServerPlayerEntity worldChanged (Lnet/minecraft/server/world/ServerWorld;)V
 accessible class net/minecraft/world/block/ChainRestrictedNeighborUpdater$Entry
+accessible class net/minecraft/world/block/ChainRestrictedNeighborUpdater$SimpleEntry
+accessible class net/minecraft/world/block/ChainRestrictedNeighborUpdater$StateReplacementEntry
+accessible class net/minecraft/world/block/ChainRestrictedNeighborUpdater$StatefulEntry
+accessible class net/minecraft/world/block/ChainRestrictedNeighborUpdater$SixWayEntry
+accessible field net/minecraft/world/block/ChainRestrictedNeighborUpdater$SixWayEntry sourceBlock Lnet/minecraft/block/Block;
+accessible field net/minecraft/world/block/ChainRestrictedNeighborUpdater$SixWayEntry pos Lnet/minecraft/util/math/BlockPos;

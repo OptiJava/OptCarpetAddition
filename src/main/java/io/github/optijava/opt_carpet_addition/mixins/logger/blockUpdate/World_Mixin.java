@@ -1,6 +1,8 @@
 package io.github.optijava.opt_carpet_addition.mixins.logger.blockUpdate;
 
 //#if MC < 11900
+import carpet.CarpetServer;
+import io.github.optijava.opt_carpet_addition.logger.blockUpdate.BlockUpdateLogger;
 import net.minecraft.block.Block;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -16,8 +18,10 @@ public class World_Mixin {
             method = "updateNeighbor",
             at = @At("HEAD")
     )
-    private void injectUpdateNeighbor(BlockPos pos, Block sourceBlock, BlockPos neighborPos, CallbackInfo ci) {
-        // TODO: logs
+    private void injectUpdateNeighbor(BlockPos updatingBlockPos, Block sourceBlock, BlockPos centreBlockPos, CallbackInfo ci) {
+        Block updatingBlock = CarpetServer.minecraft_server.getCommandSource().getWorld().getChunk(updatingBlockPos).getBlockState(updatingBlockPos).getBlock();
+
+        BlockUpdateLogger.INSTANCE.logBlockUpdate(updatingBlock, updatingBlockPos, sourceBlock, centreBlockPos);
     }
 }
 //#endif

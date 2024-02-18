@@ -241,7 +241,27 @@ CommandLogger.json is the config file, type: `/commandlogger reload` to reload t
 
 Fix bug: dropper may cause server crash
 
-Please watch [kygo_life's bilibili video](https://www.bilibili.com/video/BV1HM411z7jz/?spm_id_from=333.999.0.0)
+The discoverer of this bug is player `kygo_life`, who [once posted an explanation on bilibili](https://www.bilibili.com/video/BV1HM411z7jz/?spm_id_from=333.999.0.0). However, it was deleted.
+
+The triggering process of this bug is roughly as follows: First, build a structure similar to an item shadowing, but replace the box with a shulker box (which can be empty). At this time, open the trapdoor, destroy the shulker box, and the update suppression will be triggered.
+
+Then place a dropper at the position of the shulker box, and then trigger it with a redstone signal (such as a lever), and boom!
+
+This bug has been tested and available in `1.17.1`, but has not been tested in other versions.
+
+General principle:
+
+- After the shadow box is broken, the update suppression is triggered, so although the shadow box blocks are broken, the shulker box block entity are still exist.
+
+- The dropper block is placed, the block is a dropper, but the block entity remains a shulker box.
+
+- When triggered, the `DropperBlock.dispense (...)` method of that dropper will be called, and that method has the following code: (This line of code is exactly the same in `yarn` 1.17.1, 1.18.2, 1.19.3, 1.20.1)
+```
+DispenserBlockEntity dispenserBlockEntity = (DispenserBlockEntity)blockPointerImpl.getBlockEntity();
+                                                  ^^^^^^^^^^
+                                                class cast here!      shulker block entity -> dispenser block entity
+``` 
+- So throwing `ClassCastException` during this can cause server crash（
 
 - Default value: `false`
 - Acceptable value: `true` `false`

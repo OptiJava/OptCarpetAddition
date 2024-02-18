@@ -248,7 +248,23 @@ CommandLogger.json配置文件可以配置白名单、黑名单等，修改配�
 
 修复了方块实体替换导致投掷器激活时崩服的bug
 
-详情请看[kygo_life的视频](https://www.bilibili.com/video/BV1HM411z7jz/?spm_id_from=333.999.0.0)
+这个bug的发现人是玩家`kygo_life`，[他曾经在B站发了一个解释](https://www.bilibili.com/video/BV1HM411z7jz/?spm_id_from=333.999.0.0)，不过被删掉了。
+
+这个bug的触发流程大致如下：首先建造一个类似于物品分身的结构，只不过将箱子换成潜影盒（可为空），此时打开活板门，打掉潜影盒，此时更新抑制会被触发，然后在原本
+潜影盒的位置上放置一个投掷器，然后用红石信号（如拉杆）触发此投掷器即可崩档。
+
+本bug在`1.17.1`经测试可用，其他版本未测试。
+
+大致原理：
+- 有点像方块实体替换，潜影盒被打掉后因为触发了更新抑制，所以虽说潜影盒方块被打掉了，但是方块实体仍保留
+- 投掷器方块被放置，方块是投掷器，方块实体仍为潜影盒
+- 触发时，那个投掷器的`DropperBlock.dispense(...)`方法会被调用，而那个方法有这样一段代码：（这行代码在`yarn`1.17.1、1.18.2、1.19.3、1.20.1完全相同）
+```
+DispenserBlockEntity dispenserBlockEntity = (DispenserBlockEntity)blockPointerImpl.getBlockEntity();
+                                                ^^^^^^^^^^
+                                               进行了一次强转
+```
+- 所以在强转时抛出`ClassCastException`，崩服甚至崩档（
 
 - Default value: `false`
 - Acceptable value: `true` `false`

@@ -5,6 +5,8 @@ Language: English | [中文](https://github.com/OptiJava/OptCarpetAddition/blob/
 > This is an extension mod of `Carpet`. The goal is to add some functions that do not greatly change the original game
 mechanism but optimize the player experience.
 
+**_WARNING_: Don't download mods with the `-source` suffix, it is just for development!!!**
+
 Build with [Preprocessor](https://github.com/ReplayMod/preprocessor)
 
 **Dependencies:`Carpet` `fabric-api`**

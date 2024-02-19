@@ -38,7 +38,7 @@
     "rule.optimizeFakePlayerSpawn.PlayerCommand_Mixin",
     "rule.removeAllCurseOfBindingArmorWhenPlayerDeadInWall.ServerPlayerEntity_Mixin",
     //#if MC >= 12000
-    //$$ "rule.noteBlockSuppressionReintroduced.RedstoneWireBlock_Mixin",
+    //$$ "rule.disallowRedstoneWireConnectsToOpenTrapdoor.RedstoneWireBlock_Mixin",
     //#endif
     //#if MC >= 11900
     //$$ "logger.blockUpdate.SimpleNeighborUpdater_Mixin",

@@ -1,8 +1,10 @@
 package io.github.optijava.opt_carpet_addition.logger.blockUpdate;
 
 import carpet.utils.Messenger;
+import io.github.optijava.opt_carpet_addition.OptCarpetAddition;
 import io.github.optijava.opt_carpet_addition.logger.AbstractLogger;
 import io.github.optijava.opt_carpet_addition.logger.LoggerRegister;
+import io.github.optijava.opt_carpet_addition.utils.exceptions.ThrowableCCESuppression;
 import net.minecraft.block.Block;
 //#if MC >= 11900
 //$$ import net.minecraft.text.Text;
@@ -43,24 +45,29 @@ public class BlockUpdateLogger extends AbstractLogger {
         //                               ^^          ^^^
         //                             被更新的      一个封装
 
-        //#if MC >= 11900
-        //$$ super.log(() -> new Text[]{
-        //$$         Messenger.c("r ", updatingBlock.getName().getString(),
-        //$$                 "w block ",
-        //$$                 "g [", updatingBlockPos.getX(), " ", updatingBlockPos.getY(), " ", updatingBlockPos.getZ(), "]", "w is updated.",
-        //$$                 " Source block: ", "r ", sourceBlock.getName().getString(),
-        //$$                 "w Centre block position: ", "g [", centreBlockPos.getX(), " ", centreBlockPos.getY(), " ", centreBlockPos.getZ(), "]"
-        //$$         )
-        //$$ });
-        //#else
-        super.log(() -> new BaseText[]{
-               Messenger.c("r ", updatingBlock.getName().getString(),
-                       "w block ",
-                       "g [", updatingBlockPos.getX(), " ", updatingBlockPos.getY(), " ", updatingBlockPos.getZ(), "]", "w is updated.",
-                       " Source block: ", "r ", sourceBlock.getName().getString(),
-                       "w Centre block position: ", "g [", centreBlockPos.getX(), " ", centreBlockPos.getY(), " ", centreBlockPos.getZ(), "]"
-               )
-        });
-        //#endif
+        try {
+            //#if MC >= 11900
+            //$$ super.log(() -> new Text[]{
+            //$$    Messenger.c("m " + updatingBlock.getName().getString(), "w  block ",
+            //$$           "g [" + updatingBlockPos.getX() + " " + updatingBlockPos.getY() + " " + updatingBlockPos.getZ() + "]", "w  is updated. " +
+            //$$           "Source block: ", "m " + sourceBlock.getName().getString() + ". ",
+            //$$           "w Centre block position: ", "m [" + centreBlockPos.getX() + " " + centreBlockPos.getY() + " " + centreBlockPos.getZ() + "]."
+            //$$   )
+            //$$ });
+            //#else
+            super.log(() -> new BaseText[]{
+                   Messenger.c("m " + updatingBlock.getName().getString(), "w  block ",
+                           "g [" + updatingBlockPos.getX() + " " + updatingBlockPos.getY() + " " + updatingBlockPos.getZ() + "]", "w  is updated. " +
+                           "Source block: ", "m " + sourceBlock.getName().getString() + ". ",
+                           "w Centre block position: ", "m [" + centreBlockPos.getX() + " " + centreBlockPos.getY() + " " + centreBlockPos.getZ() + "]."
+                   )
+            });
+            //#endif
+        } catch (Exception e) {
+            if (e instanceof ThrowableCCESuppression t) {
+                throw t;
+            }
+            OptCarpetAddition.LOGGER.error("Unexpected exception occurred when logging block update.", e);
+        }
     }
 }

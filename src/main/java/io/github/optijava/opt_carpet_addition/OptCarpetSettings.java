@@ -203,4 +203,10 @@ public class OptCarpetSettings {
     //$$ )
     //$$ public static boolean disallowRedstoneWireConnectsToOpenTrapdoor = false;
     //#endif
+
+    @Rule(
+            desc = "Don't enable this rule unless you need blockUpdate logger! Enabling this rule may cause performance issues, so this rule was false by default. Before you set this rule to true, everyone can not use blockUpdate logger.",
+            category = {RuleCategory.FEATURE, RuleCategory.OPTIMIZATION}
+    )
+    public static boolean allowBlockUpdateLogger = false;
 }

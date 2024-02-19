@@ -2,6 +2,7 @@ package io.github.optijava.opt_carpet_addition.mixins.logger.blockUpdate;
 
 //#if MC >= 11900
 //$$ import io.github.optijava.opt_carpet_addition.logger.blockUpdate.BlockUpdateLogger;
+//$$ import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 //$$ import net.minecraft.block.Block;
 //$$ import net.minecraft.block.BlockState;
 //$$ import net.minecraft.util.math.BlockPos;
@@ -19,7 +20,9 @@ package io.github.optijava.opt_carpet_addition.mixins.logger.blockUpdate;
 //$$             at = @At("HEAD")
 //$$     )
 //$$     private void injectUpdateNeighbor(BlockState updatingBlockState, BlockPos updatingBlockPos, Block sourceBlock, BlockPos centreBlockPos, boolean notify, CallbackInfo ci) {
-//$$         BlockUpdateLogger.INSTANCE.logBlockUpdate(updatingBlockState.getBlock(), updatingBlockPos, sourceBlock, centreBlockPos);
+//$$         if (OptCarpetSettings.allowBlockUpdateLogger) {
+//$$            BlockUpdateLogger.INSTANCE.logBlockUpdate(updatingBlockState.getBlock(), updatingBlockPos, sourceBlock, centreBlockPos);
+//$$         }
 //$$     }
 //$$ }
 //#endif

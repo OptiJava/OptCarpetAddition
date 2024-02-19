@@ -4,6 +4,8 @@ Language: [English](https://github.com/OptiJava/OptCarpetAddition/blob/master/RE
 
 > 这是一个`Carpet`的扩展模组，目标是添加一些没有太大改变原版游戏机制但优化玩家体验~~降低腐竹血压~~的一些功能。
 
+**_警告_: 不要下载以`-source`结尾的模组jar文件，那仅用于开发！！！**
+
 使用[Preprocessor](https://github.com/ReplayMod/preprocessor)构建~~可供大家学习~~
 
 **本模组需要前置模组：`Carpet` `fabric-api`**

@@ -289,6 +289,14 @@ Prevent CCE Suppression Crashes，watch [Void0's bilibili video](https://www.bil
 - Acceptable value: `true` `false`
 - Categories: `BugFix` `Experimential`
 
+### removeAllCurseOfBindingArmorWhenPlayerDeadInWall
+
+- Remove all curse of binding armor when player dead in block(such as sand).
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Feature`
+
 ### customItemDiscardTime
 
 Custom item discard time. :)

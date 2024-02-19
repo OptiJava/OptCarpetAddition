@@ -1,6 +1,7 @@
 package io.github.optijava.opt_carpet_addition.mixins.logger.blockUpdate;
 
 //#if MC >= 11900
+//$$ import io.github.optijava.opt_carpet_addition.logger.blockUpdate.BlockUpdateLogger;
 //$$ import net.minecraft.block.Block;
 //$$ import net.minecraft.block.BlockState;
 //$$ import net.minecraft.util.math.BlockPos;
@@ -17,8 +18,8 @@ package io.github.optijava.opt_carpet_addition.mixins.logger.blockUpdate;
 //$$             method = "updateNeighbor(Lnet/minecraft/block/BlockState;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/block/Block;Lnet/minecraft/util/math/BlockPos;Z)V",
 //$$             at = @At("HEAD")
 //$$     )
-//$$     private void injectUpdateNeighbor(BlockState state, BlockPos pos, Block sourceBlock, BlockPos sourcePos, boolean notify, CallbackInfo ci) {
-//$$         // TODO: log
+//$$     private void injectUpdateNeighbor(BlockState updatingBlockState, BlockPos updatingBlockPos, Block sourceBlock, BlockPos centreBlockPos, boolean notify, CallbackInfo ci) {
+//$$         BlockUpdateLogger.INSTANCE.logBlockUpdate(updatingBlockState.getBlock(), updatingBlockPos, sourceBlock, centreBlockPos);
 //$$     }
 //$$ }
 //#endif

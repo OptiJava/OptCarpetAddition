@@ -1,8 +1,14 @@
 package io.github.optijava.opt_carpet_addition.logger.blockUpdate;
 
+import carpet.utils.Messenger;
 import io.github.optijava.opt_carpet_addition.logger.AbstractLogger;
 import io.github.optijava.opt_carpet_addition.logger.LoggerRegister;
 import net.minecraft.block.Block;
+//#if MC >= 11900
+//$$ import net.minecraft.text.Text;
+//#else
+import net.minecraft.text.BaseText;
+//#endif
 import net.minecraft.util.math.BlockPos;
 
 import java.lang.reflect.Field;
@@ -37,6 +43,24 @@ public class BlockUpdateLogger extends AbstractLogger {
         //                               ^^          ^^^
         //                             被更新的      一个封装
 
-        // TODO: logs
+        //#if MC >= 11900
+        //$$ super.log(() -> new Text[]{
+        //$$         Messenger.c("r ", updatingBlock.getName().getString(),
+        //$$                 "w block ",
+        //$$                 "g [", updatingBlockPos.getX(), " ", updatingBlockPos.getY(), " ", updatingBlockPos.getZ(), "]", "w is updated.",
+        //$$                 " Source block: ", "r ", sourceBlock.getName().getString(),
+        //$$                 "w Centre block position: ", "g [", centreBlockPos.getX(), " ", centreBlockPos.getY(), " ", centreBlockPos.getZ(), "]"
+        //$$         )
+        //$$ });
+        //#else
+        super.log(() -> new BaseText[]{
+               Messenger.c("r ", updatingBlock.getName().getString(),
+                       "w block ",
+                       "g [", updatingBlockPos.getX(), " ", updatingBlockPos.getY(), " ", updatingBlockPos.getZ(), "]", "w is updated.",
+                       " Source block: ", "r ", sourceBlock.getName().getString(),
+                       "w Centre block position: ", "g [", centreBlockPos.getX(), " ", centreBlockPos.getY(), " ", centreBlockPos.getZ(), "]"
+               )
+        });
+        //#endif
     }
 }

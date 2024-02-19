@@ -290,6 +290,14 @@ DispenserBlockEntity dispenserBlockEntity = (DispenserBlockEntity)blockPointerIm
 - Acceptable value: `true` `false`
 - Categories: `BugFix` `Experimential`
 
+### removeAllCurseOfBindingArmorWhenPlayerDeadInWall
+
+- 顾名思义，当玩家窒息死亡时移除所有绑定诅咒盔甲 ~~腐竹再也不用用指令移除绑定诅咒南瓜头了~~
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Feature`
+
 ### customItemDiscardTime
 
 自定义物品消失时间

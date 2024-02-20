@@ -62,12 +62,14 @@ processResources {
     inputs.property "version", simple_version
     inputs.property "minecraft_requirement_version", project.minecraft_requirement_version
     inputs.property "carpet_requirement_version", project.carpet_requirement_version
+    inputs.property "loader_requirement_version", project.loader_requirement_version
 
     filesMatching("fabric.mod.json") {
         def valueMap = [
 				"version": simple_version,
 				"carpet_requirement_version": project.carpet_requirement_version,
 				"minecraft_requirement_version": project.minecraft_requirement_version,
+                "loader_requirement_version": project.loader_requirement_version,
 		]
 		expand valueMap
     }
@@ -80,7 +82,7 @@ tasks.withType(JavaCompile).configureEach {
 
 
 loom {
-    accessWidenerPath.set(file("src/main/resources/opt-carpet-addition.accesswidener"))
+    accessWidenerPath.set(file("opt-carpet-addition.accesswidener"))
 
     runConfigs.all {
 		// to make sure it generates all "Minecraft Client (:subproject_name)" applications
@@ -99,7 +101,8 @@ java {
     // Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
     // if it is present.
     // If you remove this line, sources will not be generated.
-    withSourcesJar()
+
+    //withSourcesJar()
 }
 
 

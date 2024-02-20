@@ -128,7 +128,6 @@ public class OptCarpetSettings {
     public static boolean disabledEntityTick = false;
 
     //#if MC < 11900
-    //$$
     @Rule(
             desc = "Disable error stack when update suppression.",
             category = {RuleCategory.BUGFIX}
@@ -196,4 +195,18 @@ public class OptCarpetSettings {
             validate = CustomItemDiscardTimeValidator.class
     )
     public static int customItemDiscardTime = -1;
+
+    //#if MC >= 12000
+    //$$ @Rule(
+    //$$         desc = "Disallow redstone wire connects to open trapdoor(in version >= 1.20)",
+    //$$         category = RuleCategory.FEATURE
+    //$$ )
+    //$$ public static boolean disallowRedstoneWireConnectsToOpenTrapdoor = false;
+    //#endif
+
+    @Rule(
+            desc = "Don't enable this rule unless you need blockUpdate logger! Enabling this rule may cause performance issues, so this rule was false by default. Before you set this rule to true, everyone can not use blockUpdate logger.",
+            category = {RuleCategory.FEATURE, RuleCategory.OPTIMIZATION}
+    )
+    public static boolean allowBlockUpdateLogger = false;
 }

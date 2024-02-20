@@ -37,10 +37,7 @@ jobs:
       - name: collect artifacts to out folder
         run: |
           mkdir out
-          mv ./versions/1.17.1/build/libs/* ./out
-          mv ./versions/1.18.2/build/libs/* ./out
-          mv ./versions/1.19.3/build/libs/* ./out
-          mv ./versions/1.20.1/build/libs/* ./out
+          bash ./.github/scripts/build_output.sh
       - name: capture build artifacts
         if: ${{ runner.os == 'Linux' && matrix.java == '17' }}
         uses: actions/upload-artifact@v3.1.2

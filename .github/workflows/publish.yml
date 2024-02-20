@@ -37,15 +37,7 @@ jobs:
 
       - name: sort artifacts by game version
         run: |
-          mkdir processed_artifacts
-          mkdir processed_artifacts/17
-          mkdir processed_artifacts/18
-          mkdir processed_artifacts/19
-          mkdir processed_artifacts/20
-          cp artifacts/*1.17*.jar processed_artifacts/17
-          cp artifacts/*1.18*.jar processed_artifacts/18
-          cp artifacts/*1.19*.jar processed_artifacts/19
-          cp artifacts/*1.20*.jar processed_artifacts/20
+          bash ./.github/scripts/sort_artifacts.sh
 
       - name: show details for debug
         if: ${{ inputs.debug == true }}
@@ -74,7 +66,7 @@ jobs:
           curseforge-id: 891699
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
 
-          files: processed_artifacts/17/*.jar
+          files: processed_artifacts/1.17.1/*.jar
 
           name: v${{ inputs.version }} For Minecraft 1.17
           version: v${{ inputs.version }}
@@ -102,7 +94,7 @@ jobs:
           curseforge-id: 891699
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
 
-          files: processed_artifacts/18/*.jar
+          files: processed_artifacts/1.18.2/*.jar
 
           name: v${{ inputs.version }} For Minecraft 1.18
           version: v${{ inputs.version }}
@@ -129,7 +121,7 @@ jobs:
           curseforge-id: 891699
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
 
-          files: processed_artifacts/19/*.jar
+          files: processed_artifacts/1.19.3/*.jar
 
           name: v${{ inputs.version }} For Minecraft 1.19.3
           version: v${{ inputs.version }}
@@ -156,7 +148,7 @@ jobs:
           curseforge-id: 891699
           curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
 
-          files: processed_artifacts/20/*.jar
+          files: processed_artifacts/1.20.1/*.jar
 
           name: v${{ inputs.version }} For Minecraft 1.20.1
           version: v${{ inputs.version }}

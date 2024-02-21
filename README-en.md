@@ -305,6 +305,26 @@ Custom item discard time. :)
 - Acceptable value: `true` `false`
 - Categories: `Feature`
 
+### allowBlockUpdateLogger
+
+Since the `blockUpdate` logger can cause performance issues, a rule `allowBlockUpdateLogger` has been added, if this rule is disabled, all players will not be notified of block updates regardless of whether they are subscribed to this logger or not, and this rule is disabled by default.
+\
+If `blockUpdate` is not needed, **disabling this is highly recommended**.
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Feature` `Optimization`
+
+### disallowRedstoneWireConnectsToOpenTrapdoor
+
+**just in >=1.20**
+
+If you want to use note block update suppression in 1.20, this may help you.
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Feature`
+
 ## Command
 
 ### player xxx tp
@@ -347,3 +367,11 @@ Custom item discard time. :)
 ### cceSuppressionCrash
 
 - CCE suppressed crashes logger，is simular to carpet rule `updateSuppressedCrash`
+
+### blockUpdate
+
+**Since this logger can cause performance issues, a rule `allowBlockUpdateLogger` has been added, if this rule is disabled, all players will not be notified of block updates regardless of whether they are subscribed to this logger, and this rule is disabled by default.**
+\
+If `blockUpdate` is not required, **it is highly recommended to disable the `allowBlockUpdateLogger` rule**.
+
+- Log all block updates

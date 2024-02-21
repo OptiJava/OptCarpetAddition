@@ -292,7 +292,7 @@ DispenserBlockEntity dispenserBlockEntity = (DispenserBlockEntity)blockPointerIm
 
 ### removeAllCurseOfBindingArmorWhenPlayerDeadInWall
 
-- 顾名思义，当玩家窒息死亡时移除所有绑定诅咒盔甲 ~~腐竹再也不用用指令移除绑定诅咒南瓜头了~~
+顾名思义，当玩家窒息死亡时移除所有绑定诅咒盔甲 ~~腐竹再也不用用指令移除绑定诅咒南瓜头了~~
 
 - Default value: `false`
 - Acceptable value: `true` `false`
@@ -301,6 +301,26 @@ DispenserBlockEntity dispenserBlockEntity = (DispenserBlockEntity)blockPointerIm
 ### customItemDiscardTime
 
 自定义物品消失时间
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Feature`
+
+### allowBlockUpdateLogger
+
+由于`blockUpdate`记录器可能导致性能问题，所以增加了一个规则`allowBlockUpdateLogger`，如果此规则禁用，所有玩家不论是否订阅了本记录器都不会受到方块更新的通知，并且本规则默认禁用。
+\
+若无需使用`blockUpdate`，**强烈建议禁用**
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Feature` `Optimization`
+
+### disallowRedstoneWireConnectsToOpenTrapdoor
+
+**仅限`1.20`版本及以上**
+
+如果你想在`1.20`使用音符盒极简抑制器，这可能能帮助你
 
 - Default value: `false`
 - Acceptable value: `true` `false`
@@ -347,3 +367,11 @@ DispenserBlockEntity dispenserBlockEntity = (DispenserBlockEntity)blockPointerIm
 
 ### cceSuppressionCrash
 - CCE更新抑制器崩溃记录，类似于carpet的`updateSuppressedCrash`
+
+### blockUpdate
+
+**由于本记录器可能导致性能问题，所以增加了一个规则`allowBlockUpdateLogger`，如果此规则禁用，所有玩家不论是否订阅了本记录器都不会受到方块更新的通知，并且本规则默认禁用。**
+\
+若无需使用`blockUpdate`，**强烈建议禁用`allowBlockUpdateLogger`规则**
+
+- 记录所有方块更新

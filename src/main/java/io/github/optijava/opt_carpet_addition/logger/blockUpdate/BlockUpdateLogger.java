@@ -49,7 +49,7 @@ public class BlockUpdateLogger extends AbstractLogger {
             //#if MC >= 11900
             //$$ super.log(() -> new Text[]{
             //$$    Messenger.c("m " + updatingBlock.getName().getString(), "w  block ",
-            //$$           "g [" + updatingBlockPos.getX() + " " + updatingBlockPos.getY() + " " + updatingBlockPos.getZ() + "]", "w  is updated. " +
+            //$$           "m [" + updatingBlockPos.getX() + " " + updatingBlockPos.getY() + " " + updatingBlockPos.getZ() + "]", "w  is updated. " +
             //$$           "Source block: ", "m " + sourceBlock.getName().getString() + ". ",
             //$$           "w Centre block position: ", "m [" + centreBlockPos.getX() + " " + centreBlockPos.getY() + " " + centreBlockPos.getZ() + "]."
             //$$   )
@@ -59,7 +59,7 @@ public class BlockUpdateLogger extends AbstractLogger {
                    Messenger.c("m " + updatingBlock.getName().getString(), "w  block ",
                            "g [" + updatingBlockPos.getX() + " " + updatingBlockPos.getY() + " " + updatingBlockPos.getZ() + "]", "w  is updated. " +
                            "Source block: ", "m " + sourceBlock.getName().getString() + ". ",
-                           "w Centre block position: ", "m [" + centreBlockPos.getX() + " " + centreBlockPos.getY() + " " + centreBlockPos.getZ() + "]."
+                           "w Centre block position: ", "g [" + centreBlockPos.getX() + " " + centreBlockPos.getY() + " " + centreBlockPos.getZ() + "]."
                    )
             });
             //#endif

@@ -8,7 +8,7 @@ package io.github.optijava.opt_carpet_addition.mixins.rule.disallowRedstoneWireC
 //$$
 //$$ import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 //$$
-//$$ @Mixin(RedstoneWireBlock.class)
+//$$ @Mixin(value = RedstoneWireBlock.class, priority = 2000)
 //$$ public class RedstoneWireBlock_Mixin {
 //$$     @Redirect(
 //$$             method = "getRenderConnectionType(Lnet/minecraft/world/BlockView;Lnet/minecraft/util/math/BlockPos;Lnet/minecraft/util/math/Direction;Z)Lnet/minecraft/block/enums/WireConnection;",

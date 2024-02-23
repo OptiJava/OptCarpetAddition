@@ -17,7 +17,8 @@ public class LoggerRegistry_Mixin {
 
     @Inject(
             method = "subscribePlayer",
-            at = @At("HEAD")
+            at = @At("HEAD"),
+            remap = false
     )
     private static void injectSubscribePlayer(String playerName, String logName, String option, CallbackInfo ci) {
         if (Objects.equals(logName, "blockUpdate") && !OptCarpetSettings.allowBlockUpdateLogger) {

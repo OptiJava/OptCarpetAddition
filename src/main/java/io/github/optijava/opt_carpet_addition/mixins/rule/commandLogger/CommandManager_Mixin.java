@@ -12,6 +12,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(CommandManager.class)
@@ -24,7 +25,9 @@ public class CommandManager_Mixin {
             method = "execute",
             at = @At("HEAD")
     )
-    //#if MC >= 11900
+    //#if MC >= 12004
+    //$$ public void injectExecute(ParseResults<ServerCommandSource> parseResults, String command, CallbackInfo ci) {
+    //#elseif MC >= 11900
     //$$ public void injectExecute(ParseResults<ServerCommandSource> parseResults, String command, CallbackInfoReturnable<Integer> cir) {
     //#else
     public void injectExecute(ServerCommandSource commandSource, String command, CallbackInfoReturnable<Integer> cir) {

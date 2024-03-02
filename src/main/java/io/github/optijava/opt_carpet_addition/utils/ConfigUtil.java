@@ -1,5 +1,6 @@
 package io.github.optijava.opt_carpet_addition.utils;
 
+import io.github.optijava.opt_carpet_addition.OptCarpetAddition;
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 
 import java.io.File;
@@ -12,7 +13,7 @@ public class ConfigUtil {
         try {
             return Files.readString(OptCarpetSettings.configDirectory.resolve(fileName), StandardCharsets.UTF_8);
         } catch (IOException e) {
-            e.printStackTrace();
+            OptCarpetAddition.LOGGER.error(e);
             return "Failed";
         }
     }
@@ -22,7 +23,7 @@ public class ConfigUtil {
             Files.createFile(OptCarpetSettings.configDirectory.resolve(fileName));
             return true;
         } catch (IOException e) {
-            e.printStackTrace();
+            OptCarpetAddition.LOGGER.error(e);
             return false;
         }
     }
@@ -43,7 +44,7 @@ public class ConfigUtil {
         try {
             Files.write(OptCarpetSettings.configDirectory.resolve(fileName), content.getBytes());
         } catch (IOException e) {
-            e.printStackTrace();
+            OptCarpetAddition.LOGGER.error(e);
             return false;
         }
         return true;

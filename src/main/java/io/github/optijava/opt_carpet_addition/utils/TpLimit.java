@@ -42,7 +42,7 @@ public class TpLimit {
             }
             OptCarpetSettings.tpLimitConfigBean = gson.fromJson(content, TpLimitConfigBean.class);
         } catch (JsonSyntaxException e) {
-            new RuntimeException("Exception when parsed json config file.", e).printStackTrace();
+            OptCarpetAddition.LOGGER.error(new RuntimeException("Exception when parsed json config file.", e));
         } finally {
             if (OptCarpetSettings.tpLimitConfigBean == null) {
                 OptCarpetSettings.tpLimitConfigBean = new TpLimitConfigBean();

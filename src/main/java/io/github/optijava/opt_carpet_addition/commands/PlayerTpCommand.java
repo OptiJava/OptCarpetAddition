@@ -50,7 +50,7 @@ public class PlayerTpCommand {
             OptCarpetAddition.LOGGER.warn("Console can't tp to player");
             return 0;
         }
-        if (StringArgumentType.getString(context, COMMAND_PREFIX).equals("") || target == null) {
+        if (StringArgumentType.getString(context, COMMAND_PREFIX).isEmpty() || target == null) {
             Messenger.m(context.getSource(), "r Invalid player name.");
             return 0;
         }
@@ -115,7 +115,7 @@ public class PlayerTpCommand {
             OptCarpetAddition.LOGGER.warn("Console can't tp here player");
             return 0;
         }
-        if (StringArgumentType.getString(context, COMMAND_PREFIX).equals("") || target == null) {
+        if (StringArgumentType.getString(context, COMMAND_PREFIX).isEmpty() || target == null) {
             Messenger.m(context.getSource(), "r Invalid player name.");
             return 0;
         }

@@ -42,7 +42,7 @@ public class CommandLogger {
             }
             OptCarpetSettings.commandLoggerConfigBean = gson.fromJson(content, CommandLoggerConfigBean.class);
         } catch (JsonSyntaxException e) {
-            new RuntimeException("Exception when parsed json config file.", e).printStackTrace();
+            OptCarpetAddition.LOGGER.error(new RuntimeException("Exception when parsed json config file.", e));
         } finally {
             if (OptCarpetSettings.commandLoggerConfigBean == null) {
                 OptCarpetSettings.commandLoggerConfigBean = new CommandLoggerConfigBean();

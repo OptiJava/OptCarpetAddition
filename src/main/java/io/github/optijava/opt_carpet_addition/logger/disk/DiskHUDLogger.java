@@ -5,8 +5,6 @@ import io.github.optijava.opt_carpet_addition.logger.AbstractHUDLogger;
 import io.github.optijava.opt_carpet_addition.logger.LoggerRegister;
 import net.minecraft.server.MinecraftServer;
 //#if MC >= 11900
-//$$ import net.minecraft.text.LiteralTextContent;
-//$$ import net.minecraft.text.MutableText;
 //$$ import net.minecraft.text.Text;
 //#else
 import net.minecraft.text.BaseText;
@@ -46,9 +44,9 @@ public class DiskHUDLogger extends AbstractHUDLogger {
             //#if MC >= 11900
             //$$ for (File f : File.listRoots()) {
             //$$    if (f.getPath().equals("/")) {
-            //$$        list.add(MutableText.of(new LiteralTextContent("%s %sGB/%sGB %n".formatted("RootFileSystem", (f.getTotalSpace() - f.getFreeSpace()) / 1024 / 1024 / 1024, f.getTotalSpace() / 1024 / 1024 / 1024))));
+            //$$        list.add(Text.of("%s %sGB/%sGB %n".formatted("RootFileSystem", (f.getTotalSpace() - f.getFreeSpace()) / 1024 / 1024 / 1024, f.getTotalSpace() / 1024 / 1024 / 1024)));
             //$$    } else {
-            //$$        list.add(MutableText.of(new LiteralTextContent("%s %sGB/%sGB %n".formatted(f.getPath(), (f.getTotalSpace() - f.getFreeSpace()) / 1024 / 1024 / 1024, f.getTotalSpace() / 1024 / 1024 / 1024))));
+            //$$        list.add(Text.of("%s %sGB/%sGB %n".formatted(f.getPath(), (f.getTotalSpace() - f.getFreeSpace()) / 1024 / 1024 / 1024, f.getTotalSpace() / 1024 / 1024 / 1024)));
             //$$    }
             //$$ }
             //$$ LoggerRegistry.getLogger("disk").log(() -> list.toArray(new Text[0]));

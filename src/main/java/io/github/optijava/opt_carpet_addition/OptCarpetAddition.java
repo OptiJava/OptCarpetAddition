@@ -104,7 +104,7 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
 
         // config
         if (!ConfigUtil.init()) {
-            OptCarpetAddition.LOGGER.error("Failed to create config folder:" + OptCarpetSettings.configDirectory.toString() + File.separator + "opt-carpet-addition");
+            OptCarpetAddition.LOGGER.error("Failed to create config folder: " + OptCarpetSettings.configDirectory.toString() + File.separator + "opt-carpet-addition");
             return;
         }
 

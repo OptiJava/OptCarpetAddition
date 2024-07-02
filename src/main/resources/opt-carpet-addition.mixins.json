@@ -48,7 +48,8 @@
     "logger.blockUpdate.World_Mixin",
     //#endif
     "rule.customItemDiscardTime.ItemEntity_Mixin",
-    "logger.blockUpdate.LoggerRegistry_Mixin"
+    "logger.blockUpdate.LoggerRegistry_Mixin",
+    "rule.removeBats.BatEntity_Mixin"
   ],
   "client": [
     "rule.unescapeChatMessage.ChatMessageC2SPacket_Mixin",

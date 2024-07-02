@@ -209,4 +209,10 @@ public class OptCarpetSettings {
             category = {RuleCategory.FEATURE, RuleCategory.OPTIMIZATION}
     )
     public static boolean allowBlockUpdateLogger = false;
+
+    @Rule(
+            desc = "Don't spawn bats!",
+            category = RuleCategory.FEATURE
+    )
+    public static boolean removeBats = false;
 }

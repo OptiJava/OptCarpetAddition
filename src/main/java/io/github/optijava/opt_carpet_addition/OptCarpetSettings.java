@@ -11,6 +11,7 @@ import io.github.optijava.opt_carpet_addition.utils.config_bean.CommandLoggerCon
 import io.github.optijava.opt_carpet_addition.utils.config_bean.TpLimitConfigBean;
 import io.github.optijava.opt_carpet_addition.utils.validator.CustomItemDiscardTimeValidator;
 
+import io.github.optijava.opt_carpet_addition.utils.validator.PlayerTpRateLimitTimeValidator;
 import net.fabricmc.loader.api.FabricLoader;
 
 import java.nio.file.Path;
@@ -215,4 +216,11 @@ public class OptCarpetSettings {
             category = RuleCategory.FEATURE
     )
     public static boolean removeBats = false;
+
+    @Rule(
+            desc = "The rate limit of `/player xxx tp` command. Default: permit 1 request per 2 seconds per player.",
+            category = RuleCategory.FEATURE,
+            validate = PlayerTpRateLimitTimeValidator.class
+    )
+    public static int playerTpRateLimitTime = 2;
 }

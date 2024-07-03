@@ -4,6 +4,7 @@ import carpet.CarpetExtension;
 import carpet.CarpetServer;
 import carpet.patches.EntityPlayerMPFake;
 import carpet.utils.Messenger;
+import com.google.common.util.concurrent.RateLimiter;
 import com.mojang.brigadier.CommandDispatcher;
 import io.github.optijava.opt_carpet_addition.commands.*;
 import io.github.optijava.opt_carpet_addition.events.fixExperienceBug.FixExperienceBug;
@@ -100,6 +101,28 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
                 OptCarpetSettings.enableTpHerePrefixBlacklist = false;
                 Messenger.m(serverCommandSource, "r You can't enable TpherePrefixBlacklist because you have enabled TpherePrefixWhitelist");
             }
+
+            if (rule.name.equals("playerTpRateLimitTime")) {
+                /*Map<ServerPlayerEntity, RateLimiter> rl = new HashMap<>();
+
+                double time = (double) 1 / OptCarpetSettings.playerTpRateLimitTime;
+
+                for (ServerPlayerEntity sss : CarpetServer.minecraft_server.getPlayerManager().getPlayerList()) {
+                    rl.put(sss, RateLimiter.create(time));
+                }
+
+                PlayerTpCommand.rateLimiterMap = rl;*/
+
+                double time;
+                if (OptCarpetSettings.playerTpRateLimitTime == 0) {
+                    time = 0;
+                } else {
+                    time = (double) 1 / OptCarpetSettings.playerTpRateLimitTime;
+                }
+                for (RateLimiter rateLimiter : PlayerTpCommand.rateLimiterMap.values()) {
+                    rateLimiter.setRate(time);
+                }
+            }
         }));
 
         // config
@@ -138,6 +161,19 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
 
             player.changeGameMode(gameMode);
         }
+
+        double time;
+        if (OptCarpetSettings.playerTpRateLimitTime == 0) {
+            time = 0;
+        } else {
+            time = 1.0d / OptCarpetSettings.playerTpRateLimitTime;
+        }
+        PlayerTpCommand.rateLimiterMap.put(player, RateLimiter.create(time));
+    }
+
+    @Override
+    public void onPlayerLoggedOut(ServerPlayerEntity player) {
+        PlayerTpCommand.rateLimiterMap.remove(player);
     }
 
     @Override

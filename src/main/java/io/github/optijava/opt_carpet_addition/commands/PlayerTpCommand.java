@@ -3,6 +3,7 @@ package io.github.optijava.opt_carpet_addition.commands;
 import carpet.CarpetServer;
 import carpet.patches.EntityPlayerMPFake;
 import carpet.utils.Messenger;
+import com.google.common.util.concurrent.RateLimiter;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
@@ -12,7 +13,10 @@ import io.github.optijava.opt_carpet_addition.OptCarpetAddition;
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.command.ServerCommandSource;
+import net.minecraft.server.network.ServerPlayerEntity;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 import static net.minecraft.server.command.CommandManager.argument;
@@ -20,9 +24,10 @@ import static net.minecraft.server.command.CommandManager.literal;
 
 public class PlayerTpCommand {
 
-    private PlayerTpCommand() {
+    /* permit 1 request per 2 seconds < == > permit 0.5 request per 1 second */
+    public static Map<ServerPlayerEntity, RateLimiter> rateLimiterMap = new HashMap<>();
 
-    }
+    private PlayerTpCommand() {}
 
     private static final String COMMAND_PREFIX = "player";
 
@@ -35,7 +40,27 @@ public class PlayerTpCommand {
         dispatcher.register(argumentBuilder);
     }
 
+    private static boolean ratelimit(CommandContext<ServerCommandSource> context) {
+        if (OptCarpetSettings.playerTpRateLimitTime == 0) {
+            return true;
+        }
+
+        boolean canTeleport = true;
+        try {
+            RateLimiter r = rateLimiterMap.get(context.getSource().getPlayer());
+            canTeleport = r.tryAcquire();
+        } catch (Exception ex) {
+            OptCarpetAddition.LOGGER.error(ex);
+        }
+        return canTeleport;
+    }
+
     private static int teleport(CommandContext<ServerCommandSource> context) {
+        if (!ratelimit(context)) {
+            Messenger.m(context.getSource(), "r Too fast!");
+            return 0;
+        }
+
         String target = StringArgumentType.getString(context, COMMAND_PREFIX);
 
         if (CarpetServer.minecraft_server.getPlayerManager().getPlayer(target) == null) {
@@ -101,6 +126,11 @@ public class PlayerTpCommand {
     }
 
     private static int teleportHere(CommandContext<ServerCommandSource> context) {
+        if (!ratelimit(context)) {
+            Messenger.m(context.getSource(), "r Too fast!");
+            return 0;
+        }
+
         String target = StringArgumentType.getString(context, COMMAND_PREFIX);
 
         if (CarpetServer.minecraft_server.getPlayerManager().getPlayer(target) == null) {

@@ -6,8 +6,8 @@ apply plugin: 'com.replaymod.preprocess'
 
 archivesBaseName = project.archives_base_name     // in central gradle.properties
 
-version = 'v' + project.mod_version + '-' + project.minecraft_version + '-' + new Date().format('yyMMddHHmmss')
-def simple_version = 'v' + project.mod_version
+def simple_version = 'v' + project.mod_version + '+build.' + new Date().format('yyMMddHHmm')
+version = simple_version + '-' + project.minecraft_version
 
 group = project.maven_group
 

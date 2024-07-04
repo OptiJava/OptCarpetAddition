@@ -102,17 +102,11 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
                 Messenger.m(serverCommandSource, "r You can't enable TpherePrefixBlacklist because you have enabled TpherePrefixWhitelist");
             }
 
+            //#if MC >= 11900
+            //$$ if (rule.name().equals("playerTpRateLimitTime")) {
+            //#else
             if (rule.name.equals("playerTpRateLimitTime")) {
-                /*Map<ServerPlayerEntity, RateLimiter> rl = new HashMap<>();
-
-                double time = (double) 1 / OptCarpetSettings.playerTpRateLimitTime;
-
-                for (ServerPlayerEntity sss : CarpetServer.minecraft_server.getPlayerManager().getPlayerList()) {
-                    rl.put(sss, RateLimiter.create(time));
-                }
-
-                PlayerTpCommand.rateLimiterMap = rl;*/
-
+            //#endif
                 double time;
                 if (OptCarpetSettings.playerTpRateLimitTime == 0) {
                     time = 0;
@@ -127,7 +121,7 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
 
         // config
         if (!ConfigUtil.init()) {
-            OptCarpetAddition.LOGGER.error("Failed to create config folder: " + OptCarpetSettings.configDirectory.toString() + File.separator + "opt-carpet-addition");
+            OptCarpetAddition.LOGGER.error("Failed to create config folder: {}{}opt-carpet-addition", OptCarpetSettings.configDirectory.toString(), File.separator);
             return;
         }
 

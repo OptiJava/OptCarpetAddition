@@ -15,13 +15,13 @@ Build with [Preprocessor](https://github.com/ReplayMod/preprocessor)
 
 Most other MC versions that are the same as the supported major versions but have different minor versions can be directly installed and work properly, but **the stability cannot be guaranteed. _Please use them with caution_**
 
-| Minecraft Version | Support Status                                                          |
-|-------------------|-------------------------------------------------------------------------|
-| 1.20.4            | Supporting, developing actively                                         |
-| 1.20.1            | Supporting, developing actively                                         |
-| 1.19.3            | Supporting, developing actively                                         |
-| 1.18.2            | Supporting, developing actively                                         |
-| 1.17.1            | Supporting, developing actively                                         |
+| Minecraft Version | Support Status                                                            |
+|-------------------|---------------------------------------------------------------------------|
+| 1.20.4            | Supporting, developing actively                                           |
+| 1.20.1            | Not supporting, development stopped (supporting stopped on `Jul 4, 2024`) |
+| 1.19.3            | Supporting, developing actively                                           |
+| 1.18.2            | Supporting, developing actively                                           |
+| 1.17.1            | Supporting, developing actively                                           |
 | 1.16.5            | Not supporting, development stopped (supporting stopped on `Jan 8, 2023`) |
 
 ## Rules

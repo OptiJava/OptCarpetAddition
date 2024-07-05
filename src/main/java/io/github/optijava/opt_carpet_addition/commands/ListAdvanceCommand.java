@@ -30,7 +30,7 @@ public class ListAdvanceCommand {
                 sb.append(s.getName().getString()).append("    ").append(s.interactionManager.getGameMode().getName()).append("    ").append(s.pingMilliseconds).append("ms    ").append(s.getIp()).append("    ").append(s.getGameProfile().getId().toString()).append("\n");
                 //#endif
             }
-            OptCarpetAddition.LOGGER.info(sb.toString());
+            // OptCarpetAddition.LOGGER.info(sb.toString());
             Messenger.m(context.getSource(), sb.toString());
         } catch (Exception e) {
             context.getSource().sendError(Messenger.c("Unexpected exception occurred when command list advance executed."));

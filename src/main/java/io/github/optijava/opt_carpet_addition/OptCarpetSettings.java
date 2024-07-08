@@ -223,4 +223,11 @@ public class OptCarpetSettings {
             validate = PlayerTpRateLimitTimeValidator.class
     )
     public static int playerTpRateLimitTime = 2;
+
+    @Rule(
+            desc = "If enabled, command logger will broadcast commands to those players.",
+            category = RuleCategory.COMMAND,
+            options = {"true", "false", "ops"}
+    )
+    public static String commandLoggerBroadcastToPlayer = FALSE;
 }

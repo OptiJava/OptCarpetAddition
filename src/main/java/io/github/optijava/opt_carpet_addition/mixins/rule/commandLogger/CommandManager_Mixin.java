@@ -3,16 +3,19 @@ package io.github.optijava.opt_carpet_addition.mixins.rule.commandLogger;
 //#if MC >= 11900
 //$$ import com.mojang.brigadier.ParseResults;
 //#endif
+import carpet.CarpetServer;
+import carpet.utils.Messenger;
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
+import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.text.BaseText;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(CommandManager.class)
@@ -38,20 +41,20 @@ public class CommandManager_Mixin {
 
         if (!OptCarpetSettings.commandLoggerConfigBean.logAllCommand && OptCarpetSettings.commandLogger) {
             if (OptCarpetSettings.commandLoggerConfigBean.LogCommandWhitelist.contains(command)) {
-                CommandManager_Mixin.LOGGER.info("[OCA Command Logger] %s submit command: %s".formatted(commandSource.getName(), command));
+                logCommand(command, commandSource);
                 return;
             }
 
             for (String var1 : OptCarpetSettings.commandLoggerConfigBean.LogCommandPrefixWhitelist) {
                 if (command.startsWith(var1)) {
-                    CommandManager_Mixin.LOGGER.info("[OCA Command Logger] %s submit command: %s".formatted(commandSource.getName(), command));
+                    logCommand(command, commandSource);
                     return;
                 }
             }
 
             if (OptCarpetSettings.commandLoggerConfigBean.LogCommandWhitelist.isEmpty() && OptCarpetSettings.commandLoggerConfigBean.LogCommandPrefixWhitelist.isEmpty()) {
                 if (OptCarpetSettings.commandLoggerConfigBean.LogCommandPrefixBlacklist.isEmpty() && OptCarpetSettings.commandLoggerConfigBean.LogCommandBlacklist.isEmpty()) {
-                    CommandManager_Mixin.LOGGER.info("[OCA Command Logger] %s submit command: %s".formatted(commandSource.getName(), command));
+                    logCommand(command, commandSource);
                     return;
                 }
 
@@ -64,10 +67,36 @@ public class CommandManager_Mixin {
                         return;
                     }
                 }
-                CommandManager_Mixin.LOGGER.info("[OCA Command Logger] %s submit command: %s".formatted(commandSource.getName(), command));
+                logCommand(command, commandSource);
             }
         } else if (OptCarpetSettings.commandLoggerConfigBean.logAllCommand && OptCarpetSettings.commandLogger) {
-            CommandManager_Mixin.LOGGER.info("[OCA Command Logger] %s submit command: %s".formatted(commandSource.getName(), command));
+            logCommand(command, commandSource);
+        }
+    }
+
+    @Unique
+    private void logCommand(String command, ServerCommandSource commandSource){
+        CommandManager_Mixin.LOGGER.info("[OCA Command Logger] %s submit command: %s".formatted(commandSource.getName(), command));
+
+        if (OptCarpetSettings.commandLoggerBroadcastToPlayer.equals("true")) {
+            BaseText baseText = Messenger.c(
+                        "gi [",
+                            "li " + commandSource.getName(),
+                            "gi : " + command + "]"
+                    );
+
+            Messenger.print_server_message(CarpetServer.minecraft_server, baseText);
+        } else if (OptCarpetSettings.commandLoggerBroadcastToPlayer.equals("ops")) {
+            BaseText baseText = Messenger.c(
+                        "gi [",
+                            "li " + commandSource.getName(),
+                            "gi : " + command + "]"
+                    );
+
+            for (ServerPlayerEntity serverPlayerEntity : CarpetServer.minecraft_server.getPlayerManager().getPlayerList()) {
+                if (!CarpetServer.minecraft_server.getPlayerManager().isOperator(serverPlayerEntity.getGameProfile())) continue;
+                Messenger.m(serverPlayerEntity, baseText);
+            }
         }
     }
 }

@@ -21,12 +21,12 @@ public class MinecraftServer_Mixin {
 
     @Inject(
             method = "runServer",
-            //#if MC >= 12004
-            //$$ at = @At(value = "INVOKE", target = "Lorg/slf4j/Logger;warn(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V", shift = At.Shift.AFTER),
+            //#if MC >= 11800
+            //$$ at = @At(value = "INVOKE", target = "Lorg/slf4j/Logger;warn(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V")
             //#else
-            at = @At(value = "INVOKE", target = "Lorg/apache/logging/log4j/Logger;warn(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V", shift = At.Shift.AFTER),
-            //#endif
+            at = @At(value = "INVOKE", target = "Lorg/apache/logging/log4j/Logger;warn(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V"),
             remap = false
+            //#endif
     )
     private void injectRunServer(CallbackInfo ci) {
         // reference: carpet logger `tps`

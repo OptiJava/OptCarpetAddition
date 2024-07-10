@@ -3,6 +3,7 @@ package io.github.optijava.opt_carpet_addition;
 //#if MC >= 11900
 //$$ import carpet.api.settings.RuleCategory;
 //#else
+
 import carpet.settings.RuleCategory;
 //#endif
 import carpet.settings.Rule;
@@ -230,4 +231,10 @@ public class OptCarpetSettings {
             options = {"true", "false", "ops"}
     )
     public static String commandLoggerBroadcastToPlayer = FALSE;
+
+    @Rule(
+            desc = "Append tps information in `cant keep up!` logs.",
+            category = RuleCategory.FEATURE
+    )
+    public static boolean printTpsInfoWhenCantKeepUp = false;
 }

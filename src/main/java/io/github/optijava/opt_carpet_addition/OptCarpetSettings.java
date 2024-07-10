@@ -221,7 +221,9 @@ public class OptCarpetSettings {
     @Rule(
             desc = "The rate limit of `/player xxx tp` command. Default: permit 1 request per 2 seconds per player.",
             category = RuleCategory.FEATURE,
-            validate = PlayerTpRateLimitTimeValidator.class
+            validate = PlayerTpRateLimitTimeValidator.class,
+            strict = false,
+            options = {"2"}
     )
     public static int playerTpRateLimitTime = 2;
 
@@ -231,10 +233,4 @@ public class OptCarpetSettings {
             options = {"true", "false", "ops"}
     )
     public static String commandLoggerBroadcastToPlayer = FALSE;
-
-    @Rule(
-            desc = "Append tps information in `cant keep up!` logs.",
-            category = RuleCategory.FEATURE
-    )
-    public static boolean printTpsInfoWhenCantKeepUp = false;
 }

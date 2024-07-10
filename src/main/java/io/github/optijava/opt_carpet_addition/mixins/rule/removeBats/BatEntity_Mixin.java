@@ -20,7 +20,7 @@ public class BatEntity_Mixin {
             at = @At("HEAD"),
             cancellable = true
     )
-    //#if MC >= 12004
+    //#if MC >= 11900
     //$$ private static void injectCanSpawn(EntityType<BatEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, net.minecraft.util.math.random.Random random, CallbackInfoReturnable<Boolean> cir) {
     //#else
     private static void injectCanSpawn(EntityType<BatEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random, CallbackInfoReturnable<Boolean> cir) {

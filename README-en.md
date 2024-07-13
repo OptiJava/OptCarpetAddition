@@ -18,7 +18,7 @@ Most other MC versions that are the same as the supported major versions but hav
 | Minecraft Version | Support Status                                                            |
 |-------------------|---------------------------------------------------------------------------|
 | 1.20.4            | Supporting, developing actively                                           |
-| 1.20.1            | Not supporting, development stopped (supporting stopped on `Jul 4, 2024`) |
+| 1.20.1            | Supporting, developing actively                                           |
 | 1.19.3            | Supporting, developing actively                                           |
 | 1.18.2            | Supporting, developing actively                                           |
 | 1.17.1            | Supporting, developing actively                                           |

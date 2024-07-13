@@ -1,5 +1,5 @@
 {
-  "required": true,
+  "required": false,
   "minVersion": "0.8",
   "package": "io.github.optijava.opt_carpet_addition.mixins",
   //#if MC >= 11800

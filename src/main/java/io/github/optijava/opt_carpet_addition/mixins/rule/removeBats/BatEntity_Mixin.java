@@ -11,9 +11,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-//#if MC < 11900
 import java.util.Random;
-//#endif
 
 @Mixin(BatEntity.class)
 public class BatEntity_Mixin {
@@ -22,7 +20,9 @@ public class BatEntity_Mixin {
             at = @At("HEAD"),
             cancellable = true
     )
-    //#if MC >= 11900
+    //#if MC == 12001
+    //$$ private static void injectCanSpawn(EntityType<BatEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random, CallbackInfoReturnable<Boolean> cir) {
+    //#elseif MC >= 11900
     //$$ private static void injectCanSpawn(EntityType<BatEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, net.minecraft.util.math.random.Random random, CallbackInfoReturnable<Boolean> cir) {
     //#else
     private static void injectCanSpawn(EntityType<BatEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random, CallbackInfoReturnable<Boolean> cir) {

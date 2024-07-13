@@ -18,6 +18,7 @@ public class ChatMessageC2SPacket_Mixin {
      * @reason rule: unescapeChatMessage
      */
     @Inject(method = "<init>*", at = @At("TAIL"))
+    @SuppressWarnings("all")
     public void injectInit(CallbackInfo ci) {
         if (OptCarpetSettings.unescapeChatMessage) {
             try {

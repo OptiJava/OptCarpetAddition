@@ -11,7 +11,9 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+//#if MC < 11900
 import java.util.Random;
+//#endif
 
 @Mixin(BatEntity.class)
 public class BatEntity_Mixin {

@@ -4,7 +4,7 @@ package io.github.optijava.opt_carpet_addition.mixins.rule.commandLogger;
 //$$ import com.mojang.brigadier.ParseResults;
 //#endif
 
-//#if MC >= 12004
+//#if MC >= 12000
 //$$ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 //#endif
 import carpet.CarpetServer;
@@ -19,7 +19,9 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+//#if MC < 12000
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+//#endif
 
 @Mixin(CommandManager.class)
 public class CommandManager_Mixin {
@@ -31,7 +33,7 @@ public class CommandManager_Mixin {
             method = "execute",
             at = @At("HEAD")
     )
-    //#if MC >= 12004
+    //#if MC >= 12000
     //$$ public void injectExecute(ParseResults<ServerCommandSource> parseResults, String command, CallbackInfo ci) {
     //#elseif MC >= 11900
     //$$ public void injectExecute(ParseResults<ServerCommandSource> parseResults, String command, CallbackInfoReturnable<Integer> cir) {

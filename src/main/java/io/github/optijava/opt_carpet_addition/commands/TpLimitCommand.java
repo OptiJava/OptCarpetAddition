@@ -84,7 +84,7 @@ public class TpLimitCommand {
 
     public static int addTpWhitelist(CommandContext<ServerCommandSource> context) {
         TpLimit.add(StringArgumentType.getString(context, "prefix"), "TpWhitelist");
-        OptCarpetAddition.LOGGER.info("Add TpWhitelist prefix : " + StringArgumentType.getString(context, "prefix"));
+        OptCarpetAddition.LOGGER.info("Add TpWhitelist prefix : {}", StringArgumentType.getString(context, "prefix"));
         Messenger.m(context.getSource(), "Add TpWhitelist prefix : " + StringArgumentType.getString(context, "prefix"));
         TpLimit.flush();
         return 1;
@@ -92,7 +92,7 @@ public class TpLimitCommand {
 
     public static int addTpBlacklist(CommandContext<ServerCommandSource> context) {
         TpLimit.add(StringArgumentType.getString(context, "prefix"), "TpBlacklist");
-        OptCarpetAddition.LOGGER.info("Add TpBlacklist prefix : " + StringArgumentType.getString(context, "prefix"));
+        OptCarpetAddition.LOGGER.info("Add TpBlacklist prefix : {}", StringArgumentType.getString(context, "prefix"));
         Messenger.m(context.getSource(), "Add TpBlacklist prefix : " + StringArgumentType.getString(context, "prefix"));
         TpLimit.flush();
         return 1;
@@ -100,7 +100,7 @@ public class TpLimitCommand {
 
     public static int addTphereWhitelist(CommandContext<ServerCommandSource> context) {
         TpLimit.add(StringArgumentType.getString(context, "prefix"), "TphereWhitelist");
-        OptCarpetAddition.LOGGER.info("Add TphereWhitelist prefix : " + StringArgumentType.getString(context, "prefix"));
+        OptCarpetAddition.LOGGER.info("Add TphereWhitelist prefix : {}", StringArgumentType.getString(context, "prefix"));
         Messenger.m(context.getSource(), "Add TphereWhitelist prefix : " + StringArgumentType.getString(context, "prefix"));
         TpLimit.flush();
         return 1;
@@ -108,7 +108,7 @@ public class TpLimitCommand {
 
     public static int addTphereBlacklist(CommandContext<ServerCommandSource> context) {
         TpLimit.add(StringArgumentType.getString(context, "prefix"), "TphereBlacklist");
-        OptCarpetAddition.LOGGER.info(" Add TphereBlacklist prefix : " + StringArgumentType.getString(context, "prefix"));
+        OptCarpetAddition.LOGGER.info(" Add TphereBlacklist prefix : {}", StringArgumentType.getString(context, "prefix"));
         Messenger.m(context.getSource(), "Add TphereBlacklist prefix : " + StringArgumentType.getString(context, "prefix"));
         TpLimit.flush();
         return 1;
@@ -116,7 +116,7 @@ public class TpLimitCommand {
 
     public static int removeTpWhitelist(CommandContext<ServerCommandSource> context) {
         TpLimit.remove(StringArgumentType.getString(context, "prefix"), "TpWhitelist");
-        OptCarpetAddition.LOGGER.info("Remove TpWhitelist prefix : " + StringArgumentType.getString(context, "prefix"));
+        OptCarpetAddition.LOGGER.info("Remove TpWhitelist prefix : {}", StringArgumentType.getString(context, "prefix"));
         Messenger.m(context.getSource(), "Remove TpWhitelist prefix : " + StringArgumentType.getString(context, "prefix"));
         TpLimit.flush();
         return 1;
@@ -124,7 +124,7 @@ public class TpLimitCommand {
 
     public static int removeTpBlacklist(CommandContext<ServerCommandSource> context) {
         TpLimit.remove(StringArgumentType.getString(context, "prefix"), "TpBlacklist");
-        OptCarpetAddition.LOGGER.info("Remove TpBlacklist prefix : " + StringArgumentType.getString(context, "prefix"));
+        OptCarpetAddition.LOGGER.info("Remove TpBlacklist prefix : {}", StringArgumentType.getString(context, "prefix"));
         Messenger.m(context.getSource(), "Remove TpBlacklist prefix : " + StringArgumentType.getString(context, "prefix"));
         TpLimit.flush();
         return 1;
@@ -132,7 +132,7 @@ public class TpLimitCommand {
 
     public static int removeTphereWhitelist(CommandContext<ServerCommandSource> context) {
         TpLimit.remove(StringArgumentType.getString(context, "prefix"), "TphereWhitelist");
-        OptCarpetAddition.LOGGER.info("Remove TphereWhitelist prefix : " + StringArgumentType.getString(context, "prefix"));
+        OptCarpetAddition.LOGGER.info("Remove TphereWhitelist prefix : {}", StringArgumentType.getString(context, "prefix"));
         Messenger.m(context.getSource(), "Remove TphereWhitelist prefix : " + StringArgumentType.getString(context, "prefix"));
         TpLimit.flush();
         return 1;
@@ -140,7 +140,7 @@ public class TpLimitCommand {
 
     public static int removeTphereBlacklist(CommandContext<ServerCommandSource> context) {
         TpLimit.remove(StringArgumentType.getString(context, "prefix"), "TphereBlacklist");
-        OptCarpetAddition.LOGGER.info("Remove TphereBlacklist prefix : " + StringArgumentType.getString(context, "prefix"));
+        OptCarpetAddition.LOGGER.info("Remove TphereBlacklist prefix : {}", StringArgumentType.getString(context, "prefix"));
         Messenger.m(context.getSource(), "Remove TphereBlacklist prefix : " + StringArgumentType.getString(context, "prefix"));
         TpLimit.flush();
         return 1;

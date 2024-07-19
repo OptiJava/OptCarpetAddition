@@ -23,6 +23,7 @@ public class ListAdvanceCommand {
         try {
             MinecraftServer minecraftServer = context.getSource().getServer();
             StringBuilder sb = new StringBuilder();
+            sb.append("\n");
             for (ServerPlayerEntity s : minecraftServer.getPlayerManager().getPlayerList()) {
                 //#if MC >= 12004
                 //$$ sb.append(s.getName().getString()).append("    ").append(s.interactionManager.getGameMode().getName()).append("    ").append(s.networkHandler.getLatency()).append("ms    ").append(s.getIp()).append("    ").append(s.getGameProfile().getId().toString()).append("\n");

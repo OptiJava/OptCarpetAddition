@@ -7,6 +7,7 @@ apply plugin: 'com.replaymod.preprocess'
 archivesBaseName = project.archives_base_name     // in central gradle.properties
 
 def simple_version = 'v' + project.mod_version + '+build.' + new Date().format('yyMMddHHmm')
+def short_version = 'v' + project.mod_version
 version = simple_version + '-' + project.minecraft_version
 
 group = project.maven_group
@@ -62,14 +63,14 @@ dependencies {
 processResources {
     from "opt-carpet-addition.accesswidener"
 
-    inputs.property "version", simple_version
+    inputs.property "version", short_version
     inputs.property "minecraft_requirement_version", project.minecraft_requirement_version
     inputs.property "carpet_requirement_version", project.carpet_requirement_version
     inputs.property "loader_requirement_version", project.loader_requirement_version
 
     filesMatching("fabric.mod.json") {
         def valueMap = [
-				"version": simple_version,
+				"version": short_version,
 				"carpet_requirement_version": project.carpet_requirement_version,
 				"minecraft_requirement_version": project.minecraft_requirement_version,
                 "loader_requirement_version": project.loader_requirement_version,

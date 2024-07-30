@@ -58,6 +58,16 @@ Enable '/player xxx tphere' command to teleport that real player to me.
 - Acceptable value: `true` `false` `ops`
 - Categories: `Command`
 
+### playerTpRateLimitTime
+
+Rate limit of `player xxx tp` command.
+
+Default value: 2 (unit: seconds) (permit 1 request per 2 seconds per player, no limit if value = 0)
+
+- Default value: `2`
+- Acceptable value: numbers >= 0
+- Categories: `Feature`
+
 ### fixXpLevelBug
 
 Fix bug: xp level return to zero when player change dimension
@@ -240,6 +250,14 @@ CommandLogger.json is the config file, type: `/commandlogger reload` to reload t
 - Acceptable value: `true` `false`
 - Categories: `Command` `Feature`
 
+### commandLoggerBroadcastToPlayer
+
+Which players should commands in `commandLogger` be broadcast to?
+
+- Default value: `false`
+- Acceptable value: `true` `false` `ops`
+- Categories: `Command`
+
 ### dropperCrashFix
 
 Fix bug: dropper may cause server crash
@@ -321,6 +339,14 @@ If `blockUpdate` is not needed, **disabling this is highly recommended**.
 **just in >=1.20**
 
 If you want to use note block update suppression in 1.20, this may help you.
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Feature`
+
+### removeBats
+
+Don't spawn bats!!!
 
 - Default value: `false`
 - Acceptable value: `true` `false`

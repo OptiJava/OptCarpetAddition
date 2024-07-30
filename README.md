@@ -61,6 +61,16 @@ Language: [English](https://github.com/OptiJava/OptCarpetAddition/blob/master/RE
 - Acceptable value: `true` `false` `ops`
 - Categories: `Command`
 
+### playerTpRateLimitTime
+
+`player xxx tp`指令限速
+
+默认值: 2 (单位: 秒) (每个玩家每2秒允许1次tp请求, 设为0则不限速)
+
+- Default value: `2`
+- Acceptable value: 整数 >= 0  （∀ x ∈ N）（逃
+- Categories: `Feature`
+
 ### fixXpLevelBug
 
 修复在玩家跨越维度的时候经验值假归零的bug（在跨越维度时刷新玩家的经验条）
@@ -247,6 +257,14 @@ CommandLogger.json配置文件可以配置白名单、黑名单等，修改配�
 - Acceptable value: `true` `false`
 - Categories: `Command` `Feature`
 
+### commandLoggerBroadcastToPlayer
+
+`commandLogger`中记录的指令会被转发到哪些玩家？
+
+- Default value: `false`
+- Acceptable value: `true` `false` `ops`
+- Categories: `Command`
+
 ### dropperCrashFix
 
 修复了方块实体替换导致投掷器激活时崩服的bug
@@ -322,6 +340,14 @@ DispenserBlockEntity dispenserBlockEntity = (DispenserBlockEntity)blockPointerIm
 **仅限`1.20`版本及以上**
 
 如果你想在`1.20`使用音符盒极简抑制器，这可能能帮助你
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Feature`
+
+### removeBats
+
+不再生成蝙蝠
 
 - Default value: `false`
 - Acceptable value: `true` `false`

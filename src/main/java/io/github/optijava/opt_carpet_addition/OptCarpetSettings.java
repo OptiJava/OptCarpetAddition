@@ -220,7 +220,7 @@ public class OptCarpetSettings {
 
     @Rule(
             desc = "The rate limit of `/player xxx tp` command. Default: permit 1 request per 2 seconds per player.",
-            category = RuleCategory.FEATURE,
+            category = {RuleCategory.FEATURE, RuleCategory.COMMAND},
             validate = PlayerTpRateLimitTimeValidator.class,
             strict = false,
             options = {"2"}
@@ -229,7 +229,7 @@ public class OptCarpetSettings {
 
     @Rule(
             desc = "If enabled, command logger will broadcast commands to those players.",
-            category = RuleCategory.COMMAND,
+            category = {RuleCategory.COMMAND, RuleCategory.FEATURE},
             options = {"true", "false", "ops"}
     )
     public static String commandLoggerBroadcastToPlayer = FALSE;

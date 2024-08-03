@@ -195,3 +195,31 @@ jobs:
 
           retry-attempts: 3
           retry-delay: 10000
+
+      - name: Publish Minecraft Mods 1.21
+        uses: Kir-Antipov/mc-publish@v3.3
+        with:
+          modrinth-id: SB7oe4aB
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
+
+          curseforge-id: 891699
+          curseforge-token: ${{ secrets.CURSEFORGE_TOKEN }}
+
+          files: processed_artifacts/1.21/*.jar
+
+          name: v${{ inputs.version }} For Minecraft 1.21
+          version: v${{ inputs.version }}
+          version-type: ${{ inputs.release_type }}
+
+          loaders: fabric
+          game-versions: '1.21'
+          game-version-filter: any
+          dependencies: |-
+            carpet(required)
+            fabric-api(required)
+
+          modrinth-changelog: 'Got full change logs in [GitHub](https://github.com/OptiJava/OptCarpetAddition/releases).'
+          curseforge-changelog: 'Got full change logs in [GitHub](https://github.com/OptiJava/OptCarpetAddition/releases).'
+
+          retry-attempts: 3
+          retry-delay: 10000

@@ -12,8 +12,10 @@ version = simple_version + '-' + project.minecraft_version
 
 group = project.maven_group
 
-
-if (project.mcVersion >= 11800) {
+if (mcVersion >= 12005) {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+} else if (project.mcVersion >= 11800) {
 	sourceCompatibility = JavaVersion.VERSION_17
 	targetCompatibility = JavaVersion.VERSION_17
 } else if (project.mcVersion >= 11700) {

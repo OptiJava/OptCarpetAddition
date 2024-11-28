@@ -2,7 +2,9 @@
   "required": false,
   "minVersion": "0.8",
   "package": "io.github.optijava.opt_carpet_addition.mixins",
-  //#if MC >= 11800
+  //#if MC >= 12100
+  //$$ "compatibilityLevel": "JAVA_21",
+  //#elseif MC >= 11800
   //$$ "compatibilityLevel": "JAVA_17",
   //#else
   "compatibilityLevel": "JAVA_16",

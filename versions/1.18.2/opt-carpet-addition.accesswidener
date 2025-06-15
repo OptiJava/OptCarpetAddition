@@ -1,8 +1,0 @@
-accessWidener v1 named
-accessible class net/minecraft/entity/mob/EndermanEntity$PickUpBlockGoal
-accessible class net/minecraft/entity/mob/EndermanEntity$PlaceBlockGoal
-mutable field net/minecraft/network/packet/c2s/play/ChatMessageC2SPacket chatMessage Ljava/lang/String;
-accessible field net/minecraft/network/packet/c2s/play/ChatMessageC2SPacket chatMessage Ljava/lang/String;
-accessible field net/minecraft/server/network/ServerLoginNetworkHandler server Lnet/minecraft/server/MinecraftServer;
-accessible method net/minecraft/entity/Entity unsetRemoved ()V
-accessible method net/minecraft/server/network/ServerPlayerEntity worldChanged (Lnet/minecraft/server/world/ServerWorld;)V

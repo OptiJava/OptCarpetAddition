@@ -7,15 +7,11 @@ plugins {
 
 preprocess {
 	def mc117 = createNode('1.17.1' , 1_17_01, 'yarn')
-	def mc118 = createNode('1.18.2' , 1_18_02, 'yarn')
-	def mc1193 = createNode('1.19.3' , 1_19_03, 'yarn')
-	def mc1201 = createNode('1.20.1' , 1_20_01, 'yarn')
 	def mc1204 = createNode('1.20.4' , 1_20_04, 'yarn')
 	def mc1210 = createNode('1.21' , 1_21_00, 'yarn')
+	def mc1215 = createNode('1.21.5' , 1_21_05, 'yarn')
 
-	mc117 .link(mc118, null)
-	mc118 .link(mc1193, null)
-	mc1193.link(mc1201, null)
-	mc1201.link(mc1204, null)
+	mc117 .link(mc1204, null)
 	mc1204.link(mc1210, null)
+	mc1210.link(mc1215, null)
 }

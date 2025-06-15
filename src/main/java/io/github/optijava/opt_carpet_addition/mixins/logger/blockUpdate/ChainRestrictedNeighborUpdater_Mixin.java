@@ -28,19 +28,30 @@ package io.github.optijava.opt_carpet_addition.mixins.logger.blockUpdate;
 //$$
 //$$            if (entry instanceof ChainRestrictedNeighborUpdater.SimpleEntry simpleEntry) {
 //$$                sourceBlock = simpleEntry.sourceBlock();
-//$$                centreBlockPos = simpleEntry.sourcePos();
+//$$                //#if MC < 12105
+//$$                //$$ centreBlockPos = simpleEntry.sourcePos();
+//$$                //#endif
 //$$            } else if (entry instanceof ChainRestrictedNeighborUpdater.StatefulEntry statefulEntry) {
 //$$                sourceBlock = statefulEntry.sourceBlock();
-//$$                centreBlockPos = statefulEntry.sourcePos();
+//$$                //#if MC < 12105
+//$$                //$$ centreBlockPos = statefulEntry.sourcePos();
+//$$                //#endif
 //$$            } else if (entry instanceof ChainRestrictedNeighborUpdater.SixWayEntry sixWayEntry) {
 //$$                sourceBlock = sixWayEntry.sourceBlock;
-//$$                centreBlockPos = sixWayEntry.pos;
+//$$                //#if MC < 12105
+//$$                //$$ centreBlockPos = sixWayEntry.pos;
+//$$                //#endif
 //$$            } else if (entry instanceof ChainRestrictedNeighborUpdater.StateReplacementEntry stateReplacementEntry) {
 //$$                sourceBlock = stateReplacementEntry.neighborState().getBlock();
-//$$                centreBlockPos = stateReplacementEntry.neighborPos();
+//$$                //#if MC < 12105
+//$$                //$$ centreBlockPos = stateReplacementEntry.neighborPos();
+//$$                //#endif
 //$$            }
-//$$
+//$$            //#if MC >= 12105
+//$$            //$$ BlockUpdateLogger.INSTANCE.logBlockUpdate(updatingBlock, updatingBlockPos, sourceBlock);
+//$$            //#else
 //$$            BlockUpdateLogger.INSTANCE.logBlockUpdate(updatingBlock, updatingBlockPos, sourceBlock, centreBlockPos);
+//$$            //#endif
 //$$         }
 //$$     }
 //$$ }

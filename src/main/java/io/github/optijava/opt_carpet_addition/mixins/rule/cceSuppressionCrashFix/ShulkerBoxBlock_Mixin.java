@@ -1,5 +1,6 @@
 package io.github.optijava.opt_carpet_addition.mixins.rule.cceSuppressionCrashFix;
 
+//#if MC < 12100
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import io.github.optijava.opt_carpet_addition.utils.exceptions.ThrowableCCESuppression;
 import net.minecraft.block.BlockState;
@@ -35,3 +36,4 @@ public class ShulkerBoxBlock_Mixin {
         }
     }
 }
+//#endif

@@ -6,7 +6,7 @@ pluginManagement {
 		}
 		maven {
 			name = 'Jitpack'
-			url = "https://jitpack.io"
+			url = 'https://maven.fallenbreath.me/jitpack'
 		}
 		mavenCentral()
 		gradlePluginPortal()

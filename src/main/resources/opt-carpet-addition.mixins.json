@@ -28,8 +28,10 @@
     //#endif
     //#endif
     "logger.HUDController_Mixin",
+    //#if MC < 12100
     "rule.cceSuppressionCrashFix.MinecraftServer_Mixin",
     "rule.cceSuppressionCrashFix.ShulkerBoxBlock_Mixin",
+    //#endif
     "rule.commandLogger.CommandManager_Mixin",
     "rule.disabledEnderManPickupGoal.EnderManEntity_Mixin",
     "rule.disabledEnderManPlaceBlockGoal.EndermanEntity_Mixin",

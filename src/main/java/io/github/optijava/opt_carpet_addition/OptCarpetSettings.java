@@ -177,11 +177,13 @@ public class OptCarpetSettings {
     )
     public static boolean optimizeFakePlayerSpawn = false;
 
+    //#if MC < 12100
     @Rule(
             desc = "Fix CCE Suppression crashes",
             category = {RuleCategory.BUGFIX, RuleCategory.EXPERIMENTAL}
     )
     public static boolean cceSuppressionCrashFix = false;
+    //#endif
 
     @Rule(
             desc = "Remove every armour which has `curse of binding` enchantment when player dead in wall (keepInventory must be true).",

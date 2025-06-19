@@ -12,6 +12,7 @@ version = simple_version + '-' + project.minecraft_version
 
 group = project.maven_group
 
+println "mcVersion: " + project.mcVersion
 if (project.mcVersion >= 12005) {
     sourceCompatibility = JavaVersion.VERSION_21
     targetCompatibility = JavaVersion.VERSION_21
@@ -96,19 +97,6 @@ loom {
         vmArgs '-Dmixin.debug.export=true'
 		runDir '../../run'
 	}
-}
-
-remapJar {
-	remapperIsolation = true
-}
-
-
-java {
-    // Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
-    // if it is present.
-    // If you remove this line, sources will not be generated.
-
-    //withSourcesJar()
 }
 
 

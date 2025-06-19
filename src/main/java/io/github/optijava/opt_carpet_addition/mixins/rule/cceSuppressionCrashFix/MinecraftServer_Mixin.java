@@ -1,5 +1,6 @@
 package io.github.optijava.opt_carpet_addition.mixins.rule.cceSuppressionCrashFix;
 
+//#if MC < 12100
 import io.github.optijava.opt_carpet_addition.OptCarpetAddition;
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import io.github.optijava.opt_carpet_addition.logger.cceSuppressionCrashLogger.CCESuppressionCrashLogger;
@@ -43,3 +44,4 @@ public class MinecraftServer_Mixin {
         }
     }
 }
+//#endif

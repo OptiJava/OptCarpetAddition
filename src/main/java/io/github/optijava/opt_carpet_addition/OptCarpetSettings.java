@@ -151,11 +151,13 @@ public class OptCarpetSettings {
     public static boolean optimizePlayerConnect = false;
     //#endif
 
+    //#if MC < 11900
     @Rule(
             desc = "Handle player teleport in a new thread to reduce the lag.",
             category = {RuleCategory.OPTIMIZATION, RuleCategory.EXPERIMENTAL}
     )
     public static boolean optimizeTeleport = false;
+    //#endif
 
     @Rule(
             desc = "Print info log when players submit command",

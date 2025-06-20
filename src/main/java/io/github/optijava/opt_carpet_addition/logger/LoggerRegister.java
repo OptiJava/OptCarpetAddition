@@ -27,7 +27,9 @@ public class LoggerRegister {
         //#if MC < 11900
         LoggerRegistry.registerLogger("updateSuppression", UpdateSuppressionLogger.INSTANCE);
         //#endif
+        //#if MC < 12100
         LoggerRegistry.registerLogger("cceSuppressionCrash", CCESuppressionCrashLogger.INSTANCE);
+        //#endif
         LoggerRegistry.registerLogger("blockUpdate", BlockUpdateLogger.INSTANCE);
     }
 }

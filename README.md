@@ -14,14 +14,16 @@ Language: [English](https://github.com/OptiJava/OptCarpetAddition/blob/master/RE
 
 其他与受支持的版本大版本相同小版本不同的MC版本，大多数可以直接安装正常工作，但是**不能保证稳定性，请谨慎使用**
 
-| Minecraft 版本 | 支持状态                      |
-|--------------|---------------------------|
-| 1.20.4       | 支持，积极开发                   |
-| 1.20.1       | 支持，积极开发                   |
-| 1.19.3       | 支持，积极开发                   |
-| 1.18.2       | 支持，积极开发                   |
-| 1.17.1       | 支持，积极开发                   |
-| 1.16.5       | 不支持，停止维护（在`2023/1/8`停止维护） |
+| Minecraft 版本 | 支持状态                       |
+|--------------|----------------------------|
+| 1.21.5       | 支持，积极开发                    |
+| 1.21         | 支持，积极开发                    |
+| 1.20.4       | 支持，积极开发                    |
+| 1.20.1       | 不支持，停止维护（在`2025/6/18`停止维护） |
+| 1.19.3       | 不支持，停止维护（在`2025/6/18`停止维护） |
+| 1.18.2       | 不支持，停止维护（在`2025/6/18`停止维护） |
+| 1.17.1       | 支持，积极开发                    |
+| 1.16.5       | 不支持，停止维护（在`2023/1/8`停止维护）  |
 
 ## 规则
 
@@ -301,6 +303,8 @@ DispenserBlockEntity dispenserBlockEntity = (DispenserBlockEntity)blockPointerIm
 
 ### cceSuppressionCrashFix
 
+**仅1.21以下**
+
 防止cce更新抑制器导致服务器崩溃，详情请看[Void0的视频](https://www.bilibili.com/video/BV1Hu4y1o71G/)
 
 **实验性规则**
@@ -393,6 +397,7 @@ DispenserBlockEntity dispenserBlockEntity = (DispenserBlockEntity)blockPointerIm
 - 记录每一次更新抑制
 
 ### cceSuppressionCrash
+**仅1.21以下**
 - CCE更新抑制器崩溃记录，类似于carpet的`updateSuppressedCrash`
 
 ### blockUpdate

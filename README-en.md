@@ -15,14 +15,16 @@ Build with [Preprocessor](https://github.com/ReplayMod/preprocessor)
 
 Most other MC versions that are the same as the supported major versions but have different minor versions can be directly installed and work properly, but **the stability cannot be guaranteed. _Please use them with caution_**
 
-| Minecraft Version | Support Status                                                            |
-|-------------------|---------------------------------------------------------------------------|
-| 1.20.4            | Supporting, developing actively                                           |
-| 1.20.1            | Supporting, developing actively                                           |
-| 1.19.3            | Supporting, developing actively                                           |
-| 1.18.2            | Supporting, developing actively                                           |
-| 1.17.1            | Supporting, developing actively                                           |
-| 1.16.5            | Not supporting, development stopped (supporting stopped on `Jan 8, 2023`) |
+| Minecraft Version | Support Status                                                           | 
+|-------------------|--------------------------------------------------------------------------| 
+| 1.21.5            | Supporting, developing actively                                          | 
+| 1.21              | Supporting, developing actively                                          | 
+| 1.20.4            | Supporting, developing actively                                          | 
+| 1.20.1            | Not supporting, development stopped (supporting stopped on Jun 18, 2025) | 
+| 1.19.3            | Not supporting, development stopped (supporting stopped on Jun 18, 2025) |
+| 1.18.2            | Not supporting, development stopped (supporting stopped on Jun 18, 2025) | 
+| 1.17.1            | Supporting, developing actively                                          |
+| 1.16.5            | Not supporting, development stopped (supporting stopped on Jan 8, 2023)  |
 
 ## Rules
 
@@ -300,6 +302,8 @@ This rule force any bot use offline uuid.
 
 ### cceSuppressionCrashFix
 
+**just for versions below 1.21**
+
 Prevent CCE Suppression Crashes，watch [Void0's bilibili video](https://www.bilibili.com/video/BV1Hu4y1o71G/) for more infomation.
 
 **Experimential rule**
@@ -392,7 +396,7 @@ Don't spawn bats!!!
 - Log every update suppression
 
 ### cceSuppressionCrash
-
+**just for versions below 1.21**
 - CCE suppressed crashes logger，is simular to carpet rule `updateSuppressedCrash`
 
 ### blockUpdate

@@ -14,6 +14,7 @@ import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.world.GameMode;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -91,11 +92,20 @@ public class PlayerTpCommand {
                         if ((server.getPlayerManager().isOperator(context.getSource().getPlayer().getGameProfile()))) {
                             executeTp(commandSourcePlayerName, context, server);
                         } else {
-                            Messenger.m(context.getSource(), "r You have no permission to teleport to fake player.You aren't op.");
+                            if (OptCarpetSettings.allowSpectatorTpToAnyPlayer && context.getSource().getPlayer().interactionManager.getGameMode().equals(GameMode.SPECTATOR)){
+                                executeTp(commandSourcePlayerName, context, server);
+                            } else {
+                                Messenger.m(context.getSource(), "r You have no permission to teleport to fake player.You aren't op.");
+                            }
                         }
                     }
-                    case OptCarpetSettings.FALSE ->
+                    case OptCarpetSettings.FALSE -> {
+                        if (OptCarpetSettings.allowSpectatorTpToAnyPlayer && context.getSource().getPlayer().interactionManager.getGameMode().equals(GameMode.SPECTATOR)){
+                            executeTp(commandSourcePlayerName, context, server);
+                        } else {
                             Messenger.m(context.getSource(), "r Anybody can't teleport to fake player.");
+                        }
+                    }
                 }
 
             } else {
@@ -107,11 +117,20 @@ public class PlayerTpCommand {
                         if ((server.getPlayerManager().isOperator(context.getSource().getPlayer().getGameProfile()))) {
                             server.getCommandManager().getDispatcher().execute(server.getCommandManager().getDispatcher().parse("tp " + commandSourcePlayerName + " " + target, server.getCommandSource()));
                         } else {
-                            Messenger.m(context.getSource(), "r You have no permission to teleport to real player.You aren't op.");
+                            if (OptCarpetSettings.allowSpectatorTpToAnyPlayer && context.getSource().getPlayer().interactionManager.getGameMode().equals(GameMode.SPECTATOR)){
+                                executeTp(commandSourcePlayerName, context, server);
+                            } else {
+                                Messenger.m(context.getSource(), "r You have no permission to teleport to real player.You aren't op.");
+                            }
                         }
                     }
-                    case OptCarpetSettings.FALSE ->
-                            Messenger.m(context.getSource(), "r Anybody can't teleport to real player.");
+                    case OptCarpetSettings.FALSE -> {
+                            if (OptCarpetSettings.allowSpectatorTpToAnyPlayer && context.getSource().getPlayer().interactionManager.getGameMode().equals(GameMode.SPECTATOR)){
+                                executeTp(commandSourcePlayerName, context, server);
+                            } else {
+                                Messenger.m(context.getSource(), "r Anybody can't teleport to real player.");
+                            }
+                    }
                 }
 
             }

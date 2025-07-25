@@ -237,4 +237,11 @@ public class OptCarpetSettings {
             options = {"true", "false", "ops"}
     )
     public static String commandLoggerBroadcastToPlayer = FALSE;
+
+    @Rule(
+            desc = "allow spectator tp to any player!",
+            category = {RuleCategory.FEATURE, RuleCategory.COMMAND},
+            options = {"true", "false"}
+    )
+    public static boolean allowSpectatorTpToAnyPlayer = false;
 }

@@ -56,7 +56,7 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
             //#endif
                 GameMode gameMode = GameMode.SURVIVAL;
 
-                if (OptCarpetSettings.forceFakePlayerGameMode.equals("creative") {
+                if (OptCarpetSettings.forceFakePlayerGameMode.equals("creative")) {
                     gameMode = GameMode.CREATIVE;
                 } else if (OptCarpetSettings.forceFakePlayerGameMode.equals("adventure")) {
                     gameMode = GameMode.ADVENTURE;

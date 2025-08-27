@@ -29,28 +29,28 @@ public class OptCarpetSettings {
 
     @Rule(
             desc = "Enables [/player xxx tp] to teleport to fake player",
-            category = {RuleCategory.COMMAND,OCA}
+            category = {RuleCategory.COMMAND,OCA},
             options = {"true", "false", "ops"}
     )
     public static String commandTpToFakePlayer = FALSE;
 
     @Rule(
             desc = "Enables [/player xxx tp] to teleport to real player",
-            category = {RuleCategory.COMMAND,OCA}
+            category = {RuleCategory.COMMAND,OCA},
             options = {"true", "false", "ops"}
     )
     public static String allowTpToRealPlayer = FALSE;
 
     @Rule(
             desc = "Enables [/player xxx tp] to teleport to fake player",
-            category = {RuleCategory.COMMAND,OCA}
+            category = {RuleCategory.COMMAND,OCA},
             options = {"true", "false", "ops"}
     )
     public static String commandTpHereFakePlayer = FALSE;
 
     @Rule(
             desc = "Enables [/player xxx tp] to teleport to real player",
-            category = {RuleCategory.COMMAND,OCA}
+            category = {RuleCategory.COMMAND,OCA},
             options = {"true", "false", "ops"}
     )
     public static String allowTpHereRealPlayer = FALSE;
@@ -58,7 +58,7 @@ public class OptCarpetSettings {
     // Force fake player gamemode rule =========================================================
     @Rule(
             desc = "Force fake player gamemode",
-            category = {RuleCategory.FEATURE,OCA}
+            category = {RuleCategory.FEATURE,OCA},
             options = {"survival", "creative", "adventure", "false"}
     )
     public static String forceFakePlayerGameMode = FALSE;
@@ -66,7 +66,7 @@ public class OptCarpetSettings {
     // Fix bugs ================================================================================
     @Rule(
             desc = "Refresh xp level when player change world",
-            category = {RuleCategory.BUGFIX,OCA}
+            category = {RuleCategory.BUGFIX,OCA},
     )
     public static boolean fixXpLevelBug = false;
 
@@ -196,7 +196,7 @@ public class OptCarpetSettings {
 
     @Rule(
             desc = "Modify item disappeared time, default value -1 (unit: tick)",
-            category = {RuleCategory.FEATURE,OCA}
+            category = {RuleCategory.FEATURE,OCA},
             options = {"-1", "6000"},
             strict = false,
             validate = CustomItemDiscardTimeValidator.class

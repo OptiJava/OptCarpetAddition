@@ -66,7 +66,7 @@ public class OptCarpetSettings {
     // Fix bugs ================================================================================
     @Rule(
             desc = "Refresh xp level when player change world",
-            category = {RuleCategory.BUGFIX,OCA},
+            category = {RuleCategory.BUGFIX,OCA}
     )
     public static boolean fixXpLevelBug = false;
 

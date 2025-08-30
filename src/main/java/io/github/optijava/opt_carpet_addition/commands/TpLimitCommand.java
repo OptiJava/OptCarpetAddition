@@ -12,6 +12,8 @@ import net.minecraft.server.command.ServerCommandSource;
 import static net.minecraft.server.command.CommandManager.argument;
 import static net.minecraft.server.command.CommandManager.literal;
 
+import static io.github.optijava.opt_carpet_addition.OptCarpetSettings.enableTpmanagerCommand;
+
 public class TpLimitCommand {
 
     private TpLimitCommand() {
@@ -22,6 +24,11 @@ public class TpLimitCommand {
         
 
         LiteralArgumentBuilder<ServerCommandSource> argument = literal("tpmanager")
+                //#if MC < 12004
+                //$$.requires((player) -> carpet.settings.SettingsManager.canUseCommand(source, enableTpmanagerCommand))
+                //#else
+                //$$.requires((player) ->  carpet.utils.CommandHelper.canUseCommand(player, enableTpmanagerCommand))
+                //#endif
                 .then(
                         literal("reload")
                                 .executes(TpLimit::reload)

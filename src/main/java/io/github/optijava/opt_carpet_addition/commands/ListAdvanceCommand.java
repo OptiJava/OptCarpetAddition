@@ -8,6 +8,7 @@ import io.github.optijava.opt_carpet_addition.OptCarpetAddition;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
+import static io.github.optijava.opt_carpet_addition.OptCarpetSettings.enableListAdvanceCommand;
 
 import static net.minecraft.server.command.CommandManager.literal;
 
@@ -15,6 +16,11 @@ public class ListAdvanceCommand {
 
     public static void registerCommand(CommandDispatcher<ServerCommandSource> dispatcher) {
         LiteralArgumentBuilder<ServerCommandSource> argumentBuilder = literal("list")
+                //#if MC < 12004
+                //$$.requires((player) -> carpet.settings.SettingsManager.canUseCommand(source, enableListAdvanceCommand))
+                //#else
+                //$$.requires((player) ->  carpet.utils.CommandHelper.canUseCommand(player, enableListAdvanceCommand))
+                //#endif
                 .then(literal("-advance").executes(ListAdvanceCommand::listAdvance));
         dispatcher.register(argumentBuilder);
     }

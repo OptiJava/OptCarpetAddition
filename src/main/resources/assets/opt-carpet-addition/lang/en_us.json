@@ -1,0 +1,69 @@
+{
+  "carpet.rule.commandTpToFakePlayer.desc": "Enables [/player xxx tp] to teleport to fake players.",
+
+  "carpet.rule.allowTpToRealPlayer.desc": "Enables [/player xxx tp] to teleport to real players.",
+
+  "carpet.rule.commandTpHereFakePlayer.desc": "Enables [/player xxx tp] to teleport fake players to yourself.",
+
+  "carpet.rule.allowTpHereRealPlayer.desc": "Enables [/player xxx tp] to teleport real players to yourself.",
+
+  "carpet.rule.forceFakePlayerGameMode.desc": "Force fake players to use a specified gamemode (survival/creative/adventure).",
+
+  "carpet.rule.fixXpLevelBug.desc": "Refresh XP level when players change world.",
+
+  "carpet.rule.enableTpPrefixBlacklist.desc": "Blacklist certain prefixes from using teleport commands.",
+
+  "carpet.rule.enableTpPrefixWhitelist.desc": "Only allow whitelisted prefixes to use teleport commands.",
+
+  "carpet.rule.enableTpHerePrefixBlacklist.desc": "Blacklist certain prefixes from using teleport-here commands.",
+
+  "carpet.rule.enableTpHerePrefixWhitelist.desc": "Only allow whitelisted prefixes to use teleport-here commands.",
+
+  "carpet.rule.disabledLayEggs.desc": "When enabled, chickens no longer lay eggs.",
+
+  "carpet.rule.disabledEnderManPickupGoal.desc": "When enabled, endermen cannot pick up blocks.",
+
+  "carpet.rule.disabledEnderManPlaceBlockGoal.desc": "When enabled, endermen cannot place blocks.",
+
+  "carpet.rule.disabledNetherPortalSpawn.desc": "When enabled, zombified piglins will not spawn in nether portals.",
+
+  "carpet.rule.disabledEntityTick.desc": "Disables ticking of all entities and block entities.",
+
+  "carpet.rule.disabledUpdateSuppressionErrorStackTrace.desc": "Prevents printing error stack traces during update suppression.",
+
+  "carpet.rule.unescapeChatMessage.desc": "Convert Unicode sequences (\\u4e2d) in chat messages into characters (中).",
+
+  "carpet.rule.optimizePlayerConnect.desc": "Handle player connection in a new thread to reduce lag.",
+
+  "carpet.rule.optimizeTeleport.desc": "Handle teleportation in a new thread to reduce lag.",
+
+  "carpet.rule.commandLogger.desc": "When enabled, logs commands executed by players.",
+
+  "carpet.rule.dropperCrashFix.desc": "Fix crashes related to droppers.",
+
+  "carpet.rule.optimizeFakePlayerSpawn.desc": "Always spawn offline fake players to reduce lag.",
+
+  "carpet.rule.cceSuppressionCrashFix.desc": "Fix crashes caused by ClassCastException during suppression.",
+
+  "carpet.rule.removeAllCurseOfBindingArmorWhenPlayerDeadInWall.desc": "Removes all curse of binding armor when players die in walls (keepInventory must be true).",
+
+  "carpet.rule.customItemDiscardTime.desc": "Modify item despawn time (default -1, unit: tick).",
+
+  "carpet.rule.allowBlockUpdateLogger.desc": "Do not enable unless needed! May cause performance issues.",
+
+  "carpet.rule.removeBats.desc": "When enabled, bats will not spawn.",
+
+  "carpet.rule.playerTpRateLimitTime.desc": "Limit /player xxx tp rate, default 1 request per 2 seconds per player.",
+
+  "carpet.rule.commandLoggerBroadcastToPlayer.desc": "When enabled, command logs are broadcast to specified players.",
+
+  "carpet.rule.allowSpectatorTpToAnyPlayer.desc": "Allow spectators to teleport to any player.",
+
+  "carpet.rule.enableCrashCommand.desc": "Enable use of the crash command.",
+
+  "carpet.rule.enableListAdvanceCommand.desc": "Enable advanced player list functionality.",
+
+  "carpet.rule.enableTpmanagerCommand.desc": "Enable use of the tpmanager command.",
+
+  "carpet.rule.disallowRedstoneWireConnectsToOpenTrapdoor.desc": "disallowRedstoneWireConnectsToOpenTrapdoor"
+}

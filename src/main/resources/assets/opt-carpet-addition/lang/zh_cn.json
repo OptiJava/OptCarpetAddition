@@ -1,0 +1,100 @@
+{
+  "carpet.rule.commandTpToFakePlayer.name": "传送到假人",
+  "carpet.rule.commandTpToFakePlayer.desc": "启用后允许使用 [/player xxx tp] 传送到假玩家。",
+
+  "carpet.rule.allowTpToRealPlayer.name": "传送到真人",
+  "carpet.rule.allowTpToRealPlayer.desc": "启用后允许使用 [/player xxx tp] 传送到真实玩家。",
+
+  "carpet.rule.commandTpHereFakePlayer.name": "传送假人到自己",
+  "carpet.rule.commandTpHereFakePlayer.desc": "启用后允许使用 [/player xxx tp] 将假玩家传送到自己。",
+
+  "carpet.rule.allowTpHereRealPlayer.name": "传送真人到自己",
+  "carpet.rule.allowTpHereRealPlayer.desc": "启用后允许使用 [/player xxx tp] 将真实玩家传送到自己。",
+
+  "carpet.rule.forceFakePlayerGameMode.name": "强制假人游戏模式",
+  "carpet.rule.forceFakePlayerGameMode.desc": "强制指定假人的游戏模式（生存/创造/冒险）。",
+
+  "carpet.rule.fixXpLevelBug.name": "修复经验等级错误",
+  "carpet.rule.fixXpLevelBug.desc": "玩家切换世界时刷新经验等级。",
+
+  "carpet.rule.enableTpPrefixBlacklist.name": "启用传送前缀黑名单",
+  "carpet.rule.enableTpPrefixBlacklist.desc": "启用后限制部分前缀禁止使用传送命令。",
+
+  "carpet.rule.enableTpPrefixWhitelist.name": "启用传送前缀白名单",
+  "carpet.rule.enableTpPrefixWhitelist.desc": "启用后仅允许白名单内的前缀使用传送命令。",
+
+  "carpet.rule.enableTpHerePrefixBlacklist.name": "启用传送到这里前缀黑名单",
+  "carpet.rule.enableTpHerePrefixBlacklist.desc": "启用后限制部分前缀禁止使用传送到这里命令。",
+
+  "carpet.rule.enableTpHerePrefixWhitelist.name": "启用传送到这里前缀白名单",
+  "carpet.rule.enableTpHerePrefixWhitelist.desc": "启用后仅允许白名单内的前缀使用传送到这里命令。",
+
+  "carpet.rule.disabledLayEggs.name": "禁用母鸡下蛋",
+  "carpet.rule.disabledLayEggs.desc": "启用后鸡不会产蛋。",
+
+  "carpet.rule.disabledEnderManPickupGoal.name": "禁用末影人捡方块",
+  "carpet.rule.disabledEnderManPickupGoal.desc": "启用后末影人无法捡起方块。",
+
+  "carpet.rule.disabledEnderManPlaceBlockGoal.name": "禁用末影人放置方块",
+  "carpet.rule.disabledEnderManPlaceBlockGoal.desc": "启用后末影人无法放置方块。",
+
+  "carpet.rule.disabledNetherPortalSpawn.name": "禁用地狱门猪灵生成",
+  "carpet.rule.disabledNetherPortalSpawn.desc": "启用后僵尸猪灵不会在地狱门生成。",
+
+  "carpet.rule.disabledEntityTick.name": "禁用实体刻更新",
+  "carpet.rule.disabledEntityTick.desc": "禁用所有实体与方块实体的 tick 更新。",
+
+  "carpet.rule.disabledUpdateSuppressionErrorStackTrace.name": "禁用更新抑制错误堆栈",
+  "carpet.rule.disabledUpdateSuppressionErrorStackTrace.desc": "启用后不会打印更新抑制时的错误堆栈。",
+
+  "carpet.rule.unescapeChatMessage.name": "反转义聊天消息",
+  "carpet.rule.unescapeChatMessage.desc": "将聊天消息中的 Unicode 代码 (\\u4e2d) 转换为文字 (中)。",
+
+  "carpet.rule.optimizePlayerConnect.name": "优化玩家连接",
+  "carpet.rule.optimizePlayerConnect.desc": "在新线程中处理玩家连接以减少卡顿。",
+
+  "carpet.rule.optimizeTeleport.name": "优化传送",
+  "carpet.rule.optimizeTeleport.desc": "在新线程中处理传送以减少卡顿。",
+
+  "carpet.rule.commandLogger.name": "命令日志记录",
+  "carpet.rule.commandLogger.desc": "启用后会在玩家输入命令时打印日志。",
+
+  "carpet.rule.dropperCrashFix.name": "投掷器崩溃修复",
+  "carpet.rule.dropperCrashFix.desc": "修复投掷器相关的崩溃问题。",
+
+  "carpet.rule.optimizeFakePlayerSpawn.name": "优化假人生成",
+  "carpet.rule.optimizeFakePlayerSpawn.desc": "始终生成离线假人以减少卡顿。",
+
+  "carpet.rule.cceSuppressionCrashFix.name": "CCE 抑制崩溃修复",
+  "carpet.rule.cceSuppressionCrashFix.desc": "修复更新抑制引发的 ClassCastException 崩溃。",
+
+  "carpet.rule.removeAllCurseOfBindingArmorWhenPlayerDeadInWall.name": "移除绑定诅咒装备",
+  "carpet.rule.removeAllCurseOfBindingArmorWhenPlayerDeadInWall.desc": "玩家在墙中死亡时移除所有绑定诅咒装备（需启用保留物品）。",
+
+  "carpet.rule.customItemDiscardTime.name": "自定义物品消失时间",
+  "carpet.rule.customItemDiscardTime.desc": "修改物品消失时间（默认 -1，单位 tick）。",
+
+  "carpet.rule.allowBlockUpdateLogger.name": "允许方块更新日志",
+  "carpet.rule.allowBlockUpdateLogger.desc": "启用前请谨慎！此功能可能影响性能。",
+
+  "carpet.rule.removeBats.name": "移除蝙蝠",
+  "carpet.rule.removeBats.desc": "启用后不再生成蝙蝠。",
+
+  "carpet.rule.playerTpRateLimitTime.name": "玩家传送速率限制",
+  "carpet.rule.playerTpRateLimitTime.desc": "限制 /player xxx tp 的速率，默认每 2 秒一次。",
+
+  "carpet.rule.commandLoggerBroadcastToPlayer.name": "命令日志广播",
+  "carpet.rule.commandLoggerBroadcastToPlayer.desc": "启用后，命令日志会广播给指定玩家。",
+
+  "carpet.rule.allowSpectatorTpToAnyPlayer.name": "旁观者自由传送",
+  "carpet.rule.allowSpectatorTpToAnyPlayer.desc": "允许旁观者模式下传送到任意玩家。",
+
+  "carpet.rule.enableCrashCommand.name": "启用崩溃指令",
+  "carpet.rule.enableCrashCommand.desc": "启用后可使用崩溃指令。",
+
+  "carpet.rule.enableListAdvanceCommand.name": "启用增强列表指令",
+  "carpet.rule.enableListAdvanceCommand.desc": "启用后提供更高级的玩家列表功能。",
+
+  "carpet.rule.enableTpmanagerCommand.name": "启用传送管理指令",
+  "carpet.rule.enableTpmanagerCommand.desc": "启用后可使用传送管理指令。"
+}

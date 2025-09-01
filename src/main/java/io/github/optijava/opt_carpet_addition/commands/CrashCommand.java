@@ -6,6 +6,7 @@ import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import io.github.optijava.opt_carpet_addition.OptCarpetAddition;
 import net.minecraft.server.command.ServerCommandSource;
+import static io.github.optijava.opt_carpet_addition.OptCarpetSettings.enableCrashCommand;
 
 import static net.minecraft.server.command.CommandManager.literal;
 
@@ -17,7 +18,13 @@ public class CrashCommand {
 
     public static void registerCommand(CommandDispatcher<ServerCommandSource> dispatcher) {
         LiteralArgumentBuilder<ServerCommandSource> argumentBuilder = literal("crash")
-                .requires((serverCommandSource -> serverCommandSource.hasPermissionLevel(4)))
+                //#if MC < 12004
+                //$$ .requires((serverCommandSource -> serverCommandSource.hasPermissionLevel(4)))
+                //$$.requires((player) -> carpet.settings.SettingsManager.canUseCommand(source, enableCrashCommand))
+                //#else
+                //$$.requires((serverCommandSource -> serverCommandSource.hasPermissionLevel(4)))
+                //$$.requires((player) ->  carpet.utils.CommandHelper.canUseCommand(player, enableCrashCommand))
+                //#endif
                 .executes(CrashCommand::prepare)
                 .then(
                         literal("confirm")

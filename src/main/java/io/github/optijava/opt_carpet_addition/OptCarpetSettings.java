@@ -245,4 +245,28 @@ public class OptCarpetSettings {
             options = {"true", "false"}
     )
     public static boolean allowSpectatorTpToAnyPlayer = false;
+
+    @Rule(
+            desc = "enableLoggerCommand",
+            category = {RuleCategory.COMMAND , OCA}
+    )
+    public static boolean enableLoggerCommand = true;
+
+    @Rule(
+            desc = "enableCrashCommand",
+            category = {RuleCategory.COMMAND , OCA}
+    )
+    public static boolean enableCrashCommand = true;
+
+    @Rule(
+            desc = "enableListAdvanceCommand",
+            category = {RuleCategory.COMMAND , OCA}
+    )
+    public static boolean enableListAdvanceCommand = true;
+
+    @Rule(
+            desc = "enableTpmanagerCommand",
+            category = {RuleCategory.COMMAND , OCA}
+    )
+    public static boolean enableTpmanagerCommand = true;
 }

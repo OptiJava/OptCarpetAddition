@@ -11,6 +11,7 @@ import io.github.optijava.opt_carpet_addition.events.fixExperienceBug.FixExperie
 import io.github.optijava.opt_carpet_addition.logger.LoggerRegister;
 import io.github.optijava.opt_carpet_addition.utils.CommandLogger;
 import io.github.optijava.opt_carpet_addition.utils.ConfigUtil;
+import io.github.optijava.opt_carpet_addition.utils.RuleTranslator;
 import io.github.optijava.opt_carpet_addition.utils.TpLimit;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.entity.event.v1.ServerEntityWorldChangeEvents;
@@ -24,6 +25,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.File;
+import java.util.Map;
 import java.util.Objects;
 
 public class OptCarpetAddition implements CarpetExtension, ModInitializer {
@@ -173,5 +175,10 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
     @Override
     public void registerLoggers() {
         LoggerRegister.registry();
+    }
+
+    @Override
+    public Map<String, String> canHasTranslations(String lang) {
+        return RuleTranslator.getTranslationFromResourcePath(lang);
     }
 }

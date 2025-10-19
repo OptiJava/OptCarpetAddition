@@ -24,6 +24,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.File;
+import java.util.Map;
 import java.util.Objects;
 
 public class OptCarpetAddition implements CarpetExtension, ModInitializer {
@@ -173,5 +174,10 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
     @Override
     public void registerLoggers() {
         LoggerRegister.registry();
+    }
+
+    @Override
+    public Map<String, String> canHasTranslations(String lang) {
+        return RuleTranslator.getTranslationFromResourcePath(lang);
     }
 }

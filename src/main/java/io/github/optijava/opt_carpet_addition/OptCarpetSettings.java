@@ -173,13 +173,15 @@ public class OptCarpetSettings {
     )
     public static boolean dropperCrashFix = false;
     //#endif
-
+    
+    //#if MC < 12110
     @Rule(
             desc = "Always spawn offline fake player to reduce lagging",
             category = {RuleCategory.OPTIMIZATION,OCA}
     )
     public static boolean optimizeFakePlayerSpawn = false;
-
+    //#endif
+    
     //#if MC < 12100
     @Rule(
             desc = "Fix CCE Suppression crashes",

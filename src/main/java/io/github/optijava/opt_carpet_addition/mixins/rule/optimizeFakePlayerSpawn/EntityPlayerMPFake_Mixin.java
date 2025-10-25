@@ -5,6 +5,11 @@ import com.mojang.authlib.GameProfile;
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 //#if MC >= 11900
 //$$ import net.minecraft.util.Uuids;
+//#endif
+//#if MC >= 12110
+//$$ import net.minecraft.server.ServerConfigHandler;
+//$$ import net.minecraft.server.MinecraftServer;
+//$$ import java.util.UUID;
 //#else
 import net.minecraft.entity.player.PlayerEntity;
 //#endif
@@ -17,7 +22,7 @@ import java.util.Optional;
 
 @Mixin(EntityPlayerMPFake.class)
 public abstract class EntityPlayerMPFake_Mixin {
-
+    //#if MC < 12110
     @Redirect(
             method = "createFake",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/util/UserCache;findByName(Ljava/lang/String;)Ljava/util/Optional;")
@@ -33,4 +38,5 @@ public abstract class EntityPlayerMPFake_Mixin {
             return instance.findByName(playerName);
         }
     }
+    //#endif
 }

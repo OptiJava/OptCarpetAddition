@@ -13,6 +13,9 @@ import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
+//#if MC >= 12110
+//$$ import net.minecraft.server.PlayerConfigEntry;
+//#endif
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.spongepowered.asm.mixin.Mixin;
@@ -22,6 +25,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 //#if MC <= 12001
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 //#endif
+
 
 @Mixin(CommandManager.class)
 public class CommandManager_Mixin {
@@ -93,7 +97,11 @@ public class CommandManager_Mixin {
                     ));
         } else if (OptCarpetSettings.commandLoggerBroadcastToPlayer.equals("ops")) {
             for (ServerPlayerEntity serverPlayerEntity : CarpetServer.minecraft_server.getPlayerManager().getPlayerList()) {
+                //#if MC < 12110
                 if (!CarpetServer.minecraft_server.getPlayerManager().isOperator(serverPlayerEntity.getGameProfile())) {
+                //#else
+                //$$ if (!CarpetServer.minecraft_server.getPlayerManager().isOperator(new PlayerConfigEntry(serverPlayerEntity.getGameProfile()))) {
+                //#endif
                     continue;
                 }
                 Messenger.m(serverPlayerEntity, Messenger.c(

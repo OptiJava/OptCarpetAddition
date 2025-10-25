@@ -31,9 +31,13 @@ public class ListAdvanceCommand {
             StringBuilder sb = new StringBuilder();
             sb.append("\n");
             for (ServerPlayerEntity s : minecraftServer.getPlayerManager().getPlayerList()) {
-                //#if MC >= 12004
+                //#if MC >= 12110
+                //$$ sb.append(s.getName().getString()).append("    ").append(s.getGameMode().getId()).append("    ").append(s.networkHandler.getLatency()).append("ms    ").append(s.getIp()).append("    ").append(s.getGameProfile().id().toString()).append("\n");
+                //#endif
+                //#if MC >= 12004 && MC < 12110
                 //$$ sb.append(s.getName().getString()).append("    ").append(s.interactionManager.getGameMode().getName()).append("    ").append(s.networkHandler.getLatency()).append("ms    ").append(s.getIp()).append("    ").append(s.getGameProfile().getId().toString()).append("\n");
-                //#else
+                //#endif
+                //#if MC < 12004
                 sb.append(s.getName().getString()).append("    ").append(s.interactionManager.getGameMode().getName()).append("    ").append(s.pingMilliseconds).append("ms    ").append(s.getIp()).append("    ").append(s.getGameProfile().getId().toString()).append("\n");
                 //#endif
             }

@@ -14,6 +14,9 @@ import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
+//#if MC >= 12110
+//$$ import net.minecraft.server.PlayerConfigEntry;
+//#endif
 import net.minecraft.world.GameMode;
 
 import java.util.HashMap;
@@ -82,14 +85,22 @@ public class PlayerTpCommand {
         }
 
         try {
+            //#if MC >= 17001
             final String commandSourcePlayerName = Objects.requireNonNull(context.getSource().getPlayer()).getGameProfile().getName();
+            //#else
+            //$$ final String commandSourcePlayerName = Objects.requireNonNull(context.getSource().getPlayerOrThrow()).getName().getString();
+            //#endif
 
             if (server.getPlayerManager().getPlayer(target) instanceof EntityPlayerMPFake) {
 
                 switch (OptCarpetSettings.commandTpToFakePlayer) {
                     case "true" -> executeTp(commandSourcePlayerName, context, server);
                     case "ops" -> {
+                        //#if MC < 12110
                         if ((server.getPlayerManager().isOperator(context.getSource().getPlayer().getGameProfile()))) {
+                        //#else
+                        //$$ if ((server.getPlayerManager().isOperator(new PlayerConfigEntry(context.getSource().getPlayerOrThrow().getGameProfile())))) {
+                        //#endif
                             executeTp(commandSourcePlayerName, context, server);
                         } else {
                             if (OptCarpetSettings.allowSpectatorTpToAnyPlayer && context.getSource().getPlayer().interactionManager.getGameMode().equals(GameMode.SPECTATOR)){
@@ -114,7 +125,11 @@ public class PlayerTpCommand {
                     case "true" ->
                             server.getCommandManager().getDispatcher().execute(server.getCommandManager().getDispatcher().parse("tp " + commandSourcePlayerName + " " + target, server.getCommandSource()));
                     case "ops" -> {
+                        //#if MC < 12110
                         if ((server.getPlayerManager().isOperator(context.getSource().getPlayer().getGameProfile()))) {
+                        //#else
+                        //$$ if ((server.getPlayerManager().isOperator(new PlayerConfigEntry(context.getSource().getPlayerOrThrow().getGameProfile())))) {
+                        //#endif
                             server.getCommandManager().getDispatcher().execute(server.getCommandManager().getDispatcher().parse("tp " + commandSourcePlayerName + " " + target, server.getCommandSource()));
                         } else {
                             if (OptCarpetSettings.allowSpectatorTpToAnyPlayer && context.getSource().getPlayer().interactionManager.getGameMode().equals(GameMode.SPECTATOR)){
@@ -170,14 +185,22 @@ public class PlayerTpCommand {
         }
 
         try {
+            //#if MC >= 17001
             final String commandSourcePlayerName = Objects.requireNonNull(context.getSource().getPlayer()).getGameProfile().getName();
+            //#else
+            //$$ final String commandSourcePlayerName = Objects.requireNonNull(context.getSource().getPlayerOrThrow()).getName().getString();
+            //#endif
 
             if (server.getPlayerManager().getPlayer(target) instanceof EntityPlayerMPFake) {
 
                 switch (OptCarpetSettings.commandTpHereFakePlayer) {
                     case "true" -> executeTpHere(commandSourcePlayerName, context, server);
                     case "ops" -> {
+                        //#if MC < 12110
                         if ((server.getPlayerManager().isOperator(context.getSource().getPlayer().getGameProfile()))) {
+                        //#else
+                        //$$ if ((server.getPlayerManager().isOperator(new PlayerConfigEntry(context.getSource().getPlayerOrThrow().getGameProfile())))) {
+                        //#endif
                             executeTpHere(commandSourcePlayerName, context, server);
                         } else {
                             Messenger.m(context.getSource(), "r You have no permission to teleport here fake player.You aren't op.");
@@ -192,7 +215,11 @@ public class PlayerTpCommand {
                     case "true" ->
                             server.getCommandManager().getDispatcher().execute(server.getCommandManager().getDispatcher().parse("tp " + target + " " + commandSourcePlayerName, server.getCommandSource()));
                     case "ops" -> {
+                        //#if MC < 12110
                         if ((server.getPlayerManager().isOperator(context.getSource().getPlayer().getGameProfile()))) {
+                        //#else
+                        //$$ if ((server.getPlayerManager().isOperator(new PlayerConfigEntry(context.getSource().getPlayerOrThrow().getGameProfile())))) {
+                        //#endif
                             server.getCommandManager().getDispatcher().execute(server.getCommandManager().getDispatcher().parse("tp " + target + " " + commandSourcePlayerName, server.getCommandSource()));
                         } else {
                             Messenger.m(context.getSource(), "r You have no permission to teleport here real player.You aren't op.");

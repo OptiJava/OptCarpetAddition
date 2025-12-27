@@ -34,7 +34,7 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
     @Override
     public void onInitialize() {
         LOGGER.info("OptCarpetAddition is loading...");
-        CarpetServer.manageExtension(new OptCarpetAddition());
+        CarpetServer.manageExtension(this);
 
         ServerEntityWorldChangeEvents.AFTER_PLAYER_CHANGE_WORLD.register(new FixExperienceBug());
     }
@@ -178,6 +178,7 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
 
     @Override
     public Map<String, String> canHasTranslations(String lang) {
+        //add rule translator
         return RuleTranslator.getTranslationFromResourcePath(lang);
     }
 }

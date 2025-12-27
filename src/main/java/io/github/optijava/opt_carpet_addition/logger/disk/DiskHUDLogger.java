@@ -20,6 +20,7 @@ import java.util.List;
 public class DiskHUDLogger extends AbstractHUDLogger {
 
     public static final DiskHUDLogger INSTANCE;
+    private static final long TO_GB = 1024*1024*1024;
 
     static {
         try {
@@ -35,8 +36,6 @@ public class DiskHUDLogger extends AbstractHUDLogger {
 
     @Override
     public void updateHUD(MinecraftServer server) {
-        long toGB = 1024*1024*1024;
-
         if (LoggerRegister.__disk) {
             //#if MC >= 11900
             //$$ List<Text> list = new ArrayList<>();
@@ -47,18 +46,18 @@ public class DiskHUDLogger extends AbstractHUDLogger {
             //#if MC >= 11900
             //$$ for (File f : File.listRoots()) {
             //$$    if (f.getPath().equals("/")) {
-            //$$        list.add(Text.of(Messenger.c("g %s %sGB/%sGB".formatted("RootFileSystem", (f.getTotalSpace() - f.getFreeSpace()) / toGB, f.getTotalSpace() / toGB))));
+            //$$        list.add(Text.of(Messenger.c("g %s %sGB/%sGB".formatted("RootFileSystem", (f.getTotalSpace() - f.getFreeSpace()) / TO_GB, f.getTotalSpace() / TO_GB))));
             //$$    } else {
-            //$$        list.add(Text.of(Messenger.c("g %s %sGB/%sGB".formatted(f.getPath(), (f.getTotalSpace() - f.getFreeSpace()) / toGB, f.getTotalSpace() / toGB))));
+            //$$        list.add(Text.of(Messenger.c("g %s %sGB/%sGB".formatted(f.getPath(), (f.getTotalSpace() - f.getFreeSpace()) / TO_GB, f.getTotalSpace() / TO_GB))));
             //$$    }
             //$$ }
             //$$ LoggerRegistry.getLogger("disk").log(() -> list.toArray(new Text[0]));
             //#else
             for (File f : File.listRoots()) {
                 if (f.getPath().equals("/")) {
-                    list.add(new LiteralText("%s %sGB/%sGB".formatted("RootFileSystem", (f.getTotalSpace() - f.getFreeSpace()) / toGB, f.getTotalSpace() / toGB)));
+                    list.add(new LiteralText("%s %sGB/%sGB".formatted("RootFileSystem", (f.getTotalSpace() - f.getFreeSpace()) / TO_GB, f.getTotalSpace() / TO_GB)));
                 } else {
-                    list.add(new LiteralText("%s %sGB/%sGB".formatted(f.getPath(), (f.getTotalSpace() - f.getFreeSpace()) / toGB, f.getTotalSpace() / toGB)));
+                    list.add(new LiteralText("%s %sGB/%sGB".formatted(f.getPath(), (f.getTotalSpace() - f.getFreeSpace()) / TO_GB, f.getTotalSpace() / TO_GB)));
                 }
             }
             LoggerRegistry.getLogger("disk").log(() -> list.toArray(new BaseText[0]));

@@ -52,7 +52,7 @@ public class CrashCommand {
         }
         OptCarpetAddition.LOGGER.fatal("[OCA Crash Command] Confirm Crash!");
 //        Runtime.getRuntime().halt(1);
-        throw new RuntimeException("[OCA Crash Command] Confirm Crash!");
+        throw new Error("[OCA Crash Command] Confirm Crash!");
     }
 
     public static int abort(CommandContext<ServerCommandSource> context) {

@@ -297,6 +297,8 @@ Fix bug: lagging when spawn bot because mojang server is too slow :(
 
 This rule force any bot use offline uuid.
 
+Due to difficulties in porting, it is just for `1.17.1-1.21.5`. Use alternatives in higher versions. [iss#10](https://github.com/OptiJava/OptCarpetAddition/issues/10)
+
 - Default value: `false`
 - Acceptable value: `true` `false`
 - Categories: `Optimization`

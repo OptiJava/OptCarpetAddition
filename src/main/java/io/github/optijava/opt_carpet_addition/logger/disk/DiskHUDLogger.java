@@ -20,7 +20,7 @@ import java.util.List;
 public class DiskHUDLogger extends AbstractHUDLogger {
 
     public static final DiskHUDLogger INSTANCE;
-    private static final long TO_GB = 1024*1024*1024;
+    private static final long TO_GB = 1024L*1024L*1024L;
 
     static {
         try {

@@ -55,19 +55,21 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
             //#else
             if (Objects.equals(rule.name, "forceFakePlayerGameMode") && !Objects.equals(OptCarpetSettings.forceFakePlayerGameMode, "false")) {
             //#endif
-                GameMode gameMode = GameMode.SURVIVAL;
+                GameMode gameMode;
 
                 if (OptCarpetSettings.forceFakePlayerGameMode.equals("creative")) {
                     gameMode = GameMode.CREATIVE;
                 } else if (OptCarpetSettings.forceFakePlayerGameMode.equals("adventure")) {
                     gameMode = GameMode.ADVENTURE;
+                } else {
+                    gameMode = GameMode.SURVIVAL;
                 }
 
-                for (ServerPlayerEntity player : serverCommandSource.getServer().getPlayerManager().getPlayerList()) {
+                serverCommandSource.getServer().getPlayerManager().getPlayerList().forEach(player -> {
                     if (player instanceof EntityPlayerMPFake) {
                         player.changeGameMode(gameMode);
                     }
-                }
+                });
             }
 
             //#if MC >= 11900
@@ -145,7 +147,7 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
 
     @Override
     public void onPlayerLoggedIn(ServerPlayerEntity player) {
-        if (player instanceof EntityPlayerMPFake && !(Objects.equals(OptCarpetSettings.forceFakePlayerGameMode, "false"))) {
+        if (!(Objects.equals(OptCarpetSettings.forceFakePlayerGameMode, "false")) && player instanceof EntityPlayerMPFake) {
             GameMode gameMode = GameMode.SURVIVAL;
 
             if (OptCarpetSettings.forceFakePlayerGameMode.equals("creative")) {

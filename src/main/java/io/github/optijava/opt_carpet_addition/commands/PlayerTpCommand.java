@@ -277,38 +277,18 @@ public class PlayerTpCommand {
     }
 
     private static boolean checkTpBlacklist(String name) {
-        for (String s : OptCarpetSettings.tpLimitConfigBean.TpBlacklist) {
-            if (name.startsWith(s)) {
-                return false;
-            }
-        }
-        return true;
+        return OptCarpetSettings.tpLimitConfigBean.TpBlacklist.stream().noneMatch(name::startsWith);
     }
 
     private static boolean checkTpWhitelist(String name) {
-        for (String s : OptCarpetSettings.tpLimitConfigBean.TpWhitelist) {
-            if (name.startsWith(s)) {
-                return true;
-            }
-        }
-        return false;
+        return OptCarpetSettings.tpLimitConfigBean.TpWhitelist.stream().anyMatch(name::startsWith);
     }
 
     private static boolean checkTpHereBlacklist(String name) {
-        for (String s : OptCarpetSettings.tpLimitConfigBean.TphereBlacklist) {
-            if (name.startsWith(s)) {
-                return false;
-            }
-        }
-        return true;
+        return OptCarpetSettings.tpLimitConfigBean.TphereBlacklist.stream().noneMatch(name::startsWith);
     }
 
     private static boolean checkTpHereWhitelist(String name) {
-        for (String s : OptCarpetSettings.tpLimitConfigBean.TphereWhitelist) {
-            if (name.startsWith(s)) {
-                return true;
-            }
-        }
-        return false;
+        return OptCarpetSettings.tpLimitConfigBean.TphereWhitelist.stream().anyMatch(name::startsWith);
     }
 }

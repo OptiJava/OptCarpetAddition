@@ -30,7 +30,7 @@ public class ListAdvanceCommand {
             MinecraftServer minecraftServer = context.getSource().getServer();
             StringBuilder sb = new StringBuilder();
             sb.append("\n");
-            for (ServerPlayerEntity s : minecraftServer.getPlayerManager().getPlayerList()) {
+            minecraftServer.getPlayerManager().getPlayerList().forEach(s -> {
                 //#if MC >= 12110
                 //$$ sb.append(s.getName().getString()).append("    ").append(s.getGameMode().getId()).append("    ").append(s.networkHandler.getLatency()).append("ms    ").append(s.getIp()).append("    ").append(s.getGameProfile().id().toString()).append("\n");
                 //#endif
@@ -40,7 +40,7 @@ public class ListAdvanceCommand {
                 //#if MC < 12004
                 sb.append(s.getName().getString()).append("    ").append(s.interactionManager.getGameMode().getName()).append("    ").append(s.pingMilliseconds).append("ms    ").append(s.getIp()).append("    ").append(s.getGameProfile().getId().toString()).append("\n");
                 //#endif
-            }
+            });
             // OptCarpetAddition.LOGGER.info(sb.toString());
             Messenger.m(context.getSource(), sb.toString());
         } catch (Exception e) {

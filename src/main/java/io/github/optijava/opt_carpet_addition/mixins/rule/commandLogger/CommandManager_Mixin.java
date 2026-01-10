@@ -45,7 +45,7 @@ public class CommandManager_Mixin {
     //$$ public void injectExecute(ParseResults<ServerCommandSource> parseResults, String command, CallbackInfoReturnable<Integer> cir) {
     //#else
     public void injectExecute(ServerCommandSource commandSource, String command, CallbackInfoReturnable<Integer> cir) {
-    //#endif
+        //#endif
         //#if MC >= 11900
         //$$ ServerCommandSource commandSource = parseResults.getContext().getSource();
         //#endif
@@ -56,11 +56,9 @@ public class CommandManager_Mixin {
                 return;
             }
 
-            for (String var1 : OptCarpetSettings.commandLoggerConfigBean.LogCommandPrefixWhitelist) {
-                if (command.startsWith(var1)) {
-                    logCommand(command, commandSource);
-                    return;
-                }
+            if (OptCarpetSettings.commandLoggerConfigBean.LogCommandPrefixWhitelist.stream().anyMatch(command::startsWith)) {
+                logCommand(command, commandSource);
+                return;
             }
 
             if (OptCarpetSettings.commandLoggerConfigBean.LogCommandWhitelist.isEmpty() && OptCarpetSettings.commandLoggerConfigBean.LogCommandPrefixWhitelist.isEmpty()) {
@@ -69,15 +67,8 @@ public class CommandManager_Mixin {
                     return;
                 }
 
-                if (OptCarpetSettings.commandLoggerConfigBean.LogCommandPrefixBlacklist.isEmpty() && OptCarpetSettings.commandLoggerConfigBean.LogCommandBlacklist.contains(command)) {
-                    return;
-                }
-
-                for (String var2 : OptCarpetSettings.commandLoggerConfigBean.LogCommandPrefixBlacklist) {
-                    if (command.startsWith(var2)) {
-                        return;
-                    }
-                }
+                if (OptCarpetSettings.commandLoggerConfigBean.LogCommandPrefixBlacklist.isEmpty() && OptCarpetSettings.commandLoggerConfigBean.LogCommandBlacklist.contains(command)) return;
+                if (OptCarpetSettings.commandLoggerConfigBean.LogCommandPrefixBlacklist.stream().anyMatch(command::startsWith)) return;
                 logCommand(command, commandSource);
             }
         } else if (OptCarpetSettings.commandLoggerConfigBean.logAllCommand && OptCarpetSettings.commandLogger) {
@@ -91,25 +82,25 @@ public class CommandManager_Mixin {
 
         if (OptCarpetSettings.commandLoggerBroadcastToPlayer.equals("true")) {
             Messenger.print_server_message(CarpetServer.minecraft_server, Messenger.c(
-                        "gi [",
-                            "li " + commandSource.getName(),
-                            "gi : " + command + "]"
-                    ));
+                    "gi [",
+                    "li " + commandSource.getName(),
+                    "gi : " + command + "]"
+            ));
         } else if (OptCarpetSettings.commandLoggerBroadcastToPlayer.equals("ops")) {
-            for (ServerPlayerEntity serverPlayerEntity : CarpetServer.minecraft_server.getPlayerManager().getPlayerList()) {
+            CarpetServer.minecraft_server.getPlayerManager().getPlayerList().forEach(serverPlayerEntity -> {
                 //#if MC < 12110
                 if (!CarpetServer.minecraft_server.getPlayerManager().isOperator(serverPlayerEntity.getGameProfile())) {
-                //#else
-                //$$ if (!CarpetServer.minecraft_server.getPlayerManager().isOperator(new PlayerConfigEntry(serverPlayerEntity.getGameProfile()))) {
-                //#endif
-                    continue;
+                    //#else
+                    //$$ if (!CarpetServer.minecraft_server.getPlayerManager().isOperator(new PlayerConfigEntry(serverPlayerEntity.getGameProfile()))) {
+                    //#endif
+                    return;
                 }
                 Messenger.m(serverPlayerEntity, Messenger.c(
                         "gi [",
-                            "li " + commandSource.getName(),
-                            "gi : " + command + "]"
-                    ));
-            }
+                        "li " + commandSource.getName(),
+                        "gi : " + command + "]"
+                ));
+            });
         }
     }
 }

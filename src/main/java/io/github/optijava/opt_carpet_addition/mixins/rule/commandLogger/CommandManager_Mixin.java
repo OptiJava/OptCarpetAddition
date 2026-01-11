@@ -45,7 +45,7 @@ public class CommandManager_Mixin {
     //$$ public void injectExecute(ParseResults<ServerCommandSource> parseResults, String command, CallbackInfoReturnable<Integer> cir) {
     //#else
     public void injectExecute(ServerCommandSource commandSource, String command, CallbackInfoReturnable<Integer> cir) {
-        //#endif
+    //#endif
         //#if MC >= 11900
         //$$ ServerCommandSource commandSource = parseResults.getContext().getSource();
         //#endif
@@ -90,9 +90,9 @@ public class CommandManager_Mixin {
             CarpetServer.minecraft_server.getPlayerManager().getPlayerList().forEach(serverPlayerEntity -> {
                 //#if MC < 12110
                 if (!CarpetServer.minecraft_server.getPlayerManager().isOperator(serverPlayerEntity.getGameProfile())) {
-                    //#else
-                    //$$ if (!CarpetServer.minecraft_server.getPlayerManager().isOperator(new PlayerConfigEntry(serverPlayerEntity.getGameProfile()))) {
-                    //#endif
+                //#else
+                //$$ if (!CarpetServer.minecraft_server.getPlayerManager().isOperator(new PlayerConfigEntry(serverPlayerEntity.getGameProfile()))) {
+                //#endif
                     return;
                 }
                 Messenger.m(serverPlayerEntity, Messenger.c(

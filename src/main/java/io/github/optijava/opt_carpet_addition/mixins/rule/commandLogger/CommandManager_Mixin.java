@@ -10,6 +10,7 @@ package io.github.optijava.opt_carpet_addition.mixins.rule.commandLogger;
 import carpet.CarpetServer;
 import carpet.utils.Messenger;
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
+import io.github.optijava.opt_carpet_addition.utils.McUtils;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -88,13 +89,8 @@ public class CommandManager_Mixin {
             ));
         } else if (OptCarpetSettings.commandLoggerBroadcastToPlayer.equals("ops")) {
             CarpetServer.minecraft_server.getPlayerManager().getPlayerList().forEach(serverPlayerEntity -> {
-                //#if MC < 12110
-                if (!CarpetServer.minecraft_server.getPlayerManager().isOperator(serverPlayerEntity.getGameProfile())) {
-                //#else
-                //$$ if (!CarpetServer.minecraft_server.getPlayerManager().isOperator(new PlayerConfigEntry(serverPlayerEntity.getGameProfile()))) {
-                //#endif
-                    return;
-                }
+                if (!McUtils.isOp(serverPlayerEntity.getGameProfile())) return;
+
                 Messenger.m(serverPlayerEntity, Messenger.c(
                         "gi [",
                         "li " + commandSource.getName(),

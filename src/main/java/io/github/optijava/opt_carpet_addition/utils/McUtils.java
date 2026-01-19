@@ -15,7 +15,7 @@ public class McUtils {
         //#if MC < 12110
         return server.getPlayerManager().isOperator(gameProfile);
         //#else
-        //$$ return server.getPlayerManager().isOperator(new PlayerConfigEntry(new PlayerConfigEntry(gameProfile));
+        //$$ return server.getPlayerManager().isOperator(server.getPlayerManager().getPlayer(gameProfile.id()).getPlayerConfigEntry());
         //#endif
     }
 }

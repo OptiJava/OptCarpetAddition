@@ -8,6 +8,7 @@ import io.github.optijava.opt_carpet_addition.OptCarpetAddition;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
+import static io.github.optijava.opt_carpet_addition.OptCarpetSettings.enableListAdvanceCommand;
 
 import static net.minecraft.server.command.CommandManager.literal;
 
@@ -15,6 +16,11 @@ public class ListAdvanceCommand {
 
     public static void registerCommand(CommandDispatcher<ServerCommandSource> dispatcher) {
         LiteralArgumentBuilder<ServerCommandSource> argumentBuilder = literal("list")
+                //#if MC < 12004
+                //$$.requires((player) -> carpet.settings.SettingsManager.canUseCommand(source, enableListAdvanceCommand))
+                //#else
+                //$$.requires((player) ->  carpet.utils.CommandHelper.canUseCommand(player, enableListAdvanceCommand))
+                //#endif
                 .then(literal("-advance").executes(ListAdvanceCommand::listAdvance));
         dispatcher.register(argumentBuilder);
     }
@@ -24,13 +30,17 @@ public class ListAdvanceCommand {
             MinecraftServer minecraftServer = context.getSource().getServer();
             StringBuilder sb = new StringBuilder();
             sb.append("\n");
-            for (ServerPlayerEntity s : minecraftServer.getPlayerManager().getPlayerList()) {
-                //#if MC >= 12004
+            minecraftServer.getPlayerManager().getPlayerList().forEach(s -> {
+                //#if MC >= 12110
+                //$$ sb.append(s.getName().getString()).append("    ").append(s.getGameMode().getId()).append("    ").append(s.networkHandler.getLatency()).append("ms    ").append(s.getIp()).append("    ").append(s.getGameProfile().id().toString()).append("\n");
+                //#endif
+                //#if MC >= 12004 && MC < 12110
                 //$$ sb.append(s.getName().getString()).append("    ").append(s.interactionManager.getGameMode().getName()).append("    ").append(s.networkHandler.getLatency()).append("ms    ").append(s.getIp()).append("    ").append(s.getGameProfile().getId().toString()).append("\n");
-                //#else
+                //#endif
+                //#if MC < 12004
                 sb.append(s.getName().getString()).append("    ").append(s.interactionManager.getGameMode().getName()).append("    ").append(s.pingMilliseconds).append("ms    ").append(s.getIp()).append("    ").append(s.getGameProfile().getId().toString()).append("\n");
                 //#endif
-            }
+            });
             // OptCarpetAddition.LOGGER.info(sb.toString());
             Messenger.m(context.getSource(), sb.toString());
         } catch (Exception e) {

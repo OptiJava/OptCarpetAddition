@@ -5,6 +5,16 @@ import com.mojang.authlib.GameProfile;
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 //#if MC >= 11900
 //$$ import net.minecraft.util.Uuids;
+//#endif
+//#if MC >= 12110
+//$$ import net.minecraft.server.ServerConfigHandler;
+//$$ import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+//$$ import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+//$$ import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
+//$$ import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
+//$$ import net.minecraft.server.PlayerConfigEntry;
+//$$ import net.minecraft.util.NameToIdCache;
+//$$ import java.util.UUID;
 //#else
 import net.minecraft.entity.player.PlayerEntity;
 //#endif
@@ -17,7 +27,7 @@ import java.util.Optional;
 
 @Mixin(PlayerCommand.class)
 public abstract class PlayerCommand_Mixin {
-
+    //#if MC < 12110
     @Redirect(
             method = "cantSpawn",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/util/UserCache;findByName(Ljava/lang/String;)Ljava/util/Optional;")
@@ -33,4 +43,5 @@ public abstract class PlayerCommand_Mixin {
             return instance.findByName(playerName);
         }
     }
+    //#endif
 }

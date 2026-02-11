@@ -17,6 +17,7 @@ Most other MC versions that are the same as the supported major versions but hav
 
 | Minecraft Version | Support Status                                                           | 
 |-------------------|--------------------------------------------------------------------------| 
+| 1.21.10           | Supporting, developing actively                                          |
 | 1.21.5            | Supporting, developing actively                                          | 
 | 1.21              | Supporting, developing actively                                          | 
 | 1.20.4            | Supporting, developing actively                                          | 
@@ -295,6 +296,8 @@ DispenserBlockEntity dispenserBlockEntity = (DispenserBlockEntity)blockPointerIm
 Fix bug: lagging when spawn bot because mojang server is too slow :(
 
 This rule force any bot use offline uuid.
+
+Due to difficulties in porting, it is just for `1.17.1-1.21.5`. Use alternatives in higher versions. [iss#10](https://github.com/OptiJava/OptCarpetAddition/issues/10)
 
 - Default value: `false`
 - Acceptable value: `true` `false`

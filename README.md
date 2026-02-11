@@ -16,6 +16,7 @@ Language: [English](https://github.com/OptiJava/OptCarpetAddition/blob/master/RE
 
 | Minecraft 版本 | 支持状态                       |
 |--------------|----------------------------|
+| 1.21.10      | 支持，积极开发                    |
 | 1.21.5       | 支持，积极开发                    |
 | 1.21         | 支持，积极开发                    |
 | 1.20.4       | 支持，积极开发                    |
@@ -296,6 +297,8 @@ DispenserBlockEntity dispenserBlockEntity = (DispenserBlockEntity)blockPointerIm
 ### optimizeFakePlayerSpawn
 
 如果你的服务器连接mojang服务器的时间长，spawn假人的时候就会卡顿一会，此规则强制所有假人使用离线uuid，解决这一问题（但是也许引发新的问题
+
+由于移植困难，仅支持`1.17.1-1.21.5`版本，高版本请使用替代品 [iss#10](https://github.com/OptiJava/OptCarpetAddition/issues/10)
 
 - Default value: `false`
 - Acceptable value: `true` `false`

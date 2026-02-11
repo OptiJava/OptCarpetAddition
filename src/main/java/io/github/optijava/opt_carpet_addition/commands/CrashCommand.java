@@ -6,6 +6,7 @@ import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import io.github.optijava.opt_carpet_addition.OptCarpetAddition;
 import net.minecraft.server.command.ServerCommandSource;
+import static io.github.optijava.opt_carpet_addition.OptCarpetSettings.enableCrashCommand;
 
 import static net.minecraft.server.command.CommandManager.literal;
 
@@ -17,7 +18,13 @@ public class CrashCommand {
 
     public static void registerCommand(CommandDispatcher<ServerCommandSource> dispatcher) {
         LiteralArgumentBuilder<ServerCommandSource> argumentBuilder = literal("crash")
-                .requires((serverCommandSource -> serverCommandSource.hasPermissionLevel(4)))
+                //#if MC < 12004
+                //$$ .requires((serverCommandSource -> serverCommandSource.hasPermissionLevel(4)))
+                //$$.requires((player) -> carpet.settings.SettingsManager.canUseCommand(source, enableCrashCommand))
+                //#else
+                //$$.requires((serverCommandSource -> serverCommandSource.hasPermissionLevel(4)))
+                //$$.requires((player) ->  carpet.utils.CommandHelper.canUseCommand(player, enableCrashCommand))
+                //#endif
                 .executes(CrashCommand::prepare)
                 .then(
                         literal("confirm")
@@ -40,12 +47,12 @@ public class CrashCommand {
 
     public static int confirm(CommandContext<ServerCommandSource> context) {
         if (!isPreparing) {
-            Messenger.m(context.getSource(), "r Nothing to abort.");
+            Messenger.m(context.getSource(), "r Nothing to confirm.");
             return 0;
         }
         OptCarpetAddition.LOGGER.fatal("[OCA Crash Command] Confirm Crash!");
-        Runtime.getRuntime().halt(1);
-        return 1;
+//        Runtime.getRuntime().halt(1);
+        throw new Error("[OCA Crash Command] Confirm Crash!");
     }
 
     public static int abort(CommandContext<ServerCommandSource> context) {

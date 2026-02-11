@@ -7,25 +7,20 @@ package io.github.optijava.opt_carpet_addition.mixins.rule.commandLogger;
 //#if MC >= 12000
 //$$ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 //#endif
+
 import carpet.CarpetServer;
 import carpet.utils.Messenger;
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import io.github.optijava.opt_carpet_addition.utils.McUtils;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
-import net.minecraft.server.network.ServerPlayerEntity;
-//#if MC >= 12110
-//$$ import net.minecraft.server.PlayerConfigEntry;
-//#endif
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-//#if MC <= 12001
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-//#endif
 
 
 @Mixin(CommandManager.class)
@@ -89,13 +84,14 @@ public class CommandManager_Mixin {
             ));
         } else if (OptCarpetSettings.commandLoggerBroadcastToPlayer.equals("ops")) {
             CarpetServer.minecraft_server.getPlayerManager().getPlayerList().forEach(serverPlayerEntity -> {
-                if (!McUtils.isOp(serverPlayerEntity.getGameProfile())) return;
+                if (McUtils.isOp(serverPlayerEntity.getGameProfile())) {
+                    Messenger.m(serverPlayerEntity, Messenger.c(
+                            "gi [",
+                            "li " + commandSource.getName(),
+                            "gi : " + command + "]"
+                    ));
+                }
 
-                Messenger.m(serverPlayerEntity, Messenger.c(
-                        "gi [",
-                        "li " + commandSource.getName(),
-                        "gi : " + command + "]"
-                ));
             });
         }
     }

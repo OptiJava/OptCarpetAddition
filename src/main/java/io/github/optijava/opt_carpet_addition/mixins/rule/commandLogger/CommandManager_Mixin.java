@@ -74,7 +74,7 @@ public class CommandManager_Mixin {
 
     @Unique
     private void logCommand(String command, ServerCommandSource commandSource){
-        CommandManager_Mixin.LOGGER.info("[OCA Command Logger] %s submit command: %s".formatted(commandSource.getName(), command));
+        CommandManager_Mixin.LOGGER.info("[OCA Command Logger] {} submit command: {}", commandSource.getName(), command);
 
         if (OptCarpetSettings.commandLoggerBroadcastToPlayer.equals("true")) {
             Messenger.print_server_message(CarpetServer.minecraft_server, Messenger.c(
@@ -91,7 +91,6 @@ public class CommandManager_Mixin {
                             "gi : " + command + "]"
                     ));
                 }
-
             });
         }
     }

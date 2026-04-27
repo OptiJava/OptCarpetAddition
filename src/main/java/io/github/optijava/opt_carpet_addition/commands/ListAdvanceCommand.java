@@ -16,11 +16,7 @@ public class ListAdvanceCommand {
 
     public static void registerCommand(CommandDispatcher<ServerCommandSource> dispatcher) {
         LiteralArgumentBuilder<ServerCommandSource> argumentBuilder = literal("list")
-                //#if MC < 12004
-                //$$.requires((player) -> carpet.settings.SettingsManager.canUseCommand(source, enableListAdvanceCommand))
-                //#else
-                //$$.requires((player) ->  carpet.utils.CommandHelper.canUseCommand(player, enableListAdvanceCommand))
-                //#endif
+                .requires((player) ->  carpet.utils.CommandHelper.canUseCommand(player, enableListAdvanceCommand))
                 .then(literal("-advance").executes(ListAdvanceCommand::listAdvance));
         dispatcher.register(argumentBuilder);
     }
@@ -31,17 +27,12 @@ public class ListAdvanceCommand {
             StringBuilder sb = new StringBuilder();
             sb.append("\n");
             minecraftServer.getPlayerManager().getPlayerList().forEach(s -> {
-                //#if MC >= 12110
-                //$$ sb.append(s.getName().getString()).append("    ").append(s.getGameMode().getId()).append("    ").append(s.networkHandler.getLatency()).append("ms    ").append(s.getIp()).append("    ").append(s.getGameProfile().id().toString()).append("\n");
-                //#endif
-                //#if MC >= 12004 && MC < 12110
-                //$$ sb.append(s.getName().getString()).append("    ").append(s.interactionManager.getGameMode().getName()).append("    ").append(s.networkHandler.getLatency()).append("ms    ").append(s.getIp()).append("    ").append(s.getGameProfile().getId().toString()).append("\n");
-                //#endif
-                //#if MC < 12004
-                sb.append(s.getName().getString()).append("    ").append(s.interactionManager.getGameMode().getName()).append("    ").append(s.pingMilliseconds).append("ms    ").append(s.getIp()).append("    ").append(s.getGameProfile().getId().toString()).append("\n");
-                //#endif
+                //? if >= 1.21.10 {
+                //sb.append(s.getName().getString()).append("    ").append(s.getGameMode().getId()).append("    ").append(s.networkHandler.getLatency()).append("ms    ").append(s.getIp()).append("    ").append(s.getGameProfile().id().toString()).append("\n");
+                //?} else {
+                //sb.append(s.getName().getString()).append("    ").append(s.interactionManager.getGameMode().getName()).append("    ").append(s.networkHandler.getLatency()).append("ms    ").append(s.getIp()).append("    ").append(s.getGameProfile().getId().toString()).append("\n");
+                //?}
             });
-            // OptCarpetAddition.LOGGER.info(sb.toString());
             Messenger.m(context.getSource(), sb.toString());
         } catch (Exception e) {
             context.getSource().sendError(Messenger.c("Unexpected exception occurred when command list advance executed."));

@@ -1,13 +1,7 @@
 package io.github.optijava.opt_carpet_addition.mixins.rule.commandLogger;
 
-//#if MC >= 11900
-//$$ import com.mojang.brigadier.ParseResults;
-//#endif
-
-//#if MC >= 12000
-//$$ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-//#endif
-
+import com.mojang.brigadier.ParseResults;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import carpet.CarpetServer;
 import carpet.utils.Messenger;
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
@@ -20,7 +14,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 
 @Mixin(CommandManager.class)
@@ -33,18 +26,8 @@ public class CommandManager_Mixin {
             method = "execute",
             at = @At("HEAD")
     )
-    //#if MC >= 12004
-    //$$ public void injectExecute(ParseResults<ServerCommandSource> parseResults, String command, CallbackInfo ci) {
-    //#elseif MC >= 12000
-    //$$ public void injectExecute(ParseResults<ServerCommandSource> parseResults, String command, CallbackInfoReturnable<Integer> cir) {
-    //#elseif MC >= 11900
-    //$$ public void injectExecute(ParseResults<ServerCommandSource> parseResults, String command, CallbackInfoReturnable<Integer> cir) {
-    //#else
-    public void injectExecute(ServerCommandSource commandSource, String command, CallbackInfoReturnable<Integer> cir) {
-    //#endif
-        //#if MC >= 11900
-        //$$ ServerCommandSource commandSource = parseResults.getContext().getSource();
-        //#endif
+    public void injectExecute(ParseResults<ServerCommandSource> parseResults, String command, CallbackInfo ci) {
+        ServerCommandSource commandSource = parseResults.getContext().getSource();
 
         if (!OptCarpetSettings.commandLoggerConfigBean.logAllCommand && OptCarpetSettings.commandLogger) {
             if (OptCarpetSettings.commandLoggerConfigBean.LogCommandWhitelist.contains(command)) {

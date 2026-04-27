@@ -3,17 +3,8 @@ package io.github.optijava.opt_carpet_addition.mixins.rule.optimizeFakePlayerSpa
 import carpet.patches.EntityPlayerMPFake;
 import com.mojang.authlib.GameProfile;
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
-//#if MC >= 11900
-//$$ import net.minecraft.util.Uuids;
-//#endif
-//#if MC >= 12110
-//$$ import net.minecraft.server.ServerConfigHandler;
-//$$ import net.minecraft.server.MinecraftServer;
-//$$ import java.util.UUID;
-//#else
-import net.minecraft.entity.player.PlayerEntity;
-//#endif
-import net.minecraft.util.UserCache;
+import net.minecraft.core.UUIDUtil;
+import net.minecraft.server.players.GameProfileCache;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
@@ -22,21 +13,17 @@ import java.util.Optional;
 
 @Mixin(EntityPlayerMPFake.class)
 public abstract class EntityPlayerMPFake_Mixin {
-    //#if MC < 12110
+    //? if < 1.21.10 {
     @Redirect(
             method = "createFake",
-            at = @At(value = "INVOKE", target = "Lnet/minecraft/util/UserCache;findByName(Ljava/lang/String;)Ljava/util/Optional;")
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/server/players/GameProfileCache;get(Ljava/lang/String;)Ljava/util/Optional;")
     )
-    private static Optional<GameProfile> redirectCreateFake(UserCache instance, String playerName) {
+    private static Optional<GameProfile> redirectCreateFake(GameProfileCache instance, String playerName) {
         if (OptCarpetSettings.optimizeFakePlayerSpawn) {
-            //#if MC >= 11900
-            //$$ return Optional.of(new GameProfile(Uuids.getOfflinePlayerUuid(playerName), playerName));
-            //#else
-            return Optional.of(new GameProfile(PlayerEntity.getOfflinePlayerUuid(playerName), playerName));
-            //#endif
+            return Optional.of(new GameProfile(UUIDUtil.createOfflinePlayerUUID(playerName), playerName));
         } else {
-            return instance.findByName(playerName);
+            return instance.get(playerName);
         }
     }
-    //#endif
+    //?}
 }

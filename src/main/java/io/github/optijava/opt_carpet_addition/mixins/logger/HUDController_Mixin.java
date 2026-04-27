@@ -16,7 +16,8 @@ public abstract class HUDController_Mixin {
     @Inject(
             method = "update_hud",
             at = @At(value = "INVOKE",
-                    target = "Ljava/util/Map;keySet()Ljava/util/Set;"),
+                    target = "Ljava/util/Map;keySet()Ljava/util/Set;"
+            ),
             remap = false
     )
     private static void injectUpdateHUD(MinecraftServer server, List<ServerPlayerEntity> force, CallbackInfo ci) {

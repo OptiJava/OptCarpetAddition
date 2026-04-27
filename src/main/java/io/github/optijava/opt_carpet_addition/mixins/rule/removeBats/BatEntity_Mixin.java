@@ -1,35 +1,28 @@
 package io.github.optijava.opt_carpet_addition.mixins.rule.removeBats;
 
+import carpet.script.api.WorldAccess;
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.passive.BatEntity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.WorldAccess;
+import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.EntitySpawnReason;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ambient.Bat;
+import net.minecraft.world.level.LevelAccessor;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.util.Random;
-
-@Mixin(BatEntity.class)
+@Mixin(Bat.class)
 public class BatEntity_Mixin {
     @Inject(
-            method = "canSpawn",
+            method = "checkBatSpawnRules",
             at = @At("HEAD"),
             cancellable = true
     )
-    //#if MC == 12001
-    //$$ private static void injectCanSpawn(EntityType<BatEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, net.minecraft.util.math.random.Random random, CallbackInfoReturnable<Boolean> cir) {
-    //#elseif MC >= 11900
-    //$$ private static void injectCanSpawn(EntityType<BatEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, net.minecraft.util.math.random.Random random, CallbackInfoReturnable<Boolean> cir) {
-    //#else
-    private static void injectCanSpawn(EntityType<BatEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random, CallbackInfoReturnable<Boolean> cir) {
-    //#endif
+    private static void injectCanSpawn(EntityType<Bat> entityType, LevelAccessor levelAccessor, EntitySpawnReason entitySpawnReason, BlockPos blockPos, RandomSource randomSource, CallbackInfoReturnable<Boolean> cir) {
         if (OptCarpetSettings.removeBats) {
             cir.setReturnValue(false);
-            cir.cancel();
         }
     }
 }

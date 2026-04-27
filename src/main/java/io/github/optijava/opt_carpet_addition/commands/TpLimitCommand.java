@@ -24,11 +24,7 @@ public class TpLimitCommand {
         
 
         LiteralArgumentBuilder<ServerCommandSource> argument = literal("tpmanager")
-                //#if MC < 12004
-                //$$.requires((player) -> carpet.settings.SettingsManager.canUseCommand(source, enableTpmanagerCommand))
-                //#else
-                //$$.requires((player) ->  carpet.utils.CommandHelper.canUseCommand(player, enableTpmanagerCommand))
-                //#endif
+                .requires((player) ->  carpet.utils.CommandHelper.canUseCommand(player, enableTpmanagerCommand))
                 .then(
                         literal("reload")
                                 .executes(TpLimit::reload)

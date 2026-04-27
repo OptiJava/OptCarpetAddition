@@ -15,9 +15,8 @@ import io.github.optijava.opt_carpet_addition.utils.McUtils;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
-//#if MC >= 12110
-//$$ import net.minecraft.server.PlayerConfigEntry;
-//#endif
+//? >= 1.21.10
+//import net.minecraft.server.PlayerConfigEntry;
 import net.minecraft.world.GameMode;
 
 import java.util.HashMap;
@@ -85,11 +84,7 @@ public class PlayerTpCommand {
         }
 
         try {
-            //#if MC >= 17001
             final String commandSourcePlayerName = Objects.requireNonNull(context.getSource().getPlayer()).getGameProfile().getName();
-            //#else
-            //$$ final String commandSourcePlayerName = Objects.requireNonNull(context.getSource().getPlayerOrThrow()).getName().getString();
-            //#endif
 
             if (server.getPlayerManager().getPlayer(target) instanceof EntityPlayerMPFake) {
 
@@ -172,11 +167,7 @@ public class PlayerTpCommand {
         }
 
         try {
-            //#if MC >= 17001
             final String commandSourcePlayerName = Objects.requireNonNull(context.getSource().getPlayer()).getGameProfile().getName();
-            //#else
-            //$$ final String commandSourcePlayerName = Objects.requireNonNull(context.getSource().getPlayerOrThrow()).getName().getString();
-            //#endif
 
             if (server.getPlayerManager().getPlayer(target) instanceof EntityPlayerMPFake) {
 

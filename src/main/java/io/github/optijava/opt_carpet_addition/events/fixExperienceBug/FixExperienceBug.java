@@ -9,8 +9,8 @@ public class FixExperienceBug implements ServerEntityWorldChangeEvents.AfterPlay
     @Override
     public void afterChangeWorld(ServerPlayerEntity player, ServerWorld origin, ServerWorld destination) {
         if (OptCarpetSettings.fixXpLevelBug) {
+            // refresh player's experience bar
             player.addExperience(0);
-            // refresh xp level
         }
     }
 }

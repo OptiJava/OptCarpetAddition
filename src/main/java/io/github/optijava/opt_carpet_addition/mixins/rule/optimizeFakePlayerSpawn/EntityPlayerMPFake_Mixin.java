@@ -1,3 +1,4 @@
+//? if < 1.21.10 {
 package io.github.optijava.opt_carpet_addition.mixins.rule.optimizeFakePlayerSpawn;
 
 import carpet.patches.EntityPlayerMPFake;
@@ -13,7 +14,7 @@ import java.util.Optional;
 
 @Mixin(EntityPlayerMPFake.class)
 public abstract class EntityPlayerMPFake_Mixin {
-    //? if < 1.21.10 {
+
     @Redirect(
             method = "createFake",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/server/players/GameProfileCache;get(Ljava/lang/String;)Ljava/util/Optional;")
@@ -25,5 +26,6 @@ public abstract class EntityPlayerMPFake_Mixin {
             return instance.get(playerName);
         }
     }
-    //?}
+
 }
+//?}

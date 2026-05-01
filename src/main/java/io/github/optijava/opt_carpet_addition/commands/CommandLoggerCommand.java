@@ -4,23 +4,24 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import io.github.optijava.opt_carpet_addition.utils.CommandLogger;
-import net.minecraft.server.command.CommandManager;
-import net.minecraft.server.command.ServerCommandSource;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.commands.Commands;
+
 import static io.github.optijava.opt_carpet_addition.OptCarpetSettings.enableLoggerCommand;
 
 public class CommandLoggerCommand {
-    public static void registerCommand(CommandDispatcher<ServerCommandSource> dispatcher) {
-        LiteralArgumentBuilder<ServerCommandSource> argumentBuilder = CommandManager.literal("commandlogger").
+    public static void registerCommand(CommandDispatcher<CommandSourceStack> dispatcher) {
+        LiteralArgumentBuilder<CommandSourceStack> argumentBuilder = Commands.literal("commandlogger").
                 requires((player) ->  carpet.utils.CommandHelper.canUseCommand(player, enableLoggerCommand))
                 .then(
-                        CommandManager.literal("reload")
+                        Commands.literal("reload")
                                 .executes(CommandLoggerCommand::reload)
                 );
 
         dispatcher.register(argumentBuilder);
     }
 
-    public static int reload(CommandContext<ServerCommandSource> context) {
+    public static int reload(CommandContext<CommandSourceStack> context) {
         return CommandLogger.reload();
     }
 }

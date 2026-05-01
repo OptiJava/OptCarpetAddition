@@ -59,15 +59,11 @@ tasks.processResources {
 
     inputs.property("version", modver)
     inputs.property("minecraft_requirement_version", minecraftVer)
-    inputs.property("carpet_requirement_version", property("carpet_requirement_version"))
-    inputs.property("loader_requirement_version", property("loader_requirement_version"))
 
     filesMatching("fabric.mod.json") {
         val valueMap = mapOf(
             "version" to  modver,
-            "carpet_requirement_version" to property("carpet_requirement_version"),
             "minecraft_requirement_version" to minecraftVer,
-            "loader_requirement_version" to property("loader_requirement_version"),
         )
 		expand(valueMap)
     }

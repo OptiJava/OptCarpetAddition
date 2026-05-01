@@ -4,8 +4,8 @@ import carpet.logging.LoggerRegistry;
 import carpet.utils.Messenger;
 import io.github.optijava.opt_carpet_addition.logger.AbstractHUDLogger;
 import io.github.optijava.opt_carpet_addition.logger.LoggerRegister;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.text.Text;
 
 import java.io.File;
 import java.lang.reflect.Field;
@@ -32,16 +32,15 @@ public class DiskHUDLogger extends AbstractHUDLogger {
     @Override
     public void updateHUD(MinecraftServer server) {
         if (LoggerRegister.__disk) {
-            List<Text> list = new ArrayList<>();
-
+            List<Component> list = new ArrayList<>();
             for (File f : File.listRoots()) {
                 if (f.getPath().equals("/")) {
-                    list.add(Text.of(Messenger.c("g %s %sGB/%sGB".formatted("RootFileSystem", (f.getTotalSpace() - f.getFreeSpace()) / TO_GB, f.getTotalSpace() / TO_GB))));
+                    list.add(Messenger.c("g %s %sGB/%sGB".formatted("RootFileSystem", (f.getTotalSpace() - f.getFreeSpace()) / TO_GB, f.getTotalSpace() / TO_GB)));
                 } else {
-                    list.add(Text.of(Messenger.c("g %s %sGB/%sGB".formatted(f.getPath(), (f.getTotalSpace() - f.getFreeSpace()) / TO_GB, f.getTotalSpace() / TO_GB))));
+                    list.add(Messenger.c("g %s %sGB/%sGB".formatted(f.getPath(), (f.getTotalSpace() - f.getFreeSpace()) / TO_GB, f.getTotalSpace() / TO_GB)));
                 }
             }
-            LoggerRegistry.getLogger("disk").log(() -> list.toArray(new Text[0]));
+            LoggerRegistry.getLogger("disk").log(() -> list.toArray(new Component[0]));
         }
     }
 }

@@ -4,7 +4,7 @@
 //import carpet.logging.LoggerRegistry;
 //import carpet.utils.Messenger;
 //import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
-//import net.minecraft.server.command.ServerCommandSource;
+//import net.minecraft.server.command.CommandSourceStack;
 //import org.spongepowered.asm.mixin.Mixin;
 //import org.spongepowered.asm.mixin.injection.At;
 //import org.spongepowered.asm.mixin.injection.Inject;
@@ -23,7 +23,7 @@
 //    private static void injectSubscribePlayer(String playerName, String logName, String option, CallbackInfo ci) {
 //        if (Objects.equals(logName, "blockUpdate") && !OptCarpetSettings.allowBlockUpdateLogger) {
 //            try {
-//                ServerCommandSource commandSource = Objects.requireNonNull(CarpetServer.minecraft_server.getPlayerManager().getPlayer(playerName)).getCommandSource();
+//                CommandSourceStack commandSource = Objects.requireNonNull(CarpetServer.minecraft_server.getPlayerManager().getPlayer(playerName)).getCommandSource();
 //                Messenger.m(commandSource, "g Rule allowBlockUpdateLogger was disabled. You can't receive any block update message. Please contact operators.");
 //            } catch (Exception ignored) {
 //            }

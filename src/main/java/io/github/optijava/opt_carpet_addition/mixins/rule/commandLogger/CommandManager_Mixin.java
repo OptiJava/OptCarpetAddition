@@ -1,13 +1,13 @@
 package io.github.optijava.opt_carpet_addition.mixins.rule.commandLogger;
 
 import com.mojang.brigadier.ParseResults;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.commands.Commands;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import carpet.CarpetServer;
 import carpet.utils.Messenger;
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import io.github.optijava.opt_carpet_addition.utils.McUtils;
-import net.minecraft.server.command.CommandManager;
-import net.minecraft.server.command.ServerCommandSource;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.spongepowered.asm.mixin.Mixin;
@@ -16,18 +16,18 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 
 
-@Mixin(CommandManager.class)
+@Mixin(Commands.class)
 public class CommandManager_Mixin {
 
     @Unique
     private static final Logger LOGGER = LogManager.getLogger("OCA Command Logger");
 
     @Inject(
-            method = "execute",
+            method = "performCommand",
             at = @At("HEAD")
     )
-    public void injectExecute(ParseResults<ServerCommandSource> parseResults, String command, CallbackInfo ci) {
-        ServerCommandSource commandSource = parseResults.getContext().getSource();
+    public void injectExecute(ParseResults<CommandSourceStack> parseResults, String command, CallbackInfo ci) {
+        CommandSourceStack commandSource = parseResults.getContext().getSource();
 
         if (!OptCarpetSettings.commandLoggerConfigBean.logAllCommand && OptCarpetSettings.commandLogger) {
             if (OptCarpetSettings.commandLoggerConfigBean.LogCommandWhitelist.contains(command)) {
@@ -56,21 +56,21 @@ public class CommandManager_Mixin {
     }
 
     @Unique
-    private void logCommand(String command, ServerCommandSource commandSource){
-        CommandManager_Mixin.LOGGER.info("[OCA Command Logger] {} submit command: {}", commandSource.getName(), command);
+    private void logCommand(String command, CommandSourceStack commandSource){
+        CommandManager_Mixin.LOGGER.info("[OCA Command Logger] {} submit command: {}", commandSource.getTextName(), command);
 
         if (OptCarpetSettings.commandLoggerBroadcastToPlayer.equals("true")) {
             Messenger.print_server_message(CarpetServer.minecraft_server, Messenger.c(
                     "gi [",
-                    "li " + commandSource.getName(),
+                    "li " + commandSource.getTextName(),
                     "gi : " + command + "]"
             ));
         } else if (OptCarpetSettings.commandLoggerBroadcastToPlayer.equals("ops")) {
-            CarpetServer.minecraft_server.getPlayerManager().getPlayerList().forEach(serverPlayerEntity -> {
+            CarpetServer.minecraft_server.getPlayerList().getPlayers().forEach(serverPlayerEntity -> {
                 if (McUtils.isOp(serverPlayerEntity.getGameProfile())) {
                     Messenger.m(serverPlayerEntity, Messenger.c(
                             "gi [",
-                            "li " + commandSource.getName(),
+                            "li " + commandSource.getTextName(),
                             "gi : " + command + "]"
                     ));
                 }

@@ -3,7 +3,7 @@ package io.github.optijava.opt_carpet_addition.mixins.logger;
 import carpet.logging.HUDController;
 import io.github.optijava.opt_carpet_addition.logger.disk.DiskHUDLogger;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.level.ServerPlayer;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -20,7 +20,7 @@ public abstract class HUDController_Mixin {
             ),
             remap = false
     )
-    private static void injectUpdateHUD(MinecraftServer server, List<ServerPlayerEntity> force, CallbackInfo ci) {
+    private static void injectUpdateHUD(MinecraftServer server, List<ServerPlayer> force, CallbackInfo ci) {
         DiskHUDLogger.INSTANCE.updateHUD(server);
     }
 }

@@ -1,14 +1,5 @@
-accessWidener v1 official
+accessWidener v2 named
 accessible class net/minecraft/world/entity/monster/EnderMan$EndermanTakeBlockGoal
 accessible class net/minecraft/world/entity/monster/EnderMan$EndermanLeaveBlockGoal
 accessible field net/minecraft/network/protocol/game/ServerboundChatPacket message Ljava/lang/String;
-accessible field net/minecraft/server/network/ServerLoginNetworkHandler server Lnet/minecraft/server/MinecraftServer;
-accessible method net/minecraft/entity/Entity unsetRemoved ()V
-accessible method net/minecraft/server/network/ServerPlayerEntity worldChanged (Lnet/minecraft/server/world/ServerWorld;)V
-accessible class net/minecraft/world/block/ChainRestrictedNeighborUpdater$Entry
-accessible class net/minecraft/world/block/ChainRestrictedNeighborUpdater$SimpleEntry
-accessible class net/minecraft/world/block/ChainRestrictedNeighborUpdater$StateReplacementEntry
-accessible class net/minecraft/world/block/ChainRestrictedNeighborUpdater$StatefulEntry
-accessible class net/minecraft/world/block/ChainRestrictedNeighborUpdater$SixWayEntry
-accessible field net/minecraft/world/block/ChainRestrictedNeighborUpdater$SixWayEntry sourceBlock Lnet/minecraft/block/Block;
-accessible field net/minecraft/world/block/ChainRestrictedNeighborUpdater$SixWayEntry pos Lnet/minecraft/util/math/BlockPos;
+accessible field net/minecraft/world/entity/player/Inventory equipment Lnet/minecraft/world/entity/EntityEquipment;

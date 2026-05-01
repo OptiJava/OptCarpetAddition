@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(Chicken.class)
 public class ChickenEntity_Mixin {
 
-/**
+    /**
      * Mixin ChickenEntity.tickMovement()V
      *
      * @author OptiJava

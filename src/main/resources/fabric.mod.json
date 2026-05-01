@@ -24,10 +24,10 @@
   ],
   "accessWidener": "opt-carpet-addition.accesswidener",
   "depends": {
-    "fabricloader": "${loader_requirement_version}",
+    "fabricloader": ">=0.19.2",
     "minecraft": "${minecraft_requirement_version}",
     "fabric": "*",
-    "carpet": "${carpet_requirement_version}"
+    "carpet": "*"
   },
   "suggests": {
     "another-mod": "Carpet-TIS-Addition"

@@ -14,10 +14,10 @@ import io.github.optijava.opt_carpet_addition.utils.ConfigUtil;
 import io.github.optijava.opt_carpet_addition.utils.TpLimit;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.entity.event.v1.ServerEntityWorldChangeEvents;
-import net.minecraft.command.CommandRegistryAccess;
-import net.minecraft.server.command.ServerCommandSource;
-import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.world.GameMode;
+import net.minecraft.commands.CommandBuildContext;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.level.GameType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -43,40 +43,40 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
         CarpetServer.settingsManager.parseSettingsClass(OptCarpetSettings.class);
 
         // add rule observer
-        CarpetServer.settingsManager.registerRuleObserver(((serverCommandSource, rule, s) -> {
+        CarpetServer.settingsManager.registerRuleObserver(((CommandSourceStack, rule, s) -> {
             if (Objects.equals(rule.name(), "forceFakePlayerGameMode") && !Objects.equals(OptCarpetSettings.forceFakePlayerGameMode, "false")) {
-                GameMode gameMode;
+                GameType gameMode;
 
                 if (OptCarpetSettings.forceFakePlayerGameMode.equals("creative")) {
-                    gameMode = GameMode.CREATIVE;
+                    gameMode = GameType.CREATIVE;
                 } else if (OptCarpetSettings.forceFakePlayerGameMode.equals("adventure")) {
-                    gameMode = GameMode.ADVENTURE;
+                    gameMode = GameType.ADVENTURE;
                 } else {
-                    gameMode = GameMode.SURVIVAL;
+                    gameMode = GameType.SURVIVAL;
                 }
 
-                serverCommandSource.getServer().getPlayerManager().getPlayerList().forEach(player -> {
+                CommandSourceStack.getServer().getPlayerList().getPlayers().forEach(player -> {
                     if (player instanceof EntityPlayerMPFake) {
-                        player.changeGameMode(gameMode);
+                        player.setGameMode(gameMode);
                     }
                 });
             }
 
             if (rule.name().equals("enableTpPrefixBlacklist") && OptCarpetSettings.enableTpPrefixBlacklist && OptCarpetSettings.enableTpPrefixWhitelist) {
                 OptCarpetSettings.enableTpPrefixBlacklist = false;
-                Messenger.m(serverCommandSource, "r You can't enable TpPrefixBlacklist because you have enabled TpPrefixWhitelist");
+                Messenger.m(CommandSourceStack, "r You can't enable TpPrefixBlacklist because you have enabled TpPrefixWhitelist");
             }
             if (rule.name().equals("enableTpPrefixWhitelist") && OptCarpetSettings.enableTpPrefixWhitelist && OptCarpetSettings.enableTpPrefixBlacklist) {
                 OptCarpetSettings.enableTpPrefixWhitelist = false;
-                Messenger.m(serverCommandSource, "r You can't enable TpPrefixWhitelist because you have enabled TpPrefixBlacklist");
+                Messenger.m(CommandSourceStack, "r You can't enable TpPrefixWhitelist because you have enabled TpPrefixBlacklist");
             }
             if (rule.name().equals("enableTpherePrefixWhitelist") && OptCarpetSettings.enableTpHerePrefixWhitelist && OptCarpetSettings.enableTpHerePrefixBlacklist) {
                 OptCarpetSettings.enableTpHerePrefixWhitelist = false;
-                Messenger.m(serverCommandSource, "r You can't enable TpherePrefixWhitelist because you have enabled TpherePrefixBlacklist");
+                Messenger.m(CommandSourceStack, "r You can't enable TpherePrefixWhitelist because you have enabled TpherePrefixBlacklist");
             }
             if (rule.name().equals("enableTpherePrefixBlacklist") && OptCarpetSettings.enableTpHerePrefixBlacklist && OptCarpetSettings.enableTpHerePrefixWhitelist) {
                 OptCarpetSettings.enableTpHerePrefixBlacklist = false;
-                Messenger.m(serverCommandSource, "r You can't enable TpherePrefixBlacklist because you have enabled TpherePrefixWhitelist");
+                Messenger.m(CommandSourceStack, "r You can't enable TpherePrefixBlacklist because you have enabled TpherePrefixWhitelist");
             }
 
 
@@ -104,7 +104,7 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
     }
 
     @Override
-    public void registerCommands(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess commandBuildContext) {
+    public void registerCommands(CommandDispatcher<CommandSourceStack> dispatcher, CommandBuildContext commandBuildContext) {
         PlayerTpCommand.registerCommands(dispatcher);
         ListAdvanceCommand.registerCommand(dispatcher);
         TpLimitCommand.registerCommand(dispatcher);
@@ -113,17 +113,17 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
     }
 
     @Override
-    public void onPlayerLoggedIn(ServerPlayerEntity player) {
+    public void onPlayerLoggedIn(ServerPlayer player) {
         if (!(Objects.equals(OptCarpetSettings.forceFakePlayerGameMode, "false")) && player instanceof EntityPlayerMPFake) {
-            GameMode gameMode = GameMode.SURVIVAL;
+            GameType gameMode = GameType.SURVIVAL;
 
             if (OptCarpetSettings.forceFakePlayerGameMode.equals("creative")) {
-                gameMode = GameMode.CREATIVE;
+                gameMode = GameType.CREATIVE;
             } else if (OptCarpetSettings.forceFakePlayerGameMode.equals("adventure")) {
-                gameMode = GameMode.ADVENTURE;
+                gameMode = GameType.ADVENTURE;
             }
 
-            player.changeGameMode(gameMode);
+            player.setGameMode(gameMode);
         }
 
         double time;
@@ -136,7 +136,7 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
     }
 
     @Override
-    public void onPlayerLoggedOut(ServerPlayerEntity player) {
+    public void onPlayerLoggedOut(ServerPlayer player) {
         PlayerTpCommand.rateLimiterMap.remove(player);
     }
 

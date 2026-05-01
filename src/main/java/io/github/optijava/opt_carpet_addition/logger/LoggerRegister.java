@@ -15,7 +15,7 @@ public class LoggerRegister {
 
     public static void registry() {
         LoggerRegistry.registerLogger("disk", DiskHUDLogger.INSTANCE);
-        //incompatible with 26.1
+        //TODO incompatible with 26.1
         //LoggerRegistry.registerLogger("blockUpdate", BlockUpdateLogger.INSTANCE);
     }
 }

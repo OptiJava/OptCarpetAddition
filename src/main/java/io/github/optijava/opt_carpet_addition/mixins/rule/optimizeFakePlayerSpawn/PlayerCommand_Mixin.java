@@ -1,6 +1,6 @@
+package io.github.optijava.opt_carpet_addition.mixins.rule.optimizeFakePlayerSpawn;
 //? if < 1.21.10 {
-/*package io.github.optijava.opt_carpet_addition.mixins.rule.optimizeFakePlayerSpawn;
-
+/*
 import carpet.commands.PlayerCommand;
 import com.mojang.authlib.GameProfile;
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;

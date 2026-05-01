@@ -110,7 +110,6 @@ public class PlayerTpCommand {
                 }
 
             } else {
-                // TODO: "true"改为OCS.TRUE
                 switch (OptCarpetSettings.allowTpToRealPlayer) {
                     case OptCarpetSettings.TRUE -> tp(commandSourcePlayerName, target);
                     case "ops" -> {

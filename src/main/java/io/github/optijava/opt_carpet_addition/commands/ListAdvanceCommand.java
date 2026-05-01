@@ -25,12 +25,11 @@ public class ListAdvanceCommand {
             StringBuilder sb = new StringBuilder();
             sb.append("\n");
             minecraftServer.getPlayerList().getPlayers().forEach(s -> {
-                //? if >= 1.21.10 {
+                //? if >= 1.21.11 {
                 sb.append(s.getName().getString()).append("    ").append(s.gameMode().getName()).append("    ").append(s.connection.latency()).append("ms    ").append(s.getIpAddress()).append("    ").append(s.getGameProfile().id().toString()).append("\n");
-                //?} else if >= 1.21.5 {
+                //?} else {
                 /*sb.append(s.getName().getString()).append("    ").append(s.gameMode).append("    ").append(s.connection.latency()).append("ms    ").append(s.getIpAddress()).append("    ").append(s.getGameProfile().getId().toString()).append("\n");
                 *///?}
-                // TODO: 加回来1.21版本
             });
             Messenger.m(context.getSource(), sb.toString());
         } catch (Exception e) {

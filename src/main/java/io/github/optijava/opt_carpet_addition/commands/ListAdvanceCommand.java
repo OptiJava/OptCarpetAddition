@@ -27,8 +27,8 @@ public class ListAdvanceCommand {
             minecraftServer.getPlayerList().getPlayers().forEach(s -> {
                 //? if >= 1.21.10 {
                 /*sb.append(s.getName().getString()).append("    ").append(s.gameMode().getName()).append("    ").append(s.connection.latency()).append("ms    ").append(s.getIpAddress()).append("    ").append(s.getGameProfile().id().toString()).append("\n");
-                *///?} else {
-                sb.append(s.getName().getString()).append("    ").append(s.gameMode().getName()).append("    ").append(s.connection.latency()).append("ms    ").append(s.getIpAddress()).append("    ").append(s.getGameProfile().getId().toString()).append("\n");
+                *///?} else if >= 1.21.5 {
+                sb.append(s.getName().getString()).append("    ").append(s.gameMode).append("    ").append(s.connection.latency()).append("ms    ").append(s.getIpAddress()).append("    ").append(s.getGameProfile().getId().toString()).append("\n");
                 //?}
             });
             Messenger.m(context.getSource(), sb.toString());

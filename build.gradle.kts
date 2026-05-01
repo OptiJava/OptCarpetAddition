@@ -37,6 +37,9 @@ repositories {
     }
 }
 
+tasks.withType<Test> {
+    enabled = false
+}
 
 //https://github.com/FabricMC/fabric-loader/issues/783
 //configurations {

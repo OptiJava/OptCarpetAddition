@@ -9,7 +9,7 @@ public class LoggerRegister {
 
     public static boolean __disk = false;
 
-    public static boolean __cceSuppressionCrash = false;
+    // TODO 26.1 Remove CCE Supression Crash
 
     public static boolean __blockUpdate = false;
 

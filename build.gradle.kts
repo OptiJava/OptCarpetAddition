@@ -9,11 +9,12 @@ plugins {
 
 val minecraftVer = stonecutter.current.version
 val modver = "${property("mod_version")}"
-val mod = "${modver}+${minecraftVer}+build.${SimpleDateFormat("yyMMddHHmm").format(Date())}"
+
+val modBuildNameSuffix = "v${modver}+build.${SimpleDateFormat("yyMMddHHmm").format(Date())}-${minecraftVer}"
 val archivesBaseName = project.findProperty("archives_base_name")
 
 base {
-    archivesName.set("${archivesBaseName}+${mod}")
+    archivesName.set("${archivesBaseName}+${modBuildNameSuffix}")
 }
 
 repositories {
@@ -65,7 +66,7 @@ tasks.processResources {
 
     filesMatching("fabric.mod.json") {
         val valueMap = mapOf(
-            "version" to  modver,
+            "version" to modver,
             "minecraft_requirement_version" to minecraftVer,
         )
 		expand(valueMap)
@@ -90,3 +91,5 @@ tasks.jar {
         }
     }
 }
+
+println(stonecutter.tree.versions.toString())

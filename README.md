@@ -347,6 +347,8 @@ DispenserBlockEntity dispenserBlockEntity = (DispenserBlockEntity)blockPointerIm
 
 **仅限`1.20`版本及以上**
 
+**在v2.0.0以上版本已被移除**
+
 如果你想在`1.20`使用音符盒极简抑制器，这可能能帮助你
 
 - Default value: `false`

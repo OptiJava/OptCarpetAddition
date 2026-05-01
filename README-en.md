@@ -346,6 +346,8 @@ If `blockUpdate` is not needed, **disabling this is highly recommended**.
 
 **just in >=1.20**
 
+**removed after v2.0.0**
+
 If you want to use note block update suppression in 1.20, this may help you.
 
 - Default value: `false`

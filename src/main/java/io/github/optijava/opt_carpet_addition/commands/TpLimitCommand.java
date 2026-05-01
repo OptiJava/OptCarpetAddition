@@ -15,12 +15,7 @@ import static net.minecraft.commands.Commands.argument;
 
 public class TpLimitCommand {
 
-    private TpLimitCommand() {
-
-    }
-
     public static void registerCommand(CommandDispatcher<CommandSourceStack> dispatcher) {
-        
 
         LiteralArgumentBuilder<CommandSourceStack> argument = Commands.literal("tpmanager")
                 .requires((player) ->  carpet.utils.CommandHelper.canUseCommand(player, enableTpmanagerCommand))

@@ -12,7 +12,6 @@
     "rule.disabledEntityTick.ServerWorld_Mixin",
     "rule.disabledLayEggs.ChickenEntity_Mixin",
     "rule.disabledNetherPortalSpawn.NetherPortalBlock_Mixin",
-    "rule.disallowRedstoneWireConnectsToOpenTrapdoor.RedstoneWireBlock_Mixin",
     "rule.optimizeFakePlayerSpawn.EntityPlayerMPFake_Mixin",
     "rule.optimizeFakePlayerSpawn.PlayerCommand_Mixin",
     "rule.removeAllCurseOfBindingArmorWhenPlayerDeadInWall.ServerPlayer_Mixin",

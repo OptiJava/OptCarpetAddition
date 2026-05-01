@@ -12,7 +12,7 @@ import static io.github.optijava.opt_carpet_addition.OptCarpetSettings.enableLog
 public class CommandLoggerCommand {
     public static void registerCommand(CommandDispatcher<CommandSourceStack> dispatcher) {
         LiteralArgumentBuilder<CommandSourceStack> argumentBuilder = Commands.literal("commandlogger").
-                requires((player) ->  carpet.utils.CommandHelper.canUseCommand(player, enableLoggerCommand))
+                requires((player) ->  (carpet.utils.CommandHelper.canUseCommand(player, enableLoggerCommand)))
                 .then(
                         Commands.literal("reload")
                                 .executes(CommandLoggerCommand::reload)

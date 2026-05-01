@@ -30,6 +30,7 @@ public class ListAdvanceCommand {
                 //?} else if >= 1.21.5 {
                 /*sb.append(s.getName().getString()).append("    ").append(s.gameMode).append("    ").append(s.connection.latency()).append("ms    ").append(s.getIpAddress()).append("    ").append(s.getGameProfile().getId().toString()).append("\n");
                 *///?}
+                // TODO: 加回来1.21版本
             });
             Messenger.m(context.getSource(), sb.toString());
         } catch (Exception e) {

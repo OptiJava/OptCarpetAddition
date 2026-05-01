@@ -15,6 +15,7 @@ import java.nio.file.Path;
 public class OptCarpetSettings {
     public static final String OCA = "OCA";
     public static final String FALSE = "false";
+    public static final String TRUE = "true";
     public static Path configDirectory = FabricLoader.getInstance().getConfigDir().resolve("opt-carpet-addition");
 
     // Tp command rules =======================================================================
@@ -116,12 +117,13 @@ public class OptCarpetSettings {
     )
     public static boolean commandLogger = false;
     
-    //#if MC < 12110
-    @Rule(
+    //? if < 1.21.10 {
+    /*@Rule(
             categories = {RuleCategory.OPTIMIZATION,OCA}
     )
     public static boolean optimizeFakePlayerSpawn = false;
-    //#endif
+    *///?}
+
 
     @Rule(
             categories = {RuleCategory.FEATURE,OCA}
@@ -173,13 +175,16 @@ public class OptCarpetSettings {
     public static boolean allowSpectatorTpToAnyPlayer = false;
 
     @Rule(
-            categories = {RuleCategory.COMMAND , OCA}
+            categories = {RuleCategory.COMMAND , OCA},
+            options = {"true", "false", "1", "2", "3", "4"},
+            strict = true
     )
-    public static boolean enableLoggerCommand = true;
+    public static String enableLoggerCommand = TRUE;
 
     @Rule(
             categories = {RuleCategory.COMMAND , OCA},
-            options = {"true", "false", "1", "2", "3", "4"}
+            options = {"true", "false", "1", "2", "3", "4"},
+            strict = true
     )
     public static String enableCrashCommand = FALSE;
 

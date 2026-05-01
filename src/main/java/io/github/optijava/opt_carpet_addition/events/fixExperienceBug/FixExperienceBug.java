@@ -20,13 +20,13 @@ public class FixExperienceBug implements ServerEntityLevelChangeEvents.AfterPlay
     }
 }
 //?} else {
-//public class FixExperienceBug implements ServerEntityWorldChangeEvents.AfterPlayerChange {
-//    @Override
-//    public void afterChangeWorld(ServerPlayer player, ServerLevel origin, ServerLevel destination) {
-//        if (OptCarpetSettings.fixXpLevelBug) {
-//            // refresh player's experience bar
-//            player.giveExperiencePoints(0);
-//        }
-//    }
-//}
-//?}
+/*public class FixExperienceBug implements ServerEntityWorldChangeEvents.AfterPlayerChange {
+    @Override
+    public void afterChangeWorld(ServerPlayer player, ServerLevel origin, ServerLevel destination) {
+        if (OptCarpetSettings.fixXpLevelBug) {
+            // refresh player's experience bar
+            player.giveExperiencePoints(0);
+        }
+    }
+}
+*///?}

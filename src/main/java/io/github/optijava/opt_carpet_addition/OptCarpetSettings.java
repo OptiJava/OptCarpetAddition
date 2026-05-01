@@ -178,9 +178,10 @@ public class OptCarpetSettings {
     public static boolean enableLoggerCommand = true;
 
     @Rule(
-            categories = {RuleCategory.COMMAND , OCA}
+            categories = {RuleCategory.COMMAND , OCA},
+            options = {"true", "false", "1", "2", "3", "4"}
     )
-    public static boolean enableCrashCommand = true;
+    public static String enableCrashCommand = FALSE;
 
     @Rule(
             categories = {RuleCategory.COMMAND , OCA}

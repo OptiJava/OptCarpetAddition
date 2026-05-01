@@ -9,9 +9,9 @@ public class McUtils {
 
     public static boolean isOp(GameProfile profile) {
         //? if < 1.21.10 {
-        return server.getPlayerList().isOp(profile);
-        //?} else {
-        /*return server.getPlayerList().isOp(server.getPlayerList().getPlayer(profile.id()).nameAndId());
-        *///?}
+        /*return server.getPlayerList().isOp(profile);
+        *///?} else {
+        return server.getPlayerList().isOp(server.getPlayerList().getPlayer(profile.id()).nameAndId());
+        //?}
     }
 }

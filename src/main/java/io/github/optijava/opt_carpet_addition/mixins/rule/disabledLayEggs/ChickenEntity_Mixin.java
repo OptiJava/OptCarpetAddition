@@ -1,7 +1,11 @@
 package io.github.optijava.opt_carpet_addition.mixins.rule.disabledLayEggs;
 
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
-import net.minecraft.world.entity.animal.Chicken;
+//? if >= 1.21.11 {
+import net.minecraft.world.entity.animal.chicken.Chicken;
+//?} else {
+/*import net.minecraft.world.entity.animal.Chicken;
+*///?}
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

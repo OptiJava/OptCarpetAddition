@@ -18,7 +18,6 @@ public class CrashCommand {
 
     public static void registerCommand(CommandDispatcher<CommandSourceStack> dispatcher) {
         LiteralArgumentBuilder<CommandSourceStack> argumentBuilder = Commands.literal("crash")
-                .requires((CommandSourceStack -> CommandSourceStack.hasPermission(4)))
                 .requires((player) ->  carpet.utils.CommandHelper.canUseCommand(player, enableCrashCommand))
                 .executes(CrashCommand::prepare)
                 .then(

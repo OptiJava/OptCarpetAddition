@@ -13,7 +13,11 @@ import io.github.optijava.opt_carpet_addition.utils.CommandLogger;
 import io.github.optijava.opt_carpet_addition.utils.ConfigUtil;
 import io.github.optijava.opt_carpet_addition.utils.TpLimit;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.entity.event.v1.ServerEntityWorldChangeEvents;
+//? if > 1.21.11 {
+import net.fabricmc.fabric.api.entity.event.v1.ServerEntityLevelChangeEvents;
+//?} else {
+/*import net.fabricmc.fabric.api.entity.event.v1.ServerEntityWorldChangeEvents;
+*///?}
 import net.minecraft.commands.CommandBuildContext;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.server.level.ServerPlayer;
@@ -33,8 +37,11 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
     public void onInitialize() {
         LOGGER.info("OptCarpetAddition is loading...");
         CarpetServer.manageExtension(this);
-
-        ServerEntityWorldChangeEvents.AFTER_PLAYER_CHANGE_WORLD.register(new FixExperienceBug());
+        //? if > 1.21.11 {
+        ServerEntityLevelChangeEvents.AFTER_PLAYER_CHANGE_LEVEL.register(new FixExperienceBug());
+        //?} else {
+        /*ServerEntityWorldChangeEvents.AFTER_PLAYER_CHANGE_WORLD.register(new FixExperienceBug());
+        *///?}
     }
 
     @Override

@@ -1,5 +1,5 @@
 //? if < 1.21.10 {
-package io.github.optijava.opt_carpet_addition.mixins.rule.optimizeFakePlayerSpawn;
+/*package io.github.optijava.opt_carpet_addition.mixins.rule.optimizeFakePlayerSpawn;
 
 import carpet.patches.EntityPlayerMPFake;
 import com.mojang.authlib.GameProfile;
@@ -28,4 +28,4 @@ public abstract class EntityPlayerMPFake_Mixin {
     }
 
 }
-//?}
+*///?}

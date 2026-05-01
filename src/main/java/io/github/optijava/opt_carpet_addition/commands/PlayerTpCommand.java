@@ -81,10 +81,10 @@ public class PlayerTpCommand {
 
         try {
             //? if >= 1.21.10 {
-            //final String commandSourcePlayerName = Objects.requireNonNull(context.getSource().getPlayer()).getGameProfile().name();
+            final String commandSourcePlayerName = Objects.requireNonNull(context.getSource().getPlayer()).getGameProfile().name();
             //?} else {
-            final String commandSourcePlayerName = Objects.requireNonNull(context.getSource().getPlayer()).getGameProfile().getName();
-            //?}
+            /*final String commandSourcePlayerName = Objects.requireNonNull(context.getSource().getPlayer()).getGameProfile().getName();
+            *///?}
 
             if (server.getPlayerList().getPlayerByName(target) instanceof EntityPlayerMPFake) {
 
@@ -168,10 +168,10 @@ public class PlayerTpCommand {
 
         try {
             //? if >= 1.21.10 {
-            //final String commandSourcePlayerName = Objects.requireNonNull(context.getSource().getPlayer()).getGameProfile().name();
+            final String commandSourcePlayerName = Objects.requireNonNull(context.getSource().getPlayer()).getGameProfile().name();
             //?} else {
-            final String commandSourcePlayerName = Objects.requireNonNull(context.getSource().getPlayer()).getGameProfile().getName();
-            //?}
+            /*final String commandSourcePlayerName = Objects.requireNonNull(context.getSource().getPlayer()).getGameProfile().getName();
+            *///?}
 
             if (server.getPlayerList().getPlayerByName(target) instanceof EntityPlayerMPFake) {
 

@@ -138,12 +138,6 @@ public class OptCarpetSettings {
     )
     public static int customItemDiscardTime = -1;
 
-     @Rule(
-             categories = {RuleCategory.FEATURE,OCA}
-     )
-    public static boolean disallowRedstoneWireConnectsToOpenTrapdoor = false;
-
-
     @Rule(
             categories = {RuleCategory.FEATURE, RuleCategory.OPTIMIZATION,OCA}
     )

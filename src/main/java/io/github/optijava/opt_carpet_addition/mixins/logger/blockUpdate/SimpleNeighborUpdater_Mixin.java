@@ -1,3 +1,5 @@
+// ######### 弃用 #########
+
 //package io.github.optijava.opt_carpet_addition.mixins.logger.blockUpdate;
 //
 ////#if MC >= 11900

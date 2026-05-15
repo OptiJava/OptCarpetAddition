@@ -153,7 +153,6 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
     }
 
     @Override
-    //TODO english translation(res/asssets/opt/lang/en_us.json)
     public Map<String, String> canHasTranslations(String lang) {
         //add rule translator
         return RuleTranslator.getTranslationFromResourcePath(lang);

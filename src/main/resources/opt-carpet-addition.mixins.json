@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_21",
   "mixins": [
     "logger.HUDController_Mixin",
+    "logger.blockUpdate.NeighborUpdater_Mixin",
     "rule.commandLogger.CommandManager_Mixin",
     "rule.customItemDiscardTime.ItemEntity_Mixin",
     "rule.disabledEnderManPickupGoal.EnderManEntity_Mixin",
@@ -11,10 +12,16 @@
     "rule.disabledEntityTick.ServerWorld_Mixin",
     "rule.disabledLayEggs.ChickenEntity_Mixin",
     "rule.disabledNetherPortalSpawn.NetherPortalBlock_Mixin",
-    "rule.optimizeFakePlayerSpawn.EntityPlayerMPFake_Mixin",
-    "rule.optimizeFakePlayerSpawn.PlayerCommand_Mixin",
+    //? if < 1.21.10 {
+    //"rule.optimizeFakePlayerSpawn.EntityPlayerMPFake_Mixin",
+    //"rule.optimizeFakePlayerSpawn.PlayerCommand_Mixin",
+    //?}
     "rule.removeAllCurseOfBindingArmorWhenPlayerDeadInWall.ServerPlayer_Mixin",
-    "rule.removeBats.BatEntity_Mixin"
+    "rule.removeBats.BatEntity_Mixin",
+    //? if <= 1.21 {
+    //"rule.optimizeFakePlayerSpawn.EntityPlayerMPFake_Mixin",
+    //"rule.optimizeFakePlayerSpawn.PlayerCommand_Mixin"
+    //? }
   ],
   "client": [
     "rule.unescapeChatMessage.ChatMessageC2SPacket_Mixin"

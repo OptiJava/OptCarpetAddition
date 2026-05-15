@@ -3,3 +3,5 @@ accessible class net/minecraft/world/entity/monster/EnderMan$EndermanTakeBlockGo
 accessible class net/minecraft/world/entity/monster/EnderMan$EndermanLeaveBlockGoal
 
 accessible field net/minecraft/world/entity/player/Inventory equipment Lnet/minecraft/world/entity/EntityEquipment;
+
+accessible class net/minecraft/world/level/redstone/CollectingNeighborUpdater$NeighborUpdates

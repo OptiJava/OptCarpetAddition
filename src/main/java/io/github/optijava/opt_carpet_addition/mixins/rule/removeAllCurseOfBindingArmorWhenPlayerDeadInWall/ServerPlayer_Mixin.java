@@ -25,7 +25,7 @@ public class ServerPlayer_Mixin {
             method = "die",
             at = @At("HEAD")
     )
-    public void injectOnDeath(DamageSource source, CallbackInfo ci) {
+    public void injectDie(DamageSource source, CallbackInfo ci) {
         ServerPlayer player = (ServerPlayer) (Object) this;
         if (OptCarpetSettings.removeAllCurseOfBindingArmorWhenPlayerDeadInWall && player.level().getGameRules().get(GameRules.KEEP_INVENTORY) && Objects.equals(source.getMsgId(), "inWall")) {
             final List<ItemStack> list = List.of(player.getInventory().equipment.get(EquipmentSlot.CHEST), player.getInventory().equipment.get(EquipmentSlot.FEET), player.getInventory().equipment.get(EquipmentSlot.LEGS), player.getInventory().equipment.get(EquipmentSlot.HEAD));

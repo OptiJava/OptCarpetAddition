@@ -1,6 +1,5 @@
 package io.github.optijava.opt_carpet_addition.commands;
 
-import carpet.CarpetServer;
 import carpet.patches.EntityPlayerMPFake;
 import carpet.utils.Messenger;
 import com.google.common.util.concurrent.RateLimiter;
@@ -14,7 +13,6 @@ import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import io.github.optijava.opt_carpet_addition.utils.McUtils;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.level.GameType;
 import java.util.HashMap;
@@ -27,7 +25,7 @@ import static io.github.optijava.opt_carpet_addition.utils.McUtils.MINECRAFT_SER
 public class PlayerTpCommand {
 
     /* permit 1 request per 2 seconds < == > permit 0.5 request per 1 second */
-    public static Map<ServerPlayer, RateLimiter> rateLimiterMap = new HashMap<>();
+    public final static Map<ServerPlayer, RateLimiter> rateLimiterMap = new HashMap<>();
 
     private static final String COMMAND_PREFIX = "player";
 

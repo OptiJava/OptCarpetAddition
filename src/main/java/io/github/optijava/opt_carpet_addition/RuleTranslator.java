@@ -24,6 +24,7 @@ public class RuleTranslator {
         } catch (IOException e) {
             return Collections.emptyMap();
         }
+        // TODO: 使用了弃用的api
         Gson gson = new GsonBuilder().setLenient().create();
         return gson.fromJson(jsonData, new TypeToken<Map<String, String>>() {}.getType());
     }

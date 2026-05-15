@@ -1,7 +1,7 @@
 package io.github.optijava.opt_carpet_addition.mixins.rule.optimizeFakePlayerSpawn;
 //? if < 1.21.10 {
-/*
-import carpet.patches.EntityPlayerMPFake;
+
+/*import carpet.patches.EntityPlayerMPFake;
 import com.mojang.authlib.GameProfile;
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import net.minecraft.core.UUIDUtil;

@@ -30,7 +30,7 @@ public class ServerPlayer_Mixin {
         if (OptCarpetSettings.removeAllCurseOfBindingArmorWhenPlayerDeadInWall && player.level().getGameRules().get(GameRules.KEEP_INVENTORY) && Objects.equals(source.getMsgId(), "inWall")) {
             final List<ItemStack> list = List.of(player.getInventory().equipment.get(EquipmentSlot.CHEST), player.getInventory().equipment.get(EquipmentSlot.FEET), player.getInventory().equipment.get(EquipmentSlot.LEGS), player.getInventory().equipment.get(EquipmentSlot.HEAD));
             for (ItemStack armor : list) {
-                if (EnchantmentHelper.has(armor, EnchantmentEffectComponents.PREVENT_EQUIPMENT_DROP)) {
+                if (EnchantmentHelper.has(armor, EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE)) {
                      armor.setCount(0);
                 }
             }
@@ -64,7 +64,7 @@ public class ServerPlayer_Mixin {
         if (OptCarpetSettings.removeAllCurseOfBindingArmorWhenPlayerDeadInWall && ((ServerPlayer) (Object)this).level().getGameRules().get(GameRules.KEEP_INVENTORY) && Objects.equals(source.getMsgId(), "inWall")) {
             final List<ItemStack> list = List.of(((ServerPlayer)(Object)this).getInventory().equipment.get(EquipmentSlot.CHEST), ((ServerPlayer) (Object)this).getInventory().equipment.get(EquipmentSlot.FEET), ((ServerPlayer) (Object)this).getInventory().equipment.get(EquipmentSlot.LEGS), ((ServerPlayer) (Object)this).getInventory().equipment.get(EquipmentSlot.HEAD));
             for (ItemStack armor : list) {
-                if (EnchantmentHelper.has(armor, net.minecraft.world.item.enchantment.EnchantmentEffectComponents.PREVENT_EQUIPMENT_DROP)) {
+                if (EnchantmentHelper.has(armor, net.minecraft.world.item.enchantment.EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE)) {
                     armor.setCount(0);
                 }
             }
@@ -72,8 +72,10 @@ public class ServerPlayer_Mixin {
     }
 }
 *///?} else if >= 1.21.5 {
-/*import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
+/*import io.github.optijava.opt_carpet_addition.OptCarpetAddition;
+import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.enchantment.EnchantmentEffectComponents;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.item.ItemStack;
@@ -95,9 +97,9 @@ public class ServerPlayer_Mixin {
     )
     public void injectOnDeath(DamageSource source, CallbackInfo ci) {
         if (OptCarpetSettings.removeAllCurseOfBindingArmorWhenPlayerDeadInWall && Objects.equals(source.getMsgId(), "inWall")) {
-            final List<ItemStack> list = List.of(((ServerPlayer)(Object)this).getInventory().equipment.get(EquipmentSlot.CHEST), ((ServerPlayer) (Object)this).getInventory().equipment.get(EquipmentSlot.FEET), ((ServerPlayer) (Object)this).getInventory().equipment.get(EquipmentSlot.LEGS), ((ServerPlayer) (Object)this).getInventory().equipment.get(EquipmentSlot.HEAD));
+            final List<ItemStack> list = List.of(((ServerPlayer) (Object)this).getInventory().equipment.get(EquipmentSlot.CHEST), ((ServerPlayer) (Object)this).getInventory().equipment.get(EquipmentSlot.FEET), ((ServerPlayer) (Object)this).getInventory().equipment.get(EquipmentSlot.LEGS), ((ServerPlayer) (Object)this).getInventory().equipment.get(EquipmentSlot.HEAD));
             for (ItemStack armor : list) {
-                if (EnchantmentHelper.has(armor, net.minecraft.world.item.enchantment.EnchantmentEffectComponents.PREVENT_EQUIPMENT_DROP)) {
+                if (EnchantmentHelper.has(armor, EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE)) {
                     armor.setCount(0);
                 }
             }
@@ -129,7 +131,7 @@ public class ServerPlayer_Mixin {
     public void injectOnDeath(DamageSource source, CallbackInfo ci) {
         if (OptCarpetSettings.removeAllCurseOfBindingArmorWhenPlayerDeadInWall && Objects.equals(source.getMsgId(), "inWall")) {
             for (ItemStack armor : ((ServerPlayer) (Object) this).getArmorSlots()) {
-                if (EnchantmentHelper.has(armor, net.minecraft.world.item.enchantment.EnchantmentEffectComponents.PREVENT_EQUIPMENT_DROP)) {
+                if (EnchantmentHelper.has(armor, net.minecraft.world.item.enchantment.EnchantmentEffectComponents.PREVENT_ARMOR_CHANGE)) {
                     armor.setCount(0);
                 }
             }

@@ -10,11 +10,11 @@ plugins {
 val minecraftVer = stonecutter.current.version
 val modver = "${property("mod_version")}"
 
-val modBuildNameSuffix = "v${modver}+build.${SimpleDateFormat("yyMMddHHmm").format(Date())}-${minecraftVer}"
+val modBuildNameSuffix = "v${modver}+build.${SimpleDateFormat("yyMMddHHmm").format(Date())}-mc${minecraftVer}"
 val archivesBaseName = project.findProperty("archives_base_name")
 
 base {
-    archivesName.set("${archivesBaseName}+${modBuildNameSuffix}")
+    archivesName.set("${archivesBaseName}-${modBuildNameSuffix}")
 }
 
 repositories {

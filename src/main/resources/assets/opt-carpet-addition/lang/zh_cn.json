@@ -46,7 +46,7 @@
   "carpet.rule.customItemDiscardTime.name": "自定义物品消失时间",
   "carpet.rule.customItemDiscardTime.desc": "修改物品消失时间，默认值 -1（单位：tick）",
   "carpet.rule.allowBlockUpdateLogger.name": "允许方块更新记录器",
-  "carpet.rule.allowBlockUpdateLogger.desc": "不推荐启用此规则，否则可能影响性能。启用后所有人都无法使用方块更新记录器",
+  "carpet.rule.allowBlockUpdateLogger.desc": "不推荐启用此规则，否则可能影响性能。禁用后所有人都无法使用方块更新记录器",
   "carpet.rule.removeBats.name": "移除蝙蝠",
   "carpet.rule.removeBats.desc": "禁用蝙蝠生成",
   "carpet.rule.playerTpRateLimitTime.name": "传送命令速率限制",

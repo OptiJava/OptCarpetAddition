@@ -46,7 +46,7 @@
   "carpet.rule.customItemDiscardTime.name": "Custom Item Despawn Time",
   "carpet.rule.customItemDiscardTime.desc": "Modify item despawn time, default -1 (unit: ticks)",
   "carpet.rule.allowBlockUpdateLogger.name": "Allow Block Update Logger",
-  "carpet.rule.allowBlockUpdateLogger.desc": "Enabling this rule is not recommended as it may affect performance. Once enabled, nobody can use the block update logger.",
+  "carpet.rule.allowBlockUpdateLogger.desc": "Enabling this rule is not recommended as it may affect performance. Once disabled, nobody can use the block update logger.",
   "carpet.rule.removeBats.name": "Remove Bats",
   "carpet.rule.removeBats.desc": "Disable bat spawning",
   "carpet.rule.playerTpRateLimitTime.name": "Teleport Command Rate Limit",

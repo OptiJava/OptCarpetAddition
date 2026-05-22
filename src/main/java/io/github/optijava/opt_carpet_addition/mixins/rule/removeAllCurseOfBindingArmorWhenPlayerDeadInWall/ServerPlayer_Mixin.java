@@ -1,7 +1,5 @@
 package io.github.optijava.opt_carpet_addition.mixins.rule.removeAllCurseOfBindingArmorWhenPlayerDeadInWall;
 
-// TODO migrate to 26.1 !!!test in client!!!
-
 //? if >= 26.1 {
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import net.minecraft.server.level.ServerPlayer;

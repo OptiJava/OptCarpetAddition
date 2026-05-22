@@ -191,4 +191,9 @@ public class OptCarpetSettings {
             categories = {RuleCategory.COMMAND , OCA}
     )
     public static boolean enableTpmanagerCommand = true;
+
+    @Rule(
+            categories = {RuleCategory.FEATURE, OCA}
+    )
+    public static boolean allowSpectatorToModifyContainer = false;
 }

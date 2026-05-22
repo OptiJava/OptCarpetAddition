@@ -25,7 +25,8 @@
     "logger.blockUpdate.LogCommand_Mixin"
   ],
   "client": [
-    "rule.unescapeChatMessage.ChatMessageC2SPacket_Mixin"
+    "rule.unescapeChatMessage.ChatMessageC2SPacket_Mixin",
+    "rule.allowSpectatorToModifyContainer.ServerGamePacketListenerImpl_Mixin"
   ],
   "injectors": {
     "defaultRequire": 1

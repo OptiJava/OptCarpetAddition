@@ -41,6 +41,7 @@ jobs:
           bash ./.github/scripts/build_output.sh
 
       - name: sort artifacts by game version
+        if: ${{ runner.os == 'Linux' && matrix.java == '25' }}
         run: |
           bash ./.github/scripts/sort_artifacts.sh
 

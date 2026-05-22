@@ -365,6 +365,14 @@ DispenserBlockEntity dispenserBlockEntity = (DispenserBlockEntity)blockPointerIm
 - Acceptable value: `true` `false`
 - Categories: `Feature`
 
+### allowSpectatorToModifyContainer
+
+允许旁观者操作容器
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Feature`
+
 ## 指令
 
 ### player xxx tp

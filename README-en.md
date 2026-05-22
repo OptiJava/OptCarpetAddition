@@ -364,6 +364,14 @@ Don't spawn bats!!!
 - Acceptable value: `true` `false`
 - Categories: `Feature`
 
+### allowSpectatorToModifyContainer
+
+Allow spectators to modify containers
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Feature`
+
 ## Command
 
 ### player xxx tp

@@ -12,5 +12,5 @@ done
 for i in $dir
 do
     dst_dir="processed_artifacts/$i"
-    find "artifacts" -type f -name "*-mc$i.jar" -exec mv {} "$dst_dir" \;
+    find "out" -type f -name "*-mc$i.jar" -exec mv {} "$dst_dir" \;
 done

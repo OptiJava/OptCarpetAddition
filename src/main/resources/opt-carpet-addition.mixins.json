@@ -20,8 +20,9 @@
     "rule.removeBats.BatEntity_Mixin",
     //? if <= 1.21 {
     //"rule.optimizeFakePlayerSpawn.EntityPlayerMPFake_Mixin",
-    //"rule.optimizeFakePlayerSpawn.PlayerCommand_Mixin"
+    //"rule.optimizeFakePlayerSpawn.PlayerCommand_Mixin",
     //? }
+    "logger.blockUpdate.LogCommand_Mixin"
   ],
   "client": [
     "rule.unescapeChatMessage.ChatMessageC2SPacket_Mixin"

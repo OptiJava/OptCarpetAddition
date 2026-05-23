@@ -1,4 +1,3 @@
-import org.gradle.internal.impldep.org.jsoup.nodes.Entities
 import java.text.SimpleDateFormat
 import java.util.Date
 
@@ -85,10 +84,10 @@ loom {
 }
 
 tasks.jar {
-    inputs.property("archivesName", Entities.EscapeMode.base.archivesName)
+    inputs.property("archivesName", base.archivesName)
     from("LICENSE") {
         rename { fileName ->
-            "${fileName}_${Entities.EscapeMode.base.archivesName.get()}"
+            "${fileName}_${base.archivesName.get()}"
         }
     }
 }

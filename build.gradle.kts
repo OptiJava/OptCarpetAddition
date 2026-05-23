@@ -20,9 +20,9 @@ base {
 repositories {
     mavenCentral()
     // 阿里云镜像
-    maven {
-        url = uri("https://maven.aliyun.com/repository/public/")
-    }
+    //maven {
+    //    url = uri("https://maven.aliyun.com/repository/public/")
+    //}
     // CurseMaven
     maven {
         url = uri("https://www.cursemaven.com")

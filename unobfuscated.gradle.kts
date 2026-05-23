@@ -1,3 +1,4 @@
+import org.gradle.internal.impldep.org.jsoup.nodes.Entities
 import java.text.SimpleDateFormat
 import java.util.Date
 
@@ -20,9 +21,9 @@ base {
 repositories {
     mavenCentral()
     // 阿里云镜像
-    maven {
-        url = uri("https://maven.aliyun.com/repository/public/")
-    }
+    //maven {
+    //    url = uri("https://maven.aliyun.com/repository/public/")
+    //}
     // CurseMaven
     maven {
         url = uri("https://www.cursemaven.com")
@@ -84,10 +85,10 @@ loom {
 }
 
 tasks.jar {
-    inputs.property("archivesName", base.archivesName)
+    inputs.property("archivesName", Entities.EscapeMode.base.archivesName)
     from("LICENSE") {
         rename { fileName ->
-            "${fileName}_${base.archivesName.get()}"
+            "${fileName}_${Entities.EscapeMode.base.archivesName.get()}"
         }
     }
 }

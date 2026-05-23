@@ -17,13 +17,16 @@ Build with [StoneCutter]
 
 Most other MC versions that are the same as the supported major versions but have different minor versions can be directly installed and work properly, but **the stability cannot be guaranteed. _Please use them with caution_**
 
+Not supported versions are archived in other branches in the repository.
+
 | Minecraft Version | Support Status                                                           | 
 |-------------------|--------------------------------------------------------------------------| 
 | 26.1              | Supporting, developing actively                                          |
 | 1.21.11           | Supporting, developing actively                                          |
+| 1.21.10           | Not supporting, development stopped (supporting stopped on May 1, 2026)  |
 | 1.21.5            | Supporting, developing actively                                          | 
 | 1.21              | Supporting, developing actively                                          | 
-| 1.20.4            | Supporting, developing actively                                          | 
+| 1.20.4            | Not supporting, development stopped (supporting stopped on May 1, 2026)  | 
 | 1.20.1            | Not supporting, development stopped (supporting stopped on Jun 18, 2025) | 
 | 1.19.3            | Not supporting, development stopped (supporting stopped on Jun 18, 2025) |
 | 1.18.2            | Not supporting, development stopped (supporting stopped on Jun 18, 2025) | 

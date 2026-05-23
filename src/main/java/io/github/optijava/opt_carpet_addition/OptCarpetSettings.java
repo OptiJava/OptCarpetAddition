@@ -196,4 +196,9 @@ public class OptCarpetSettings {
             categories = {RuleCategory.FEATURE, OCA}
     )
     public static boolean allowSpectatorToModifyContainer = false;
+
+    @Rule(
+            categories = {RuleCategory.FEATURE, RuleCategory.EXPERIMENTAL, OCA}
+    )
+    public static boolean forceLoadPets = false;
 }

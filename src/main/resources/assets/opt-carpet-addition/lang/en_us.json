@@ -62,5 +62,9 @@
   "carpet.rule.enableListAdvanceCommand.name": "Enable Advanced List Command",
   "carpet.rule.enableListAdvanceCommand.desc": "Enable advanced list feature commands",
   "carpet.rule.enableTpmanagerCommand.name": "Enable Teleport Manager Command",
-  "carpet.rule.enableTpmanagerCommand.desc": "Enable teleport management related commands"
+  "carpet.rule.enableTpmanagerCommand.desc": "Enable teleport management related commands",
+  "carpet.rule.allowSpectatorToModifyContainer.name": "Allow spectators to modify containers",
+  "carpet.rule.allowSpectatorToModifyContainer.desc": "Allow spectators to modify containers",
+  "carpet.rule.forceLoadPets.name": "Force load pet chunks",
+  "carpet.rule.forceLoadPets.desc": "Create a ticket every 35 ticks in pet chunks to prevent pets from not teleporting to the player."
 }

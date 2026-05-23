@@ -4,14 +4,9 @@ import carpet.utils.Messenger;
 import io.github.optijava.opt_carpet_addition.OptCarpetAddition;
 import io.github.optijava.opt_carpet_addition.logger.AbstractLogger;
 import io.github.optijava.opt_carpet_addition.logger.LoggerRegister;
-import io.github.optijava.opt_carpet_addition.utils.exceptions.ThrowableCCESuppression;
-import net.minecraft.block.Block;
-//#if MC >= 11900
-//$$ import net.minecraft.text.Text;
-//#else
-import net.minecraft.text.BaseText;
-//#endif
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.level.block.Block;
 
 import java.lang.reflect.Field;
 
@@ -30,7 +25,8 @@ public class BlockUpdateLogger extends AbstractLogger {
         super(acceleratorField, logName, def, options, strictOptions);
     }
 
-    public void logBlockUpdate(Block updatingBlock, BlockPos updatingBlockPos, Block sourceBlock, BlockPos centreBlockPos) {
+    public void logBlockUpdate(BlockPos updatingBlockPos, Block updatingBlock, Block changedBlock) {
+        // 以下是我在旧版本研究的内容：
         // 在1.17.1中，ServerWorld.updateNeighbor方法如下：
         // public void updateNeighbor(BlockPos pos, Block sourceBlock, BlockPos neighborPos)
         //                                    ^^^^         ^^^^^^^^^              ^^^^^^^
@@ -46,27 +42,11 @@ public class BlockUpdateLogger extends AbstractLogger {
         //                             被更新的      一个封装
 
         try {
-            //#if MC >= 11900
-            //$$ super.log(() -> new Text[]{
-            //$$    Messenger.c("m " + updatingBlock.getName().getString(), "w  block ",
-            //$$           "m [" + updatingBlockPos.getX() + " " + updatingBlockPos.getY() + " " + updatingBlockPos.getZ() + "]", "w  is updated. " +
-            //$$           "Source block: ", "m " + sourceBlock.getName().getString() + ". ",
-            //$$           "w Centre block position: ", "m [" + centreBlockPos.getX() + " " + centreBlockPos.getY() + " " + centreBlockPos.getZ() + "]."
-            //$$   )
-            //$$ });
-            //#else
-            super.log(() -> new BaseText[]{
-                   Messenger.c("m " + updatingBlock.getName().getString(), "w  block ",
-                           "g [" + updatingBlockPos.getX() + " " + updatingBlockPos.getY() + " " + updatingBlockPos.getZ() + "]", "w  is updated. " +
-                           "Source block: ", "m " + sourceBlock.getName().getString() + ". ",
-                           "w Centre block position: ", "g [" + centreBlockPos.getX() + " " + centreBlockPos.getY() + " " + centreBlockPos.getZ() + "]."
-                   )
-            });
-            //#endif
+            super.log(() -> new Component[] {
+                        Messenger.c("w Updating BlockPos: [", "m " + updatingBlockPos.getX() + " " + updatingBlockPos.getY() + " " + updatingBlockPos.getZ(), "w " + "] Updating Block: ", "m " + updatingBlock.getName().getString(), "w " + " Source Block(before change): ", "m " + changedBlock.getName().getString())
+                    }
+            );
         } catch (Exception e) {
-            if (e instanceof ThrowableCCESuppression t) {
-                throw t;
-            }
             OptCarpetAddition.LOGGER.error("Unexpected exception occurred when logging block update.", e);
         }
     }

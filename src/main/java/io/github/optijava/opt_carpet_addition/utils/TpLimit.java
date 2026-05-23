@@ -6,7 +6,7 @@ import com.mojang.brigadier.context.CommandContext;
 import io.github.optijava.opt_carpet_addition.OptCarpetAddition;
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import io.github.optijava.opt_carpet_addition.utils.config_bean.TpLimitConfigBean;
-import net.minecraft.server.command.ServerCommandSource;
+import net.minecraft.commands.CommandSourceStack;
 
 import java.util.Objects;
 
@@ -82,7 +82,7 @@ public class TpLimit {
         ConfigUtil.write("TpLimit.json", gson.toJson(OptCarpetSettings.tpLimitConfigBean));
     }
 
-    public static int reload(CommandContext<ServerCommandSource> context) {
+    public static int reload(CommandContext<CommandSourceStack> context) {
         loadConfigFile();
         return 1;
     }

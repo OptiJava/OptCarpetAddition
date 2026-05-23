@@ -7,79 +7,69 @@ import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.context.CommandContext;
 import io.github.optijava.opt_carpet_addition.OptCarpetAddition;
 import io.github.optijava.opt_carpet_addition.utils.TpLimit;
-import net.minecraft.server.command.ServerCommandSource;
-
-import static net.minecraft.server.command.CommandManager.argument;
-import static net.minecraft.server.command.CommandManager.literal;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.commands.Commands;
 
 import static io.github.optijava.opt_carpet_addition.OptCarpetSettings.enableTpmanagerCommand;
+import static net.minecraft.commands.Commands.argument;
 
 public class TpLimitCommand {
 
-    private TpLimitCommand() {
+    public static void registerCommand(CommandDispatcher<CommandSourceStack> dispatcher) {
 
-    }
-
-    public static void registerCommand(CommandDispatcher<ServerCommandSource> dispatcher) {
-        
-
-        LiteralArgumentBuilder<ServerCommandSource> argument = literal("tpmanager")
-                //#if MC < 12004
-                //$$.requires((player) -> carpet.settings.SettingsManager.canUseCommand(source, enableTpmanagerCommand))
-                //#else
-                //$$.requires((player) ->  carpet.utils.CommandHelper.canUseCommand(player, enableTpmanagerCommand))
-                //#endif
+        LiteralArgumentBuilder<CommandSourceStack> argument = Commands.literal("tpmanager")
+                .requires((player) ->  carpet.utils.CommandHelper.canUseCommand(player, enableTpmanagerCommand))
                 .then(
-                        literal("reload")
+                        Commands.literal("reload")
                                 .executes(TpLimit::reload)
                 )
                 .then(
-                        literal("tp")
-                                .then(literal("whitelist")
-                                        .then(literal("add")
+                        Commands.literal("tp")
+                                .then(Commands.literal("whitelist")
+                                        .then(Commands.literal("add")
                                                 .then(argument("prefix", StringArgumentType.word())
                                                         .executes(TpLimitCommand::addTpWhitelist)
                                                 )
                                         )
-                                        .then(literal("remove")
+                                        .then(Commands.literal("remove")
                                                 .then(argument("prefix", StringArgumentType.word())
                                                         .executes(TpLimitCommand::removeTpWhitelist)
                                                 )
                                         )
                                 )
-                                .then(literal("blacklist")
-                                        .then(literal("add")
+                                .then(Commands.literal("blacklist")
+                                        .then(Commands.literal("add")
                                                 .then(argument("prefix", StringArgumentType.word())
                                                         .executes(TpLimitCommand::addTpBlacklist)
                                                 )
                                         )
-                                        .then(literal("remove")
+                                        .then(Commands.literal("remove")
                                                 .then(argument("prefix", StringArgumentType.word())
                                                         .executes(TpLimitCommand::removeTpBlacklist)
                                                 )
                                         )
                                 )
                 )
-                .then(literal("tphere")
-                        .then(literal("whitelist")
-                                .then(literal("add")
+                .then(Commands.literal("tphere")
+                        .then(Commands.literal("whitelist")
+                                .then(Commands.literal("add")
                                         .then(argument("prefix", StringArgumentType.word())
                                                 .executes(TpLimitCommand::addTphereWhitelist)
                                         )
                                 )
-                                .then(literal("remove")
+                                .then(Commands.literal("remove")
                                         .then(argument("prefix", StringArgumentType.word())
                                                 .executes(TpLimitCommand::removeTphereWhitelist)
                                         )
                                 )
                         )
-                        .then(literal("blacklist")
-                                .then(literal("add")
+                        .then(Commands.literal("blacklist")
+                                .then(Commands.literal("add")
                                         .then(argument("prefix", StringArgumentType.word())
                                                 .executes(TpLimitCommand::addTphereBlacklist)
                                         )
                                 )
-                                .then(literal("remove")
+                                .then(Commands.literal("remove")
                                         .then(argument("prefix", StringArgumentType.word())
                                                 .executes(TpLimitCommand::removeTphereBlacklist)
                                         )
@@ -89,7 +79,7 @@ public class TpLimitCommand {
         dispatcher.register(argument);
     }
 
-    public static int addTpWhitelist(CommandContext<ServerCommandSource> context) {
+    public static int addTpWhitelist(CommandContext<CommandSourceStack> context) {
         TpLimit.add(StringArgumentType.getString(context, "prefix"), "TpWhitelist");
         OptCarpetAddition.LOGGER.info("Add TpWhitelist prefix : {}", StringArgumentType.getString(context, "prefix"));
         Messenger.m(context.getSource(), "Add TpWhitelist prefix : " + StringArgumentType.getString(context, "prefix"));
@@ -97,7 +87,7 @@ public class TpLimitCommand {
         return 1;
     }
 
-    public static int addTpBlacklist(CommandContext<ServerCommandSource> context) {
+    public static int addTpBlacklist(CommandContext<CommandSourceStack> context) {
         TpLimit.add(StringArgumentType.getString(context, "prefix"), "TpBlacklist");
         OptCarpetAddition.LOGGER.info("Add TpBlacklist prefix : {}", StringArgumentType.getString(context, "prefix"));
         Messenger.m(context.getSource(), "Add TpBlacklist prefix : " + StringArgumentType.getString(context, "prefix"));
@@ -105,7 +95,7 @@ public class TpLimitCommand {
         return 1;
     }
 
-    public static int addTphereWhitelist(CommandContext<ServerCommandSource> context) {
+    public static int addTphereWhitelist(CommandContext<CommandSourceStack> context) {
         TpLimit.add(StringArgumentType.getString(context, "prefix"), "TphereWhitelist");
         OptCarpetAddition.LOGGER.info("Add TphereWhitelist prefix : {}", StringArgumentType.getString(context, "prefix"));
         Messenger.m(context.getSource(), "Add TphereWhitelist prefix : " + StringArgumentType.getString(context, "prefix"));
@@ -113,7 +103,7 @@ public class TpLimitCommand {
         return 1;
     }
 
-    public static int addTphereBlacklist(CommandContext<ServerCommandSource> context) {
+    public static int addTphereBlacklist(CommandContext<CommandSourceStack> context) {
         TpLimit.add(StringArgumentType.getString(context, "prefix"), "TphereBlacklist");
         OptCarpetAddition.LOGGER.info(" Add TphereBlacklist prefix : {}", StringArgumentType.getString(context, "prefix"));
         Messenger.m(context.getSource(), "Add TphereBlacklist prefix : " + StringArgumentType.getString(context, "prefix"));
@@ -121,7 +111,7 @@ public class TpLimitCommand {
         return 1;
     }
 
-    public static int removeTpWhitelist(CommandContext<ServerCommandSource> context) {
+    public static int removeTpWhitelist(CommandContext<CommandSourceStack> context) {
         TpLimit.remove(StringArgumentType.getString(context, "prefix"), "TpWhitelist");
         OptCarpetAddition.LOGGER.info("Remove TpWhitelist prefix : {}", StringArgumentType.getString(context, "prefix"));
         Messenger.m(context.getSource(), "Remove TpWhitelist prefix : " + StringArgumentType.getString(context, "prefix"));
@@ -129,7 +119,7 @@ public class TpLimitCommand {
         return 1;
     }
 
-    public static int removeTpBlacklist(CommandContext<ServerCommandSource> context) {
+    public static int removeTpBlacklist(CommandContext<CommandSourceStack> context) {
         TpLimit.remove(StringArgumentType.getString(context, "prefix"), "TpBlacklist");
         OptCarpetAddition.LOGGER.info("Remove TpBlacklist prefix : {}", StringArgumentType.getString(context, "prefix"));
         Messenger.m(context.getSource(), "Remove TpBlacklist prefix : " + StringArgumentType.getString(context, "prefix"));
@@ -137,7 +127,7 @@ public class TpLimitCommand {
         return 1;
     }
 
-    public static int removeTphereWhitelist(CommandContext<ServerCommandSource> context) {
+    public static int removeTphereWhitelist(CommandContext<CommandSourceStack> context) {
         TpLimit.remove(StringArgumentType.getString(context, "prefix"), "TphereWhitelist");
         OptCarpetAddition.LOGGER.info("Remove TphereWhitelist prefix : {}", StringArgumentType.getString(context, "prefix"));
         Messenger.m(context.getSource(), "Remove TphereWhitelist prefix : " + StringArgumentType.getString(context, "prefix"));
@@ -145,7 +135,7 @@ public class TpLimitCommand {
         return 1;
     }
 
-    public static int removeTphereBlacklist(CommandContext<ServerCommandSource> context) {
+    public static int removeTphereBlacklist(CommandContext<CommandSourceStack> context) {
         TpLimit.remove(StringArgumentType.getString(context, "prefix"), "TphereBlacklist");
         OptCarpetAddition.LOGGER.info("Remove TphereBlacklist prefix : {}", StringArgumentType.getString(context, "prefix"));
         Messenger.m(context.getSource(), "Remove TphereBlacklist prefix : " + StringArgumentType.getString(context, "prefix"));

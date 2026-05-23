@@ -1,7 +1,7 @@
 package io.github.optijava.opt_carpet_addition.mixins.rule.disabledNetherPortalSpawn;
 
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
-import net.minecraft.block.NetherPortalBlock;
+import net.minecraft.world.level.block.NetherPortalBlock;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -16,11 +16,7 @@ public class NetherPortalBlock_Mixin {
      * @reason rule: disabledNetherPortalSpawn
      */
     @Inject(
-            //#if MC >= 11900
-            //$$ method = "randomTick",
-            //#else
-            method = "randomTick(Lnet/minecraft/block/BlockState;Lnet/minecraft/server/world/ServerWorld;Lnet/minecraft/util/math/BlockPos;Ljava/util/Random;)V",
-            //#endif
+            method = "randomTick",
             at = @At("HEAD"),
             cancellable = true
     )

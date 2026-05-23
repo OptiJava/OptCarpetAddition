@@ -1,16 +1,11 @@
 package io.github.optijava.opt_carpet_addition.logger.disk;
 
 import carpet.logging.LoggerRegistry;
+import carpet.utils.Messenger;
 import io.github.optijava.opt_carpet_addition.logger.AbstractHUDLogger;
 import io.github.optijava.opt_carpet_addition.logger.LoggerRegister;
+import net.minecraft.network.chat.Component;
 import net.minecraft.server.MinecraftServer;
-//#if MC >= 11900
-//$$ import net.minecraft.text.Text;
-//$$ import carpet.utils.Messenger;
-//#else
-import net.minecraft.text.BaseText;
-import net.minecraft.text.LiteralText;
-//#endif
 
 import java.io.File;
 import java.lang.reflect.Field;
@@ -37,31 +32,15 @@ public class DiskHUDLogger extends AbstractHUDLogger {
     @Override
     public void updateHUD(MinecraftServer server) {
         if (LoggerRegister.__disk) {
-            //#if MC >= 11900
-            //$$ List<Text> list = new ArrayList<>();
-            //#else
-            List<BaseText> list = new ArrayList<>();
-            //#endif
-
-            //#if MC >= 11900
-            //$$ for (File f : File.listRoots()) {
-            //$$    if (f.getPath().equals("/")) {
-            //$$        list.add(Text.of(Messenger.c("g %s %sGB/%sGB".formatted("RootFileSystem", (f.getTotalSpace() - f.getFreeSpace()) / TO_GB, f.getTotalSpace() / TO_GB))));
-            //$$    } else {
-            //$$        list.add(Text.of(Messenger.c("g %s %sGB/%sGB".formatted(f.getPath(), (f.getTotalSpace() - f.getFreeSpace()) / TO_GB, f.getTotalSpace() / TO_GB))));
-            //$$    }
-            //$$ }
-            //$$ LoggerRegistry.getLogger("disk").log(() -> list.toArray(new Text[0]));
-            //#else
+            List<Component> list = new ArrayList<>();
             for (File f : File.listRoots()) {
                 if (f.getPath().equals("/")) {
-                    list.add(new LiteralText("%s %sGB/%sGB".formatted("RootFileSystem", (f.getTotalSpace() - f.getFreeSpace()) / TO_GB, f.getTotalSpace() / TO_GB)));
+                    list.add(Messenger.c("g %s %sGB/%sGB".formatted("RootFileSystem", (f.getTotalSpace() - f.getFreeSpace()) / TO_GB, f.getTotalSpace() / TO_GB)));
                 } else {
-                    list.add(new LiteralText("%s %sGB/%sGB".formatted(f.getPath(), (f.getTotalSpace() - f.getFreeSpace()) / TO_GB, f.getTotalSpace() / TO_GB)));
+                    list.add(Messenger.c("g %s %sGB/%sGB".formatted(f.getPath(), (f.getTotalSpace() - f.getFreeSpace()) / TO_GB, f.getTotalSpace() / TO_GB)));
                 }
             }
-            LoggerRegistry.getLogger("disk").log(() -> list.toArray(new BaseText[0]));
-            //#endif
+            LoggerRegistry.getLogger("disk").log(() -> list.toArray(new Component[0]));
         }
     }
 }

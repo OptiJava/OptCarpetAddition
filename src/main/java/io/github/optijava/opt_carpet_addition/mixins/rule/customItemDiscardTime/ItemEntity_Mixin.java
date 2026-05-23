@@ -1,7 +1,7 @@
 package io.github.optijava.opt_carpet_addition.mixins.rule.customItemDiscardTime;
 
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
-import net.minecraft.entity.ItemEntity;
+import net.minecraft.world.entity.item.ItemEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;

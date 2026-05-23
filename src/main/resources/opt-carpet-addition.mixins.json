@@ -1,65 +1,32 @@
 {
   "required": false,
-  "minVersion": "0.8",
   "package": "io.github.optijava.opt_carpet_addition.mixins",
-  //#if MC >= 12100
-  //$$ "compatibilityLevel": "JAVA_21",
-  //#elseif MC >= 11800
-  //$$ "compatibilityLevel": "JAVA_17",
-  //#else
-  "compatibilityLevel": "JAVA_16",
-  //#endif
+  "compatibilityLevel": "JAVA_21",
   "mixins": [
-    //#if MC < 11900
-    "logger.updateSuppression.World_Mixin",
-    "rule.async.MinecraftServer_Mixin",
-    "rule.async.optimizePlayerConnect.EntityTrackerEntry_Mixin",
-    "rule.async.optimizePlayerConnect.PlayerManager_Mixin",
-    "rule.async.optimizePlayerConnect.ServerLoginNetworkHandler_Mixin",
-    "rule.async.optimizePlayerConnect.ServerWorld_Mixin",
-    "rule.async.optimizePlayerConnect.World_Mixin",
-    "rule.async.optimizeTeleport.ServerPlayerEntity_Mixin",
-    "rule.async.optimizeTeleport.ServerPlayNetworkHandler_Mixin",
-    "rule.disabledUpdateSuppressionErrorStackTrace.ThreadExecutor_Mixin",
-    "rule.dropperCrashFix.DispenserBlock_Mixin",
-    "rule.dropperCrashFix.DropperBlock_Mixin",
-    //#if MC >= 11800
-    //$$ "rule.disabledUpdateSuppressionErrorStackTrace.NetworkThreadUtils_Mixin",
-    //#endif
-    //#endif
     "logger.HUDController_Mixin",
-    //#if MC < 12100
-    "rule.cceSuppressionCrashFix.MinecraftServer_Mixin",
-    "rule.cceSuppressionCrashFix.ShulkerBoxBlock_Mixin",
-    //#endif
+    "logger.blockUpdate.NeighborUpdater_Mixin",
     "rule.commandLogger.CommandManager_Mixin",
+    "rule.customItemDiscardTime.ItemEntity_Mixin",
     "rule.disabledEnderManPickupGoal.EnderManEntity_Mixin",
     "rule.disabledEnderManPlaceBlockGoal.EndermanEntity_Mixin",
     "rule.disabledEntityTick.ServerWorld_Mixin",
     "rule.disabledLayEggs.ChickenEntity_Mixin",
     "rule.disabledNetherPortalSpawn.NetherPortalBlock_Mixin",
-    "rule.optimizeFakePlayerSpawn.EntityPlayerMPFake_Mixin",
-    "rule.optimizeFakePlayerSpawn.PlayerCommand_Mixin",
-    "rule.removeAllCurseOfBindingArmorWhenPlayerDeadInWall.ServerPlayerEntity_Mixin",
-    //#if MC >= 12000
-    //$$ "rule.disallowRedstoneWireConnectsToOpenTrapdoor.RedstoneWireBlock_Mixin",
-    //#endif
-    //#if MC >= 11900
-    //$$ "logger.blockUpdate.SimpleNeighborUpdater_Mixin",
-    //$$ "logger.blockUpdate.ChainRestrictedNeighborUpdater_Mixin",
-    //#endif
-    //#if MC <= 11900
-    "logger.blockUpdate.World_Mixin",
-    //#endif
-    "rule.customItemDiscardTime.ItemEntity_Mixin",
-    "logger.blockUpdate.LoggerRegistry_Mixin",
-    "rule.removeBats.BatEntity_Mixin"
+    //? if < 1.21.10 {
+    //"rule.optimizeFakePlayerSpawn.EntityPlayerMPFake_Mixin",
+    //"rule.optimizeFakePlayerSpawn.PlayerCommand_Mixin",
+    //?}
+    "rule.removeAllCurseOfBindingArmorWhenPlayerDeadInWall.ServerPlayer_Mixin",
+    "rule.removeBats.BatEntity_Mixin",
+    //? if <= 1.21 {
+    //"rule.optimizeFakePlayerSpawn.EntityPlayerMPFake_Mixin",
+    //"rule.optimizeFakePlayerSpawn.PlayerCommand_Mixin",
+    //? }
+    "logger.blockUpdate.LogCommand_Mixin"
   ],
   "client": [
     "rule.unescapeChatMessage.ChatMessageC2SPacket_Mixin",
-    //#if MC < 11900
-    "rule.unescapeChatMessage.Screen_Mixin"
-    //#endif
+    "rule.allowSpectatorToModifyContainer.ServerGamePacketListenerImpl_Mixin"
   ],
   "injectors": {
     "defaultRequire": 1

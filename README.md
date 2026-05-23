@@ -2,11 +2,13 @@
 
 Language: [English](https://github.com/OptiJava/OptCarpetAddition/blob/master/README-en.md) | 中文
 
+感谢：[jfglzs](https://github.com/jfglzs)
+
 > 这是一个`Carpet`的扩展模组，目标是添加一些没有太大改变原版游戏机制但优化玩家体验~~降低腐竹血压~~的一些功能。
 
 **_警告_: 不要下载以`-source`结尾的模组jar文件，那仅用于开发！！！**
 
-使用[Preprocessor](https://github.com/ReplayMod/preprocessor)构建~~可供大家学习~~
+使用[StoneCutter]构建~~可供大家学习~~
 
 **本模组需要前置模组：`Carpet` `fabric-api`**
 
@@ -16,14 +18,15 @@ Language: [English](https://github.com/OptiJava/OptCarpetAddition/blob/master/RE
 
 | Minecraft 版本 | 支持状态                       |
 |--------------|----------------------------|
-| 1.21.10      | 支持，积极开发                    |
+| 26.1         | 支持，积极开发                    |
+| 1.21.11      | 支持，积极开发                    |
 | 1.21.5       | 支持，积极开发                    |
 | 1.21         | 支持，积极开发                    |
 | 1.20.4       | 支持，积极开发                    |
 | 1.20.1       | 不支持，停止维护（在`2025/6/18`停止维护） |
 | 1.19.3       | 不支持，停止维护（在`2025/6/18`停止维护） |
 | 1.18.2       | 不支持，停止维护（在`2025/6/18`停止维护） |
-| 1.17.1       | 支持，积极开发                    |
+| 1.17.1       | 不支持，停止维护（在`2026/5/1`停止维护）  |
 | 1.16.5       | 不支持，停止维护（在`2023/1/8`停止维护）  |
 
 ## 规则
@@ -346,6 +349,8 @@ DispenserBlockEntity dispenserBlockEntity = (DispenserBlockEntity)blockPointerIm
 
 **仅限`1.20`版本及以上**
 
+**在v2.0.0以上版本已被移除**
+
 如果你想在`1.20`使用音符盒极简抑制器，这可能能帮助你
 
 - Default value: `false`
@@ -355,6 +360,14 @@ DispenserBlockEntity dispenserBlockEntity = (DispenserBlockEntity)blockPointerIm
 ### removeBats
 
 不再生成蝙蝠
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Feature`
+
+### allowSpectatorToModifyContainer
+
+允许旁观者操作容器
 
 - Default value: `false`
 - Acceptable value: `true` `false`

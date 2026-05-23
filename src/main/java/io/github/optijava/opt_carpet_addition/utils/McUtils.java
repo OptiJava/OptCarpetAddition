@@ -3,19 +3,20 @@ package io.github.optijava.opt_carpet_addition.utils;
 import carpet.CarpetServer;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.server.MinecraftServer;
-//#if MC >= 12110
-//$$ import net.minecraft.server.PlayerConfigEntry;
-//#endif
-
+import net.minecraft.server.level.ServerPlayer;
 
 public class McUtils {
-    private static final MinecraftServer server = CarpetServer.minecraft_server;
+    public static final MinecraftServer MINECRAFT_SERVER = CarpetServer.minecraft_server;
 
-    public static boolean isOp(GameProfile gameProfile) {
-        //#if MC < 12110
-        return server.getPlayerManager().isOperator(gameProfile);
-        //#else
-        //$$ return server.getPlayerManager().isOperator(server.getPlayerManager().getPlayer(gameProfile.id()).getPlayerConfigEntry());
-        //#endif
+    public static boolean isOp(GameProfile profile) {
+        //? if < 1.21.10 {
+        /*return MINECRAFT_SERVER.getPlayerList().isOp(profile);
+        *///?} else {
+        ServerPlayer player = MINECRAFT_SERVER.getPlayerList().getPlayer(profile.id());
+        if (player == null) {
+            return false;
+        }
+        return MINECRAFT_SERVER.getPlayerList().isOp(player.nameAndId());
+        //?}
     }
 }

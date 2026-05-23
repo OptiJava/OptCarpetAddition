@@ -5,7 +5,7 @@
   "name": "Opt-Carpet-Addition",
   "description": "An extension mod of fabric-carpet.",
   "authors": [
-    "OptiJava"
+    "OptiJava", "jfglzs"
   ],
   "contact": {
     "homepage": "https://github.com/OptiJava/OptCarpetAddition",
@@ -26,8 +26,8 @@
   "depends": {
     "fabricloader": "${loader_requirement_version}",
     "minecraft": "${minecraft_requirement_version}",
-    "fabric": "*",
-    "carpet": "${carpet_requirement_version}"
+    "carpet": "*",
+    "fabric-api": "*"
   },
   "suggests": {
     "another-mod": "Carpet-TIS-Addition"

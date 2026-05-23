@@ -2,12 +2,14 @@
 
 Language: English | [中文](https://github.com/OptiJava/OptCarpetAddition/blob/master/README.md)
 
+Thanks for the contributor: [jfglzs](https://github.com/jfglzs)
+
 > This is an extension mod of `Carpet`. The goal is to add some functions that do not greatly change the original game
 mechanism but optimize the player experience.
 
 **_WARNING_: Don't download mods with the `-source` suffix, it is just for development!!!**
 
-Build with [Preprocessor](https://github.com/ReplayMod/preprocessor)
+Build with [StoneCutter]
 
 **Dependencies:`Carpet` `fabric-api`**
 
@@ -17,14 +19,15 @@ Most other MC versions that are the same as the supported major versions but hav
 
 | Minecraft Version | Support Status                                                           | 
 |-------------------|--------------------------------------------------------------------------| 
-| 1.21.10           | Supporting, developing actively                                          |
+| 26.1              | Supporting, developing actively                                          |
+| 1.21.11           | Supporting, developing actively                                          |
 | 1.21.5            | Supporting, developing actively                                          | 
 | 1.21              | Supporting, developing actively                                          | 
 | 1.20.4            | Supporting, developing actively                                          | 
 | 1.20.1            | Not supporting, development stopped (supporting stopped on Jun 18, 2025) | 
 | 1.19.3            | Not supporting, development stopped (supporting stopped on Jun 18, 2025) |
 | 1.18.2            | Not supporting, development stopped (supporting stopped on Jun 18, 2025) | 
-| 1.17.1            | Supporting, developing actively                                          |
+| 1.17.1            | Not supporting, development stopped (supporting stopped on May 1, 2026)  |
 | 1.16.5            | Not supporting, development stopped (supporting stopped on Jan 8, 2023)  |
 
 ## Rules
@@ -345,6 +348,8 @@ If `blockUpdate` is not needed, **disabling this is highly recommended**.
 
 **just in >=1.20**
 
+**removed after v2.0.0**
+
 If you want to use note block update suppression in 1.20, this may help you.
 
 - Default value: `false`
@@ -354,6 +359,14 @@ If you want to use note block update suppression in 1.20, this may help you.
 ### removeBats
 
 Don't spawn bats!!!
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Feature`
+
+### allowSpectatorToModifyContainer
+
+Allow spectators to modify containers
 
 - Default value: `false`
 - Acceptable value: `true` `false`

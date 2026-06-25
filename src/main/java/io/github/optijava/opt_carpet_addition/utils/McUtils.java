@@ -5,6 +5,9 @@ import com.mojang.authlib.GameProfile;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
+
 public class McUtils {
     public static final MinecraftServer MINECRAFT_SERVER = CarpetServer.minecraft_server;
 
@@ -18,5 +21,10 @@ public class McUtils {
         }
         return MINECRAFT_SERVER.getPlayerList().isOp(player.nameAndId());
         //?}
+    }
+
+    public static void scheduleTask(Runnable task, MinecraftServer server, long delayMilliseconds) {
+        CompletableFuture.delayedExecutor(delayMilliseconds, TimeUnit.MILLISECONDS)
+                .execute(() -> server.execute(task));
     }
 }

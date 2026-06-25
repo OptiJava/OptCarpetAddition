@@ -8,6 +8,8 @@ Language: [English](https://github.com/OptiJava/OptCarpetAddition/blob/master/RE
 
 **_警告_: 不要下载以`-source`结尾的模组jar文件，那仅用于开发！！！**
 
+**_提示_：项目正式版的更新可能不及时，若发现`modrinth`、`curseforge`、`github release`都没有想要的版本，请到[Github Action](https://github.com/OptiJava/OptCarpetAddition/actions)上找（action上的版本未经充分测试，可能不稳定）**
+
 使用[StoneCutter]构建~~可供大家学习~~
 
 **本模组需要前置模组：`Carpet` `fabric-api`**

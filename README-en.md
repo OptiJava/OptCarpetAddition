@@ -9,6 +9,8 @@ mechanism but optimize the player experience.
 
 **_WARNING_: Don't download mods with the `-source` suffix, it is just for development!!!**
 
+**_Note_: Official release updates of the project may not be timely. If you don't find the version you want on `modrinth`, `curseforge`, or the `github release`, check the [GitHub Actions](https://github.com/OptiJava/OptCarpetAddition/actions) for builds (action-run builds are not fully tested and may be unstable).**
+
 Build with [StoneCutter]
 
 **Dependencies:`Carpet` `fabric-api`**

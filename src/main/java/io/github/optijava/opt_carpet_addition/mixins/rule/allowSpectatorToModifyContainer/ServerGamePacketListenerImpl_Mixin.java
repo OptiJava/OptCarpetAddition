@@ -20,4 +20,16 @@ public class ServerGamePacketListenerImpl_Mixin {
             return instance.isSpectator();
         }
     }
+
+    @Redirect(
+            method = "handleContainerSlotStateChanged",
+            at = @At(value = "INVOKE", target = "Lnet/minecraft/server/level/ServerPlayer;isSpectator()Z")
+    )
+    public boolean redirectIsSpectator1(ServerPlayer instance) {
+        if (OptCarpetSettings.allowSpectatorToModifyContainer) {
+            return false;
+        } else {
+            return instance.isSpectator();
+        }
+    }
 }

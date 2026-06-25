@@ -9,7 +9,6 @@ import com.mojang.brigadier.CommandDispatcher;
 import io.github.optijava.opt_carpet_addition.commands.*;
 import io.github.optijava.opt_carpet_addition.events.fixExperienceBug.FixExperienceBug;
 import io.github.optijava.opt_carpet_addition.logger.LoggerRegister;
-import io.github.optijava.opt_carpet_addition.mixins.rule.forceLoadPets.FollowOwnerGoal_Mixin;
 import io.github.optijava.opt_carpet_addition.utils.CommandLogger;
 import io.github.optijava.opt_carpet_addition.utils.ConfigUtil;
 import io.github.optijava.opt_carpet_addition.utils.TpLimit;
@@ -98,10 +97,6 @@ public class OptCarpetAddition implements CarpetExtension, ModInitializer {
                 for (RateLimiter rateLimiter : PlayerTpCommand.rateLimiterMap.values()) {
                     rateLimiter.setRate(time);
                 }
-            }
-
-            if (rule.name().equals("forceLoadPets") && OptCarpetSettings.forceLoadPets) {
-                FollowOwnerGoal_Mixin.ShouldTriggerImmediateLoadPets.triggerImmediateLoadPets = true;
             }
         }));
 

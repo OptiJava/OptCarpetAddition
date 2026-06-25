@@ -1,7 +1,7 @@
 package io.github.optijava.opt_carpet_addition.utils.validator;
 
-import carpet.api.settings.Validator;
 import carpet.api.settings.CarpetRule;
+import carpet.api.settings.Validator;
 import net.minecraft.commands.CommandSourceStack;
 
 

@@ -1,19 +1,19 @@
 package io.github.optijava.opt_carpet_addition.mixins.rule.commandLogger;
 
-import com.mojang.brigadier.ParseResults;
-import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.commands.Commands;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import carpet.CarpetServer;
 import carpet.utils.Messenger;
+import com.mojang.brigadier.ParseResults;
 import io.github.optijava.opt_carpet_addition.OptCarpetSettings;
 import io.github.optijava.opt_carpet_addition.utils.McUtils;
+import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.commands.Commands;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 
 @Mixin(Commands.class)

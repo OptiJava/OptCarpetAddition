@@ -64,6 +64,8 @@
   "carpet.rule.enableTpmanagerCommand.name": "启用传送管理命令",
   "carpet.rule.enableTpmanagerCommand.desc": "启用传送管理相关命令",
   "carpet.rule.allowSpectatorToModifyContainer.name": "允许旁观者操作容器",
-  "carpet.rule.allowSpectatorToModifyContainer.desc": "允许旁观者在GUI操作容器"
+  "carpet.rule.allowSpectatorToModifyContainer.desc": "允许旁观者在GUI操作容器",
+  "carpet.rule.removeDataModifyRestriction.name": "移除Data指令修改限制",
+  "carpet.rule.removeDataModifyRestriction.desc": "允许用/data modify entity修改玩家数据"
 }
 

@@ -23,7 +23,8 @@
     //"rule.optimizeFakePlayerSpawn.PlayerCommand_Mixin",
     //? }
     "logger.blockUpdate.LogCommand_Mixin",
-    "rule.allowSpectatorToModifyContainer.ServerGamePacketListenerImpl_Mixin"
+    "rule.allowSpectatorToModifyContainer.ServerGamePacketListenerImpl_Mixin",
+    "rule.removeDataModifyRestriction.EntityDataAccessor_Mixin"
   ],
   "client": [
     "rule.unescapeChatMessage.ChatMessageC2SPacket_Mixin"

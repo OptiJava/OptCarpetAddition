@@ -64,8 +64,6 @@
   "carpet.rule.enableTpmanagerCommand.name": "启用传送管理命令",
   "carpet.rule.enableTpmanagerCommand.desc": "启用传送管理相关命令",
   "carpet.rule.allowSpectatorToModifyContainer.name": "允许旁观者操作容器",
-  "carpet.rule.allowSpectatorToModifyContainer.desc": "允许旁观者在GUI操作容器",
-  "carpet.rule.forceLoadPets.name": "强制加载宠物所在的区块",
-  "carpet.rule.forceLoadPets.desc": "向宠物所在区块每隔35tick投1个类型为ENDER_PEARL的加载票，强加载宠物区块防止宠物不传送到玩家"
+  "carpet.rule.allowSpectatorToModifyContainer.desc": "允许旁观者在GUI操作容器"
 }
 

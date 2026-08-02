@@ -66,5 +66,7 @@
   "carpet.rule.allowSpectatorToModifyContainer.name": "Allow spectators to modify containers",
   "carpet.rule.allowSpectatorToModifyContainer.desc": "Allow spectators to modify containers",
   "carpet.rule.removeDataModifyRestriction.name": "Remove Data Modify Restriction",
-  "carpet.rule.removeDataModifyRestriction.desc": "Allow modifying data for players"
+  "carpet.rule.removeDataModifyRestriction.desc": "Allow modifying data for players",
+  "carpet.rule.fixPlayerPositionNaN.name": "Fix NaN in the pos of players",
+  "carpet.rule.fixPlayerPositionNaN.desc": "Prevent when writing NaN into pos"
 }

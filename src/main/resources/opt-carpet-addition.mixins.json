@@ -24,7 +24,8 @@
     //? }
     "logger.blockUpdate.LogCommand_Mixin",
     "rule.allowSpectatorToModifyContainer.ServerGamePacketListenerImpl_Mixin",
-    "rule.removeDataModifyRestriction.EntityDataAccessor_Mixin"
+    "rule.removeDataModifyRestriction.EntityDataAccessor_Mixin",
+    "rule.fixPlayerPositionNaN.Entity_Mixin"
   ],
   "client": [
     "rule.unescapeChatMessage.ChatMessageC2SPacket_Mixin"

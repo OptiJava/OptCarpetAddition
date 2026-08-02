@@ -201,4 +201,9 @@ public class OptCarpetSettings {
             categories = {RuleCategory.COMMAND, RuleCategory.EXPERIMENTAL,OCA}
     )
     public static boolean removeDataModifyRestriction = false;
+
+    @Rule(
+            categories = {RuleCategory.BUGFIX, OCA}
+    )
+    public static boolean fixPlayerPositionNaN = false;
 }

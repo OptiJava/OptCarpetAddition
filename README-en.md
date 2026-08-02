@@ -377,6 +377,24 @@ Allow spectators to modify containers
 - Acceptable value: `true` `false`
 - Categories: `Feature`
 
+### removeDataModifyRestriction
+
+Vanilla has restriction for /data modify entity <real player> , no modification of `Health` etc.
+
+This rule can remove the restriction.
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Command`, `Experimental`
+
+### fixPlayerPositionNaN
+
+In Entity.setPos(...), check and prevent `NaN`.
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `BugFix`
+
 ## Command
 
 ### player xxx tp

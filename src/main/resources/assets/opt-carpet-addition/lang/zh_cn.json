@@ -66,6 +66,8 @@
   "carpet.rule.allowSpectatorToModifyContainer.name": "允许旁观者操作容器",
   "carpet.rule.allowSpectatorToModifyContainer.desc": "允许旁观者在GUI操作容器",
   "carpet.rule.removeDataModifyRestriction.name": "移除Data指令修改限制",
-  "carpet.rule.removeDataModifyRestriction.desc": "允许用/data modify entity修改玩家数据"
+  "carpet.rule.removeDataModifyRestriction.desc": "允许用/data modify entity修改玩家数据",
+  "carpet.rule.fixPlayerPositionNaN.name": "修复玩家位置NaN",
+  "carpet.rule.fixPlayerPositionNaN.desc": "当玩家位置被写入NaN时，阻止写入"
 }
 

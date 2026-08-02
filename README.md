@@ -378,6 +378,22 @@ DispenserBlockEntity dispenserBlockEntity = (DispenserBlockEntity)blockPointerIm
 - Acceptable value: `true` `false`
 - Categories: `Feature`
 
+### removeDataModifyRestriction
+
+原版对于/data modify entity <玩家> 有限制，比如不能修改`Health`，本规则移除了此限制
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `Command`, `Experimental`
+
+### fixPlayerPositionNaN
+
+在Entity.setPos(...)方法中，检查输入值是否包含`NaN`
+
+- Default value: `false`
+- Acceptable value: `true` `false`
+- Categories: `BugFix`
+
 ## 指令
 
 ### player xxx tp

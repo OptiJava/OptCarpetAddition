@@ -213,4 +213,9 @@ public class OptCarpetSettings {
     )
     public static boolean removeFrogLongJump = false;
     //? }
+
+    @Rule(
+            categories = {RuleCategory.FEATURE, OCA}
+    )
+    public static boolean fakePlayerKeepInventory = false;
 }

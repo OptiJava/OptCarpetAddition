@@ -206,4 +206,11 @@ public class OptCarpetSettings {
             categories = {RuleCategory.BUGFIX, OCA}
     )
     public static boolean fixPlayerPositionNaN = false;
+
+    //? if >= 26.1 {
+    @Rule(
+        categories = {RuleCategory.OPTIMIZATION, OCA}
+    )
+    public static boolean removeFrogLongJump = false;
+    //? }
 }

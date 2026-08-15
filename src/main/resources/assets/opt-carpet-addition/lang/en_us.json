@@ -70,7 +70,5 @@
   "carpet.rule.fixPlayerPositionNaN.name": "Fix NaN in the pos of players",
   "carpet.rule.fixPlayerPositionNaN.desc": "Prevent when writing NaN into pos",
   "carpet.rule.removeFrogLongJump.name": "Remove the behavior of long jump in frogs",
-  "carpet.rule.removeFrogLongJump.desc": "Remove the behavior of long jump in frogs",
-  "carpet.rule.fakePlayerKeepInventory.name": "Keep inventory for fake players",
-  "carpet.rule.fakePlayerKeepInventory.desc": "Keep inventory for fake players"
+  "carpet.rule.removeFrogLongJump.desc": "Remove the behavior of long jump in frogs"
 }

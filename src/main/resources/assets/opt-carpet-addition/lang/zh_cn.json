@@ -70,8 +70,6 @@
   "carpet.rule.fixPlayerPositionNaN.name": "修复玩家位置NaN",
   "carpet.rule.fixPlayerPositionNaN.desc": "当玩家位置被写入NaN时，阻止写入",
   "carpet.rule.removeFrogLongJump.name": "禁用青蛙大跳行为",
-  "carpet.rule.removeFrogLongJump.desc": "禁用青蛙大跳行为",
-  "carpet.rule.fakePlayerKeepInventory.name": "假人死亡强制保留物品栏",
-  "carpet.rule.fakePlayerKeepInventory.desc": "假人死亡强制保留物品栏"
+  "carpet.rule.removeFrogLongJump.desc": "禁用青蛙大跳行为"
 }
 
